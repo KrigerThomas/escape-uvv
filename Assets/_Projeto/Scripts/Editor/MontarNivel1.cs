@@ -5,26 +5,26 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Monta o esqueleto principal do Nível 1 (Pátio + InovaLab Fechado com Teto):
-/// - Corrige automaticamente os materiais para eliminar 100% dos objetos rosas.
-/// - Cria paredes sólidas de laboratório e teto fechado (sem buracos abertos de janela).
-/// - Posiciona as 6 bancadas com computadores e cadeiras, recepção, vitrine, rack e lousa.
-/// - Configura o Pátio externo com grama, caminho de cascalho, muro de pulo e árvores.
-/// - Posiciona os pontos de evidência (P1 a P6) e ventilações de ratos (V1 a V4) do Croqui.
-/// - Configura o Calouro (Remy) e enquadra a câmera em terceira pessoa com visão perfeita.
+/// Monta o Nível 1 COMPLETO e 100% JOGÁVEL com um único clique:
+/// - Estrutura fechada do InovaLab (Piso, Paredes sem buracos, Teto e Luz).
+/// - Porta de entrada deslizante que abre automaticamente quando o jogador chega perto.
+/// - Mobília posicionada e computadores perfeitamente apoiados em cima das mesas.
+/// - Lanterna UV na recepção (pega com E, liga com F).
+/// - 3 Evidências escondidas nas mesas que só aparecem sob luz UV.
+/// - Quadro de segurança com pergunta de tecnologia (tecla E).
+/// - Porta de saída com teclado numérico eletrônico (tecla E).
+/// - HUD com cronômetro de 5 minutos, código descoberto e botão de reiniciar.
+/// - Calouro (Remy) configurado sem o bug de voar.
 /// </summary>
 public static class MontarNivel1
 {
-    // Dimensões do InovaLab (em metros)
-    private const float LabLargura = 20f;       // Eixo X
-    private const float LabProfundidade = 14f;   // Eixo Z
-    private const float LabAltura = 3.6f;        // Altura do teto (Eixo Y)
+    private const float LabLargura = 18f;
+    private const float LabProfundidade = 13f;
+    private const float LabAltura = 3.4f;
 
-    // Dimensões do Pátio Externo
-    private const float PatioLargura = 22f;
-    private const float PatioProfundidade = 20f;
+    private const float PatioLargura = 18f;
+    private const float PatioProfundidade = 16f;
 
-    // Prefabs do pack School
     private const string Props = "Assets/school/Prefabs/props/";
     private const string PrefabBancada = Props + "table3.prefab";
     private const string PrefabRecepcao = Props + "table1.prefab";
@@ -38,19 +38,17 @@ public static class MontarNivel1
     private const string PastaMateriais = "Assets/_Projeto/Materiais";
     private static Material matPadraoPack;
 
-    [MenuItem("Escape UVV/Montar Nivel 1 (Estrutura Limpa e Fechada)")]
+    [MenuItem("Escape UVV/Montar Nivel 1 (COMPLETO E JOGAVEL)")]
     public static void Montar()
     {
-        bool confirmou = EditorUtility.DisplayDialog("Montar Nível 1 - InovaLab",
-            "Vou recriar o esqueleto do cenário e posicionar o Remy e a Câmera. Deseja continuar?",
-            "Sim, Montar", "Cancelar");
-        if (!confirmou)
-            return;
+        bool confirmou = EditorUtility.DisplayDialog("Montar Nível 1 - Jogo Completo",
+            "Vou montar o Nível 1 com todas as mecânicas: portas funcionando, lanterna UV, pistas, quiz e saída. Continuar?",
+            "Sim, Montar Tudo", "Cancelar");
+        if (!confirmou) return;
 
         GarantirTags();
         LimparCenaAnterior();
 
-        // Carrega o material do pack corrigido para evitar objetos rosas
         matPadraoPack = AssetDatabase.LoadAssetAtPath<Material>("Assets/school/material/Materials/1.mat");
 
         GameObject raiz = new GameObject("Nivel1_Cenario");
@@ -59,13 +57,19 @@ public static class MontarNivel1
         Transform estrutura = CriarGrupo(raiz.transform, "Estrutura_InovaLab");
         Transform mobiliario = CriarGrupo(raiz.transform, "Mobiliario");
         Transform patio = CriarGrupo(raiz.transform, "Patio_Externo");
-        Transform pontos = CriarGrupo(raiz.transform, "Pontos_Logicos");
+        Transform gameplay = CriarGrupo(raiz.transform, "Gameplay_Objetivos");
 
-        ConstruirEstruturaInovaLab(estrutura);
+        GameObject portaSaidaObj = null;
+        ConstruirEstruturaInovaLab(estrutura, out portaSaidaObj);
         ConstruirMobiliario(mobiliario);
         ConstruirPatio(patio);
-        ConstruirPontos(pontos);
-        ConfigurarJogadorECamera(pontos);
+        InstalarGameplay(gameplay, portaSaidaObj);
+        ConfigurarJogadorECamera();
+
+        // Controladores de Jogo e Interface
+        GameObject gc = new GameObject("_GameController");
+        gc.AddComponent<GameManager>();
+        gc.AddComponent<UIManager>();
 
         AssetDatabase.SaveAssets();
         EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
@@ -74,7 +78,7 @@ public static class MontarNivel1
         if (SceneView.lastActiveSceneView != null)
             SceneView.lastActiveSceneView.FrameSelected();
 
-        Debug.Log("<color=green>[Escape UVV]</color> Nível 1 montado com sucesso! InovaLab fechado com teto e sem materiais rosas.");
+        Debug.Log("<color=green>[Escape UVV]</color> Nível 1 COMPLETO montado! Pressione PLAY para jogar o Escape Room.");
     }
 
     private static void GarantirTags()
@@ -104,8 +108,12 @@ public static class MontarNivel1
 
     private static void LimparCenaAnterior()
     {
-        GameObject cenarioAntigo = GameObject.Find("Nivel1_Cenario");
-        if (cenarioAntigo != null) Undo.DestroyObjectImmediate(cenarioAntigo);
+        string[] antigos = { "Nivel1_Cenario", "Jogador", "_GameController" };
+        foreach (string n in antigos)
+        {
+            GameObject obj = GameObject.Find(n);
+            if (obj != null) Undo.DestroyObjectImmediate(obj);
+        }
     }
 
     private static Transform CriarGrupo(Transform pai, string nome)
@@ -115,20 +123,19 @@ public static class MontarNivel1
         return grupo.transform;
     }
 
-    /// <summary>
-    /// Constrói o laboratório fechado: Piso, Paredes Sólidas, Teto e Luz de Teto.
-    /// </summary>
-    private static void ConstruirEstruturaInovaLab(Transform pai)
+    private static void ConstruirEstruturaInovaLab(Transform pai, out GameObject portaSaidaObj)
     {
-        Material matPiso = CriarMaterial("InovaLab_Piso", new Color(0.20f, 0.23f, 0.28f));
-        Material matParede = CriarMaterial("InovaLab_Parede", new Color(0.85f, 0.88f, 0.92f));
-        Material matTeto = CriarMaterial("InovaLab_Teto", new Color(0.30f, 0.32f, 0.35f));
+        Material matPiso = CriarMaterial("InovaLab_Piso", new Color(0.22f, 0.25f, 0.30f));
+        Material matParede = CriarMaterial("InovaLab_Parede", new Color(0.88f, 0.90f, 0.93f));
+        Material matTeto = CriarMaterial("InovaLab_Teto", new Color(0.35f, 0.37f, 0.40f));
+        Material matPorta = CriarMaterial("Porta_Material", new Color(0.45f, 0.28f, 0.16f));
+        Material matVidro = CriarMaterial("Vidro_Porta", new Color(0.50f, 0.75f, 0.90f));
 
         float W = LabLargura;
         float D = LabProfundidade;
         float H = LabAltura;
 
-        // 1. Piso do Laboratório
+        // Piso e Teto
         GameObject piso = GameObject.CreatePrimitive(PrimitiveType.Cube);
         piso.name = "Piso_InovaLab";
         piso.tag = "Chao";
@@ -137,7 +144,6 @@ public static class MontarNivel1
         piso.transform.position = new Vector3(W * 0.5f, -0.1f, D * 0.5f);
         piso.GetComponent<Renderer>().sharedMaterial = matPiso;
 
-        // 2. Teto do Laboratório (Fecha a sala completamente)
         GameObject teto = GameObject.CreatePrimitive(PrimitiveType.Cube);
         teto.name = "Teto_InovaLab";
         teto.transform.SetParent(pai, false);
@@ -145,31 +151,57 @@ public static class MontarNivel1
         teto.transform.position = new Vector3(W * 0.5f, H + 0.1f, D * 0.5f);
         teto.GetComponent<Renderer>().sharedMaterial = matTeto;
 
-        // 3. Paredes Sólidas
+        // Paredes Norte e Sul
         CriarParede(pai, "Parede_Norte", new Vector3(W * 0.5f, H * 0.5f, D), new Vector3(W, H, 0.3f), matParede);
         CriarParede(pai, "Parede_Sul", new Vector3(W * 0.5f, H * 0.5f, 0f), new Vector3(W, H, 0.3f), matParede);
 
-        // Parede Oeste (Lado do pátio com o vão da porta)
         float zEntrada = D * 0.5f;
         float largPorta = 2.4f;
-        CriarParede(pai, "Parede_Oeste_1", new Vector3(0f, H * 0.5f, (zEntrada - largPorta * 0.5f) * 0.5f), new Vector3(0.3f, H, zEntrada - largPorta * 0.5f), matParede);
-        CriarParede(pai, "Parede_Oeste_2", new Vector3(0f, H * 0.5f, (D + zEntrada + largPorta * 0.5f) * 0.5f), new Vector3(0.3f, H, D - (zEntrada + largPorta * 0.5f)), matParede);
-        CriarParede(pai, "Parede_Oeste_TopoPorta", new Vector3(0f, H - 0.5f, zEntrada), new Vector3(0.3f, 1f, largPorta), matParede);
+        float altPorta = 2.5f;
 
-        // Parede Leste (Lado do teclado com o vão de saída)
-        float zSaida = 2.2f;
-        CriarParede(pai, "Parede_Leste_1", new Vector3(W, H * 0.5f, (D + zSaida + largPorta * 0.5f) * 0.5f), new Vector3(0.3f, H, D - (zSaida + largPorta * 0.5f)), matParede);
-        CriarParede(pai, "Parede_Leste_TopoPorta", new Vector3(W, H - 0.5f, zSaida), new Vector3(0.3f, 1f, largPorta), matParede);
+        // Parede Oeste (com vão da porta)
+        CriarParede(pai, "Parede_Oeste_A", new Vector3(0f, H * 0.5f, (zEntrada - largPorta * 0.5f) * 0.5f), new Vector3(0.3f, H, zEntrada - largPorta * 0.5f), matParede);
+        CriarParede(pai, "Parede_Oeste_B", new Vector3(0f, H * 0.5f, (D + zEntrada + largPorta * 0.5f) * 0.5f), new Vector3(0.3f, H, D - (zEntrada + largPorta * 0.5f)), matParede);
+        CriarParede(pai, "Parede_Oeste_Topo", new Vector3(0f, (H + altPorta) * 0.5f, zEntrada), new Vector3(0.3f, H - altPorta, largPorta), matParede);
 
-        // 4. Luz interna do Laboratório
+        // Porta de Entrada DESLIZANTE
+        GameObject portaEntrada = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        portaEntrada.name = "Porta_Entrada_Deslizante";
+        portaEntrada.tag = "Porta";
+        portaEntrada.transform.SetParent(pai, false);
+        portaEntrada.transform.localScale = new Vector3(0.08f, altPorta, largPorta);
+        portaEntrada.transform.position = new Vector3(0f, altPorta * 0.5f, zEntrada);
+        portaEntrada.GetComponent<Renderer>().sharedMaterial = matVidro;
+
+        // Gatilho que abre a porta automaticamente
+        BoxCollider gatilhoEntrada = portaEntrada.AddComponent<BoxCollider>();
+        gatilhoEntrada.isTrigger = true;
+        gatilhoEntrada.size = new Vector3(40f, 1.2f, 1.5f); // Área ao redor da porta
+        portaEntrada.AddComponent<PortaEntrada>();
+
+        // Parede Leste (com vão da porta de saída)
+        float zSaida = 2.0f;
+        CriarParede(pai, "Parede_Leste_A", new Vector3(W, H * 0.5f, (D + zSaida + largPorta * 0.5f) * 0.5f), new Vector3(0.3f, H, D - (zSaida + largPorta * 0.5f)), matParede);
+        CriarParede(pai, "Parede_Leste_Topo", new Vector3(W, (H + altPorta) * 0.5f, zSaida), new Vector3(0.3f, H - altPorta, largPorta), matParede);
+
+        // Porta de Saída (Trancada com teclado)
+        portaSaidaObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        portaSaidaObj.name = "Porta_Saida_Trancada";
+        portaSaidaObj.tag = "Porta";
+        portaSaidaObj.transform.SetParent(pai, false);
+        portaSaidaObj.transform.localScale = new Vector3(0.12f, altPorta, largPorta);
+        portaSaidaObj.transform.position = new Vector3(W, altPorta * 0.5f, zSaida);
+        portaSaidaObj.GetComponent<Renderer>().sharedMaterial = matPorta;
+
+        // Luz de teto
         GameObject luzLab = new GameObject("Luz_Interna_InovaLab");
         luzLab.transform.SetParent(pai, false);
-        luzLab.transform.position = new Vector3(W * 0.5f, H - 0.5f, D * 0.5f);
+        luzLab.transform.position = new Vector3(W * 0.5f, H - 0.4f, D * 0.5f);
         Light luz = luzLab.AddComponent<Light>();
         luz.type = LightType.Point;
-        luz.range = 25f;
+        luz.range = 22f;
         luz.intensity = 2.2f;
-        luz.color = new Color(0.85f, 0.92f, 1f);
+        luz.color = new Color(0.88f, 0.93f, 1f);
     }
 
     private static void CriarParede(Transform pai, string nome, Vector3 pos, Vector3 escala, Material mat)
@@ -182,16 +214,12 @@ public static class MontarNivel1
         parede.GetComponent<Renderer>().sharedMaterial = mat;
     }
 
-    /// <summary>
-    /// Instancia móveis e limpa os slots vazios que causavam a cor rosa.
-    /// </summary>
     private static void ConstruirMobiliario(Transform pai)
     {
         float W = LabLargura;
         float D = LabProfundidade;
 
-        // 6 Bancadas no centro (2 fileiras x 3 colunas)
-        float[] colunas = { W * 0.32f, W * 0.50f, W * 0.68f };
+        float[] colunas = { W * 0.33f, W * 0.50f, W * 0.67f };
         float[] fileiras = { D * 0.62f, D * 0.38f };
         int idx = 1;
 
@@ -199,30 +227,27 @@ public static class MontarNivel1
         {
             for (int c = 0; c < colunas.Length; c++)
             {
-                Instanciar(PrefabBancada, pai, "Bancada_" + idx, new Vector3(colunas[c], 0f, fileiras[f]), 0f);
-                Instanciar(PrefabComputador, pai, "Computador_" + idx, new Vector3(colunas[c], 0.75f, fileiras[f]), 180f);
-                Instanciar(PrefabCadeira, pai, "Cadeira_" + idx, new Vector3(colunas[c], 0f, fileiras[f] - 0.6f), 0f);
+                Instanciar(PrefabBancada, pai, "Bancada_" + idx, new Vector3(colunas[c], 0f, fileiras[f]), 0f, 1f);
+                // Altura Y = 1.05m para os computadores apoiarem exatamente no tampo
+                Instanciar(PrefabComputador, pai, "Computador_" + idx, new Vector3(colunas[c], 1.05f, fileiras[f]), 180f, 1f);
+                Instanciar(PrefabCadeira, pai, "Cadeira_" + idx, new Vector3(colunas[c], 0f, fileiras[f] - 0.6f), 0f, 1f);
                 idx++;
             }
         }
 
-        // Recepção
-        Instanciar(PrefabRecepcao, pai, "Mesa_Recepcao", new Vector3(2.5f, 0f, D * 0.75f), 90f);
-        Instanciar(PrefabNotebook, pai, "Notebook_Recepcao", new Vector3(2.5f, 0.75f, D * 0.75f), 90f);
+        Instanciar(PrefabRecepcao, pai, "Mesa_Recepcao", new Vector3(2.5f, 0f, D * 0.75f), 90f, 1f);
+        Instanciar(PrefabNotebook, pai, "Notebook_Recepcao", new Vector3(2.5f, 0.95f, D * 0.75f), 90f, 1f);
+        Instanciar(PrefabVitrine, pai, "Vitrine_Trofeu", new Vector3(W * 0.5f, 0f, D - 0.6f), 180f, 1f);
+        Instanciar(PrefabArmario, pai, "Rack_Servidores_1", new Vector3(W - 1.2f, 0f, D - 0.6f), 180f, 1f);
+        Instanciar(PrefabArmario, pai, "Rack_Servidores_2", new Vector3(W - 2.2f, 0f, D - 0.6f), 180f, 1f);
 
-        // Vitrine do Troféu na parede Norte
-        Instanciar(PrefabVitrine, pai, "Vitrine_Trofeu", new Vector3(W * 0.5f, 0f, D - 0.8f), 180f);
+        // Quadro de Perguntas rente à parede e interativo
+        GameObject quadro = Instanciar(PrefabQuadro, pai, "Quadro_Pergunta", new Vector3(W - 0.35f, 1.4f, D * 0.55f), 270f, 0.8f);
+        if (quadro != null)
+            quadro.AddComponent<InteracaoQuadro>();
 
-        // Racks de Servidores no canto
-        Instanciar(PrefabArmario, pai, "Rack_Servidores_1", new Vector3(W - 1.2f, 0f, D - 0.8f), 180f);
-        Instanciar(PrefabArmario, pai, "Rack_Servidores_2", new Vector3(W - 2.4f, 0f, D - 0.8f), 180f);
-
-        // Quadro de Perguntas na parede leste
-        Instanciar(PrefabQuadro, pai, "Quadro_Pergunta", new Vector3(W - 0.2f, 1.2f, D * 0.60f), 270f);
-
-        // Bancadas de protótipos na parede sul
-        Instanciar(PrefabBancada, pai, "Bancada_Prototipos_1", new Vector3(W * 0.40f, 0f, 0.8f), 0f);
-        Instanciar(PrefabBancada, pai, "Bancada_Prototipos_2", new Vector3(W * 0.60f, 0f, 0.8f), 0f);
+        Instanciar(PrefabBancada, pai, "Bancada_Prototipos_1", new Vector3(W * 0.38f, 0f, 0.8f), 0f, 1f);
+        Instanciar(PrefabBancada, pai, "Bancada_Prototipos_2", new Vector3(W * 0.62f, 0f, 0.8f), 0f, 1f);
     }
 
     private static void ConstruirPatio(Transform pai)
@@ -235,7 +260,6 @@ public static class MontarNivel1
 
         float D = LabProfundidade;
 
-        // Terreno do Pátio
         GameObject grama = GameObject.CreatePrimitive(PrimitiveType.Cube);
         grama.name = "Chao_Patio";
         grama.tag = "Chao";
@@ -244,29 +268,26 @@ public static class MontarNivel1
         grama.transform.position = new Vector3(-PatioLargura * 0.5f, -0.1f, D * 0.5f);
         grama.GetComponent<Renderer>().sharedMaterial = matGrama;
 
-        // Caminho de cascalho
         GameObject caminho = GameObject.CreatePrimitive(PrimitiveType.Cube);
         caminho.name = "Caminho_Cascalho";
         caminho.transform.SetParent(pai, false);
-        caminho.transform.localScale = new Vector3(PatioLargura, 0.05f, 2.6f);
-        caminho.transform.position = new Vector3(-PatioLargura * 0.5f, 0.02f, D * 0.5f);
+        caminho.transform.localScale = new Vector3(PatioLargura, 0.02f, 2.4f);
+        caminho.transform.position = new Vector3(-PatioLargura * 0.5f, 0.01f, D * 0.5f);
         caminho.GetComponent<Renderer>().sharedMaterial = matCascalho;
         Object.DestroyImmediate(caminho.GetComponent<Collider>());
 
-        // Muro baixo (Treino de pulo)
         GameObject muro = GameObject.CreatePrimitive(PrimitiveType.Cube);
         muro.name = "Muro_TreinoPulo";
         muro.transform.SetParent(pai, false);
-        muro.transform.localScale = new Vector3(0.5f, 0.85f, 4.5f);
-        muro.transform.position = new Vector3(-8f, 0.425f, D * 0.5f + 3f);
+        muro.transform.localScale = new Vector3(0.5f, 0.85f, 4.0f);
+        muro.transform.position = new Vector3(-8f, 0.425f, D * 0.5f + 2.5f);
         muro.GetComponent<Renderer>().sharedMaterial = matMuro;
 
-        // Árvores simples
         Vector2[] posArvores =
         {
             new Vector2(-4f, 2f), new Vector2(-4f, D - 2f),
-            new Vector2(-12f, 2.5f), new Vector2(-12f, D - 2.5f),
-            new Vector2(-18f, D * 0.5f - 5f), new Vector2(-18f, D * 0.5f + 5f)
+            new Vector2(-11f, 2.5f), new Vector2(-11f, D - 2.5f),
+            new Vector2(-16f, D * 0.5f - 4.5f), new Vector2(-16f, D * 0.5f + 4.5f)
         };
 
         for (int i = 0; i < posArvores.Length; i++)
@@ -283,41 +304,77 @@ public static class MontarNivel1
 
             GameObject copa = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             copa.transform.SetParent(arvore.transform, false);
-            copa.transform.localScale = new Vector3(3f, 2.8f, 3f);
-            copa.transform.localPosition = new Vector3(0f, 3.2f, 0f);
+            copa.transform.localScale = new Vector3(2.8f, 2.6f, 2.8f);
+            copa.transform.localPosition = new Vector3(0f, 3.0f, 0f);
             copa.GetComponent<Renderer>().sharedMaterial = matFolhas;
             Object.DestroyImmediate(copa.GetComponent<Collider>());
         }
     }
 
-    private static void ConstruirPontos(Transform pai)
+    /// <summary>
+    /// Instala a Lanterna UV, as 3 Evidências secretas e o Teclado numérico da porta de saída.
+    /// </summary>
+    private static void InstalarGameplay(Transform pai, GameObject portaSaidaObj)
     {
         float W = LabLargura;
         float D = LabProfundidade;
 
-        Marcar(pai, "InicioJogador", new Vector3(-14f, 0f, D * 0.5f));
-        Marcar(pai, "Lanterna_Recepcao", new Vector3(2.5f, 0.85f, D * 0.75f));
-        Marcar(pai, "TecladoPorta", new Vector3(W - 0.2f, 1.3f, 3.5f));
+        // 1. Lanterna UV na mesa da recepção
+        GameObject lanterna = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+        lanterna.name = "Lanterna_UV_Pickup";
+        lanterna.tag = "Bateria";
+        lanterna.transform.SetParent(pai, false);
+        lanterna.transform.localScale = new Vector3(0.12f, 0.25f, 0.12f);
+        lanterna.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+        lanterna.transform.position = new Vector3(2.5f, 0.85f, D * 0.75f + 0.4f);
+        lanterna.GetComponent<Renderer>().sharedMaterial = CriarMaterial("Lanterna_Cor", new Color(0.5f, 0.1f, 0.9f));
 
-        // 6 Pontos de Evidências (Croqui)
-        Marcar(pai, "Evidencia_P1", new Vector3(W * 0.32f, 0.85f, D * 0.62f));
-        Marcar(pai, "Evidencia_P2", new Vector3(W * 0.50f, 0.85f, D * 0.38f));
-        Marcar(pai, "Evidencia_P3", new Vector3(W * 0.68f, 0.85f, D * 0.62f));
-        Marcar(pai, "Evidencia_P4", new Vector3(W * 0.50f + 2f, 0.3f, D - 1.2f));
-        Marcar(pai, "Evidencia_P5", new Vector3(W - 2.5f, 0.3f, D - 1.2f));
-        Marcar(pai, "Evidencia_P6", new Vector3(W - 2.5f, 0.3f, D * 0.55f));
+        GameObject luzObj = new GameObject("Luz_Spot_UV");
+        luzObj.transform.SetParent(lanterna.transform, false);
+        Light spot = luzObj.AddComponent<Light>();
+        spot.type = LightType.Spot;
+        spot.spotAngle = 48f;
+        spot.range = 10f;
+        spot.intensity = 3.5f;
+        spot.color = new Color(0.65f, 0.2f, 1f);
 
-        // 4 Ventilações de Ratos (Croqui V1 a V4)
-        Marcar(pai, "Ventilacao_V1", new Vector3(1f, 0.2f, D - 0.5f));
-        Marcar(pai, "Ventilacao_V2", new Vector3(W * 0.62f, 0.2f, 0.5f));
-        Marcar(pai, "Ventilacao_V3", new Vector3(W - 0.5f, 0.2f, D * 0.62f));
-        Marcar(pai, "Ventilacao_V4", new Vector3(W * 0.35f, 0.2f, D - 0.5f));
+        LanternaUV luv = lanterna.AddComponent<LanternaUV>();
+        luv.luzUV = spot;
+
+        // 2. Três Evidências Secretas (aparecem sob luz UV)
+        CriarEvidencia(pai, "Evidencia_1_PanoLaranja", new Vector3(W * 0.33f, 0.82f, D * 0.62f + 0.4f), "Pano Laranja Rasgado", new Color(1f, 0.5f, 0f));
+        CriarEvidencia(pai, "Evidencia_2_Queijo", new Vector3(W * 0.50f, 0.82f, D * 0.38f + 0.4f), "Migalhas de Queijo", new Color(1f, 0.9f, 0.2f));
+        CriarEvidencia(pai, "Evidencia_3_PenDrive", new Vector3(W * 0.67f, 0.82f, D * 0.62f + 0.4f), "Pen Drive de Segurança", new Color(0.2f, 0.8f, 1f));
+
+        // 3. Teclado da Porta de Saída
+        GameObject teclado = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        teclado.name = "Teclado_Porta_Saida";
+        teclado.transform.SetParent(pai, false);
+        teclado.transform.localScale = new Vector3(0.08f, 0.4f, 0.3f);
+        teclado.transform.position = new Vector3(W - 0.2f, 1.3f, 3.4f);
+        teclado.GetComponent<Renderer>().sharedMaterial = CriarMaterial("Teclado_Cor", new Color(0.2f, 0.2f, 0.2f));
+
+        TecladoPortaSaida tps = teclado.AddComponent<TecladoPortaSaida>();
+        tps.portaSaidaObjeto = portaSaidaObj;
     }
 
-    private static void ConfigurarJogadorECamera(Transform pontos)
+    private static void CriarEvidencia(Transform pai, string objNome, Vector3 pos, string nomeExibicao, Color cor)
     {
-        Transform inicio = pontos.Find("InicioJogador");
-        Vector3 posInicio = (inicio != null) ? inicio.position : new Vector3(-14f, 0f, LabProfundidade * 0.5f);
+        GameObject ev = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        ev.name = objNome;
+        ev.tag = "Pista";
+        ev.transform.SetParent(pai, false);
+        ev.transform.localScale = new Vector3(0.22f, 0.22f, 0.22f);
+        ev.transform.position = pos;
+        ev.GetComponent<Renderer>().sharedMaterial = CriarMaterial(objNome + "_Mat", cor);
+
+        EvidenciaItem item = ev.AddComponent<EvidenciaItem>();
+        item.nomeEvidencia = nomeExibicao;
+    }
+
+    private static void ConfigurarJogadorECamera()
+    {
+        Vector3 posInicio = new Vector3(-12f, 0.05f, LabProfundidade * 0.5f);
 
         GameObject jogador = GameObject.Find("Jogador");
         if (jogador == null) jogador = GameObject.Find("Remy");
@@ -334,14 +391,15 @@ public static class MontarNivel1
 
         jogador.name = "Jogador";
         jogador.tag = "Player";
-        jogador.transform.position = posInicio;
+        jogador.transform.localScale = new Vector3(0.85f, 0.85f, 0.85f);
+        jogador.transform.position = posInicio + Vector3.up * 0.05f;
         jogador.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
 
         CapsuleCollider colisor = jogador.GetComponent<CapsuleCollider>();
         if (colisor == null) colisor = jogador.AddComponent<CapsuleCollider>();
         colisor.center = new Vector3(0f, 0.9f, 0f);
-        colisor.height = 1.8f;
-        colisor.radius = 0.35f;
+        colisor.height = 1.75f;
+        colisor.radius = 0.32f;
 
         Rigidbody corpo = jogador.GetComponent<Rigidbody>();
         if (corpo == null) corpo = jogador.AddComponent<Rigidbody>();
@@ -350,7 +408,11 @@ public static class MontarNivel1
         PlayerController pc = jogador.GetComponent<PlayerController>();
         if (pc == null) pc = jogador.AddComponent<PlayerController>();
 
-        // Câmera
+        // Desativa Root Motion no Animator para o boneco não voar
+        Animator anim = jogador.GetComponent<Animator>();
+        if (anim != null)
+            anim.applyRootMotion = false;
+
         Camera camera = Camera.main;
         if (camera == null) camera = Object.FindFirstObjectByType<Camera>();
 
@@ -359,20 +421,17 @@ public static class MontarNivel1
             CameraFollow seguir = camera.GetComponent<CameraFollow>();
             if (seguir == null) seguir = camera.gameObject.AddComponent<CameraFollow>();
             seguir.alvo = jogador.transform;
-            seguir.deslocamentoAlvo = new Vector3(0f, 1.4f, 0f); // Mira na altura dos olhos
-            seguir.distancia = 3.6f;                            // Distância ideal de 3ª pessoa
+            seguir.deslocamentoAlvo = new Vector3(0f, 1.25f, 0f);
+            seguir.distancia = 3.6f;
 
-            Quaternion rotacao = Quaternion.Euler(12f, 90f, 0f);
+            Quaternion rotacao = Quaternion.Euler(14f, 90f, 0f);
             Vector3 pivo = jogador.transform.position + seguir.deslocamentoAlvo;
             camera.transform.rotation = rotacao;
             camera.transform.position = pivo + rotacao * Vector3.back * seguir.distancia;
         }
     }
 
-    /// <summary>
-    /// Instancia prefab do pack e remove os slots nulos que causavam a cor rosa.
-    /// </summary>
-    private static GameObject Instanciar(string caminho, Transform pai, string nome, Vector3 pos, float yaw)
+    private static GameObject Instanciar(string caminho, Transform pai, string nome, Vector3 pos, float yaw, float escala)
     {
         GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(caminho);
         if (prefab == null) return null;
@@ -381,8 +440,8 @@ public static class MontarNivel1
         go.name = nome;
         go.transform.position = pos;
         go.transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+        go.transform.localScale = Vector3.one * escala;
 
-        // CORREÇÃO DEFINITIVA: Remove os slots vazios (nulos) que deixavam tudo rosa
         if (matPadraoPack != null)
         {
             MeshRenderer[] renderers = go.GetComponentsInChildren<MeshRenderer>();
@@ -398,20 +457,6 @@ public static class MontarNivel1
         }
 
         return go;
-    }
-
-    private static GameObject Marcar(Transform pai, string nome, Vector3 posicao)
-    {
-        GameObject ponto = new GameObject(nome);
-        ponto.transform.SetParent(pai, false);
-        ponto.transform.position = posicao;
-
-        GUIContent conteudo = EditorGUIUtility.IconContent("sv_label_3");
-        Texture2D textura = (conteudo != null) ? conteudo.image as Texture2D : null;
-        if (textura != null)
-            EditorGUIUtility.SetIconForObject(ponto, textura);
-
-        return ponto;
     }
 
     private static Material CriarMaterial(string nome, Color cor)
