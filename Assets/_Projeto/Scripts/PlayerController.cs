@@ -1,149 +1,135 @@
 using UnityEngine;
 
 /// <summary>
-/// Controla o jogador em terceira pessoa: andar, correr, pular e girar para onde está indo.
-/// O deslocamento horizontal usa Transform.Translate e o pulo usa Rigidbody.AddForce.
-/// A direção do movimento é relativa à câmera: a tecla W anda para onde a câmera olha.
+/// Controla o jogador em terceira pessoa com movimentação física estável.
+/// Utiliza velocidade física (linearVelocity) e desativa obrigatoriamente o Root Motion
+/// do Animator para garantir que o personagem nunca seja lançado para o alto.
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Movimento")]
-    [Tooltip("Velocidade ao andar, em metros por segundo.")]
+    [Tooltip("Velocidade ao andar em metros por segundo.")]
     public float velocidadeAndar = 3.5f;
 
-    [Tooltip("Velocidade ao correr (segure Shift).")]
-    public float velocidadeCorrer = 6.5f;
+    [Tooltip("Velocidade ao correr (segurando Shift).")]
+    public float velocidadeCorrer = 6.0f;
 
     [Tooltip("Rapidez com que o personagem gira para a direção do movimento.")]
     public float velocidadeGiro = 12f;
 
-    [Header("Pulo")]
-    [Tooltip("Velocidade vertical dada ao pular (AddForce com ForceMode.VelocityChange).")]
-    public float forcaPulo = 5.5f;
+    [Header("Pulo e Chão")]
+    [Tooltip("Força vertical do pulo.")]
+    public float forcaPulo = 5.0f;
 
-    [Tooltip("Distância extra abaixo do colisor para considerar que o jogador está no chão.")]
-    public float margemChao = 0.15f;
+    [Tooltip("Distância do raio para checar se está no chão.")]
+    public float distanciaChecagemChao = 0.2f;
 
     [Header("Segurança")]
     [Tooltip("Se o jogador cair abaixo desta altura, volta ao ponto inicial.")]
-    public float alturaMinima = -15f;
+    public float alturaMinima = -10f;
 
     [Header("Referências")]
-    [Tooltip("Câmera usada como referência de direção. Se vazio, usa a Main Camera.")]
     public Transform cameraReferencia;
 
-    /// <summary>Verdadeiro quando o jogador está tocando o chão.</summary>
     public bool NoChao { get; private set; }
-
-    /// <summary>Velocidade horizontal atual em m/s. Será usada pelo Animator (parado, andando, correndo).</summary>
     public float VelocidadeAtual { get; private set; }
 
     private Rigidbody rb;
     private CapsuleCollider capsula;
+    private Animator anim;
     private Vector3 posicaoInicial;
     private Quaternion rotacaoInicial;
-    private float entradaH;
-    private float entradaV;
+    private Vector3 direcaoDesejada;
     private bool correndo;
     private bool querPular;
 
-    /// <summary>
-    /// Guarda as referências e configura o Rigidbody para o personagem não tombar.
-    /// Também memoriza o ponto inicial, usado se o jogador cair do mapa.
-    /// </summary>
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         capsula = GetComponent<CapsuleCollider>();
+        anim = GetComponent<Animator>();
+
+        // Desativa Root Motion para evitar que animações do Mixamo controlem a posição no ar
+        if (anim != null)
+            anim.applyRootMotion = false;
+
         rb.constraints = RigidbodyConstraints.FreezeRotation;
-        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
+
         posicaoInicial = transform.position;
         rotacaoInicial = transform.rotation;
     }
 
-    /// <summary>A cada quadro: lê o teclado, move o personagem e confere se ele caiu do mapa.</summary>
     void Update()
     {
-        LerEntrada();
-        Mover();
+        // Garante que o Root Motion permaneça desativado mesmo ao trocar de controller
+        if (anim != null && anim.applyRootMotion)
+            anim.applyRootMotion = false;
 
-        if (transform.position.y < alturaMinima)
-            Reaparecer();
-    }
-
-    /// <summary>A cada passo de física: confere o chão e aplica o pulo, se foi pedido.</summary>
-    void FixedUpdate()
-    {
-        VerificarChao();
-
-        if (querPular && NoChao)
-            Pular();
-
-        querPular = false;
-    }
-
-    /// <summary>Lê as teclas de movimento (WASD ou setas), corrida (Shift) e pulo (Espaço).</summary>
-    private void LerEntrada()
-    {
-        entradaH = Input.GetAxisRaw("Horizontal");
-        entradaV = Input.GetAxisRaw("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
         correndo = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
         if (Input.GetKeyDown(KeyCode.Space))
             querPular = true;
-    }
 
-    /// <summary>
-    /// Move o personagem com Translate, relativo à direção da câmera,
-    /// e gira suavemente para a direção do movimento.
-    /// </summary>
-    private void Mover()
-    {
-        Transform cam = cameraReferencia;
-        if (cam == null && Camera.main != null)
-            cam = Camera.main.transform;
-
+        Transform cam = cameraReferencia != null ? cameraReferencia : (Camera.main != null ? Camera.main.transform : null);
         Vector3 frente = Vector3.forward;
         Vector3 direita = Vector3.right;
+
         if (cam != null)
         {
             frente = Vector3.ProjectOnPlane(cam.forward, Vector3.up).normalized;
             direita = Vector3.ProjectOnPlane(cam.right, Vector3.up).normalized;
         }
 
-        Vector3 direcao = frente * entradaV + direita * entradaH;
-        if (direcao.sqrMagnitude > 1f)
-            direcao.Normalize();
+        direcaoDesejada = (frente * v + direita * h).normalized;
 
-        float velocidade = correndo ? velocidadeCorrer : velocidadeAndar;
-        VelocidadeAtual = direcao.magnitude * velocidade;
+        if (transform.position.y < alturaMinima)
+            Reaparecer();
+    }
 
-        if (direcao.sqrMagnitude > 0.0001f)
+    void FixedUpdate()
+    {
+        Vector3 origem = transform.position + Vector3.up * 0.2f;
+        int layerMask = ~(1 << gameObject.layer);
+        NoChao = Physics.Raycast(origem, Vector3.down, 0.2f + distanciaChecagemChao, layerMask, QueryTriggerInteraction.Ignore);
+
+        float vel = correndo ? velocidadeCorrer : velocidadeAndar;
+        Vector3 velHorizontal = direcaoDesejada * vel;
+
+        Vector3 velAtual = rb.linearVelocity;
+        velAtual.x = velHorizontal.x;
+        velAtual.z = velHorizontal.z;
+        rb.linearVelocity = velAtual;
+
+        VelocidadeAtual = direcaoDesejada.magnitude * vel;
+
+        if (direcaoDesejada.sqrMagnitude > 0.001f)
         {
-            transform.Translate(direcao * velocidade * Time.deltaTime, Space.World);
+            Quaternion alvoRot = Quaternion.LookRotation(direcaoDesejada, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, alvoRot, velocidadeGiro * Time.fixedDeltaTime);
+        }
 
-            Quaternion alvo = Quaternion.LookRotation(direcao, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, alvo, velocidadeGiro * Time.deltaTime);
+        if (querPular && NoChao)
+        {
+            Vector3 velPulo = rb.linearVelocity;
+            velPulo.y = 0f;
+            rb.linearVelocity = velPulo;
+            rb.AddForce(Vector3.up * forcaPulo, ForceMode.Impulse);
+        }
+        querPular = false;
+
+        if (anim != null)
+        {
+            anim.SetFloat("Velocidade", VelocidadeAtual);
+            anim.SetBool("NoChao", NoChao);
         }
     }
 
-    /// <summary>Dispara um raio para baixo a partir do centro do colisor para saber se há chão logo abaixo.</summary>
-    private void VerificarChao()
-    {
-        Bounds limites = capsula.bounds;
-        float distancia = limites.extents.y + margemChao;
-        NoChao = Physics.Raycast(limites.center, Vector3.down, distancia, ~0, QueryTriggerInteraction.Ignore);
-    }
-
-    /// <summary>Faz o jogador pular, aplicando uma força para cima com AddForce.</summary>
-    private void Pular()
-    {
-        rb.AddForce(Vector3.up * forcaPulo, ForceMode.VelocityChange);
-    }
-
-    /// <summary>Leva o jogador de volta ao ponto inicial e zera a velocidade da queda.</summary>
     private void Reaparecer()
     {
         rb.linearVelocity = Vector3.zero;
