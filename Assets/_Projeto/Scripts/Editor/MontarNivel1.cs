@@ -229,7 +229,7 @@ public static class MontarNivel1
             {
                 Instanciar(PrefabBancada, pai, "Bancada_" + idx, new Vector3(colunas[c], 0f, fileiras[f]), 0f, 1f);
                 // Altura Y = 1.05m para os computadores apoiarem exatamente no tampo
-                Instanciar(PrefabComputador, pai, "Computador_" + idx, new Vector3(colunas[c], 1.05f, fileiras[f]), 180f, 1f);
+                Instanciar(PrefabComputador, pai, "Computador_" + idx, new Vector3(colunas[c], 1.151f, fileiras[f]), 180f, 1f);
                 Instanciar(PrefabCadeira, pai, "Cadeira_" + idx, new Vector3(colunas[c], 0f, fileiras[f] - 0.6f), 0f, 1f);
                 idx++;
             }
@@ -279,7 +279,7 @@ public static class MontarNivel1
         GameObject muro = GameObject.CreatePrimitive(PrimitiveType.Cube);
         muro.name = "Muro_TreinoPulo";
         muro.transform.SetParent(pai, false);
-        muro.transform.localScale = new Vector3(0.5f, 0.85f, 4.0f);
+        muro.transform.localScale = new Vector3(0.5f, 0.5f, 4.0f);
         muro.transform.position = new Vector3(-8f, 0.425f, D * 0.5f + 2.5f);
         muro.GetComponent<Renderer>().sharedMaterial = matMuro;
 
@@ -326,7 +326,7 @@ public static class MontarNivel1
         lanterna.transform.SetParent(pai, false);
         lanterna.transform.localScale = new Vector3(0.12f, 0.25f, 0.12f);
         lanterna.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-        lanterna.transform.position = new Vector3(2.5f, 0.85f, D * 0.75f + 0.4f);
+        lanterna.transform.position = new Vector3(2.5f, 0.5f, D * 0.75f + 0.4f);
         lanterna.GetComponent<Renderer>().sharedMaterial = CriarMaterial("Lanterna_Cor", new Color(0.5f, 0.1f, 0.9f));
 
         GameObject luzObj = new GameObject("Luz_Spot_UV");
@@ -391,7 +391,7 @@ public static class MontarNivel1
 
         jogador.name = "Jogador";
         jogador.tag = "Player";
-        jogador.transform.localScale = new Vector3(0.85f, 0.85f, 0.85f);
+        jogador.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         jogador.transform.position = posInicio + Vector3.up * 0.05f;
         jogador.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
 
