@@ -45,6 +45,11 @@ public class PlayerController : MonoBehaviour
     private bool correndo;
     private bool querPular;
 
+    
+    // Bloqueia 100% do Root Motion para impedir que qualquer animação ejete o boneco para cima
+    void OnAnimatorMove()
+    {
+    }
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
