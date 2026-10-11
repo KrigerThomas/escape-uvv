@@ -2528,6 +2528,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: cd580f03c1eea0744ab631f3ed6f297a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d2b0fb5a258bb9e4ca56fbef5bec8926, type: 2}
+    - target: {fileID: 5866666021909216657, guid: cd580f03c1eea0744ab631f3ed6f297a, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
@@ -2599,7 +2603,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &823995470
 CapsuleCollider:
@@ -2620,10 +2624,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.32
-  m_Height: 1.75
+  m_Radius: 0.63391757
+  m_Height: 3.95425
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0.017684579, y: 1.8886975, z: 0.004420638}
 --- !u!1001 &827544081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3339,7 +3343,7 @@ MonoBehaviour:
   tempoRestante: 300
   cronometroAtivo: 0
   codigoPorta: 00000000000000000000000000000000
-  digitoDescoberto: 00000000
+  digitoDescoberto: 
   evidenciasColetadas: 0
   temLanterna: 0
   jogoVencido: 0
@@ -5872,7 +5876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.06
+      value: 11.953
       objectReference: {fileID: 0}
     - target: {fileID: 4958332315337656, guid: 5a652a60006d6ec46980e623412396f9, type: 3}
       propertyPath: m_LocalPosition.y
