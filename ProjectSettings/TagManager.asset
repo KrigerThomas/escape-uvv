@@ -5,11 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Chao
-  - Pista
-  - Rato
   - Porta
-  - Bateria
-  - Player
+  - ItemPerdido
   layers:
   - Default
   - TransparentFX
