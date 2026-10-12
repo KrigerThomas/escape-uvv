@@ -344,5 +344,5 @@ MonoBehaviour:
   velocidadeGiro: 90
   alturaFlutuacao: 0.08
   efeitoColeta: {fileID: 5257402744445269917, guid: 89d58c592c817a24494e5d27e37ac950, type: 3}
-  somColeta: {fileID: 0}
+  somColeta: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   volume: 0.8
