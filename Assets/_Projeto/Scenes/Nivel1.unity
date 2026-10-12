@@ -21245,6 +21245,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas_HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 7079025756097248332, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7211127796812930245, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_fontMaterial
       value: 
