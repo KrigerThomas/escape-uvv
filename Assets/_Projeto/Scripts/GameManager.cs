@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
     [Tooltip("Interface do nível (textos, contador e botões).")]
     public UIManager ui;
 
+    [Header("Sons")]
+    [Tooltip("Som tocado quando o jogador tenta sair com a porta trancada.")]
+    public AudioClip somPortaTrancada;
+
     [Header("Troca de cena")]
     [Tooltip("Nome da cena carregada ao sair pela porta (precisa estar no Build Settings).")]
     public string proximaCena = "Nivel2";
@@ -102,6 +106,9 @@ public class GameManager : MonoBehaviour
     /// <summary>Avisa quantos itens faltam quando o jogador tenta sair antes da hora.</summary>
     public void AvisarPortaTrancada()
     {
+        if (somPortaTrancada != null && Camera.main != null)
+            AudioSource.PlayClipAtPoint(somPortaTrancada, Camera.main.transform.position, 0.8f);
+
         if (ui == null)
             return;
 

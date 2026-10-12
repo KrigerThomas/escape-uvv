@@ -26,6 +26,10 @@ public class UIManager : MonoBehaviour
     public GameObject painelIntro;
     public Button botaoContinuar;
 
+    [Header("Sons")]
+    [Tooltip("Som de clique tocado pelos botões.")]
+    public AudioClip somClique;
+
     [Tooltip("Tempo que um aviso fica na tela, em segundos.")]
     public float duracaoAviso = 3f;
 
@@ -35,10 +39,16 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         if (botaoReiniciar != null)
+        {
+            botaoReiniciar.onClick.AddListener(TocarClique);
             botaoReiniciar.onClick.AddListener(Reiniciar);
+        }
 
         if (botaoContinuar != null)
+        {
+            botaoContinuar.onClick.AddListener(TocarClique);
             botaoContinuar.onClick.AddListener(FecharIntro);
+        }
 
         if (textoAviso != null)
             textoAviso.text = "";
@@ -117,6 +127,13 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    /// <summary>Toca o som de clique dos botões (funciona mesmo com o jogo pausado).</summary>
+    private void TocarClique()
+    {
+        if (somClique != null && Camera.main != null)
+            AudioSource.PlayClipAtPoint(somClique, Camera.main.transform.position, 0.7f);
     }
 
     /// <summary>Ação do botão Reiniciar.</summary>
