@@ -2624,10 +2624,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.63391757
+  m_Radius: 0.61623174
   m_Height: 3.95425
   m_Direction: 1
-  m_Center: {x: 0.017684579, y: 1.8886975, z: 0.004420638}
+  m_Center: {x: 0.03537047, y: 1.8886975, z: 0.004420638}
 --- !u!1001 &827544081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3343,7 +3343,7 @@ MonoBehaviour:
   tempoRestante: 300
   cronometroAtivo: 0
   codigoPorta: 00000000000000000000000000000000
-  digitoDescoberto: 
+  digitoDescoberto: 00000000
   evidenciasColetadas: 0
   temLanterna: 0
   jogoVencido: 0
