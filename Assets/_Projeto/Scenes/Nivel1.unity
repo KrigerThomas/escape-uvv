@@ -11511,8 +11511,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 416066718842d9346a22807872a0779c, type: 3}
+  m_Resource: {fileID: 8300000, guid: 416066718842d9346a22807872a0779c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -19585,9 +19585,8 @@ MonoBehaviour:
   nota: "SONS DE FUNDO.\n\u2022 Musica_Introducao: toca s\xF3 enquanto a tela de
     introdu\xE7\xE3o est\xE1 aberta. O UIManager (no Canvas_HUD) d\xE1 Play ao abrir
     e abaixa o volume at\xE9 parar ao clicar em Continuar.\n\u2022 Ambiente_Computadores:
-    zumbido dos computadores em loop, mais forte perto do rack. (Sem \xE1udio por
-    enquanto: falta o arquivo amb_computadores em Assets/_Projeto/Audio.)\nOs sons
-    curtos (coleta, porta, clique, fa\xEDsca) ficam nos pr\xF3prios objetos/scripts."
+    zumbido dos computadores em loop, mais forte perto do rack. Arquivo: amb_computadores.mp3.\nOs
+    sons curtos (coleta, porta, clique, fa\xEDsca) ficam nos pr\xF3prios objetos/scripts."
 --- !u!1001 &1919194892
 PrefabInstance:
   m_ObjectHideFlags: 0

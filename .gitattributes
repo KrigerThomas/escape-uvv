@@ -70,6 +70,13 @@
 Assets/Plugins/**           linguist-generated
 Packages/packages-lock.json linguist-generated
 
+# Packs de terceiros (não contam nas estatísticas de linguagem do GitHub)
+Assets/school/**                                   linguist-vendored
+Assets/POLYGON[[:space:]]city[[:space:]]pack/**    linguist-vendored
+Assets/Ladymito/**                                 linguist-vendored
+Assets/TextMesh[[:space:]]Pro/**                   linguist-vendored
+Assets/Settings/**                                 linguist-vendored
+
 # Unity LFS
 *.cubemap               lfs
 *.unitypackage          lfs
