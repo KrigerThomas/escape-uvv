@@ -26,6 +26,12 @@ public class UIManager : MonoBehaviour
     public GameObject painelIntro;
     public Button botaoContinuar;
 
+    [Tooltip("Música que toca só enquanto a introdução está aberta. Some aos poucos ao clicar em Continuar.")]
+    public AudioSource musicaIntro;
+
+    [Tooltip("Tempo, em segundos, para a música da introdução sumir.")]
+    public float tempoFadeMusica = 1.5f;
+
     [Header("Sons")]
     [Tooltip("Som de clique tocado pelos botões.")]
     public AudioClip somClique;
@@ -114,6 +120,9 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        if (musicaIntro != null && !musicaIntro.isPlaying)
+            musicaIntro.Play();
     }
 
     /// <summary>Fecha a introdução, despausa o jogo e prende o cursor de novo.</summary>
@@ -127,6 +136,26 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        if (musicaIntro != null && musicaIntro.isPlaying)
+            StartCoroutine(SumirMusica());
+    }
+
+    /// <summary>Abaixa o volume da música da introdução até zero e para a música.</summary>
+    private IEnumerator SumirMusica()
+    {
+        float volumeInicial = musicaIntro.volume;
+        float t = 0f;
+
+        while (t < tempoFadeMusica)
+        {
+            t += Time.unscaledDeltaTime;
+            musicaIntro.volume = Mathf.Lerp(volumeInicial, 0f, t / tempoFadeMusica);
+            yield return null;
+        }
+
+        musicaIntro.Stop();
+        musicaIntro.volume = volumeInicial;
     }
 
     /// <summary>Toca o som de clique dos botões (funciona mesmo com o jogo pausado).</summary>

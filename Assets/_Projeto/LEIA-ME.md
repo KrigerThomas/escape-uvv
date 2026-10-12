@@ -14,13 +14,17 @@ Tudo o que é nosso fica em `Assets/_Projeto`. As outras pastas de `Assets` são
 |---|---|
 | `Scenes` | Uma cena por nível (`Nivel1`, `Nivel2`...). `_Backup` guarda versões antigas. |
 | `Scripts` | Todos os scripts C#. Um arquivo por classe, todos comentados. |
-| `Prefabs/Base` | Peças usadas em todos os níveis: Jogador, câmera, HUD, EventSystem. |
+| `Prefabs/Base` | Peças usadas em todos os níveis: Jogador e câmera. |
 | `Prefabs/Itens` | Os 5 itens perdidos do Nível 1. |
 | `Prefabs/Efeitos` | Partícula de coleta. |
-| `Materiais` | Materiais e texturas feitos pelo grupo. |
-| `Models` | Personagem (Remy, Mixamo). |
+| `UI` | Interface: prefab `HUD` (textos, botão, introdução) e `EventSystem`. Menus futuros entram aqui. |
+| `Materiais/InovaLab` | Piso, paredes, teto, rodapé, faixa e luminárias do laboratório. |
+| `Materiais/Itens` | Cores dos 5 itens perdidos. |
+| `Materiais/Props` | Peças montadas pelo grupo (multiplug, placa, tela do monitor). |
+| `Materiais/Patio` | Materiais provisórios do Nível 2. |
+| `Models/Calouro_Remy` | Personagem (Remy, Mixamo) e suas texturas. |
 | `Animations/Calouro` | Animações e o Animator do personagem. |
-| `Audio` | Músicas e efeitos sonoros. |
+| `Audio` | Músicas (`musica_...`), ambientes (`amb_...`) e efeitos (`sfx_...`). |
 
 ## Como o Nível 1 funciona
 1. **SpawnItens** sorteia 5 dos 8 pontos (`PontosSpawn`) e cria um item em cada.

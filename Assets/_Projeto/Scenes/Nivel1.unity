@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 235727288}
   - component: {fileID: 235727287}
   m_Layer: 0
-  m_Name: Texto_HelloSaulo
+  m_Name: Texto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -685,17 +685,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235727285}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.991624}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0029997826}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1100371098}
+  m_Father: {fileID: 414363035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.000687, y: 1.5199423}
-  m_SizeDelta: {x: 0.50016785, y: 0.32770988}
+  m_AnchoredPosition: {x: 2.8788971e-11, y: 0}
+  m_SizeDelta: {x: 0.5059998, y: 0.34594998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &235727287
 MonoBehaviour:
@@ -746,12 +746,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.4
+  m_fontSize: 1.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0.5
-  m_fontSizeMax: 3
+  m_fontSizeMax: 5
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1114,7 +1114,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.3, y: 1.9011521, z: 0.165}
-  m_LocalScale: {x: 0.5, y: 0.2, z: 0.02}
+  m_LocalScale: {x: 0.56185, y: 0.22474001, z: 0.022474}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1100371098}
@@ -1896,6 +1896,56 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411995519}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &414363034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414363035}
+  - component: {fileID: 414363036}
+  m_Layer: 0
+  m_Name: EasterEgg_HelloSaulo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &414363035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414363034}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -1, z: -0, w: -0.00000004371139}
+  m_LocalPosition: {x: -0.00049973093, y: 0.40549994, z: 0.06400061}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1031903249}
+  - {fileID: 235727286}
+  m_Father: {fileID: 595516525}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &414363036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414363034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cd9cc7fc68d1a54291ea2b8b5851298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nota: "EASTER EGG: o monitor mostra \"Hello, Saulo!\" (nome do professor).\nA Tela
+    e o Texto s\xE3o filhos deste objeto, que \xE9 filho do Computador_2: se o monitor
+    for movido, os dois v\xE3o junto.\nPara trocar a frase, edite o campo Text do
+    componente TextMeshPro no filho Texto."
 --- !u!1 &424531875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,7 +1957,7 @@ GameObject:
   - component: {fileID: 424531876}
   - component: {fileID: 424531877}
   m_Layer: 0
-  m_Name: Musica_Fundo
+  m_Name: Musica_Introducao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1940,8 +1990,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 94a00f0961e95314a9ca2dd8842573e8, type: 3}
   m_Resource: {fileID: 8300000, guid: 94a00f0961e95314a9ca2dd8842573e8, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.18
+  m_PlayOnAwake: 0
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8018,7 +8068,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4677248624428304, guid: 95b7030fe576ba84e930b6af82eb2738, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 414363035}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95b7030fe576ba84e930b6af82eb2738, type: 3}
 --- !u!4 &595516525 stripped
@@ -9939,7 +9992,7 @@ GameObject:
   - component: {fileID: 1031903251}
   - component: {fileID: 1031903250}
   m_Layer: 0
-  m_Name: Tela_EasterEgg
+  m_Name: Tela
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9954,11 +10007,11 @@ Transform:
   m_GameObject: {fileID: 1031903248}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.000687, y: 1.5199423, z: 7.995624}
-  m_LocalScale: {x: 0.5626888, y: 0.39073104, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5749998, y: 0.40699995, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1100371098}
+  m_Father: {fileID: 414363035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1031903250
 MeshRenderer:
@@ -10274,11 +10327,9 @@ Transform:
   - {fileID: 1137808091}
   - {fileID: 1735261828}
   - {fileID: 1400386}
-  - {fileID: 1031903249}
   - {fileID: 307074050}
   - {fileID: 1500917658}
   - {fileID: 947285299}
-  - {fileID: 235727286}
   m_Father: {fileID: 1676476413}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1100371099
@@ -11460,8 +11511,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
-  m_Resource: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -12059,7 +12110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16.5, y: 1.75}
+  m_AnchoredPosition: {x: 15.3, y: 1.9011521}
   m_SizeDelta: {x: 0.48, y: 0.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1500917659
@@ -12125,7 +12176,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -19531,9 +19582,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd9cc7fc68d1a54291ea2b8b5851298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nota: "SONS DE FUNDO.\n\u2022 Musica_Fundo: m\xFAsica em loop (volume baixo).\n\u2022
-    Ambiente_Computadores: zumbido dos computadores, mais forte perto do rack.\nOs
-    sons curtos (coleta, porta, clique, fa\xEDsca) ficam nos pr\xF3prios objetos/scripts."
+  nota: "SONS DE FUNDO.\n\u2022 Musica_Introducao: toca s\xF3 enquanto a tela de
+    introdu\xE7\xE3o est\xE1 aberta. O UIManager (no Canvas_HUD) d\xE1 Play ao abrir
+    e abaixa o volume at\xE9 parar ao clicar em Continuar.\n\u2022 Ambiente_Computadores:
+    zumbido dos computadores em loop, mais forte perto do rack. (Sem \xE1udio por
+    enquanto: falta o arquivo amb_computadores em Assets/_Projeto/Audio.)\nOs sons
+    curtos (coleta, porta, clique, fa\xEDsca) ficam nos pr\xF3prios objetos/scripts."
 --- !u!1001 &1919194892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21148,6 +21202,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 884637712}
+    - target: {fileID: 2531585272003070772, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: musicaIntro
+      value: 
+      objectReference: {fileID: 424531877}
     - target: {fileID: 3713374024430370532, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_fontMaterial
       value: 
