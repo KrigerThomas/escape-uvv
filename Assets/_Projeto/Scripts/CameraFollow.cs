@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Câmera em terceira pessoa que orbita ao redor do jogador com o mouse.
 /// Se houver uma parede entre o jogador e a câmera, a câmera se aproxima para não atravessá-la.
-/// A tecla Esc libera o cursor (útil para menus) e um clique com o botão esquerdo trava o cursor de novo.
+/// A tecla Esc libera o cursor (útil para clicar nos botões) e um clique com o botão esquerdo trava o cursor de novo.
 /// </summary>
 public class CameraFollow : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
 
     [Header("Órbita")]
     [Tooltip("Distância normal entre a câmera e o alvo, em metros.")]
-    public float distancia = 5f;
+    public float distancia = 4f;
 
     [Tooltip("Sensibilidade do mouse.")]
     public float sensibilidade = 3f;
@@ -38,7 +38,7 @@ public class CameraFollow : MonoBehaviour
     private float pitch;
     private float distanciaAtual;
 
-    /// <summary>Procura o jogador, lê o ângulo inicial da câmera e trava o cursor.</summary>
+    /// <summary>Procura o jogador e começa olhando na mesma direção que ele.</summary>
     void Start()
     {
         if (alvo == null)
@@ -48,18 +48,17 @@ public class CameraFollow : MonoBehaviour
                 alvo = jogador.transform;
         }
 
-        yaw = transform.eulerAngles.y;
-        pitch = transform.eulerAngles.x;
-        if (pitch > 180f)
-            pitch -= 360f;
-
+        yaw = alvo != null ? alvo.eulerAngles.y : transform.eulerAngles.y;
+        pitch = 15f;
         distanciaAtual = distancia;
-        TravarCursor(true);
     }
 
-    /// <summary>Esc solta o cursor do mouse e um clique prende o cursor de volta.</summary>
+    /// <summary>Esc solta o cursor do mouse e um clique prende o cursor de volta (fora de menus).</summary>
     void Update()
     {
+        if (UIManager.MenuAberto)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
             TravarCursor(false);
         else if (Input.GetMouseButtonDown(0) && Cursor.lockState != CursorLockMode.Locked)
@@ -75,7 +74,7 @@ public class CameraFollow : MonoBehaviour
         if (alvo == null)
             return;
 
-        if (Cursor.lockState == CursorLockMode.Locked)
+        if (Cursor.lockState == CursorLockMode.Locked && !UIManager.MenuAberto)
         {
             yaw += Input.GetAxis("Mouse X") * sensibilidade;
             pitch -= Input.GetAxis("Mouse Y") * sensibilidade;
@@ -90,7 +89,7 @@ public class CameraFollow : MonoBehaviour
         if (livre < distanciaAtual)
             distanciaAtual = livre;
         else
-            distanciaAtual = Mathf.Lerp(distanciaAtual, livre, 6f * Time.deltaTime);
+            distanciaAtual = Mathf.Lerp(distanciaAtual, livre, 6f * Time.unscaledDeltaTime);
 
         transform.position = pivo + direcao * distanciaAtual;
         transform.rotation = rotacao;

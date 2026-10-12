@@ -2,8 +2,8 @@ using UnityEngine;
 
 /// <summary>
 /// Controla o jogador em terceira pessoa com movimentação física estável.
-/// Utiliza velocidade física (linearVelocity) e desativa obrigatoriamente o Root Motion
-/// do Animator para garantir que o personagem nunca seja lançado para o alto.
+/// Usa a velocidade do Rigidbody (linearVelocity) para andar e correr, AddForce para pular
+/// e desativa o Root Motion do Animator para que as animações não empurrem o personagem.
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Força vertical do pulo.")]
     public float forcaPulo = 5.0f;
 
-    [Tooltip("Distância do raio para checar se está no chão.")]
+    [Tooltip("Distância extra do raio para checar se está no chão.")]
     public float distanciaChecagemChao = 0.2f;
 
     [Header("Segurança")]
@@ -33,11 +33,13 @@ public class PlayerController : MonoBehaviour
     [Header("Referências")]
     public Transform cameraReferencia;
 
+    /// <summary>Verdadeiro quando há chão logo abaixo do jogador.</summary>
     public bool NoChao { get; private set; }
+
+    /// <summary>Velocidade horizontal atual, usada pelo Animator.</summary>
     public float VelocidadeAtual { get; private set; }
 
     private Rigidbody rb;
-    private CapsuleCollider capsula;
     private Animator anim;
     private Vector3 posicaoInicial;
     private Quaternion rotacaoInicial;
@@ -45,18 +47,17 @@ public class PlayerController : MonoBehaviour
     private bool correndo;
     private bool querPular;
 
-    
-    // Bloqueia 100% do Root Motion para impedir que qualquer animação ejete o boneco para cima
+    /// <summary>Vazio de propósito: bloqueia o Root Motion das animações do Mixamo.</summary>
     void OnAnimatorMove()
     {
     }
+
+    /// <summary>Pega os componentes, configura o Rigidbody e guarda o ponto inicial.</summary>
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        capsula = GetComponent<CapsuleCollider>();
         anim = GetComponent<Animator>();
 
-        // Desativa Root Motion para evitar que animações do Mixamo controlem a posição no ar
         if (anim != null)
             anim.applyRootMotion = false;
 
@@ -68,11 +69,14 @@ public class PlayerController : MonoBehaviour
         rotacaoInicial = transform.rotation;
     }
 
+    /// <summary>Lê o teclado e calcula a direção do movimento em relação à câmera.</summary>
     void Update()
     {
-        // Garante que o Root Motion permaneça desativado mesmo ao trocar de controller
-        if (anim != null && anim.applyRootMotion)
-            anim.applyRootMotion = false;
+        if (UIManager.MenuAberto)
+        {
+            direcaoDesejada = Vector3.zero;
+            return;
+        }
 
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
@@ -97,11 +101,10 @@ public class PlayerController : MonoBehaviour
             Reaparecer();
     }
 
+    /// <summary>Aplica movimento, rotação e pulo na física e atualiza o Animator.</summary>
     void FixedUpdate()
     {
-        Vector3 origem = transform.position + Vector3.up * 0.2f;
-        int layerMask = ~(1 << gameObject.layer);
-        NoChao = Physics.Raycast(origem, Vector3.down, 0.2f + distanciaChecagemChao, layerMask, QueryTriggerInteraction.Ignore);
+        NoChao = ChecarChao();
 
         float vel = correndo ? velocidadeCorrer : velocidadeAndar;
         Vector3 velHorizontal = direcaoDesejada * vel;
@@ -116,7 +119,7 @@ public class PlayerController : MonoBehaviour
         if (direcaoDesejada.sqrMagnitude > 0.001f)
         {
             Quaternion alvoRot = Quaternion.LookRotation(direcaoDesejada, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, alvoRot, velocidadeGiro * Time.fixedDeltaTime);
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, alvoRot, velocidadeGiro * Time.fixedDeltaTime));
         }
 
         if (querPular && NoChao)
@@ -130,15 +133,32 @@ public class PlayerController : MonoBehaviour
 
         if (anim != null)
         {
-            anim.SetFloat("Velocidade", VelocidadeAtual);
+            anim.SetFloat("Velocidade", VelocidadeAtual, 0.1f, Time.fixedDeltaTime);
             anim.SetBool("NoChao", NoChao);
         }
     }
 
+    /// <summary>
+    /// Lança um raio para baixo a partir dos pés e ignora os colliders do próprio jogador.
+    /// </summary>
+    /// <returns>Verdadeiro se encontrou algum chão ou objeto logo abaixo.</returns>
+    private bool ChecarChao()
+    {
+        Vector3 origem = transform.position + Vector3.up * 0.2f;
+        RaycastHit[] batidas = Physics.RaycastAll(origem, Vector3.down, 0.2f + distanciaChecagemChao, ~0, QueryTriggerInteraction.Ignore);
+
+        for (int i = 0; i < batidas.Length; i++)
+            if (!batidas[i].transform.IsChildOf(transform))
+                return true;
+
+        return false;
+    }
+
+    /// <summary>Volta o jogador ao ponto inicial se ele cair do mapa.</summary>
     private void Reaparecer()
     {
         rb.linearVelocity = Vector3.zero;
-        transform.position = posicaoInicial;
-        transform.rotation = rotacaoInicial;
+        rb.position = posicaoInicial;
+        rb.rotation = rotacaoInicial;
     }
 }
