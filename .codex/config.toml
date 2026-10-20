@@ -1,0 +1,7 @@
+[mcp_servers.unity-editor-mcp]
+command = "unity"
+args = [
+    "mcp",
+    "--project-path",
+    "E:/Projetos Unity/escape-uvv",
+]
