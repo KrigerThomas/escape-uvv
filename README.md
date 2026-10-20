@@ -9,13 +9,13 @@ Um calouro fica preso no campus depois do fechamento e precisa passar por cinco 
 
 ## Níveis
 
-| Nível | Local | Tarefa | Situação |
+| Nível | Local | Objetivo |
 |---|---|---|---|
-| 1 | Laboratório (InovaLab) | Encontrar 5 itens perdidos e sair pela porta | Jogável (1º bimestre) |
-| 2 | Pátio à noite | Atravessar o pátio até o portão | Planejado (2º bimestre) |
-| 3 | Corredor | Responder a pergunta do Quadro do Abrantes | Planejado |
-| 4 | Biblioteca | Encontrar os livros perdidos | Planejado |
-| 5 | Sala de aula | Fugir do professor e chegar à porta | Planejado |
+| 1 | Laboratório (InovaLab) | Encontrar 5 itens perdidos e sair pela porta |
+| 2 | Pátio à noite | Atravessar o pátio até o portão |
+| 3 | Corredor | Responder a pergunta do Quadro do Abrantes |
+| 4 | Biblioteca | Encontrar os livros perdidos |
+| 5 | Sala de aula | Fugir do professor e chegar à porta |
 
 ## Como abrir
 
