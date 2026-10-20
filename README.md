@@ -38,7 +38,7 @@ Um calouro fica preso no campus depois do fechamento e precisa passar por cinco 
 
 ## Organização
 
-Todo o conteúdo feito pelo grupo fica em `Assets/_Projeto`. O guia completo (pastas, scripts, como o Nível 1 funciona e como editar) está em [`Assets/_Projeto/LEIA-ME.md`](Assets/_Projeto/LEIA-ME.md).
+Todo o conteúdo feito pelo grupo fica em `Assets/_Projeto` (cenas, scripts, prefabs, materiais, áudio e interface).
 
 ```
 Assets/

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Atalhos de teste mantidos para a apresentação:
+/// Atalhos de teste somente para fins de advinha, TESTE!!!!:
 /// R reinicia o nível e N pula para o próximo.
 /// </summary>
 public class AtalhosTeste : MonoBehaviour
