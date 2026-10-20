@@ -10,7 +10,7 @@ Um calouro fica preso no campus depois do fechamento e precisa passar por cinco 
 ## Níveis
 
 | Nível | Local | Objetivo |
-|---|---|---|---|
+|---|---|---|
 | 1 | Laboratório (InovaLab) | Encontrar 5 itens perdidos e sair pela porta |
 | 2 | Pátio à noite | Atravessar o pátio até o portão |
 | 3 | Corredor | Responder a pergunta do Quadro do Abrantes |
