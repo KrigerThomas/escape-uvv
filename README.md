@@ -42,12 +42,12 @@ Todo o conteúdo feito pelo grupo fica em `Assets/_Projeto` (cenas, scripts, pre
 
 ```
 Assets/
-├── _Projeto/        ← tudo do grupo (cenas, scripts, prefabs, áudio, UI)
-├── school/          ← pack "School Assets" (Unity Asset Store)
+├── _Projeto/          ← tudo do grupo (cenas, scripts, prefabs, áudio, UI)
+├── school/            ← pack "School Assets" (Unity Asset Store)
 ├── POLYGON city pack/
-├── Ladymito/        ← modelo do gato (Nível 2)
-├── TextMesh Pro/    ← fontes da interface
-└── Settings/        ← configurações do URP
+├── Ladymito/          ← modelo do gato (Nível 2)
+├── TextMesh Pro/      ← fontes da interface
+└── Settings/          ← configurações do URP
 ```
 
 ## Tecnologias
