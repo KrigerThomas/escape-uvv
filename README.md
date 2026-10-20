@@ -61,7 +61,7 @@ Assets/
 | Asset | Origem |
 |---|---|
 | School Assets | Unity Asset Store |
-| POLYGON city pack | (preencher a origem) |
-| Gato (Ladymito) | (preencher a origem) |
+| POLYGON city pack | Unity Asset Store |
+| Gato (Ladymito) | Unity Asset Store |
 | Personagem Remy e animações | Mixamo (Adobe) |
 | Sons e músicas | Bibliotecas gratuitas (origem e licença de cada arquivo na planilha de assets do grupo) |
