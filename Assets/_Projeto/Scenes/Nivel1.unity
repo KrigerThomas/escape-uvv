@@ -1712,7 +1712,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: nao sei o que colocar
+  m_text: Aula
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6164a2bd9de74e4886ce888cc690d27, type: 2}
   m_sharedMaterial: {fileID: -5079145725089964948, guid: f6164a2bd9de74e4886ce888cc690d27, type: 2}
