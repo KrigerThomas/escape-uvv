@@ -2,7 +2,7 @@
 
 Jogo 3D em terceira pessoa feito na Unity para a disciplina de **Desenvolvimento de Games** da Universidade Vila Velha (UVV), 2026/2.
 
-Um calouro fica preso no campus depois do fechamento e precisa passar por cinco lugares da UVV para conseguir sair. Cada lugar é um nível curto, com uma única tarefa.
+Contexto: Um calouro ficou preso no campus depois do fechamento e precisa passar por cinco lugares da UVV para conseguir sair, onde cada lugar é um nível curto, com uma única tarefa.
 
 **Grupo:** Brenno Gomes Breda, Daphne Rocha Amigo, Giovanna Rocha Santana e Thomás Kriger de Souza
 **Professor:** Saulo Pereira Ribeiro
