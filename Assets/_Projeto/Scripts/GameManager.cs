@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Regras do nível: conta os itens coletados, destranca a porta quando o contador
 /// chega ao total e carrega a próxima cena. Existe um GameManager por cena.
+/// No Nível 2 a saída já começa aberta e o contador mostra os segredos opcionais
+/// (cada Segredo da cena se registra sozinho, então o total é calculado na hora).
 /// </summary>
 public class GameManager : MonoBehaviour
 {
@@ -11,11 +13,17 @@ public class GameManager : MonoBehaviour
     public static GameManager Instancia { get; private set; }
 
     [Header("Objetivo")]
-    [Tooltip("Quantos itens o jogador precisa pegar para destrancar a porta.")]
+    [Tooltip("Quantos itens o jogador precisa pegar para destrancar a porta. Em níveis com segredos, deixe 0: cada Segredo soma 1 sozinho.")]
     public int totalItens = 5;
 
-    [Tooltip("Palavra usada no contador da tela. Ex.: Itens, Livros.")]
+    [Tooltip("Palavra usada no contador da tela. Ex.: Itens, Livros, Segredos.")]
     public string rotuloContador = "Itens";
+
+    [Tooltip("Marque em níveis em que a saída não depende de coletar nada (ex.: o labirinto do Nível 2).")]
+    public bool saidaAbertaDesdeOInicio = false;
+
+    [Tooltip("Texto que aparece antes do nome do item no aviso da tela.")]
+    public string prefixoAviso = "Você encontrou: ";
 
     [Header("Referências")]
     [Tooltip("Porta que desliza quando o contador chega ao total.")]
@@ -35,6 +43,8 @@ public class GameManager : MonoBehaviour
     [Header("Textos")]
     [TextArea] public string textoObjetivo = "A porta está trancada. Encontre os 5 itens perdidos do laboratório.";
     [TextArea] public string textoPortaLiberada = "Porta destrancada! Vá até a saída.";
+    [Tooltip("Usado só quando a saída já começa aberta: aparece quando o jogador acha tudo.")]
+    [TextArea] public string textoTudoEncontrado = "";
 
     /// <summary>Quantos itens o jogador já pegou.</summary>
     public int ItensColetados { get; private set; }
@@ -52,14 +62,36 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    /// <summary>Mostra o objetivo e o contador zerado no início do nível.</summary>
+    /// <summary>
+    /// Mostra o objetivo e o contador zerado no início do nível.
+    /// Se a saída começa aberta, já marca a porta como destrancada.
+    /// </summary>
     void Start()
     {
+        if (saidaAbertaDesdeOInicio)
+        {
+            PortaDestrancada = true;
+            if (portaSaida != null)
+                portaSaida.Abrir();
+        }
+
         if (ui != null)
         {
             ui.MostrarObjetivo(textoObjetivo);
             ui.AtualizarContador(rotuloContador, ItensColetados, totalItens);
         }
+    }
+
+    /// <summary>
+    /// Chamado por cada Segredo no início da cena: soma 1 no total do contador.
+    /// Assim ninguém precisa contar os segredos à mão quando adicionar ou remover um.
+    /// </summary>
+    public void RegistrarSegredo()
+    {
+        totalItens++;
+
+        if (ui != null)
+            ui.AtualizarContador(rotuloContador, ItensColetados, totalItens);
     }
 
     /// <summary>Limpa a referência estática quando a cena é descarregada.</summary>
@@ -70,13 +102,14 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Chamado por um ItemColetavel quando o jogador encosta nele.
-    /// Soma 1 no contador e, se chegou ao total, destranca a porta.
+    /// Chamado por um ItemColetavel (ou por um Segredo) quando o jogador encosta nele.
+    /// Soma 1 no contador e, se chegou ao total, destranca a porta
+    /// (ou, se a porta já estava aberta, avisa que o jogador achou tudo).
     /// </summary>
     /// <param name="nomeItem">Nome do item, mostrado no aviso da tela.</param>
     public void ColetarItem(string nomeItem)
     {
-        if (PortaDestrancada)
+        if (ItensColetados >= totalItens)
             return;
 
         ItensColetados++;
@@ -84,11 +117,16 @@ public class GameManager : MonoBehaviour
         if (ui != null)
         {
             ui.AtualizarContador(rotuloContador, ItensColetados, totalItens);
-            ui.MostrarAviso("Você encontrou: " + nomeItem);
+            ui.MostrarAviso(prefixoAviso + nomeItem);
         }
 
-        if (ItensColetados >= totalItens)
+        if (ItensColetados < totalItens)
+            return;
+
+        if (!PortaDestrancada)
             DestrancarPorta();
+        else if (ui != null && !string.IsNullOrEmpty(textoTudoEncontrado))
+            ui.MostrarObjetivo(textoTudoEncontrado);
     }
 
     /// <summary>Abre a porta de saída e troca a mensagem de objetivo.</summary>
