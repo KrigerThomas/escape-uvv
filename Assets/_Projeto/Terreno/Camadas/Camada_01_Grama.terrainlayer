@@ -7,10 +7,10 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Camada_01_Grama
-  m_DiffuseTexture: {fileID: 2800000, guid: d50a1c722af582f45ae8fbbb11b804cd, type: 3}
-  m_NormalMapTexture: {fileID: 0}
+  m_DiffuseTexture: {fileID: 2800000, guid: bf7da80a4280f4a4e9d7970e2bd166c6, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 9704ca7201302fe46903ac40b8e9a7c3, type: 3}
   m_MaskMapTexture: {fileID: 0}
-  m_TileSize: {x: 5, y: 5}
+  m_TileSize: {x: 4, y: 4}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0

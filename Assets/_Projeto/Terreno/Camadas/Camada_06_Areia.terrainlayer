@@ -7,10 +7,10 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Camada_06_Areia
-  m_DiffuseTexture: {fileID: 2800000, guid: 05f484003eb1d2b408655ebd462bc412, type: 3}
-  m_NormalMapTexture: {fileID: 0}
+  m_DiffuseTexture: {fileID: 2800000, guid: 8fa465f19e6cbc441a55934f0d0d0cce, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: fe0631ba7e463ff42ba5d8070fc22665, type: 3}
   m_MaskMapTexture: {fileID: 0}
-  m_TileSize: {x: 5, y: 5}
+  m_TileSize: {x: 4, y: 4}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0

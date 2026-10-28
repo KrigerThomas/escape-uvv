@@ -7,10 +7,10 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Camada_02_Grama_Musgo
-  m_DiffuseTexture: {fileID: 2800000, guid: 23e4f7b248e83b7419fe6d2cce3f542f, type: 3}
-  m_NormalMapTexture: {fileID: 0}
+  m_DiffuseTexture: {fileID: 2800000, guid: 6460b0cc4ec1d81419938eb050294961, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 607910e3a7825194ead2ae1b5976685b, type: 3}
   m_MaskMapTexture: {fileID: 0}
-  m_TileSize: {x: 5, y: 5}
+  m_TileSize: {x: 4, y: 4}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0

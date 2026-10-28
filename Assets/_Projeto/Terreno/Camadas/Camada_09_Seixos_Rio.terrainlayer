@@ -7,10 +7,10 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Camada_09_Seixos_Rio
-  m_DiffuseTexture: {fileID: 2800000, guid: e913bdc63ac006b40aa4e96e646199f0, type: 3}
-  m_NormalMapTexture: {fileID: 0}
+  m_DiffuseTexture: {fileID: 2800000, guid: c063b776ef4029e4bbed72eaa1b74f30, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 2646fca7b4f95f943bc22d31436c89b7, type: 3}
   m_MaskMapTexture: {fileID: 0}
-  m_TileSize: {x: 5, y: 5}
+  m_TileSize: {x: 4, y: 4}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0

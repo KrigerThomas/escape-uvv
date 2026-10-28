@@ -7,10 +7,10 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Camada_08_Folhas_Secas
-  m_DiffuseTexture: {fileID: 2800000, guid: 8a44b10528875474ba54455dc47208d4, type: 3}
-  m_NormalMapTexture: {fileID: 0}
+  m_DiffuseTexture: {fileID: 2800000, guid: ba6717706ff12294a8a881c2b2432146, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 4c8079504b95138469476d814dbf3910, type: 3}
   m_MaskMapTexture: {fileID: 0}
-  m_TileSize: {x: 5, y: 5}
+  m_TileSize: {x: 4, y: 4}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0

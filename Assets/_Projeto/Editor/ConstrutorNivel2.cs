@@ -290,7 +290,11 @@ public static class ConstrutorNivel2
             if (cor == null)
                 continue;
 
+            // O ambientCG usa "_NormalGL" (padrão OpenGL, o que a Unity espera);
+            // alguns pacotes vêm só com "_Normal", então tenta esse como segunda opção.
             Texture2D normal = ProcurarTextura(CODIGOS_AMBIENTCG[i], "_NormalGL");
+            if (normal == null)
+                normal = ProcurarTextura(CODIGOS_AMBIENTCG[i], "_Normal");
             if (normal != null)
             {
                 TextureImporter importador = (TextureImporter)AssetImporter.GetAtPath(AssetDatabase.GetAssetPath(normal));
@@ -910,7 +914,7 @@ public static class ConstrutorNivel2
         // --- Prédios do campus (fundo do cenário)
         CriarFileiraPredios(predios, "Bloco_InovaLab", -57f, true, "INOVALAB");
         // porta do InovaLab logo atrás do jogador (de onde ele saiu no fim do Nível 1)
-        GameObject porta = Instanciar(PASTA_ESCOLA + "a door.prefab", predios, new Vector3(1.77f, 0f, -52.55f), 0f, 1f);
+        GameObject porta = Instanciar(PASTA_ESCOLA + "a door.prefab", predios, new Vector3(0.04f, 0f, -56.91f), 0f, 1f);
         porta.name = "Porta_InovaLab";
         GameObject arandela = Instanciar(PASTA_POLYGON + "Lamps/Lamp_3_prefab.prefab", predios, new Vector3(0f, 2.75f, -56.85f), 180f, 1.4f);
         arandela.name = "Luminaria_Porta";
@@ -1223,11 +1227,29 @@ public static class ConstrutorNivel2
         fonte.playOnAwake = true;
         fonte.spatialBlend = 0f;
         fonte.volume = 0.45f;
-        fonte.clip = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Projeto/Audio/amb_noite_grilos.wav");
+        fonte.clip = CarregarAudio("Assets/_Projeto/Audio/amb_noite_grilos");
 
         GameObject sons = new GameObject("Sons_Aleatorios");
         sons.transform.SetParent(atmosfera);
-        sons.AddComponent<SomAmbienteAleatorio>();
+        SomAmbienteAleatorio aleatorios = sons.AddComponent<SomAmbienteAleatorio>();
+        AudioClip coruja = CarregarAudio("Assets/_Projeto/Audio/sfx_coruja");
+        aleatorios.sons = coruja != null ? new[] { coruja } : new AudioClip[0];
+    }
+
+    /// <summary>
+    /// Carrega um áudio aceitando .wav, .mp3 ou .ogg (o site às vezes entrega em outro formato).
+    /// </summary>
+    /// <param name="caminhoSemExtensao">Caminho do arquivo sem a extensão, ex.: Assets/_Projeto/Audio/sfx_coruja.</param>
+    /// <returns>O AudioClip encontrado ou null.</returns>
+    private static AudioClip CarregarAudio(string caminhoSemExtensao)
+    {
+        foreach (string extensao in new[] { ".wav", ".mp3", ".ogg" })
+        {
+            AudioClip clip = AssetDatabase.LoadAssetAtPath<AudioClip>(caminhoSemExtensao + extensao);
+            if (clip != null)
+                return clip;
+        }
+        return null;
     }
 
     /// <summary>Cria (ou recria) o perfil de pós-processamento da noite: bloom, tonemapping, cor e vinheta.</summary>
