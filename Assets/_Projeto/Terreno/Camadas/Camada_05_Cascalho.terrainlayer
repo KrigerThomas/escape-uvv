@@ -7,10 +7,10 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Camada_05_Cascalho
-  m_DiffuseTexture: {fileID: 2800000, guid: 48e533ff9ca21094d8b11513c6f7861e, type: 3}
-  m_NormalMapTexture: {fileID: 0}
+  m_DiffuseTexture: {fileID: 2800000, guid: dce5fa9713a733247addfb2349583feb, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: f1cf26e70bd0b6348ba0ce6a2662cf64, type: 3}
   m_MaskMapTexture: {fileID: 0}
-  m_TileSize: {x: 5, y: 5}
+  m_TileSize: {x: 4, y: 4}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0

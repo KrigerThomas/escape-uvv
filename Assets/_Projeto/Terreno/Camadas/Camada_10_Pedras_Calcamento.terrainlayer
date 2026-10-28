@@ -7,10 +7,10 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Camada_10_Pedras_Calcamento
-  m_DiffuseTexture: {fileID: 2800000, guid: d17e17b55ed7e3d43b3f3e27436b6b9f, type: 3}
-  m_NormalMapTexture: {fileID: 0}
+  m_DiffuseTexture: {fileID: 2800000, guid: dfd0b4119a7274d4caffbbad2ad30e14, type: 3}
+  m_NormalMapTexture: {fileID: 2800000, guid: 05cb9003134334d44954516420e4d085, type: 3}
   m_MaskMapTexture: {fileID: 0}
-  m_TileSize: {x: 5, y: 5}
+  m_TileSize: {x: 3, y: 3}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0
