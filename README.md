@@ -19,7 +19,7 @@ Contexto: Um calouro ficou preso no campus depois do fechamento e precisa passar
 
 ## Como abrir
 
-1. Instale a **Unity 6000.0.8f1** pelo Unity Hub (a mesma versão do laboratório 12).
+1. Instale a **Unity 6000.0.80f1** pelo Unity Hub (a mesma versão do laboratório 12).
 2. Clone o repositório pelo **GitHub Desktop**. Ele baixa os arquivos grandes (áudios, modelos, texturas) pelo Git LFS automaticamente. Se usar outro programa, instale o [Git LFS](https://git-lfs.com) antes de clonar.
 3. No Unity Hub, clique em **Add** e escolha a pasta do projeto.
 4. Abra a cena `Assets/_Projeto/Scenes/Nivel1` e aperte **Play**.
@@ -52,7 +52,7 @@ Assets/
 
 ## Tecnologias
 
-- Unity 6 (6000.0.8f1) com Universal Render Pipeline (URP)
+- Unity 6 (6000.0.8of1) com Universal Render Pipeline (URP)
 - C# (scripts comentados com documentação XML)
 - TextMeshPro, Particle System, Animator (Mixamo) e AI Navigation
 
