@@ -17,6 +17,17 @@ public class LuzPiscante : MonoBehaviour
     [Tooltip("Quantas piscadas, no máximo, cada falha tem.")]
     public int piscadasMaximas = 4;
 
+    [Header("Som (opcional)")]
+    [Tooltip("Zumbido/estalo tocado no começo de cada falha. Ex.: sfx_poste_falhando.")]
+    public AudioClip somFalha;
+
+    [Range(0f, 1f)] public float volumeSom = 0.5f;
+
+    [Tooltip("Até que distância (em metros) dá para ouvir o poste.")]
+    public float distanciaSom = 14f;
+
+    private AudioSource fonteSom;
+
     private Light luz;
     private float intensidadeNormal;
     private Color emissaoNormal;
@@ -37,6 +48,14 @@ public class LuzPiscante : MonoBehaviour
             emissaoNormal = lampada.sharedMaterial.GetColor("_EmissionColor");
 
         proximaFalha = Time.time + Random.Range(intervaloEntreFalhas.x, intervaloEntreFalhas.y);
+
+        // Som 3D: só quem está perto do poste escuta o estalo
+        fonteSom = gameObject.AddComponent<AudioSource>();
+        fonteSom.playOnAwake = false;
+        fonteSom.spatialBlend = 1f;
+        fonteSom.rolloffMode = AudioRolloffMode.Linear;
+        fonteSom.minDistance = 1.5f;
+        fonteSom.maxDistance = distanciaSom;
     }
 
     /// <summary>Começa uma falha na hora sorteada e alterna aceso/apagado durante ela.</summary>
@@ -49,6 +68,12 @@ public class LuzPiscante : MonoBehaviour
 
             piscadasRestantes = Random.Range(1, piscadasMaximas + 1) * 2;
             trocaEstado = Time.time;
+
+            if (somFalha != null)
+            {
+                fonteSom.pitch = Random.Range(0.9f, 1.1f);
+                fonteSom.PlayOneShot(somFalha, volumeSom);
+            }
         }
 
         if (Time.time < trocaEstado)

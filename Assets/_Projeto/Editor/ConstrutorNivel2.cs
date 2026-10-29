@@ -58,7 +58,7 @@ public static class ConstrutorNivel2
     // ------------------------------------------------------------------
 
     /// <summary>Roda todas as etapas em ordem, depois de confirmar com quem clicou.</summary>
-    [MenuItem("Escape UVV/Nível 2 (construtor)/Reconstruir tudo")]
+    [MenuItem("Escape UVV/Nível 2 (construtor antigo)/Reconstruir tudo - APAGA os ajustes feitos depois de 29-10")]
     public static void MenuReconstruirTudo()
     {
         if (!Confirmar("todo o cenário do Nível 2"))
@@ -67,7 +67,7 @@ public static class ConstrutorNivel2
     }
 
     /// <summary>Refaz só as texturas do terreno (use depois de baixar as texturas do ambientCG).</summary>
-    [MenuItem("Escape UVV/Nível 2 (construtor)/Atualizar texturas do terreno")]
+    [MenuItem("Escape UVV/Nível 2 (construtor antigo)/Atualizar texturas do terreno")]
     public static void MenuAtualizarTexturas()
     {
         int trocadas = AtualizarTexturasDoTerreno();

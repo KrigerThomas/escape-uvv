@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Regras do nível: conta os itens coletados, destranca a porta quando o contador
 /// chega ao total e carrega a próxima cena. Existe um GameManager por cena.
-/// No Nível 2 a saída já começa aberta e o contador mostra os segredos opcionais
-/// (cada Segredo da cena se registra sozinho, então o total é calculado na hora).
+/// No Nível 2 os itens usam o script Segredo: cada um se registra sozinho no início
+/// da cena, então o total do contador é calculado na hora (deixe totalItens = 0).
 /// </summary>
 public class GameManager : MonoBehaviour
 {
@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     [Header("Textos")]
     [TextArea] public string textoObjetivo = "A porta está trancada. Encontre os 5 itens perdidos do laboratório.";
     [TextArea] public string textoPortaLiberada = "Porta destrancada! Vá até a saída.";
+    [Tooltip("Começo do aviso quando o jogador tenta sair antes da hora. Depois vem \"Faltam X itens.\"")]
+    public string textoPortaTrancada = "A porta está trancada.";
     [Tooltip("Usado só quando a saída já começa aberta: aparece quando o jogador acha tudo.")]
     [TextArea] public string textoTudoEncontrado = "";
 
@@ -151,7 +153,7 @@ public class GameManager : MonoBehaviour
             return;
 
         string palavra = ItensFaltando == 1 ? "item" : "itens";
-        ui.MostrarAviso("A porta está trancada. Faltam " + ItensFaltando + " " + palavra + ".");
+        ui.MostrarAviso(textoPortaTrancada + " Faltam " + ItensFaltando + " " + palavra + ".");
     }
 
     /// <summary>Carrega a cena configurada em proximaCena (ou volta para a primeira, se não existir).</summary>
