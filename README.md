@@ -32,6 +32,7 @@ Contexto: Um calouro ficou preso no campus depois do fechamento e precisa passar
 | Shift | Correr |
 | Espaço | Pular |
 | Mouse | Girar a câmera |
+| E | Interagir (ex.: fazer carinho no gato cinza do Nível 2) |
 | Esc | Soltar o mouse para clicar nos botões |
 | R | Reiniciar o nível (atalho de teste) |
 | N | Pular para o próximo nível (atalho de teste) |
@@ -45,23 +46,32 @@ Assets/
 ├── _Projeto/          ← tudo do grupo (cenas, scripts, prefabs, áudio, UI)
 ├── school/            ← pack "School Assets" (Unity Asset Store)
 ├── POLYGON city pack/
-├── Ladymito/          ← modelo do gato (Nível 2)
+├── Ladymito/          ← modelo do gato Misty (Nível 2)
+├── living birds/      ← pássaros animados (Nível 2)
+├── (pacotes de plantas, esquilo e gato cinza, Nível 2)
 ├── TextMesh Pro/      ← fontes da interface
 └── Settings/          ← configurações do URP
 ```
 
 ## Tecnologias
 
-- Unity 6 (6000.0.8of1) com Universal Render Pipeline (URP)
+- Unity 6 (6000.0.80f1) com Universal Render Pipeline (URP)
 - C# (scripts comentados com documentação XML)
 - TextMeshPro, Particle System, Animator (Mixamo) e AI Navigation
 
 ## Créditos de terceiros
 
-| Asset | Origem |
-|---|---|
-| School Assets | Unity Asset Store |
-| POLYGON city pack | Unity Asset Store |
-| Gato (Ladymito) | Unity Asset Store |
-| Personagem Remy e animações | Mixamo (Adobe) |
-| Sons e músicas | Bibliotecas gratuitas (origem e licença de cada arquivo na planilha de assets do grupo) |
+| Asset | Origem | Uso |
+|---|---|---|
+| School Assets | Unity Asset Store | Cenários internos |
+| POLYGON city pack | Unity Asset Store | Pátio e prédios |
+| Gato Misty (Ladymito) | Unity Asset Store | Nível 2 |
+| Gato cinza | Unity Asset Store | Nível 2 (carinho com a tecla E) |
+| Esquilo | Unity Asset Store | Nível 2 (foge do jogador) |
+| Living Birds | Unity Asset Store | Nível 2 (pássaros que pousam, cantam e voam) |
+| Pacote de plantas 1 | Unity Asset Store | Nível 2 (flores e canteiros) |
+| Pacote de plantas 2 | Unity Asset Store | Nível 2 (vasos e floreiras) |
+| Personagem Remy e animações | Mixamo (Adobe) | Jogador |
+| Sons e músicas | Bibliotecas gratuitas (origem e licença de cada arquivo na planilha de assets do grupo) | Todos os níveis |
+
+> Alguns sons do Nível 2 (chiado do esquilo, ronronar e chiado do gato, folhas) são provisórios, gerados por código (arquivos `*_provisorio.wav` em `Assets/_Projeto/Audio`).
