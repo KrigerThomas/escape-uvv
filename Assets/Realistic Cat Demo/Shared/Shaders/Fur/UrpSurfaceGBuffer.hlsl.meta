@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 95f5351ba1be4ed1bbb54a2d565c28d4
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 412724
+  packageName: Grey Cat - Realistic Cat Pack Demo
+  packageVersion: 1.3
+  assetPath: Assets/Realistic Cat Demo/Shared/Shaders/Fur/UrpSurfaceGBuffer.hlsl
+  uploadId: 1039948
