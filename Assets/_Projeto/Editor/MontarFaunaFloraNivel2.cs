@@ -180,7 +180,7 @@ public static class MontarFaunaFloraNivel2
         gato.AddComponent<EspantaPassaros>().raio = 1.6f;
     }
 
-    /// <summary>Esquilo que foge de árvore em árvore no lado esquerdo do pátio.</summary>
+    /// <summary>Esquilo que foge entre pontos na beira da trilha, do início do pátio até o labirinto.</summary>
     private static void MontarEsquilo(Transform pai, RuntimeAnimatorController controller)
     {
         GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(PREFAB_ESQUILO);
@@ -189,11 +189,13 @@ public static class MontarFaunaFloraNivel2
         Transform pontosPai = NovoFilho(pai, "Esquilo_Esconderijos");
         Transform[] esconderijos =
         {
-            NovoPonto(pontosPai, "Arvore_1", -9.7f, -50.9f, 0f),
-            NovoPonto(pontosPai, "Arvore_2", -14.3f, -44.1f, 0f),
-            NovoPonto(pontosPai, "Arvore_3", -16.2f, -37.1f, 0f),
-            NovoPonto(pontosPai, "Arvore_4", -12.7f, -32.1f, 0f),
-            NovoPonto(pontosPai, "Arvore_5", -15.6f, -25.4f, 0f),
+            // Na beira da trilha de cascalho (x de -1,9 a 1,9), perto dos postes,
+            // para o jogador ver o esquilo no caminho até o labirinto.
+            NovoPonto(pontosPai, "Beira_Trilha_1", -4.0f, -43.5f, 0f),
+            NovoPonto(pontosPai, "Beira_Trilha_2", -4.2f, -39.0f, 0f),
+            NovoPonto(pontosPai, "Beira_Trilha_3", 4.3f, -39.5f, 0f),
+            NovoPonto(pontosPai, "Beira_Trilha_4", -4.0f, -29.5f, 0f),
+            NovoPonto(pontosPai, "Beira_Trilha_5", 4.2f, -23.5f, 0f),
         };
         foreach (Transform ponto in esconderijos)
             LimparGrama(ponto.position, 1.8f);
@@ -206,7 +208,7 @@ public static class MontarFaunaFloraNivel2
         GameObject modelo = (GameObject)PrefabUtility.InstantiatePrefab(prefab, esquilo.transform);
         modelo.transform.localPosition = Vector3.zero;
         modelo.transform.localRotation = Quaternion.Euler(0f, GIRO_MODELO_ESQUILO, 0f);
-        NormalizarTamanho(modelo, 0.55f, true);
+        NormalizarTamanho(modelo, 0.7f, true);
         ApoiarNoChao(modelo, esquilo.transform.position.y);
 
         Animator anim = modelo.GetComponentInChildren<Animator>();
@@ -220,6 +222,8 @@ public static class MontarFaunaFloraNivel2
         EsquiloFujao script = esquilo.AddComponent<EsquiloFujao>();
         script.esconderijos = esconderijos;
         script.somChiado = Audio("sfx_esquilo_chiado_provisorio.wav");
+        script.distanciaSusto = 3f;
+        script.intervaloChiado = new Vector2(4f, 8f);
         script.somPresente = Audio("sfx_coleta.wav");
         script.efeitoPresente = AssetDatabase.LoadAssetAtPath<GameObject>(EFEITO_COLETA);
 

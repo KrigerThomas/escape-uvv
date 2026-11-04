@@ -27,12 +27,12 @@ public class EsquiloFujao : MonoBehaviour
 
     [Header("Susto")]
     [Tooltip("Se o jogador chegar mais perto que isso, o esquilo foge.")]
-    public float distanciaSusto = 4.5f;
+    public float distanciaSusto = 3f;
 
     [Header("Sons")]
     public AudioClip somChiado;
     [Tooltip("Tempo mínimo e máximo entre chiados quando ele está parado.")]
-    public Vector2 intervaloChiado = new Vector2(7f, 14f);
+    public Vector2 intervaloChiado = new Vector2(4f, 8f);
 
     [Header("Easter egg")]
     public int fugasAteCansar = 4;
@@ -64,7 +64,7 @@ public class EsquiloFujao : MonoBehaviour
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 1f;
         audioSource.minDistance = 1f;
-        audioSource.maxDistance = 20f;
+        audioSource.maxDistance = 28f;
         audioSource.rolloffMode = AudioRolloffMode.Linear;
 
         jogador = AvisoNaTela.AcharJogador();
