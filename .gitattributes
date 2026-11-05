@@ -176,3 +176,8 @@ Assets/Settings/**                                 linguist-vendored
 
 # Exceptions for .asset files such as lightning pre-baking
 LightingData.asset     binary
+
+# Escape UVV: a Unity salva estes .asset em BINÁRIO mesmo com "Force Text".
+# Sem estas linhas o Git trata o arquivo como texto (eol=lf), apaga bytes e corrompe o terreno.
+Assets/_Projeto/Terreno/*.asset   binary
+NavMesh*.asset                    binary
