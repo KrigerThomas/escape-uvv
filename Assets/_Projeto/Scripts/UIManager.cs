@@ -158,6 +158,35 @@ public class UIManager : MonoBehaviour
         musicaIntro.volume = volumeInicial;
     }
 
+    /// <summary>
+    /// Abre um painel que precisa do mouse (ex.: Quadro do Abrantes): pausa o jogo,
+    /// trava o jogador e a câmera e mostra o cursor.
+    /// </summary>
+    /// <param name="painel">Painel a ser ligado.</param>
+    public static void AbrirPainelComMouse(GameObject painel)
+    {
+        if (painel != null)
+            painel.SetActive(true);
+
+        MenuAberto = true;
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    /// <summary>Fecha o painel aberto com AbrirPainelComMouse e devolve o controle ao jogador.</summary>
+    /// <param name="painel">Painel a ser desligado.</param>
+    public static void FecharPainelComMouse(GameObject painel)
+    {
+        if (painel != null)
+            painel.SetActive(false);
+
+        MenuAberto = false;
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     /// <summary>Toca o som de clique dos botões (funciona mesmo com o jogo pausado).</summary>
     private void TocarClique()
     {
