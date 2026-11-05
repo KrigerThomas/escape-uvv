@@ -16860,7 +16860,7 @@ MonoBehaviour:
   - {fileID: 730497825}
   velocidade: 0.6
   velocidadeGiro: 5
-  somMiado: {fileID: 8300000, guid: 235eb3d56b3e4c340a8938f70c173cbd, type: 3}
+  somMiado: {fileID: 8300000, guid: 69f7f34df5670a049806c22e03778c81, type: 3}
   intervaloMiado: 6
   duracaoMiado: 1.2
   distanciaParaMiar: 2.5
@@ -28593,12 +28593,15 @@ MonoBehaviour:
   saidaAbertaDesdeOInicio: 0
   prefixoAviso: "Voc\xEA encontrou: "
   portaSaida: {fileID: 1672511205}
+  portaGiratoria: {fileID: 0}
   ui: {fileID: 79615221}
   somPortaTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
   proximaCena: Nivel3
   textoObjetivo: "Ache os 5 itens perdidos para abrir o port\xE3o do labirinto."
   textoPortaLiberada: "O port\xE3o abriu! V\xE1 at\xE9 a sa\xEDda do labirinto."
   textoPortaTrancada: "O port\xE3o est\xE1 trancado."
+  palavraSingular: item
+  palavraPlural: itens
   textoTudoEncontrado: 
 --- !u!4 &1021775053
 Transform:
@@ -48216,7 +48219,7 @@ MonoBehaviour:
   direcaoAbertura: {x: 0, y: -1, z: 0}
   distancia: 2.4
   duracao: 2.5
-  somAbrir: {fileID: 8300000, guid: 3c13bf13b2461e2468a51342f09646c5, type: 3}
+  somAbrir: {fileID: 8300000, guid: 194504cdf4509d34a865e1b94749e37c, type: 3}
 --- !u!65 &1672511206
 BoxCollider:
   m_ObjectHideFlags: 0
