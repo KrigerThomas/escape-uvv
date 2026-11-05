@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e35644519e474f89845f20da4071fe32
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 412724
+  packageName: Grey Cat - Realistic Cat Pack Demo
+  packageVersion: 1.3
+  assetPath: Assets/Realistic Cat Demo/Shared/Shaders/HD/CatSkinUrpSurface.hlsl
+  uploadId: 1039948

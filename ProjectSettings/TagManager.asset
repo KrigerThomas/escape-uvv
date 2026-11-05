@@ -7,6 +7,9 @@ TagManager:
   - Chao
   - Porta
   - ItemPerdido
+  - lb_bird
+  - lb_groundTarget
+  - lb_perchTarget
   layers:
   - Default
   - TransparentFX
