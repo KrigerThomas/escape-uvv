@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("Porta que desliza quando o contador chega ao total.")]
     public PortaDeslizante portaSaida;
 
+    [Tooltip("Porta que abre girando (ex.: porta corta-fogo do Nível 3). Pode ficar vazio.")]
+    public PortaGiratoria portaGiratoria;
+
     [Tooltip("Interface do nível (textos, contador e botões).")]
     public UIManager ui;
 
@@ -45,6 +48,10 @@ public class GameManager : MonoBehaviour
     [TextArea] public string textoPortaLiberada = "Porta destrancada! Vá até a saída.";
     [Tooltip("Começo do aviso quando o jogador tenta sair antes da hora. Depois vem \"Faltam X itens.\"")]
     public string textoPortaTrancada = "A porta está trancada.";
+    [Tooltip("Palavra do aviso \"Faltam 1 ...\" (singular). Ex.: item, acerto.")]
+    public string palavraSingular = "item";
+    [Tooltip("Palavra do aviso \"Faltam 2 ...\" (plural). Ex.: itens, acertos.")]
+    public string palavraPlural = "itens";
     [Tooltip("Usado só quando a saída já começa aberta: aparece quando o jogador acha tudo.")]
     [TextArea] public string textoTudoEncontrado = "";
 
@@ -75,6 +82,8 @@ public class GameManager : MonoBehaviour
             PortaDestrancada = true;
             if (portaSaida != null)
                 portaSaida.Abrir();
+            if (portaGiratoria != null)
+                portaGiratoria.Abrir();
         }
 
         if (ui != null)
@@ -139,6 +148,9 @@ public class GameManager : MonoBehaviour
         if (portaSaida != null)
             portaSaida.Abrir();
 
+        if (portaGiratoria != null)
+            portaGiratoria.Abrir();
+
         if (ui != null)
             ui.MostrarObjetivo(textoPortaLiberada);
     }
@@ -152,7 +164,7 @@ public class GameManager : MonoBehaviour
         if (ui == null)
             return;
 
-        string palavra = ItensFaltando == 1 ? "item" : "itens";
+        string palavra = ItensFaltando == 1 ? palavraSingular : palavraPlural;
         ui.MostrarAviso(textoPortaTrancada + " Faltam " + ItensFaltando + " " + palavra + ".");
     }
 
