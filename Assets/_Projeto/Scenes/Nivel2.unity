@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.05, g: 0.065, b: 0.11, a: 1}
+  m_FogColor: {r: 0.07, g: 0.085, b: 0.13, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.011
+  m_FogDensity: 0.028
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.22, g: 0.26, b: 0.42, a: 1}
@@ -12162,8 +12162,8 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 5fa8666e47a394b4197f2837fa274efc, type: 2}
-  m_TreeDistance: 400
-  m_TreeBillboardDistance: 400
+  m_TreeDistance: 160
+  m_TreeBillboardDistance: 60
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 70
@@ -42903,7 +42903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7403049046637437653, guid: 36398e57af3682647ab73e79814899f2, type: 3}
       propertyPath: far clip plane
-      value: 600
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 7403049046637437653, guid: 36398e57af3682647ab73e79814899f2, type: 3}
       propertyPath: m_BackGroundColor.a
