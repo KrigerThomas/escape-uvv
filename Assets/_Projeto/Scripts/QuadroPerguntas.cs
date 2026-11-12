@@ -64,7 +64,7 @@ public class QuadroPerguntas : MonoBehaviour
     [Range(0f, 1f)] public float volume = 0.8f;
 
     [Tooltip("Tempo (em segundos) que o resultado fica na tela antes da próxima pergunta.")]
-    public float tempoResultado = 1.6f;
+    public float tempoResultado = 2.5f;
 
     private bool jogadorPerto;
     private bool painelAberto;
@@ -265,7 +265,9 @@ public class QuadroPerguntas : MonoBehaviour
     private IEnumerator DepoisDoResultado()
     {
         esperandoResultado = true;
-        yield return new WaitForSecondsRealtime(tempoResultado);
+        // textos longos (com explicação) ficam mais tempo na tela
+        string semTags = System.Text.RegularExpressions.Regex.Replace(textoResultado != null ? textoResultado.text : "", "<.*?>", "");
+        yield return new WaitForSecondsRealtime(Mathf.Max(tempoResultado, 1f + semTags.Length * 0.06f));
         esperandoResultado = false;
 
         if (DesafioConcluido())

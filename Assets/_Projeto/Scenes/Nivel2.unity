@@ -48217,8 +48217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direcaoAbertura: {x: 0, y: -1, z: 0}
-  distancia: 2.4
-  duracao: 2.5
+  distancia: 6.3
+  duracao: 3
   somAbrir: {fileID: 8300000, guid: 194504cdf4509d34a865e1b94749e37c, type: 3}
 --- !u!65 &1672511206
 BoxCollider:
