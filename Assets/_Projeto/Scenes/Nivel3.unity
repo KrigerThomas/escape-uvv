@@ -53147,7 +53147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1571371745}
   m_Layer: 0
-  m_Name: Exterior (vista pela abertura)
+  m_Name: Exterior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
