@@ -36,8 +36,11 @@ public class UIManager : MonoBehaviour
     [Tooltip("Som de clique tocado pelos botões.")]
     public AudioClip somClique;
 
-    [Tooltip("Tempo que um aviso fica na tela, em segundos.")]
+    [Tooltip("Tempo MÍNIMO que um aviso fica na tela, em segundos.")]
     public float duracaoAviso = 3f;
+
+    [Tooltip("Tempo extra por letra: avisos longos ficam mais tempo na tela para dar tempo de ler.")]
+    public float segundosPorLetra = 0.07f;
 
     private Coroutine rotinaAviso;
 
@@ -108,8 +111,19 @@ public class UIManager : MonoBehaviour
     private IEnumerator RotinaAviso(string texto)
     {
         textoAviso.text = texto;
-        yield return new WaitForSeconds(duracaoAviso);
+        yield return new WaitForSeconds(TempoDeLeitura(texto));
         textoAviso.text = "";
+    }
+
+    /// <summary>
+    /// Quanto tempo um texto deve ficar na tela: o mínimo (duracaoAviso) ou mais,
+    /// se o texto for longo. Tags como <b> não contam como letras.
+    /// </summary>
+    /// <param name="texto">Texto que vai aparecer.</param>
+    public float TempoDeLeitura(string texto)
+    {
+        string semTags = System.Text.RegularExpressions.Regex.Replace(texto ?? "", "<.*?>", "");
+        return Mathf.Max(duracaoAviso, 1f + semTags.Length * segundosPorLetra);
     }
 
     /// <summary>Abre a introdução, pausa o jogo e solta o cursor do mouse.</summary>
