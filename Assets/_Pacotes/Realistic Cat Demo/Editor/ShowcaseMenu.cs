@@ -7,7 +7,7 @@ namespace RealisticCatDemo.Editor
 {
     public static class ShowcaseMenu
     {
-        const string Root="Assets/Realistic Cat Demo";
+        const string Root="Assets/_Pacotes/Realistic Cat Demo";
         [MenuItem("Tools/Realistic Cat Demo/Open URP showcase")]
         public static void URP()=>Open("URP");
         [MenuItem("Tools/Realistic Cat Demo/Open HDRP showcase")]

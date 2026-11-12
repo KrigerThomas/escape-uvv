@@ -6,7 +6,7 @@ using UnityEngine;
 /// FERRAMENTA DE EDITOR (não vai para o jogo): liga os sons novos do Nível 2 sozinha.
 ///
 /// COMO USAR:
-///  1. Baixe o som e salve na pasta Assets/_Projeto/Audio com o nome combinado
+///  1. Baixe o som e salve na pasta Assets/_Projeto/Audio/Nivel2 com o nome combinado
 ///     (pode ser .wav, .mp3 ou .ogg):
 ///       sfx_miado_gato       -> miado da gata Misty
 ///       sfx_poste_falhando   -> estalo/zumbido dos postes que piscam
@@ -17,7 +17,7 @@ using UnityEngine;
 /// </summary>
 public static class LigarSonsNivel2
 {
-    private const string PASTA_AUDIO = "Assets/_Projeto/Audio/";
+    private const string PASTA_AUDIO = "Assets/_Projeto/Audio/Nivel2/";
 
     [MenuItem("Escape UVV/Nível 2/Ligar sons novos")]
     public static void LigarSons()

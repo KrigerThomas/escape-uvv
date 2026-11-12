@@ -15,14 +15,14 @@ using UnityEngine;
 public static class MontarFaunaFloraNivel2
 {
     private const string RAIZ = "Fauna_e_Flora";
-    private const string PATCH = "Assets/Patchmesh/Free Sample Stylized Hand-Painted Plant & Flower Pack/Prefabs/";
-    private const string ORNAMENTAL = "Assets/Ornamental Flower Set/Resources/Furniture01/FurniturePrefab/";
-    private const string PREFAB_GATO = "Assets/Realistic Cat Demo/Prefabs/URP/HD/Cat_05.prefab";
-    private const string PREFAB_ESQUILO = "Assets/Furry Squirrel/Prefab/Squirrel_URP.prefab";
-    private const string FBX_ESQUILO = "Assets/Furry Squirrel/Meshes/Squirrel.fbx";
+    private const string PATCH = "Assets/_Pacotes/Patchmesh/Free Sample Stylized Hand-Painted Plant & Flower Pack/Prefabs/";
+    private const string ORNAMENTAL = "Assets/_Pacotes/Ornamental Flower Set/Resources/Furniture01/FurniturePrefab/";
+    private const string PREFAB_GATO = "Assets/_Pacotes/Realistic Cat Demo/Prefabs/URP/HD/Cat_05.prefab";
+    private const string PREFAB_ESQUILO = "Assets/_Pacotes/Furry Squirrel/Prefab/Squirrel_URP.prefab";
+    private const string FBX_ESQUILO = "Assets/_Pacotes/Furry Squirrel/Meshes/Squirrel.fbx";
     private const string CONTROLLER_ESQUILO = "Assets/_Projeto/Animations/Esquilo.controller";
-    private const string PASSAROS = "Assets/living birds/";
-    private const string AUDIO = "Assets/_Projeto/Audio/";
+    private const string PASSAROS = "Assets/_Pacotes/living birds/";
+    private const string AUDIO = "Assets/_Projeto/Audio/Nivel2/";
     private const string EFEITO_COLETA = "Assets/_Projeto/Prefabs/Efeitos/Efeito_Coleta.prefab";
 
     /// <summary>Ajuste do giro do modelo do esquilo para ele correr de frente (o FBX não aponta para +Z).</summary>
@@ -224,7 +224,7 @@ public static class MontarFaunaFloraNivel2
         script.somChiado = Audio("sfx_esquilo_chiado_provisorio.wav");
         script.distanciaSusto = 3f;
         script.intervaloChiado = new Vector2(4f, 8f);
-        script.somPresente = Audio("sfx_coleta.wav");
+        script.somPresente = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Projeto/Audio/Geral/sfx_coleta.wav");
         script.efeitoPresente = AssetDatabase.LoadAssetAtPath<GameObject>(EFEITO_COLETA);
 
         esquilo.AddComponent<EspantaPassaros>().raio = 1.2f;
