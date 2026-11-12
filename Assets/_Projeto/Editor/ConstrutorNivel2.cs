@@ -20,10 +20,10 @@ public static class ConstrutorNivel2
     // ------------------------------------------------------------------
     //  Caminhos e medidas usados por todas as etapas
     // ------------------------------------------------------------------
-    private const string PASTA_PATIO = "Assets/_Projeto/Materiais/Patio/";
+    private const string PASTA_PATIO = "Assets/_Projeto/Materiais/Nivel2/";
     private const string PASTA_TERRENO = "Assets/_Projeto/Terreno/";
-    private const string PASTA_POLYGON = "Assets/POLYGON city pack/Prefabs/";
-    private const string PASTA_ESCOLA = "Assets/school/Prefabs/props/";
+    private const string PASTA_POLYGON = "Assets/_Pacotes/POLYGON city pack/Prefabs/";
+    private const string PASTA_ESCOLA = "Assets/_Pacotes/school/Prefabs/props/";
 
     /// <summary>Canto do terreno (o terreno vai de -120 a 120 em X e de -150 a 90 em Z).</summary>
     private static readonly Vector3 POSICAO_TERRENO = new Vector3(-120f, -8f, -150f);
@@ -147,14 +147,14 @@ public static class ConstrutorNivel2
         ConfigurarTextura(PASTA_PATIO + "Tex_Sebe_Folhas_Normal.png", t => { t.textureType = TextureImporterType.NormalMap; t.anisoLevel = 4; });
         ConfigurarTextura(PASTA_PATIO + "Tex_Agua_Normal.png", t => t.textureType = TextureImporterType.NormalMap);
         ConfigurarTextura(PASTA_PATIO + "Tex_Brilho_Suave.png", t => { t.alphaIsTransparency = true; t.wrapMode = TextureWrapMode.Clamp; });
-        ConfigurarTextura("Assets/_Projeto/Materiais/Ceu/Tex_Ceu_Noite.png", t =>
+        ConfigurarTextura("Assets/_Projeto/Materiais/Comum/Ceu/Tex_Ceu_Noite.png", t =>
         {
             t.mipmapEnabled = false;
             t.wrapModeU = TextureWrapMode.Repeat;
             t.wrapModeV = TextureWrapMode.Clamp;
             t.textureCompression = TextureImporterCompression.CompressedHQ;
         });
-        ConfigurarTextura("Assets/POLYGON city pack/Meshes,textures/props_FBX/grass 2.png", t => { t.alphaIsTransparency = true; t.wrapMode = TextureWrapMode.Clamp; });
+        ConfigurarTextura("Assets/_Pacotes/POLYGON city pack/Meshes,textures/props_FBX/grass 2.png", t => { t.alphaIsTransparency = true; t.wrapMode = TextureWrapMode.Clamp; });
 
         Shader lit = Shader.Find("Universal Render Pipeline/Lit");
         Shader particula = Shader.Find("Universal Render Pipeline/Particles/Unlit");
@@ -212,8 +212,8 @@ public static class ConstrutorNivel2
             AjustarPalavrasChave(m);
         }
 
-        Material ceu = CarregarOuCriarMaterial("Assets/_Projeto/Materiais/Ceu/Ceu_Noite.mat", Shader.Find("Skybox/Panoramic"));
-        ceu.SetTexture("_MainTex", AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/_Projeto/Materiais/Ceu/Tex_Ceu_Noite.png"));
+        Material ceu = CarregarOuCriarMaterial("Assets/_Projeto/Materiais/Comum/Ceu/Ceu_Noite.mat", Shader.Find("Skybox/Panoramic"));
+        ceu.SetTexture("_MainTex", AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/_Projeto/Materiais/Comum/Ceu/Tex_Ceu_Noite.png"));
         ceu.SetFloat("_Mapping", 1f);
         ceu.SetFloat("_ImageType", 0f);
         ceu.SetFloat("_Exposure", 1f);
@@ -732,7 +732,7 @@ public static class ConstrutorNivel2
         {
             new DetailPrototype
             {
-                prototypeTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/POLYGON city pack/Meshes,textures/props_FBX/grass 2.png"),
+                prototypeTexture = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/_Pacotes/POLYGON city pack/Meshes,textures/props_FBX/grass 2.png"),
                 renderMode = DetailRenderMode.GrassBillboard,
                 usePrototypeMesh = false,
                 minWidth = 0.5f, maxWidth = 0.9f,
@@ -1193,7 +1193,7 @@ public static class ConstrutorNivel2
         luzLua.shadowStrength = 0.75f;
         RenderSettings.sun = luzLua;
 
-        RenderSettings.skybox = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Projeto/Materiais/Ceu/Ceu_Noite.mat");
+        RenderSettings.skybox = AssetDatabase.LoadAssetAtPath<Material>("Assets/_Projeto/Materiais/Comum/Ceu/Ceu_Noite.mat");
         RenderSettings.ambientMode = AmbientMode.Trilight;
         RenderSettings.ambientSkyColor = new Color(0.22f, 0.26f, 0.42f);
         RenderSettings.ambientEquatorColor = new Color(0.16f, 0.18f, 0.28f);
@@ -1227,12 +1227,12 @@ public static class ConstrutorNivel2
         fonte.playOnAwake = true;
         fonte.spatialBlend = 0f;
         fonte.volume = 0.45f;
-        fonte.clip = CarregarAudio("Assets/_Projeto/Audio/amb_noite_grilos");
+        fonte.clip = CarregarAudio("Assets/_Projeto/Audio/Nivel2/amb_noite_grilos");
 
         GameObject sons = new GameObject("Sons_Aleatorios");
         sons.transform.SetParent(atmosfera);
         SomAmbienteAleatorio aleatorios = sons.AddComponent<SomAmbienteAleatorio>();
-        AudioClip coruja = CarregarAudio("Assets/_Projeto/Audio/sfx_coruja");
+        AudioClip coruja = CarregarAudio("Assets/_Projeto/Audio/Nivel2/sfx_coruja");
         aleatorios.sons = coruja != null ? new[] { coruja } : new AudioClip[0];
     }
 
@@ -1499,7 +1499,7 @@ public static class ConstrutorNivel2
             segredoGato.nomeSegredo = "Misty, a gata do campus";
             segredoGato.frase = "Ela sempre aparece quando alguém fica até tarde.";
             segredoGato.efeitoDescoberta = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Projeto/Prefabs/Efeitos/Efeito_Coleta.prefab");
-            segredoGato.somDescoberta = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Projeto/Audio/sfx_coleta.wav");
+            segredoGato.somDescoberta = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Projeto/Audio/Geral/sfx_coleta.wav");
         }
 
         UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(jogador.scene);
@@ -1581,7 +1581,7 @@ public static class ConstrutorNivel2
         segredo.frase = frase;
         segredo.dicaVisual = dica;
         segredo.efeitoDescoberta = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Projeto/Prefabs/Efeitos/Efeito_Coleta.prefab");
-        segredo.somDescoberta = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Projeto/Audio/sfx_coleta.wav");
+        segredo.somDescoberta = AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/_Projeto/Audio/Geral/sfx_coleta.wav");
 
         CriarPasta("Assets/_Projeto/Prefabs/Segredos");
         GameObject prefab = PrefabUtility.SaveAsPrefabAsset(raiz, "Assets/_Projeto/Prefabs/Segredos/" + nome + ".prefab");
