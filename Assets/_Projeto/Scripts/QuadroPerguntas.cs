@@ -242,8 +242,7 @@ public class QuadroPerguntas : MonoBehaviour
         botoesAlternativas[botao].image.color = certa ? corCerta : corErrada;
 
         AudioClip som = certa ? somAcerto : somErro;
-        if (som != null && Camera.main != null)
-            AudioSource.PlayClipAtPoint(som, Camera.main.transform.position, volume);
+        UIManager.TocarSom2D(som, volume);
 
         if (certa)
         {

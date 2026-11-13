@@ -158,8 +158,7 @@ public class GameManager : MonoBehaviour
     /// <summary>Avisa quantos itens faltam quando o jogador tenta sair antes da hora.</summary>
     public void AvisarPortaTrancada()
     {
-        if (somPortaTrancada != null && Camera.main != null)
-            AudioSource.PlayClipAtPoint(somPortaTrancada, Camera.main.transform.position, 0.8f);
+        UIManager.TocarSom2D(somPortaTrancada, 0.8f);
 
         if (ui == null)
             return;

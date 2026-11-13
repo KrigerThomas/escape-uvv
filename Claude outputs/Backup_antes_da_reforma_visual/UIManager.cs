@@ -1,0 +1,240 @@
+using System.Collections;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>
+/// Interface do nível: mensagem de objetivo, contador de itens, avisos rápidos,
+/// botão Reiniciar e painel de introdução (mostrado só na primeira vez).
+/// </summary>
+public class UIManager : MonoBehaviour
+{
+    /// <summary>Verdadeiro enquanto um painel que precisa do mouse está aberto.</summary>
+    public static bool MenuAberto { get; private set; }
+
+    /// <summary>Lembra se a introdução já foi vista nesta sessão de jogo.</summary>
+    private static bool introJaVista;
+
+    [Header("HUD")]
+    public TMP_Text textoObjetivo;
+    public TMP_Text textoContador;
+    public TMP_Text textoAviso;
+    public Button botaoReiniciar;
+
+    [Header("Introdução")]
+    [Tooltip("Painel com o texto de introdução e o botão Continuar. Deixe vazio em níveis sem introdução.")]
+    public GameObject painelIntro;
+    public Button botaoContinuar;
+
+    [Tooltip("Música que toca só enquanto a introdução está aberta. Some aos poucos ao clicar em Continuar.")]
+    public AudioSource musicaIntro;
+
+    [Tooltip("Tempo, em segundos, para a música da introdução sumir.")]
+    public float tempoFadeMusica = 1.5f;
+
+    [Header("Sons")]
+    [Tooltip("Som de clique tocado pelos botões.")]
+    public AudioClip somClique;
+
+    [Tooltip("Tempo MÍNIMO que um aviso fica na tela, em segundos.")]
+    public float duracaoAviso = 3f;
+
+    [Tooltip("Tempo extra por letra: avisos longos ficam mais tempo na tela para dar tempo de ler.")]
+    public float segundosPorLetra = 0.07f;
+
+    private Coroutine rotinaAviso;
+
+    /// <summary>Liga os botões e decide se a introdução aparece.</summary>
+    void Start()
+    {
+        if (botaoReiniciar != null)
+        {
+            botaoReiniciar.onClick.AddListener(TocarClique);
+            botaoReiniciar.onClick.AddListener(Reiniciar);
+        }
+
+        if (botaoContinuar != null)
+        {
+            botaoContinuar.onClick.AddListener(TocarClique);
+            botaoContinuar.onClick.AddListener(FecharIntro);
+        }
+
+        if (textoAviso != null)
+            textoAviso.text = "";
+
+        if (painelIntro != null && !introJaVista)
+            AbrirIntro();
+        else
+            FecharIntro();
+    }
+
+    /// <summary>Garante que o jogo não fique pausado se a cena for trocada com um painel aberto.</summary>
+    void OnDestroy()
+    {
+        MenuAberto = false;
+        Time.timeScale = 1f;
+    }
+
+    /// <summary>Troca o texto de objetivo no topo da tela.</summary>
+    /// <param name="texto">Novo objetivo.</param>
+    public void MostrarObjetivo(string texto)
+    {
+        if (textoObjetivo != null)
+            textoObjetivo.text = texto;
+    }
+
+    /// <summary>Atualiza o contador, por exemplo "Itens: 2 / 5".</summary>
+    /// <param name="rotulo">Palavra antes dos números.</param>
+    /// <param name="atual">Quantidade coletada.</param>
+    /// <param name="total">Quantidade necessária.</param>
+    public void AtualizarContador(string rotulo, int atual, int total)
+    {
+        if (textoContador != null)
+            textoContador.text = rotulo + ": " + atual + " / " + total;
+    }
+
+    /// <summary>Mostra um aviso curto no meio da tela, que some sozinho.</summary>
+    /// <param name="texto">Mensagem do aviso.</param>
+    public void MostrarAviso(string texto)
+    {
+        if (textoAviso == null)
+            return;
+
+        if (rotinaAviso != null)
+            StopCoroutine(rotinaAviso);
+
+        rotinaAviso = StartCoroutine(RotinaAviso(texto));
+    }
+
+    /// <summary>Exibe o aviso, espera e apaga.</summary>
+    /// <param name="texto">Mensagem do aviso.</param>
+    private IEnumerator RotinaAviso(string texto)
+    {
+        textoAviso.text = texto;
+        yield return new WaitForSeconds(TempoDeLeitura(texto));
+        textoAviso.text = "";
+    }
+
+    /// <summary>
+    /// Quanto tempo um texto deve ficar na tela: o mínimo (duracaoAviso) ou mais,
+    /// se o texto for longo. Tags como <b> não contam como letras.
+    /// </summary>
+    /// <param name="texto">Texto que vai aparecer.</param>
+    public float TempoDeLeitura(string texto)
+    {
+        string semTags = System.Text.RegularExpressions.Regex.Replace(texto ?? "", "<.*?>", "");
+        return Mathf.Max(duracaoAviso, 1f + semTags.Length * segundosPorLetra);
+    }
+
+    /// <summary>Abre a introdução, pausa o jogo e solta o cursor do mouse.</summary>
+    public void AbrirIntro()
+    {
+        painelIntro.SetActive(true);
+        MenuAberto = true;
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        if (musicaIntro != null && !musicaIntro.isPlaying)
+            musicaIntro.Play();
+    }
+
+    /// <summary>Fecha a introdução, despausa o jogo e prende o cursor de novo.</summary>
+    public void FecharIntro()
+    {
+        if (painelIntro != null)
+            painelIntro.SetActive(false);
+
+        introJaVista = true;
+        MenuAberto = false;
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        if (musicaIntro != null && musicaIntro.isPlaying)
+            StartCoroutine(SumirMusica());
+    }
+
+    /// <summary>Abaixa o volume da música da introdução até zero e para a música.</summary>
+    private IEnumerator SumirMusica()
+    {
+        float volumeInicial = musicaIntro.volume;
+        float t = 0f;
+
+        while (t < tempoFadeMusica)
+        {
+            t += Time.unscaledDeltaTime;
+            musicaIntro.volume = Mathf.Lerp(volumeInicial, 0f, t / tempoFadeMusica);
+            yield return null;
+        }
+
+        musicaIntro.Stop();
+        musicaIntro.volume = volumeInicial;
+    }
+
+    /// <summary>
+    /// Abre um painel que precisa do mouse (ex.: Quadro do Abrantes): pausa o jogo,
+    /// trava o jogador e a câmera e mostra o cursor.
+    /// </summary>
+    /// <param name="painel">Painel a ser ligado.</param>
+    public static void AbrirPainelComMouse(GameObject painel)
+    {
+        if (painel != null)
+            painel.SetActive(true);
+
+        MenuAberto = true;
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    /// <summary>Fecha o painel aberto com AbrirPainelComMouse e devolve o controle ao jogador.</summary>
+    /// <param name="painel">Painel a ser desligado.</param>
+    public static void FecharPainelComMouse(GameObject painel)
+    {
+        if (painel != null)
+            painel.SetActive(false);
+
+        MenuAberto = false;
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private static AudioSource fonteSons2D;
+
+    /// <summary>
+    /// Toca um som de interface (clique, acerto, erro, porta trancada) sem posição no espaço,
+    /// sempre igual nos dois ouvidos e funcionando com o jogo pausado.
+    /// </summary>
+    public static void TocarSom2D(AudioClip som, float volume = 1f)
+    {
+        if (som == null)
+            return;
+
+        if (fonteSons2D == null)
+        {
+            GameObject g = new GameObject("Sons_Interface");
+            fonteSons2D = g.AddComponent<AudioSource>();
+            fonteSons2D.playOnAwake = false;
+            fonteSons2D.spatialBlend = 0f;
+            fonteSons2D.ignoreListenerPause = true;
+            fonteSons2D.priority = 0;
+        }
+
+        fonteSons2D.PlayOneShot(som, volume);
+    }
+
+    /// <summary>Toca o som de clique dos botões (funciona mesmo com o jogo pausado).</summary>
+    private void TocarClique()
+    {
+        TocarSom2D(somClique, 0.7f);
+    }
+
+    /// <summary>Ação do botão Reiniciar.</summary>
+    private void Reiniciar()
+    {
+        if (GameManager.Instancia != null)
+            GameManager.Instancia.ReiniciarNivel();
+    }
+}

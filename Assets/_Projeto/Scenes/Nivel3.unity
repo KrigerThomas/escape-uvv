@@ -2723,7 +2723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4286bd17d3a48499323bd137cc8e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anguloAbertura: 95
+  anguloAbertura: -95
   distanciaParaAbrir: 1.5
   velocidade: 2.5
   somAbrir: {fileID: 0}

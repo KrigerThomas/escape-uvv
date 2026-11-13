@@ -82,6 +82,9 @@ public class LuzPiscante : MonoBehaviour
     /// <summary>Som longo: mede o volume a cada 20 ms e toca em loop.</summary>
     private void PrepararSomLongo()
     {
+        // garante que o áudio está carregado antes de ler (no jogo exportado pode não estar)
+        if (somFalha.loadState != AudioDataLoadState.Loaded) somFalha.LoadAudioData();
+
         int canais = somFalha.channels;
         float[] amostras = new float[somFalha.samples * canais];
         if (!somFalha.GetData(amostras, 0))

@@ -201,11 +201,34 @@ public class UIManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    private static AudioSource fonteSons2D;
+
+    /// <summary>
+    /// Toca um som de interface (clique, acerto, erro, porta trancada) sem posição no espaço,
+    /// sempre igual nos dois ouvidos e funcionando com o jogo pausado.
+    /// </summary>
+    public static void TocarSom2D(AudioClip som, float volume = 1f)
+    {
+        if (som == null)
+            return;
+
+        if (fonteSons2D == null)
+        {
+            GameObject g = new GameObject("Sons_Interface");
+            fonteSons2D = g.AddComponent<AudioSource>();
+            fonteSons2D.playOnAwake = false;
+            fonteSons2D.spatialBlend = 0f;
+            fonteSons2D.ignoreListenerPause = true;
+            fonteSons2D.priority = 0;
+        }
+
+        fonteSons2D.PlayOneShot(som, volume);
+    }
+
     /// <summary>Toca o som de clique dos botões (funciona mesmo com o jogo pausado).</summary>
     private void TocarClique()
     {
-        if (somClique != null && Camera.main != null)
-            AudioSource.PlayClipAtPoint(somClique, Camera.main.transform.position, 0.7f);
+        TocarSom2D(somClique, 0.7f);
     }
 
     /// <summary>Ação do botão Reiniciar.</summary>
