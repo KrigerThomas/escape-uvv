@@ -1,9 +1,15 @@
 using UnityEngine;
 
 /// <summary>
-/// Faz uma luz falhar, como um poste com mau contato: na maior parte do tempo fica acesa,
-/// mas de vez em quando pisca algumas vezes seguidas. O brilho do material da lâmpada
-/// (Emission) acompanha a luz.
+/// Faz uma luz falhar (lâmpada ou poste com mau contato), com o som sempre junto.
+///
+/// - Som CURTO (um estalo, menos de 1 s): a luz pisca em momentos sorteados e o
+///   estalo toca a cada vez que ela apaga.
+/// - Som LONGO (um zumbido de lâmpada falhando): o som toca em loop e a luz apaga
+///   exatamente nos estalos do áudio.
+/// - Sem som: só a luz pisca.
+///
+/// O brilho do material da lâmpada (Emission) acompanha a luz.
 /// </summary>
 [RequireComponent(typeof(Light))]
 public class LuzPiscante : MonoBehaviour
@@ -11,22 +17,31 @@ public class LuzPiscante : MonoBehaviour
     [Tooltip("Renderer da lâmpada, para apagar o brilho junto com a luz (opcional).")]
     public Renderer lampada;
 
+    [Header("Piscadas sorteadas (som curto ou sem som)")]
     [Tooltip("Menor e maior tempo, em segundos, entre uma falha e outra.")]
     public Vector2 intervaloEntreFalhas = new Vector2(2f, 6f);
 
     [Tooltip("Quantas piscadas, no máximo, cada falha tem.")]
     public int piscadasMaximas = 4;
 
-    [Header("Som (opcional)")]
-    [Tooltip("Zumbido/estalo tocado no começo de cada falha. Ex.: sfx_poste_falhando.")]
+    [Header("Som")]
+    [Tooltip("Estalo curto ou zumbido longo da lâmpada falhando.")]
     public AudioClip somFalha;
 
     [Range(0f, 1f)] public float volumeSom = 0.5f;
 
-    [Tooltip("Até que distância (em metros) dá para ouvir o poste.")]
+    [Tooltip("Até que distância (em metros) dá para ouvir.")]
     public float distanciaSom = 14f;
 
+    [Tooltip("Só para som longo: quanto o som precisa subir para a luz apagar (0 = qualquer barulho, 1 = só o pico).")]
+    [Range(0.05f, 0.95f)] public float sensibilidade = 0.3f;
+
+    private const float JANELA = 0.02f;       // o volume do som é medido a cada 20 ms
+    private const float SOM_CURTO = 1f;       // até 1 s conta como estalo
+
     private AudioSource fonteSom;
+    private float[] envelope;
+    private float limiar;
 
     private Light luz;
     private float intensidadeNormal;
@@ -37,7 +52,6 @@ public class LuzPiscante : MonoBehaviour
     private float trocaEstado;
     private bool acesa = true;
 
-    /// <summary>Guarda a intensidade e o brilho originais e agenda a primeira falha.</summary>
     void Start()
     {
         luz = GetComponent<Light>();
@@ -47,42 +61,83 @@ public class LuzPiscante : MonoBehaviour
         if (lampada != null && lampada.sharedMaterial != null && lampada.sharedMaterial.HasProperty("_EmissionColor"))
             emissaoNormal = lampada.sharedMaterial.GetColor("_EmissionColor");
 
-        proximaFalha = Time.time + Random.Range(intervaloEntreFalhas.x, intervaloEntreFalhas.y);
-
-        // Som 3D: só quem está perto do poste escuta o estalo
-        fonteSom = gameObject.AddComponent<AudioSource>();
-        fonteSom.playOnAwake = false;
-        fonteSom.spatialBlend = 1f;
-        fonteSom.rolloffMode = AudioRolloffMode.Linear;
-        fonteSom.minDistance = 1.5f;
-        fonteSom.maxDistance = distanciaSom;
-    }
-
-    /// <summary>Começa uma falha na hora sorteada e alterna aceso/apagado durante ela.</summary>
-    void Update()
-    {
-        if (piscadasRestantes <= 0)
+        if (somFalha != null)
         {
-            if (Time.time < proximaFalha)
-                return;
+            fonteSom = gameObject.AddComponent<AudioSource>();
+            fonteSom.playOnAwake = false;
+            fonteSom.volume = volumeSom;
+            fonteSom.spatialBlend = 1f;
+            fonteSom.rolloffMode = AudioRolloffMode.Linear;
+            fonteSom.minDistance = 1.5f;
+            fonteSom.maxDistance = distanciaSom;
+            fonteSom.dopplerLevel = 0f;
 
-            piscadasRestantes = Random.Range(1, piscadasMaximas + 1) * 2;
-            trocaEstado = Time.time;
-
-            if (somFalha != null)
-            {
-                fonteSom.pitch = Random.Range(0.9f, 1.1f);
-                fonteSom.PlayOneShot(somFalha, volumeSom);
-            }
+            if (somFalha.length > SOM_CURTO)
+                PrepararSomLongo();
         }
 
-        if (Time.time < trocaEstado)
+        proximaFalha = Time.time + Random.Range(intervaloEntreFalhas.x, intervaloEntreFalhas.y);
+    }
+
+    /// <summary>Som longo: mede o volume a cada 20 ms e toca em loop.</summary>
+    private void PrepararSomLongo()
+    {
+        int canais = somFalha.channels;
+        float[] amostras = new float[somFalha.samples * canais];
+        if (!somFalha.GetData(amostras, 0))
+        {
+            Debug.LogWarning("LuzPiscante: não deu para ler o áudio " + somFalha.name + " (Load Type precisa ser Decompress On Load).");
             return;
+        }
+
+        int porJanela = Mathf.Max(1, Mathf.RoundToInt(somFalha.frequency * JANELA)) * canais;
+        envelope = new float[amostras.Length / porJanela + 1];
+        float menor = float.MaxValue, maior = 0f;
+        for (int j = 0; j < envelope.Length; j++)
+        {
+            double soma = 0; int n = 0;
+            for (int i = j * porJanela; i < Mathf.Min((j + 1) * porJanela, amostras.Length); i++) { soma += amostras[i] * amostras[i]; n++; }
+            envelope[j] = n > 0 ? Mathf.Sqrt((float)(soma / n)) : 0f;
+            menor = Mathf.Min(menor, envelope[j]);
+            maior = Mathf.Max(maior, envelope[j]);
+        }
+        limiar = Mathf.Lerp(menor, maior, sensibilidade);
+
+        fonteSom.clip = somFalha;
+        fonteSom.loop = true;
+        fonteSom.Play();
+    }
+
+    void Update()
+    {
+        // Som longo: a luz segue o áudio
+        if (envelope != null)
+        {
+            int j = Mathf.Clamp(Mathf.FloorToInt(fonteSom.time / JANELA), 0, envelope.Length - 1);
+            bool estalo = fonteSom.isPlaying && envelope[j] > limiar;
+            if (estalo == acesa) { acesa = !estalo; AplicarEstado(acesa); }
+            return;
+        }
+
+        // Piscadas sorteadas (o estalo curto toca a cada apagada)
+        if (piscadasRestantes <= 0)
+        {
+            if (Time.time < proximaFalha) return;
+            piscadasRestantes = Random.Range(1, piscadasMaximas + 1) * 2;
+            trocaEstado = Time.time;
+        }
+
+        if (Time.time < trocaEstado) return;
 
         acesa = !acesa;
         AplicarEstado(acesa);
+        if (!acesa && fonteSom != null)
+        {
+            fonteSom.pitch = Random.Range(0.9f, 1.1f);
+            fonteSom.PlayOneShot(somFalha, volumeSom);
+        }
         piscadasRestantes--;
-        trocaEstado = Time.time + Random.Range(0.04f, 0.18f);
+        trocaEstado = Time.time + Random.Range(0.06f, 0.18f);
 
         if (piscadasRestantes <= 0)
         {
@@ -93,13 +148,11 @@ public class LuzPiscante : MonoBehaviour
     }
 
     /// <summary>Liga ou desliga a luz e o brilho da lâmpada.</summary>
-    /// <param name="ligada">Verdadeiro para acender, falso para apagar.</param>
     private void AplicarEstado(bool ligada)
     {
         luz.intensity = ligada ? intensidadeNormal : intensidadeNormal * 0.05f;
 
-        if (lampada == null)
-            return;
+        if (lampada == null) return;
 
         lampada.GetPropertyBlock(bloco);
         bloco.SetColor("_EmissionColor", ligada ? emissaoNormal : Color.black);
