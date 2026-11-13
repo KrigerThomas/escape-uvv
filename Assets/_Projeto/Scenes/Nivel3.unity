@@ -2342,7 +2342,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: bdf277004b86afb42b4933ef14cd673e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -26354,8 +26354,8 @@ Transform:
   m_GameObject: {fileID: 783817452}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  m_LocalPosition: {x: -0.12, y: 1.12, z: 0.095}
-  m_LocalScale: {x: 0.2, y: 0.34, z: 1}
+  m_LocalPosition: {x: 1.244, y: 1.7177, z: 0.557}
+  m_LocalScale: {x: 0.2045897, y: 0.2949228, z: 0.86742}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1016463921}
@@ -43566,7 +43566,7 @@ MonoBehaviour:
   corErrada: {r: 0.95, g: 0.45, b: 0.4, a: 1}
   somAcerto: {fileID: 8300000, guid: 60e2a660f240fed429a837e6dec6847e, type: 3}
   somErro: {fileID: 8300000, guid: 7274e6748e9ec6249b98923ad6944fb1, type: 3}
-  volume: 0.8
+  volume: 0.7
   tempoResultado: 2.5
 --- !u!65 &1216640445
 BoxCollider:
@@ -44712,7 +44712,7 @@ GameObject:
   - component: {fileID: 1249631051}
   - component: {fileID: 1249631050}
   m_Layer: 0
-  m_Name: 'Superficie (easter egg: be greater than average)'
+  m_Name: 'Superficie '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48374,7 +48374,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 13ab849700195a3408385566e362f723, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -55937,7 +55937,7 @@ MonoBehaviour:
   intervaloEntreFalhas: {x: 3, y: 9}
   piscadasMaximas: 3
   somFalha: {fileID: 8300000, guid: 29f94d01a0e07b14e98d358b47854550, type: 3}
-  volumeSom: 0.35
+  volumeSom: 0.3
   distanciaSom: 9
   sensibilidade: 0.3
 --- !u!1 &1657296962
@@ -61423,7 +61423,7 @@ Transform:
   m_GameObject: {fileID: 1837534679}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  m_LocalPosition: {x: 0, y: 1.82, z: 0.095}
+  m_LocalPosition: {x: 0, y: 1.82, z: 0.026}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
