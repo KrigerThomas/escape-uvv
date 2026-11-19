@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 053d635016714fc42af4173d1d5bb896
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 189368
+  packageName: Modular Sofa FREE
+  packageVersion: 1.0
+  assetPath: Assets/Modular Sofa FREE/Materials/StandardColorMask.shader
+  uploadId: 417707
