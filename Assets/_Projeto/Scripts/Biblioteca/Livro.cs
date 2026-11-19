@@ -19,4 +19,10 @@ public class Livro : ItemPegavel
         contaNoObjetivo = true;
         textoAcao = "pegar \"" + titulo + "\"";
     }
+
+    /// <summary>Nos avisos aparece só o título ("Você encontrou: Cálculo").</summary>
+    protected override string NomeNaTela()
+    {
+        return titulo;
+    }
 }

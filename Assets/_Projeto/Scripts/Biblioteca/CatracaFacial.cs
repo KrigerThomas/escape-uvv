@@ -19,8 +19,8 @@ using UnityEngine;
 public class CatracaFacial : MonoBehaviour
 {
     [Header("Peças")]
-    [Tooltip("Collider invisível que bloqueia a passagem enquanto a catraca está fechada.")]
-    public Collider bloqueio;
+    [Tooltip("Objeto com as portinholas de vidro e o collider que bloqueia a passagem. Some quando a catraca libera.")]
+    public GameObject bloqueio;
 
     [Tooltip("Renderers das telas (o material delas troca de cor).")]
     public Renderer[] telas;
@@ -134,7 +134,7 @@ public class CatracaFacial : MonoBehaviour
         UIManager.TocarSom2D(somLiberado, 0.8f);
         Avisar(texto);
         if (bloqueio != null)
-            bloqueio.enabled = false;
+            bloqueio.SetActive(false);
 
         yield return new WaitForSeconds(tempoAberta);
 
@@ -166,7 +166,7 @@ public class CatracaFacial : MonoBehaviour
     private void Fechar()
     {
         if (bloqueio != null)
-            bloqueio.enabled = true;
+            bloqueio.SetActive(true);
     }
 
     /// <summary>Troca a cor (e o brilho) das telas.</summary>

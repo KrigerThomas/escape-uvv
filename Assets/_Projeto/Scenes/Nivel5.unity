@@ -2673,6 +2673,7 @@ MonoBehaviour:
   totalItens: 0
   rotuloContador: 
   saidaAbertaDesdeOInicio: 0
+  destrancarAoCompletar: 1
   prefixoAviso: "Voc\xEA pegou: "
   portaSaida: {fileID: 0}
   portaGiratoria: {fileID: 1102464737}
@@ -20540,7 +20541,7 @@ GameObject:
   - component: {fileID: 1078596729}
   - component: {fileID: 1078596728}
   m_Layer: 0
-  m_Name: Batimento_Cardiaco (falta o som)
+  m_Name: Batimento_Cardiaco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20557,7 +20558,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 7a55da0c8daab8b41b7a71100f591fb8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -23621,6 +23622,8 @@ MonoBehaviour:
   tecla: 101
   chaveNecessaria: Chave do bloco
   textoTrancada: Trancada. A chave do bloco ficou na mesa da professora.
+  segundoItemNecessario: 
+  textoFaltaSegundoItem: 
   somTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
   somDestrancar: {fileID: 0}
 --- !u!65 &1232777575
@@ -26534,14 +26537,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353833285}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.38268346, z: -0, w: 0.9238795}
+  m_LocalRotation: {x: -0, y: -0.87497926, z: -0, w: 0.4841605}
   m_LocalPosition: {x: 12.45, y: 3, z: -13.5}
   m_LocalScale: {x: 1.2000003, y: 1.2, z: 1.2000003}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 824262145}
   m_Father: {fileID: 1099343737}
-  m_LocalEulerAnglesHint: {x: -0.009, y: 134.688, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -122.085, z: 0}
 --- !u!65 &1353833287
 BoxCollider:
   m_ObjectHideFlags: 0
