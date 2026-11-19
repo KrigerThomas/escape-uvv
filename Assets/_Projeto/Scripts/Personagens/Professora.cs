@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -85,6 +86,9 @@ public class Professora : MonoBehaviour
     /// <summary>Estado atual.</summary>
     public Estado EstadoAtual { get; private set; }
 
+    /// <summary>Verdadeiro depois que ela pegou o jogador (usado para abaixar a música).</summary>
+    public bool PegouJogador => pegouJogador;
+
     private NavMeshAgent agente;
     private Animator anim;
     private Transform jogador;
@@ -95,6 +99,7 @@ public class Professora : MonoBehaviour
     private float tempoSemVer;
     private Vector3 ultimaPosicaoVista;
     private bool pegouJogador;
+    private float volumePassos = 1f;
     private bool portaJaAbriu;
 
     /// <summary>Pega os componentes e encontra o jogador pela tag Player.</summary>
@@ -107,6 +112,12 @@ public class Professora : MonoBehaviour
 
         if (lanterna != null)
             corLanterna = lanterna.color;
+
+        if (passos != null)
+        {
+            volumePassos = passos.volume;
+            passos.volume = 0f;
+        }
 
         GameObject objJogador = GameObject.FindGameObjectWithTag("Player");
         if (objJogador != null)
@@ -276,7 +287,7 @@ public class Professora : MonoBehaviour
         agente.isStopped = true;
 
         if (passos != null)
-            passos.Stop();
+            StartCoroutine(AbaixarSom(passos, 0.8f));
 
         if (somPegou != null)
             UIManager.TocarSom2D(somPegou, 1f);
@@ -325,14 +336,33 @@ public class Professora : MonoBehaviour
 
         if (passos != null)
         {
+            // Os passos sobem e descem de volume aos poucos, para não cortar seco quando ela para.
             bool andando = velocidade > 0.2f;
             if (andando && !passos.isPlaying)
                 passos.Play();
-            else if (!andando && passos.isPlaying)
+
+            float alvo = andando ? volumePassos : 0f;
+            passos.volume = Mathf.MoveTowards(passos.volume, alvo, Time.deltaTime * volumePassos * 3f);
+            if (!andando && passos.volume <= 0.001f && passos.isPlaying)
                 passos.Pause();
 
-            passos.pitch = EstadoAtual == Estado.Perseguindo ? 1.5f : 1f;
+            float pitchAlvo = EstadoAtual == Estado.Perseguindo ? 1.5f : 1f;
+            passos.pitch = Mathf.MoveTowards(passos.pitch, pitchAlvo, Time.deltaTime);
         }
+    }
+
+    /// <summary>Abaixa o volume de um som até zero em alguns segundos e para.</summary>
+    private IEnumerator AbaixarSom(AudioSource som, float duracao)
+    {
+        float inicio = som.volume;
+        float t = 0f;
+        while (t < duracao)
+        {
+            t += Time.deltaTime;
+            som.volume = Mathf.Lerp(inicio, 0f, t / duracao);
+            yield return null;
+        }
+        som.Stop();
     }
 
     /// <summary>Distância no chão (sem contar a altura) até o jogador.</summary>

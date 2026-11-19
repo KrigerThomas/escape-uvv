@@ -42,6 +42,7 @@ public class TelaPreta : MonoBehaviour
     void Awake()
     {
         Instancia = this;
+        AudioListener.volume = 1f;
     }
 
     /// <summary>Roda a abertura (se houver) ou começa transparente.</summary>
@@ -80,6 +81,22 @@ public class TelaPreta : MonoBehaviour
         StopAllCoroutines();
         texto.text = frase;
         StartCoroutine(Fade(grupo.alpha, 1f));
+        StartCoroutine(AbaixarVolumeGeral());
+    }
+
+    /// <summary>Todo o som do jogo vai sumindo enquanto a tela escurece.</summary>
+    private IEnumerator AbaixarVolumeGeral()
+    {
+        float inicio = AudioListener.volume;
+        float duracao = tempoTransicao * 1.5f;
+        float t = 0f;
+        while (t < duracao)
+        {
+            t += Time.unscaledDeltaTime;
+            AudioListener.volume = Mathf.Lerp(inicio, 0f, t / duracao);
+            yield return null;
+        }
+        AudioListener.volume = 0f;
     }
 
     /// <summary>Muda a transparência aos poucos.</summary>
