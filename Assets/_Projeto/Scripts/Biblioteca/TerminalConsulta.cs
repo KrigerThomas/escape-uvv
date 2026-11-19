@@ -3,8 +3,9 @@ using UnityEngine;
 
 /// <summary>
 /// Terminal de consulta ao acervo (Nível 4). Apertando E abre um painel com a lista
-/// de livros que o jogador precisa achar e onde cada um está (corredor e andar).
-/// E ou Esc fecham o painel. O texto é editado direto no Inspector.
+/// de livros que o jogador precisa achar e onde cada um está (o lugar vem do SorteioLivros).
+/// Ao fechar pela primeira vez, a lista é impressa: o jogador ganha o item "Lista de livros"
+/// e pode abrir de novo em qualquer lugar com L.
 /// </summary>
 public class TerminalConsulta : Interagivel
 {
@@ -20,7 +21,13 @@ public class TerminalConsulta : Interagivel
     [Tooltip("Objetivo depois da primeira consulta.")]
     [TextArea] public string objetivoDepois = "Encontre os 3 livros no acervo.";
 
+    [Tooltip("Item que o jogador ganha ao imprimir a lista.")]
+    public string itemLista = "Lista de livros";
+
+    [TextArea] public string textoImpresso = "Lista impressa! Aperte L para ver de novo em qualquer lugar.";
+
     public AudioClip somTecla;
+    public AudioClip somImpressora;
 
     private bool aberto;
     private bool jaConsultou;
@@ -51,6 +58,8 @@ public class TerminalConsulta : Interagivel
     public override void Interagir()
     {
         UIManager.TocarSom2D(somTecla, 0.6f);
+        if (SorteioLivros.Instancia != null)
+            resultado = SorteioLivros.Instancia.TextoLista();
         if (textoPainel != null)
             textoPainel.text = resultado + "\n\n<size=70%><color=#9aa>Aperte E para fechar</color></size>";
 
@@ -65,8 +74,14 @@ public class TerminalConsulta : Interagivel
         UIManager.FecharPainelComMouse(painel);
         aberto = false;
 
-        if (!jaConsultou && UI != null && !string.IsNullOrEmpty(objetivoDepois))
-            UI.MostrarObjetivo(objetivoDepois);
+        if (!jaConsultou)
+        {
+            Inventario.Adicionar(itemLista);
+            UIManager.TocarSom2D(somImpressora, 0.7f);
+            Avisar(textoImpresso);
+            if (UI != null && !string.IsNullOrEmpty(objetivoDepois))
+                UI.MostrarObjetivo(objetivoDepois);
+        }
         jaConsultou = true;
         AtualizarDica();
     }

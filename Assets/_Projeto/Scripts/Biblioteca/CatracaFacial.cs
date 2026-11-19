@@ -22,6 +22,12 @@ public class CatracaFacial : MonoBehaviour
     [Tooltip("Objeto com as portinholas de vidro e o collider que bloqueia a passagem. Some quando a catraca libera.")]
     public GameObject bloqueio;
 
+    [Tooltip("Braço da portinhola (pivô na dobradiça). Gira para abrir quando a catraca libera. Opcional.")]
+    public Transform braco;
+
+    [Tooltip("Quantos graus o braço gira para abrir (negativo = para o outro lado).")]
+    public float anguloBraco = -90f;
+
     [Tooltip("Renderers das telas (o material delas troca de cor).")]
     public Renderer[] telas;
 
@@ -57,12 +63,16 @@ public class CatracaFacial : MonoBehaviour
 
     private bool ocupada;
     private MaterialPropertyBlock bloco;
+    private Quaternion bracoFechado;
+    private Coroutine giro;
 
     /// <summary>Começa fechada e com a tela azul.</summary>
     void Start()
     {
         GetComponent<Collider>().isTrigger = true;
         bloco = new MaterialPropertyBlock();
+        if (braco != null)
+            bracoFechado = braco.localRotation;
         Fechar();
         PintarTelas(corEspera);
         if (luzAlarme != null)
@@ -135,6 +145,7 @@ public class CatracaFacial : MonoBehaviour
         Avisar(texto);
         if (bloqueio != null)
             bloqueio.SetActive(false);
+        GirarBraco(true);
 
         yield return new WaitForSeconds(tempoAberta);
 
@@ -167,6 +178,30 @@ public class CatracaFacial : MonoBehaviour
     {
         if (bloqueio != null)
             bloqueio.SetActive(true);
+        GirarBraco(false);
+    }
+
+    /// <summary>Abre ou fecha o braço da portinhola, girando aos poucos.</summary>
+    private void GirarBraco(bool abrir)
+    {
+        if (braco == null || !isActiveAndEnabled)
+            return;
+        if (giro != null)
+            StopCoroutine(giro);
+        Quaternion alvo = abrir ? bracoFechado * Quaternion.Euler(0f, anguloBraco, 0f) : bracoFechado;
+        giro = StartCoroutine(Girar(alvo));
+    }
+
+    private IEnumerator Girar(Quaternion alvo)
+    {
+        Quaternion inicio = braco.localRotation;
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / 0.45f;
+            braco.localRotation = Quaternion.Slerp(inicio, alvo, Mathf.SmoothStep(0f, 1f, t));
+            yield return null;
+        }
     }
 
     /// <summary>Troca a cor (e o brilho) das telas.</summary>
