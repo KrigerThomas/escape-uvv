@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
   m_Fog: 1
-  m_FogColor: {r: 0.02, g: 0.025, b: 0.04, a: 1}
+  m_FogColor: {r: 0.055, g: 0.065, b: 0.085, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 4
-  m_LinearFogEnd: 30
+  m_LinearFogStart: 6
+  m_LinearFogEnd: 26
   m_AmbientSkyColor: {r: 0.075, g: 0.085, b: 0.12, a: 1}
   m_AmbientEquatorColor: {r: 0.05, g: 0.055, b: 0.07, a: 1}
   m_AmbientGroundColor: {r: 0.025, g: 0.025, b: 0.03, a: 1}
@@ -1592,15 +1592,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7403049046637437653, guid: 36398e57af3682647ab73e79814899f2, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0.02
+      value: 0.085
       objectReference: {fileID: 0}
     - target: {fileID: 7403049046637437653, guid: 36398e57af3682647ab73e79814899f2, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0.012
+      value: 0.065
       objectReference: {fileID: 0}
     - target: {fileID: 7403049046637437653, guid: 36398e57af3682647ab73e79814899f2, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0.01
+      value: 0.055
       objectReference: {fileID: 0}
     - target: {fileID: 8359456635344555290, guid: 36398e57af3682647ab73e79814899f2, type: 3}
       propertyPath: alvo
@@ -2895,7 +2895,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8, g: 0.85, b: 0.95, a: 0.3}
+      maxColor: {r: 0.8, g: 0.85, b: 0.95, a: 0.45}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2958,8 +2958,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 0.03
+      minMaxState: 0
+      scalar: 0.035
       minScalar: 0.015
       maxCurve:
         serializedVersion: 2
@@ -39015,7 +39015,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8, g: 0.85, b: 0.95, a: 0.3}
+      maxColor: {r: 0.8, g: 0.85, b: 0.95, a: 0.45}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -39078,8 +39078,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 0.03
+      minMaxState: 0
+      scalar: 0.035
       minScalar: 0.015
       maxCurve:
         serializedVersion: 2

@@ -27,6 +27,9 @@ public class ArmarioEsconderijo : Interagivel
     public AudioClip somPorta;
 
     private bool dentro;
+
+    /// <summary>Quadro em que o jogador entrou ou saiu de um armário (evita que o armário do lado reaja ao mesmo E).</summary>
+    private static int quadroDaTroca = -1;
     private GameObject jogador;
     private Rigidbody rb;
     private PlayerController controle;
@@ -46,6 +49,11 @@ public class ArmarioEsconderijo : Interagivel
                 Sair();
             return;
         }
+
+        // Os armários ficam lado a lado e as áreas se encostam: enquanto o jogador está
+        // dentro de um, ou no mesmo quadro em que entrou/saiu, os outros não reagem ao E.
+        if (JogadorDentro || Time.frameCount == quadroDaTroca)
+            return;
 
         base.Update();
     }
@@ -87,7 +95,8 @@ public class ArmarioEsconderijo : Interagivel
         posicaoAntes = jogador.transform.position;
 
         controle.enabled = false;
-        rb.linearVelocity = Vector3.zero;
+        if (!rb.isKinematic)
+            rb.linearVelocity = Vector3.zero;
         rb.isKinematic = true;
         foreach (Renderer r in partesJogador)
             r.enabled = false;
@@ -104,6 +113,7 @@ public class ArmarioEsconderijo : Interagivel
 
         dentro = true;
         JogadorDentro = true;
+        quadroDaTroca = Time.frameCount;
         EsconderDica();
         UIManager.TocarSom2D(somPorta, 0.7f);
     }
@@ -127,6 +137,7 @@ public class ArmarioEsconderijo : Interagivel
 
         dentro = false;
         JogadorDentro = false;
+        quadroDaTroca = Time.frameCount;
         UIManager.TocarSom2D(somPorta, 0.7f);
     }
 
