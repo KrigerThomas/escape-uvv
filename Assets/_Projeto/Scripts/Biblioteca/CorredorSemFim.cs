@@ -23,6 +23,9 @@ public class CorredorSemFim : MonoBehaviour
     [Tooltip("Objetos ligados quando o truque acaba (ex.: luzes do fundo, o livro).")]
     public GameObject[] ligarNoFim;
 
+    [Tooltip("Objetos desligados quando o truque acaba (ex.: a névoa que esconde o fundo).")]
+    public GameObject[] desligarNoFim;
+
     [Tooltip("Frases mostradas a cada volta (uma por volta).")]
     public string[] frases = { "...", "Essa placa de novo?", "Esse corredor não acaba..." };
 
@@ -73,6 +76,10 @@ public class CorredorSemFim : MonoBehaviour
     /// <summary>Desliga o truque e mostra o fim do corredor.</summary>
     private void Terminar()
     {
+        foreach (GameObject g in desligarNoFim)
+            if (g != null)
+                g.SetActive(false);
+
         foreach (GameObject g in ligarNoFim)
             if (g != null)
                 g.SetActive(true);

@@ -31,6 +31,12 @@ public class ItemPegavel : Interagivel
             textoAcao = "pegar: " + nomeItem;
     }
 
+    /// <summary>Nome mostrado nos avisos. Por padrão é o próprio nome do item.</summary>
+    protected virtual string NomeNaTela()
+    {
+        return nomeItem;
+    }
+
     /// <summary>Guarda o item, avisa, atualiza o objetivo e tira o objeto do cenário.</summary>
     public override void Interagir()
     {
@@ -38,12 +44,12 @@ public class ItemPegavel : Interagivel
         UIManager.TocarSom2D(somPegar, volume);
 
         if (contaNoObjetivo && GameManager.Instancia != null)
-            GameManager.Instancia.ColetarItem(nomeItem);
+            GameManager.Instancia.ColetarItem(NomeNaTela());
 
         if (!string.IsNullOrEmpty(mensagem))
             Avisar(mensagem);
         else if (!contaNoObjetivo)
-            Avisar("Você pegou: " + nomeItem);
+            Avisar("Você pegou: " + NomeNaTela());
 
         if (!string.IsNullOrEmpty(novoObjetivo) && UI != null)
             UI.MostrarObjetivo(novoObjetivo);
