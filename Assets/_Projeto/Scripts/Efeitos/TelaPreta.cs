@@ -26,6 +26,15 @@ public class TelaPreta : MonoBehaviour
     [Tooltip("Segundos com a tela preta antes de clarear.")]
     public float tempoAbertura = 4f;
 
+    [Tooltip("Frase curta quando o nível recomeça (a abertura completa só aparece na primeira vez).")]
+    public string textoRecomeco = "De novo...";
+
+    [Tooltip("Segundos da frase de recomeço.")]
+    public float tempoRecomeco = 1.2f;
+
+    /// <summary>Cenas em que a abertura completa já foi mostrada nesta sessão de jogo.</summary>
+    private static readonly System.Collections.Generic.HashSet<string> aberturasVistas = new System.Collections.Generic.HashSet<string>();
+
     [Tooltip("Segundos para clarear ou escurecer.")]
     public float tempoTransicao = 1.5f;
 
@@ -51,9 +60,12 @@ public class TelaPreta : MonoBehaviour
         if (jogador != null)
             jogador.enabled = false;
 
+        string cena = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        bool primeiraVez = aberturasVistas.Add(cena);
+
         grupo.alpha = 1f;
-        texto.text = textoAbertura;
-        yield return new WaitForSeconds(tempoAbertura);
+        texto.text = primeiraVez ? textoAbertura : textoRecomeco;
+        yield return new WaitForSeconds(primeiraVez ? tempoAbertura : tempoRecomeco);
 
         if (jogador != null)
             jogador.enabled = true;

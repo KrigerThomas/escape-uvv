@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("Marque em níveis em que a saída não depende de coletar nada (ex.: o labirinto do Nível 2).")]
     public bool saidaAbertaDesdeOInicio = false;
 
+    [Tooltip("Desmarque quando juntar os itens NÃO deve abrir a saída sozinho (ex.: Nível 4, onde ainda é preciso registrar o empréstimo e pegar a mochila). Nesse caso aparece o Texto Tudo Encontrado.")]
+    public bool destrancarAoCompletar = true;
+
     [Tooltip("Texto que aparece antes do nome do item no aviso da tela.")]
     public string prefixoAviso = "Você encontrou: ";
 
@@ -135,7 +138,7 @@ public class GameManager : MonoBehaviour
         if (ItensColetados < totalItens)
             return;
 
-        if (!PortaDestrancada)
+        if (!PortaDestrancada && destrancarAoCompletar)
             DestrancarPorta();
         else if (ui != null && !string.IsNullOrEmpty(textoTudoEncontrado))
             ui.MostrarObjetivo(textoTudoEncontrado);
