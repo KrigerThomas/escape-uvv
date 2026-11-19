@@ -62,11 +62,28 @@ public class EfeitosMedo : MonoBehaviour
         }
     }
 
+    /// <summary>Abaixa a música e o batimento até zero, aos poucos.</summary>
+    private void AbaixarTudo()
+    {
+        float passo = Time.deltaTime / 1.2f;
+        if (musicaPerseguicao != null)
+            musicaPerseguicao.volume = Mathf.MoveTowards(musicaPerseguicao.volume, 0f, passo * volumeMusica);
+        if (batimento != null)
+            batimento.volume = Mathf.MoveTowards(batimento.volume, 0f, passo);
+    }
+
     /// <summary>Calcula o medo e aplica na tela e nos sons.</summary>
     void Update()
     {
         if (professora == null || jogador == null)
             return;
+
+        // Quando ela pega o jogador, a música e o coração somem junto com a tela.
+        if (professora.PegouJogador)
+        {
+            AbaixarTudo();
+            return;
+        }
 
         bool perseguindo = professora.EstadoAtual == Professora.Estado.Perseguindo;
         float distancia = Vector3.Distance(professora.transform.position, jogador.position);

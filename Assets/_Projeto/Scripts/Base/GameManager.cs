@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         Instancia = this;
         Time.timeScale = 1f;
         Inventario.Limpar();
+        AudioListener.volume = 1f; // volta o som caso a cena anterior tenha terminado com o som abaixado
     }
 
     /// <summary>
