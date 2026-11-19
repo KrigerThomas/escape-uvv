@@ -2,17 +2,18 @@ using UnityEngine;
 using UnityEngine.AI;
 
 /// <summary>
-/// Professora do Nível 5. Anda pela sala com um NavMeshAgent seguindo os pontos de ronda
-/// e, quando vê o calouro, corre atrás dele. Se encostar no calouro, o nível reinicia.
+/// Professora do Nível 5. Anda pelo bloco com um NavMeshAgent seguindo os pontos de ronda,
+/// carregando uma lanterna. Quando vê o calouro, corre atrás dele. Se encostar, o nível reinicia.
 ///
 /// Estados:
 ///  - Ronda: vai de ponto em ponto, esperando um pouco em cada um.
 ///  - Perseguindo: corre até o jogador. Se perder o jogador de vista por alguns
 ///    segundos, desiste e volta para a ronda.
 ///
-/// Como ela "vê": o jogador precisa estar perto, na frente dela (dentro do ângulo de visão)
-/// e sem parede ou armário no meio (Raycast). Dentro de um Esconderijo ela não vê ninguém.
-/// Ela também "ouve" o jogador correndo (Shift) bem perto, mesmo de costas.
+/// Como ela "vê": o jogador precisa estar perto, na frente dela (dentro do ângulo de visão,
+/// o mesmo da lanterna) e sem parede ou móvel alto no meio (Linecast).
+/// Ela também ouve o jogador correndo perto, e vê de mais longe se a lanterna do celular estiver ligada.
+/// Dentro de um armário (ArmarioEsconderijo) ela não vê nem pega ninguém.
 /// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
 public class Professora : MonoBehaviour
@@ -25,63 +26,70 @@ public class Professora : MonoBehaviour
     public Transform[] pontosRonda;
 
     [Tooltip("Velocidade andando na ronda (metros por segundo).")]
-    public float velocidadeRonda = 1.8f;
+    public float velocidadeRonda = 1.6f;
 
-    [Tooltip("Segundos parada em cada ponto, olhando a sala.")]
-    public float esperaEmCadaPonto = 1.5f;
+    [Tooltip("Segundos parada em cada ponto, olhando em volta.")]
+    public float esperaEmCadaPonto = 2f;
 
     [Header("Visão")]
     [Tooltip("Até que distância ela enxerga o jogador.")]
-    public float distanciaVisao = 6.5f;
+    public float distanciaVisao = 7f;
 
-    [Tooltip("Ângulo total do campo de visão, em graus (90 = 45 para cada lado).")]
-    [Range(10f, 360f)] public float anguloVisao = 110f;
+    [Tooltip("Ângulo total do campo de visão, em graus. Deixe parecido com o ângulo da lanterna.")]
+    [Range(10f, 360f)] public float anguloVisao = 70f;
+
+    [Tooltip("Multiplica a distância de visão quando a lanterna do celular do jogador está ligada.")]
+    public float multiplicadorLanternaJogador = 1.6f;
 
     [Tooltip("Altura dos olhos, de onde sai o raio que testa se há algo no meio.")]
     public float alturaOlhos = 1.7f;
 
     [Header("Perseguição")]
     [Tooltip("Velocidade correndo atrás do jogador. Deixe menor que a corrida do jogador para dar para fugir.")]
-    public float velocidadePerseguicao = 4.2f;
+    public float velocidadePerseguicao = 4.4f;
 
     [Tooltip("Segundos sem ver o jogador até ela desistir e voltar para a ronda.")]
-    public float tempoParaDesistir = 3f;
+    public float tempoParaDesistir = 4f;
 
     [Tooltip("Distância em que ela alcança o jogador.")]
     public float distanciaPegar = 1.0f;
 
     [Tooltip("Raio em que ela ouve o jogador correndo, mesmo de costas. Use 0 para desligar.")]
-    public float raioAudicaoCorrida = 3f;
+    public float raioAudicaoCorrida = 3.5f;
 
-    [Tooltip("Quando a porta destrancar, ela percebe e vai atrás do jogador.")]
+    [Tooltip("Quando a porta destrancar, ela ouve o barulho e vai atrás do jogador.")]
     public bool perseguirQuandoPortaAbrir = true;
 
-    [Header("Sons (opcionais)")]
-    [Tooltip("Som quando ela vê o jogador.")]
+    [Header("Lanterna e sons")]
+    [Tooltip("Spot Light da lanterna dela (fica vermelha-alaranjada na perseguição).")]
+    public Light lanterna;
+
+    [Tooltip("Som dos passos em loop. Toca só enquanto ela anda, mais rápido quando corre.")]
+    public AudioSource passos;
+
+    [Tooltip("Som quando ela vê o jogador (\"Ei!\").")]
     public AudioClip somAvistou;
 
     [Tooltip("Som quando ela pega o jogador.")]
     public AudioClip somPegou;
 
-    [Tooltip("Música que toca só durante a perseguição.")]
-    public AudioSource musicaPerseguicao;
-
     [Header("Textos")]
-    public string textoAvistou = "A professora te viu! Corra!";
+    public string textoAvistou = "Ela te viu! Corra ou se esconda!";
     public string textoDesistiu = "Ufa... ela te perdeu de vista.";
-    public string textoPegou = "A professora te pegou! Voltando para o começo da sala...";
-    public string textoPortaAbriu = "A porta abriu, mas a professora ouviu o barulho! Corra para a saída!";
+    public string textoPegou = "A professora te pegou.";
+    public string textoPortaAbriu = "A porta fez barulho... ela ouviu! Corra!";
 
     [Tooltip("Segundos entre ser pego e o nível reiniciar.")]
-    public float tempoAntesDeReiniciar = 2.5f;
+    public float tempoAntesDeReiniciar = 3f;
 
-    /// <summary>Estado atual (aparece no Inspector em modo Debug).</summary>
+    /// <summary>Estado atual.</summary>
     public Estado EstadoAtual { get; private set; }
 
     private NavMeshAgent agente;
     private Animator anim;
     private Transform jogador;
     private PlayerController controleJogador;
+    private Color corLanterna;
     private int indicePonto;
     private float esperaRestante;
     private float tempoSemVer;
@@ -97,6 +105,9 @@ public class Professora : MonoBehaviour
         if (anim != null)
             anim.applyRootMotion = false;
 
+        if (lanterna != null)
+            corLanterna = lanterna.color;
+
         GameObject objJogador = GameObject.FindGameObjectWithTag("Player");
         if (objJogador != null)
         {
@@ -104,6 +115,7 @@ public class Professora : MonoBehaviour
             controleJogador = objJogador.GetComponent<PlayerController>();
         }
 
+        indicePonto = -1;
         VoltarParaRonda(false);
     }
 
@@ -128,10 +140,10 @@ public class Professora : MonoBehaviour
             Perseguir(ve);
         }
 
-        if (DistanciaAteJogador() <= distanciaPegar)
+        if (!ArmarioEsconderijo.JogadorDentro && DistanciaAteJogador() <= distanciaPegar)
             PegarJogador();
 
-        AtualizarAnimacao();
+        AtualizarAnimacaoESom();
     }
 
     /// <summary>Anda até o ponto de ronda atual; ao chegar, espera e segue para o próximo.</summary>
@@ -156,7 +168,6 @@ public class Professora : MonoBehaviour
     /// Corre até o jogador enquanto vê; sem ver, vai até o último lugar onde o viu.
     /// Depois de tempoParaDesistir segundos sem ver, volta para a ronda.
     /// </summary>
-    /// <param name="ve">Se o jogador está visível neste quadro.</param>
     private void Perseguir(bool ve)
     {
         if (ve)
@@ -176,7 +187,6 @@ public class Professora : MonoBehaviour
     }
 
     /// <summary>Muda para o estado de perseguição, acelera e toca o som de alerta.</summary>
-    /// <param name="aviso">Mensagem mostrada na tela.</param>
     public void ComecarPerseguicao(string aviso)
     {
         EstadoAtual = Estado.Perseguindo;
@@ -185,28 +195,27 @@ public class Professora : MonoBehaviour
         ultimaPosicaoVista = jogador.position;
 
         if (somAvistou != null)
-            AudioSource.PlayClipAtPoint(somAvistou, transform.position);
+            UIManager.TocarSom2D(somAvistou, 1f);
 
-        if (musicaPerseguicao != null && !musicaPerseguicao.isPlaying)
-            musicaPerseguicao.Play();
+        if (lanterna != null)
+            lanterna.color = new Color(1f, 0.55f, 0.4f);
 
         MostrarAviso(aviso);
     }
 
     /// <summary>Volta a andar devagar pelos pontos de ronda, começando pelo mais próximo.</summary>
-    /// <param name="avisar">Se deve mostrar o aviso de que ela desistiu.</param>
     private void VoltarParaRonda(bool avisar)
     {
         EstadoAtual = Estado.Ronda;
         agente.speed = velocidadeRonda;
         esperaRestante = esperaEmCadaPonto;
 
-        if (musicaPerseguicao != null)
-            musicaPerseguicao.Stop();
+        if (lanterna != null)
+            lanterna.color = corLanterna;
 
         if (pontosRonda != null && pontosRonda.Length > 0)
         {
-            indicePonto = PontoMaisProximo();
+            indicePonto = avisar ? PontoMaisProximo() : 0;
             agente.SetDestination(pontosRonda[indicePonto].position);
         }
 
@@ -218,10 +227,9 @@ public class Professora : MonoBehaviour
     /// Testa se ela enxerga o jogador: distância, ângulo e nada no meio do caminho.
     /// Também "ouve" o jogador correndo perto dela.
     /// </summary>
-    /// <returns>Verdadeiro se o jogador foi visto (ou ouvido).</returns>
     private bool VeJogador()
     {
-        if (Esconderijo.JogadorEscondido)
+        if (ArmarioEsconderijo.JogadorDentro || Esconderijo.JogadorEscondido)
             return false;
 
         float distancia = DistanciaAteJogador();
@@ -230,7 +238,8 @@ public class Professora : MonoBehaviour
         if (correndo && distancia <= raioAudicaoCorrida)
             return true;
 
-        if (distancia > distanciaVisao)
+        float alcance = distanciaVisao * (LanternaCelular.Ligada ? multiplicadorLanternaJogador : 1f);
+        if (distancia > alcance)
             return false;
 
         Vector3 direcao = jogador.position - transform.position;
@@ -260,17 +269,17 @@ public class Professora : MonoBehaviour
         }
     }
 
-    /// <summary>Para tudo, trava o jogador, avisa na tela e reinicia o nível depois de um tempo.</summary>
+    /// <summary>Para tudo, trava o jogador, escurece a tela e reinicia o nível depois de um tempo.</summary>
     private void PegarJogador()
     {
         pegouJogador = true;
         agente.isStopped = true;
 
-        if (musicaPerseguicao != null)
-            musicaPerseguicao.Stop();
+        if (passos != null)
+            passos.Stop();
 
         if (somPegou != null)
-            AudioSource.PlayClipAtPoint(somPegou, transform.position);
+            UIManager.TocarSom2D(somPegou, 1f);
 
         if (controleJogador != null)
         {
@@ -288,7 +297,11 @@ public class Professora : MonoBehaviour
         olharPara.y = transform.position.y;
         transform.LookAt(olharPara);
 
-        MostrarAviso(textoPegou);
+        if (TelaPreta.Instancia != null)
+            TelaPreta.Instancia.Escurecer(textoPegou);
+        else
+            MostrarAviso(textoPegou);
+
         Invoke(nameof(Reiniciar), tempoAntesDeReiniciar);
     }
 
@@ -299,14 +312,27 @@ public class Professora : MonoBehaviour
             GameManager.Instancia.ReiniciarNivel();
     }
 
-    /// <summary>Manda a velocidade atual para o Animator (parada, andando ou correndo).</summary>
-    private void AtualizarAnimacao()
+    /// <summary>Manda a velocidade para o Animator e liga/desliga o som dos passos.</summary>
+    private void AtualizarAnimacaoESom()
     {
-        if (anim == null)
-            return;
+        float velocidade = agente.velocity.magnitude;
 
-        anim.SetFloat("Velocidade", agente.velocity.magnitude, 0.1f, Time.deltaTime);
-        anim.SetBool("NoChao", true);
+        if (anim != null)
+        {
+            anim.SetFloat("Velocidade", velocidade, 0.1f, Time.deltaTime);
+            anim.SetBool("NoChao", true);
+        }
+
+        if (passos != null)
+        {
+            bool andando = velocidade > 0.2f;
+            if (andando && !passos.isPlaying)
+                passos.Play();
+            else if (!andando && passos.isPlaying)
+                passos.Pause();
+
+            passos.pitch = EstadoAtual == Estado.Perseguindo ? 1.5f : 1f;
+        }
     }
 
     /// <summary>Distância no chão (sem contar a altura) até o jogador.</summary>
@@ -345,7 +371,7 @@ public class Professora : MonoBehaviour
             GameManager.Instancia.ui.MostrarAviso(texto);
     }
 
-    /// <summary>Desenha na Scene View o alcance da visão (amarelo) e da audição (azul).</summary>
+    /// <summary>Desenha na Scene View o alcance da visão (amarelo), da audição (azul) e a rota (vermelho).</summary>
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
