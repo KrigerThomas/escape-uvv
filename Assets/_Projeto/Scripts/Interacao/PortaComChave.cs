@@ -14,6 +14,12 @@ public class PortaComChave : Interagivel
     [Tooltip("Aviso quando o jogador tenta abrir sem a chave.")]
     public string textoTrancada = "Trancada. A chave do bloco ficou com a professora.";
 
+    [Tooltip("Segundo item exigido (opcional). Ex.: no Nível 4, a porta pede o empréstimo E a mochila.")]
+    public string segundoItemNecessario = "";
+
+    [Tooltip("Aviso quando falta só o segundo item.")]
+    public string textoFaltaSegundoItem = "";
+
     [Header("Sons")]
     public AudioClip somTrancada;
     public AudioClip somDestrancar;
@@ -40,6 +46,13 @@ public class PortaComChave : Interagivel
         {
             UIManager.TocarSom2D(somTrancada, 0.8f);
             Avisar(textoTrancada);
+            return;
+        }
+
+        if (!string.IsNullOrEmpty(segundoItemNecessario) && !Inventario.Tem(segundoItemNecessario))
+        {
+            UIManager.TocarSom2D(somTrancada, 0.8f);
+            Avisar(textoFaltaSegundoItem);
             return;
         }
 

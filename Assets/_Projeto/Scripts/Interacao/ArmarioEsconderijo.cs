@@ -34,6 +34,22 @@ public class ArmarioEsconderijo : Interagivel
     private Renderer[] partesJogador;
     private Vector3 posicaoAntes;
 
+    /// <summary>
+    /// Dentro do armário, o próprio armário lê o E para sair (o jogador fica parado e invisível,
+    /// então a área de alcance pode deixar de detectá-lo). Fora, funciona como qualquer Interagivel.
+    /// </summary>
+    protected override void Update()
+    {
+        if (dentro)
+        {
+            if (Input.GetKeyDown(tecla) && !UIManager.MenuAberto)
+                Sair();
+            return;
+        }
+
+        base.Update();
+    }
+
     /// <summary>Texto da dica muda se o jogador já está dentro.</summary>
     protected override string TextoDica()
     {
@@ -88,11 +104,12 @@ public class ArmarioEsconderijo : Interagivel
 
         dentro = true;
         JogadorDentro = true;
+        EsconderDica();
         UIManager.TocarSom2D(somPorta, 0.7f);
     }
 
     /// <summary>Devolve o jogador na frente do armário e a câmera normal.</summary>
-    private void Sair()
+    public void Sair()
     {
         Vector3 destino = pontoSaida != null ? pontoSaida.position : posicaoAntes;
         jogador.transform.position = destino;
