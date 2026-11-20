@@ -58,7 +58,7 @@ public class CatracaFacial : MonoBehaviour
     public AudioClip somAlarme;
 
     [Header("Textos")]
-    public string textoMochila = "Não é permitido entrar com mochila, bolsa ou pasta. Use o guarda-volumes.";
+    public string textoMochila = "Você sabe que não pode entrar com mochila. Guarde no armário primeiro.";
     public string textoAlarme = "ALARME ANTIFURTO! Os livros não foram emprestados. Use o autoatendimento.";
 
     private bool ocupada;
@@ -103,7 +103,7 @@ public class CatracaFacial : MonoBehaviour
             PintarTelas(corEspera);
             Avisar("Reconhecimento facial...");
             yield return new WaitForSeconds(0.8f);
-            yield return Liberar("Acesso liberado. Bem-vindo à Biblioteca Central.");
+            yield return Liberar("Acesso liberado. Bem-vindo à Biblioteca UVV.");
         }
 
         ocupada = false;
