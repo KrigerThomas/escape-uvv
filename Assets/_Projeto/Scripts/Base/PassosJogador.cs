@@ -1,61 +1,111 @@
 using UnityEngine;
 
 /// <summary>
-/// Som dos passos do jogador. Toca um passo a cada tantos metros andados no chão,
-/// sorteando um dos sons da lista e variando um pouco o tom (para não ficar repetitivo).
-/// Correndo, os passos ficam mais rápidos naturalmente (anda mais metros por segundo).
-/// Sem sons na lista, o script não faz nada.
+/// Som dos passos do jogador, sincronizado com a animação: acompanha a altura dos dois pés
+/// do personagem e toca um passo no instante em que cada pé encosta no chão.
+/// Andando usa os sons de passo normal; correndo (Shift), os sons de corrida.
+/// Cada passo sorteia um som da lista e varia um pouco o tom (para não ficar repetitivo).
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class PassosJogador : MonoBehaviour
 {
-    [Tooltip("Sons de passo (vários, para variar).")]
+    [Tooltip("Sons de passo andando (vários, para variar).")]
     public AudioClip[] passos;
 
-    [Tooltip("Metros andados entre um passo e outro.")]
-    public float distanciaPasso = 0.8f;
+    [Tooltip("Sons de passo correndo. Vazio = usa os de andar.")]
+    public AudioClip[] passosCorrida;
 
-    [Range(0f, 1f)] public float volume = 0.35f;
+    [Tooltip("Acima desta velocidade conta como correndo.")]
+    public float velocidadeCorrida = 4.5f;
+
+    [Range(0f, 1f)] public float volume = 0.3f;
+    [Range(0f, 1f)] public float volumeCorrida = 0.4f;
 
     [Tooltip("Variação do tom de um passo para outro.")]
     public float variacaoTom = 0.08f;
 
     private Rigidbody rb;
     private AudioSource fonte;
-    private float andado;
+    private Transform peEsquerdo, peDireito;
+    private Pe esquerdo = new Pe(), direito = new Pe();
 
-    /// <summary>Cria a fonte de som dos passos.</summary>
+    /// <summary>Guarda a altura de um pé ao longo do tempo para saber quando ele pisa.</summary>
+    private class Pe
+    {
+        public float minimo = float.MaxValue, maximo = float.MinValue;
+        public bool noAr;
+    }
+
+    /// <summary>Acha os ossos dos pés e cria a fonte de som.</summary>
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         fonte = gameObject.AddComponent<AudioSource>();
         fonte.playOnAwake = false;
         fonte.spatialBlend = 0f;
+
+        Animator anim = GetComponent<Animator>();
+        if (anim != null && anim.isHuman)
+        {
+            peEsquerdo = anim.GetBoneTransform(HumanBodyBones.LeftFoot);
+            peDireito = anim.GetBoneTransform(HumanBodyBones.RightFoot);
+        }
     }
 
-    /// <summary>Soma a distância andada no chão e toca um passo quando completa a distância.</summary>
-    void Update()
+    /// <summary>Depois da animação do quadro, confere se algum pé acabou de pisar.</summary>
+    void LateUpdate()
     {
-        if (passos == null || passos.Length == 0 || rb.isKinematic || Time.timeScale == 0f)
+        if (peEsquerdo == null || peDireito == null || rb.isKinematic || Time.timeScale == 0f)
             return;
 
         Vector3 velocidade = rb.linearVelocity;
         velocidade.y = 0f;
         float rapidez = velocidade.magnitude;
+        bool andando = rapidez > 0.4f && NoChao();
 
-        if (rapidez < 0.4f || !NoChao())
+        Conferir(esquerdo, peEsquerdo, andando, rapidez);
+        Conferir(direito, peDireito, andando, rapidez);
+    }
+
+    /// <summary>
+    /// O pé sobe e desce durante a animação. Quando ele sobe bem (passo no ar) e depois
+    /// volta para perto do ponto mais baixo, é a hora em que encosta no chão: toca o passo.
+    /// </summary>
+    private void Conferir(Pe pe, Transform osso, bool andando, float rapidez)
+    {
+        float altura = osso.position.y - transform.position.y;
+
+        // Os limites acompanham a animação aos poucos (andar e correr mexem o pé de forma diferente).
+        pe.minimo = Mathf.Min(pe.minimo, altura) + Time.deltaTime * 0.05f;
+        pe.maximo = Mathf.Max(pe.maximo, altura) - Time.deltaTime * 0.05f;
+        if (pe.maximo < pe.minimo)
+            pe.maximo = pe.minimo;
+
+        float amplitude = pe.maximo - pe.minimo;
+        if (!andando || amplitude < 0.03f)
         {
-            andado = distanciaPasso * 0.6f; // o primeiro passo sai logo que começa a andar
+            pe.noAr = false;
             return;
         }
 
-        andado += rapidez * Time.deltaTime;
-        if (andado >= distanciaPasso)
+        if (altura > pe.minimo + amplitude * 0.5f)
+            pe.noAr = true;
+        else if (pe.noAr && altura < pe.minimo + amplitude * 0.15f)
         {
-            andado = 0f;
-            fonte.pitch = 1f + Random.Range(-variacaoTom, variacaoTom);
-            fonte.PlayOneShot(passos[Random.Range(0, passos.Length)], volume);
+            pe.noAr = false;
+            Tocar(rapidez > velocidadeCorrida);
         }
+    }
+
+    /// <summary>Toca um passo sorteado.</summary>
+    private void Tocar(bool correndo)
+    {
+        AudioClip[] lista = correndo && passosCorrida != null && passosCorrida.Length > 0 ? passosCorrida : passos;
+        if (lista == null || lista.Length == 0)
+            return;
+
+        fonte.pitch = 1f + Random.Range(-variacaoTom, variacaoTom);
+        fonte.PlayOneShot(lista[Random.Range(0, lista.Length)], correndo ? volumeCorrida : volume);
     }
 
     /// <summary>Confere se há chão logo abaixo dos pés.</summary>
