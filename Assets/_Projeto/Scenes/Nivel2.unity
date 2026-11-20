@@ -150,6 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   apenasAviso: 0
+  fraseSaida: 
+  tempoAntesDeTrocar: 1.8
 --- !u!65 &956729
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10399,6 +10401,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   apenasAviso: 1
+  fraseSaida: 
+  tempoAntesDeTrocar: 1.8
 --- !u!65 &316889689
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13218,6 +13222,7 @@ MonoBehaviour:
   somFalha: {fileID: 8300000, guid: 7f4c2da56dbabc04e9b1106538badddc, type: 3}
   volumeSom: 0.35
   distanciaSom: 14
+  sensibilidade: 0.3
 --- !u!1 &464580357
 GameObject:
   m_ObjectHideFlags: 0
@@ -28591,6 +28596,7 @@ MonoBehaviour:
   totalItens: 0
   rotuloContador: Itens
   saidaAbertaDesdeOInicio: 0
+  destrancarAoCompletar: 1
   prefixoAviso: "Voc\xEA encontrou: "
   portaSaida: {fileID: 1672511205}
   portaGiratoria: {fileID: 0}
@@ -28603,6 +28609,7 @@ MonoBehaviour:
   palavraSingular: item
   palavraPlural: itens
   textoTudoEncontrado: 
+  tempoFadeInSom: 2.5
 --- !u!4 &1021775053
 Transform:
   m_ObjectHideFlags: 0
@@ -47560,7 +47567,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -55506,6 +55513,7 @@ MonoBehaviour:
   somFalha: {fileID: 8300000, guid: 7f4c2da56dbabc04e9b1106538badddc, type: 3}
   volumeSom: 0.35
   distanciaSom: 14
+  sensibilidade: 0.3
 --- !u!108 &1815712221
 Light:
   m_ObjectHideFlags: 0
@@ -56193,7 +56201,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -59427,32 +59435,44 @@ PrefabInstance:
       value: Cat_05
       objectReference: {fileID: 0}
     - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5834
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5834
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5834
+      objectReference: {fileID: 0}
+    - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.0045278813
       objectReference: {fileID: 0}
     - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.006000012
       objectReference: {fileID: 0}
     - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.009011976
       objectReference: {fileID: 0}
     - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.98880804
       objectReference: {fileID: 0}
     - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.1491938
       objectReference: {fileID: 0}
     - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -59460,7 +59480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 17.16
       objectReference: {fileID: 0}
     - target: {fileID: 7901253731610359350, guid: 5a68bc8c82315d888cab98295f54361d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -60161,6 +60181,7 @@ MonoBehaviour:
   somFalha: {fileID: 8300000, guid: 7f4c2da56dbabc04e9b1106538badddc, type: 3}
   volumeSom: 0.35
   distanciaSom: 14
+  sensibilidade: 0.3
 --- !u!1001 &2040610833
 PrefabInstance:
   m_ObjectHideFlags: 0
