@@ -13219,8 +13219,8 @@ MonoBehaviour:
   lampada: {fileID: 178338517}
   intervaloEntreFalhas: {x: 2, y: 6}
   piscadasMaximas: 4
-  somFalha: {fileID: 8300000, guid: 7f4c2da56dbabc04e9b1106538badddc, type: 3}
-  volumeSom: 0.35
+  somFalha: {fileID: 8300000, guid: 29f94d01a0e07b14e98d358b47854550, type: 3}
+  volumeSom: 0.45
   distanciaSom: 14
   sensibilidade: 0.3
 --- !u!1 &464580357
@@ -55510,8 +55510,8 @@ MonoBehaviour:
   lampada: {fileID: 408575881}
   intervaloEntreFalhas: {x: 2, y: 6}
   piscadasMaximas: 4
-  somFalha: {fileID: 8300000, guid: 7f4c2da56dbabc04e9b1106538badddc, type: 3}
-  volumeSom: 0.35
+  somFalha: {fileID: 8300000, guid: 29f94d01a0e07b14e98d358b47854550, type: 3}
+  volumeSom: 0.45
   distanciaSom: 14
   sensibilidade: 0.3
 --- !u!108 &1815712221
@@ -56182,6 +56182,7 @@ MonoBehaviour:
   velocidadeGiro: 12
   distanciaSusto: 3
   somChiado: {fileID: 8300000, guid: 663429383c27b434a890dfd9749fd490, type: 3}
+  distanciaChiado: 10
   intervaloChiado: {x: 4, y: 8}
   fugasAteCansar: 4
   somPresente: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
@@ -60178,8 +60179,8 @@ MonoBehaviour:
   lampada: {fileID: 1076936444}
   intervaloEntreFalhas: {x: 2, y: 6}
   piscadasMaximas: 4
-  somFalha: {fileID: 8300000, guid: 7f4c2da56dbabc04e9b1106538badddc, type: 3}
-  volumeSom: 0.35
+  somFalha: {fileID: 8300000, guid: 29f94d01a0e07b14e98d358b47854550, type: 3}
+  volumeSom: 0.45
   distanciaSom: 14
   sensibilidade: 0.3
 --- !u!1001 &2040610833
