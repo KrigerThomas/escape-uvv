@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -30,7 +31,15 @@ public class ArmarioEsconderijo : Interagivel
     [Tooltip("Som ao sair do armário (vazio = usa o mesmo de entrar).")]
     public AudioClip somSair;
 
+    [Header("Tempo (combina com o som da porta)")]
+    [Tooltip("Segundos entre apertar E e a porta bater com o jogador já dentro.")]
+    public float tempoEntrar = 0.58f;
+
+    [Tooltip("Segundos entre apertar E e a porta abrir para o jogador sair.")]
+    public float tempoSair = 0.12f;
+
     private bool dentro;
+    private bool emTransicao;
 
     /// <summary>Quadro em que o jogador entrou ou saiu de um armário (evita que o armário do lado reaja ao mesmo E).</summary>
     private static int quadroDaTroca = -1;
@@ -47,6 +56,9 @@ public class ArmarioEsconderijo : Interagivel
     /// </summary>
     protected override void Update()
     {
+        if (emTransicao)
+            return;
+
         if (dentro)
         {
             if (Input.GetKeyDown(tecla) && !UIManager.MenuAberto)
@@ -71,6 +83,8 @@ public class ArmarioEsconderijo : Interagivel
     /// <summary>Entra ou sai, conforme o caso.</summary>
     public override void Interagir()
     {
+        if (emTransicao)
+            return;
         if (dentro)
             Sair();
         else
@@ -102,29 +116,70 @@ public class ArmarioEsconderijo : Interagivel
         if (!rb.isKinematic)
             rb.linearVelocity = Vector3.zero;
         rb.isKinematic = true;
-        foreach (Renderer r in partesJogador)
-            r.enabled = false;
 
         Animator anim = jogador.GetComponent<Animator>();
         if (anim != null)
             anim.SetFloat("Velocidade", 0f);
 
-        if (cameraSegue != null)
-            cameraSegue.enabled = false;
-
-        if (painelFrestas != null)
-            painelFrestas.SetActive(true);
-
-        dentro = true;
         JogadorDentro = true;
         quadroDaTroca = Time.frameCount;
         EsconderDica();
         UIManager.TocarSom2D(somPorta, 0.7f);
+        StartCoroutine(EntrarAosPoucos());
+    }
+
+    /// <summary>
+    /// A porta abre no começo do som: o jogador vira e dá um passo para dentro.
+    /// Quando a porta bate (fim do tempo), ele some e a câmera vai para as frestas.
+    /// </summary>
+    private IEnumerator EntrarAosPoucos()
+    {
+        emTransicao = true;
+        Vector3 inicio = jogador.transform.position;
+        Vector3 alvo = pontoCamera != null ? pontoCamera.position : transform.position;
+        alvo.y = inicio.y;
+        Vector3 olhar = alvo - inicio;
+        olhar.y = 0f;
+        if (olhar.sqrMagnitude > 0.001f)
+            jogador.transform.rotation = Quaternion.LookRotation(olhar);
+
+        float t = 0f;
+        while (t < tempoEntrar)
+        {
+            t += Time.deltaTime;
+            float k = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01((t - 0.1f) / (tempoEntrar - 0.15f)));
+            Vector3 p = Vector3.Lerp(inicio, alvo, k * 0.8f);
+            jogador.transform.position = p;
+            rb.position = p;
+            yield return null;
+        }
+
+        foreach (Renderer r in partesJogador)
+            r.enabled = false;
+        if (cameraSegue != null)
+            cameraSegue.enabled = false;
+        if (painelFrestas != null)
+            painelFrestas.SetActive(true);
+
+        dentro = true;
+        emTransicao = false;
     }
 
     /// <summary>Devolve o jogador na frente do armário e a câmera normal.</summary>
     public void Sair()
     {
+        if (emTransicao)
+            return;
+        UIManager.TocarSom2D(somSair != null ? somSair : somPorta, 0.7f);
+        StartCoroutine(SairAosPoucos());
+    }
+
+    /// <summary>Espera a porta abrir (começo do som) e devolve o jogador na frente do armário.</summary>
+    private IEnumerator SairAosPoucos()
+    {
+        emTransicao = true;
+        yield return new WaitForSeconds(tempoSair);
+
         Vector3 destino = pontoSaida != null ? pontoSaida.position : posicaoAntes;
         jogador.transform.position = destino;
         rb.position = destino;
@@ -142,7 +197,7 @@ public class ArmarioEsconderijo : Interagivel
         dentro = false;
         JogadorDentro = false;
         quadroDaTroca = Time.frameCount;
-        UIManager.TocarSom2D(somSair != null ? somSair : somPorta, 0.7f);
+        emTransicao = false;
     }
 
     /// <summary>Mantém a câmera presa nas frestas enquanto o jogador está dentro.</summary>
