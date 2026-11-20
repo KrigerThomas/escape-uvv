@@ -190,6 +190,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 169bfb18d42f635438005bcb4caab158, type: 3}
   - {fileID: 8300000, guid: 807d49a016670444b986ea10621e203b, type: 3}
   - {fileID: 8300000, guid: 59a9d800003cb874786ca0202934a4d7, type: 3}
-  distanciaPasso: 0.8
+  passosCorrida:
+  - {fileID: 8300000, guid: 44ca773f7fea4904389b8dcc72b15155, type: 3}
+  - {fileID: 8300000, guid: adf526c1e2b1b18429ea1e65f99db376, type: 3}
+  - {fileID: 8300000, guid: b43ed5672a2c83d45945f7c893656a18, type: 3}
+  - {fileID: 8300000, guid: eb656695bb238584ca390a02eebdc1f6, type: 3}
+  - {fileID: 8300000, guid: 75f7dab25fbf2584599e3a404d4d035e, type: 3}
+  - {fileID: 8300000, guid: 580395aa7eb9df7458002a36626f58e4, type: 3}
+  - {fileID: 8300000, guid: cf22cbc7166ba2845a2e5b92c3d1ab43, type: 3}
+  - {fileID: 8300000, guid: b6e939e54ca23f841ac83e1ce9133a6d, type: 3}
+  - {fileID: 8300000, guid: 74544ae7969112c4b88040e4ec943768, type: 3}
+  - {fileID: 8300000, guid: dc98e5672af648c428c3d05bd0c8ffa8, type: 3}
+  velocidadeCorrida: 4.75
   volume: 0.3
+  volumeCorrida: 0.38
   variacaoTom: 0.08

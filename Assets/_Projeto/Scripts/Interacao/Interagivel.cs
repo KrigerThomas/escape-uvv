@@ -14,7 +14,7 @@ using UnityEngine;
 public abstract class Interagivel : MonoBehaviour
 {
     /// <summary>A interação mais recente em que o jogador entrou (a que responde ao E).</summary>
-    public static Interagivel Atual { get; private set; }
+    public static Interagivel Atual { get; protected set; }
 
     [Header("Interação")]
     [Tooltip("Texto depois de \"Aperte E para\". Ex.: pegar a chave, abrir a porta.")]

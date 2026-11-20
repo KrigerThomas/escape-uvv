@@ -24,6 +24,9 @@ public class PassosJogador : MonoBehaviour
     [Tooltip("Variação do tom de um passo para outro.")]
     public float variacaoTom = 0.08f;
 
+    /// <summary>Momento (Time.time) do último passo tocado. Útil para conferir a sincronia.</summary>
+    public float UltimoPasso { get; private set; }
+
     private Rigidbody rb;
     private AudioSource fonte;
     private Transform peEsquerdo, peDireito;
@@ -33,7 +36,8 @@ public class PassosJogador : MonoBehaviour
     private class Pe
     {
         public float minimo = float.MaxValue, maximo = float.MinValue;
-        public bool noAr;
+        public float anterior;
+        public bool noAr, descendo;
     }
 
     /// <summary>Acha os ossos dos pés e cria a fonte de som.</summary>
@@ -85,16 +89,25 @@ public class PassosJogador : MonoBehaviour
         if (!andando || amplitude < 0.03f)
         {
             pe.noAr = false;
+            pe.anterior = altura;
             return;
         }
 
+        // O calcanhar bate no chão no primeiro ponto mais baixo depois do pé subir:
+        // o pé vinha descendo e começa a subir de novo (ou chega bem perto do chão).
+        bool parouDeDescer = pe.descendo && altura > pe.anterior && pe.anterior < pe.minimo + amplitude * 0.5f;
+        bool encostou = altura < pe.minimo + amplitude * 0.15f;
+
         if (altura > pe.minimo + amplitude * 0.5f)
             pe.noAr = true;
-        else if (pe.noAr && altura < pe.minimo + amplitude * 0.15f)
+        else if (pe.noAr && (parouDeDescer || encostou))
         {
             pe.noAr = false;
             Tocar(rapidez > velocidadeCorrida);
         }
+
+        pe.descendo = altura < pe.anterior;
+        pe.anterior = altura;
     }
 
     /// <summary>Toca um passo sorteado.</summary>
@@ -104,6 +117,7 @@ public class PassosJogador : MonoBehaviour
         if (lista == null || lista.Length == 0)
             return;
 
+        UltimoPasso = Time.time;
         fonte.pitch = 1f + Random.Range(-variacaoTom, variacaoTom);
         fonte.PlayOneShot(lista[Random.Range(0, lista.Length)], correndo ? volumeCorrida : volume);
     }

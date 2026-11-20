@@ -74,6 +74,12 @@ public class ArmarioEsconderijo : Interagivel
         base.Update();
     }
 
+    /// <summary>Sem dica enquanto a porta abre/fecha, e nos armários vizinhos com o jogador escondido.</summary>
+    public override bool PodeInteragir()
+    {
+        return !emTransicao && (dentro || !JogadorDentro);
+    }
+
     /// <summary>Texto da dica muda se o jogador já está dentro.</summary>
     protected override string TextoDica()
     {
@@ -163,6 +169,8 @@ public class ArmarioEsconderijo : Interagivel
 
         dentro = true;
         emTransicao = false;
+        Atual = this;
+        AtualizarDica();
     }
 
     /// <summary>Devolve o jogador na frente do armário e a câmera normal.</summary>
@@ -171,6 +179,7 @@ public class ArmarioEsconderijo : Interagivel
         if (emTransicao)
             return;
         UIManager.TocarSom2D(somSair != null ? somSair : somPorta, 0.7f);
+        EsconderDica();
         StartCoroutine(SairAosPoucos());
     }
 
