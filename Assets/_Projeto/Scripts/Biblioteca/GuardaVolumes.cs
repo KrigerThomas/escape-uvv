@@ -67,7 +67,7 @@ public class GuardaVolumes : Interagivel
             return;
         }
 
-        if (!Inventario.Tem(itemEmprestimo))
+        if (!string.IsNullOrEmpty(itemEmprestimo) && !Inventario.Tem(itemEmprestimo))
         {
             Avisar(textoAindaNao);
             return;

@@ -24,6 +24,7 @@ public class TelaFimDeJogo : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
+        AudioListener.volume = 1f; // a saída do Nível 5 deixa o som zerado na tela preta
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 

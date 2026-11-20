@@ -179,7 +179,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db96ab5e42fe232449b32720e4cae658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  passos: []
+  passos:
+  - {fileID: 8300000, guid: 428af3e9f049dc7419bceced5a6e1fa2, type: 3}
+  - {fileID: 8300000, guid: f89aa71d9ebf17440b04ed1e57844c07, type: 3}
+  - {fileID: 8300000, guid: bf02aae2dcbfd274fb2aaaef93b56954, type: 3}
+  - {fileID: 8300000, guid: fe3168746b002d3468625fc99fe71033, type: 3}
+  - {fileID: 8300000, guid: 6d0f32483edfa1f4aa174deff235f7f4, type: 3}
+  - {fileID: 8300000, guid: bcc6f232ef10a034a980cdea755f73c0, type: 3}
+  - {fileID: 8300000, guid: f66146ce98d0d304b91d528ed81db5ab, type: 3}
+  - {fileID: 8300000, guid: 169bfb18d42f635438005bcb4caab158, type: 3}
+  - {fileID: 8300000, guid: 807d49a016670444b986ea10621e203b, type: 3}
+  - {fileID: 8300000, guid: 59a9d800003cb874786ca0202934a4d7, type: 3}
   distanciaPasso: 0.8
-  volume: 0.35
+  volume: 0.3
   variacaoTom: 0.08

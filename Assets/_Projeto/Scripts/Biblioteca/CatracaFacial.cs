@@ -221,6 +221,21 @@ public class CatracaFacial : MonoBehaviour
         }
     }
 
+    /// <summary>Sem energia: telas apagadas e passagem aberta de vez (sem alarme).</summary>
+    public void Desligar()
+    {
+        StopAllCoroutines();
+        ocupada = true;
+        if (bloqueio != null)
+            bloqueio.SetActive(false);
+        if (braco != null)
+            braco.localRotation = bracoFechado * Quaternion.Euler(0f, anguloBraco, 0f);
+        if (luzAlarme != null)
+            luzAlarme.enabled = false;
+        PintarTelas(Color.black);
+        GetComponent<Collider>().enabled = false;
+    }
+
     /// <summary>Mostra um aviso na tela do jogador.</summary>
     private void Avisar(string texto)
     {
