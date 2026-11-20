@@ -24,7 +24,11 @@ public class ArmarioEsconderijo : Interagivel
     [Tooltip("Distância em que a professora, correndo atrás, impede o jogador de se esconder.")]
     public float distanciaSegura = 4f;
 
+    [Tooltip("Som ao entrar no armário.")]
     public AudioClip somPorta;
+
+    [Tooltip("Som ao sair do armário (vazio = usa o mesmo de entrar).")]
+    public AudioClip somSair;
 
     private bool dentro;
 
@@ -138,7 +142,7 @@ public class ArmarioEsconderijo : Interagivel
         dentro = false;
         JogadorDentro = false;
         quadroDaTroca = Time.frameCount;
-        UIManager.TocarSom2D(somPorta, 0.7f);
+        UIManager.TocarSom2D(somSair != null ? somSair : somPorta, 0.7f);
     }
 
     /// <summary>Mantém a câmera presa nas frestas enquanto o jogador está dentro.</summary>

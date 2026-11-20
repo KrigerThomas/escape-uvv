@@ -58,7 +58,7 @@ public class SorteioLivros : MonoBehaviour
     /// <summary>Texto da lista: título, número de chamada e onde está. Livro já pego aparece riscado.</summary>
     public string TextoLista()
     {
-        StringBuilder texto = new StringBuilder("<b>CONSULTA AO ACERVO</b> · Biblioteca Central\n");
+        StringBuilder texto = new StringBuilder("<b>Livros para pegar</b>\n<size=80%>Consulta ao acervo · Biblioteca Central</size>\n");
         int numero = 1;
         foreach (LivroSorteado item in livros)
         {
@@ -68,7 +68,7 @@ public class SorteioLivros : MonoBehaviour
             bool pego = Inventario.Tem("Livro: " + item.livro.titulo);
             string linha = numero + ". <b>" + item.livro.titulo + "</b> · " + item.chamada + "\n    " + item.lugarSorteado;
             texto.Append("\n");
-            texto.Append(pego ? "<color=#7a8><s>" + linha + "</s>  (pego)</color>" : linha);
+            texto.Append(pego ? "<color=#6b6f86><s>" + linha + "</s>  (pego)</color>" : linha);
             texto.Append("\n");
             numero++;
         }

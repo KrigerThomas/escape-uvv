@@ -42,7 +42,6 @@ public class TelaPreta : MonoBehaviour
     void Awake()
     {
         Instancia = this;
-        AudioListener.volume = 1f;
     }
 
     /// <summary>Roda a abertura (se houver) ou começa transparente.</summary>
@@ -82,6 +81,15 @@ public class TelaPreta : MonoBehaviour
         texto.text = frase;
         StartCoroutine(Fade(grupo.alpha, 1f));
         StartCoroutine(AbaixarVolumeGeral());
+    }
+
+    /// <summary>Corta para a tela preta na hora e silencia tudo (fim do susto).</summary>
+    public void EscurecerNaHora(string frase)
+    {
+        StopAllCoroutines();
+        grupo.alpha = 1f;
+        texto.text = frase;
+        AudioListener.volume = 0f;
     }
 
     /// <summary>Todo o som do jogo vai sumindo enquanto a tela escurece.</summary>

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -73,7 +74,23 @@ public class GameManager : MonoBehaviour
         Instancia = this;
         Time.timeScale = 1f;
         Inventario.Limpar();
-        AudioListener.volume = 1f; // volta o som caso a cena anterior tenha terminado com o som abaixado
+        AudioListener.volume = 0f; // o som entra aos poucos (ver SomEntrando)
+    }
+
+    [Tooltip("Segundos para o som do nível subir do silêncio até o volume normal.")]
+    public float tempoFadeInSom = 2.5f;
+
+    /// <summary>No começo do nível o som sobe aos poucos, em vez de começar alto de uma vez.</summary>
+    private IEnumerator SomEntrando()
+    {
+        float t = 0f;
+        while (t < tempoFadeInSom)
+        {
+            t += Time.unscaledDeltaTime;
+            AudioListener.volume = Mathf.Clamp01(t / tempoFadeInSom);
+            yield return null;
+        }
+        AudioListener.volume = 1f;
     }
 
     /// <summary>
@@ -82,6 +99,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Start()
     {
+        StartCoroutine(SomEntrando());
+
         if (saidaAbertaDesdeOInicio)
         {
             PortaDestrancada = true;

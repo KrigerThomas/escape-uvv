@@ -308,12 +308,18 @@ public class Professora : MonoBehaviour
         olharPara.y = transform.position.y;
         transform.LookAt(olharPara);
 
-        if (TelaPreta.Instancia != null)
+        float tempoSusto = 0f;
+        if (SustoProfessora.Instancia != null)
+        {
+            SustoProfessora.Instancia.Disparar(transform, textoPegou);
+            tempoSusto = SustoProfessora.Instancia.duracao;
+        }
+        else if (TelaPreta.Instancia != null)
             TelaPreta.Instancia.Escurecer(textoPegou);
         else
             MostrarAviso(textoPegou);
 
-        Invoke(nameof(Reiniciar), tempoAntesDeReiniciar);
+        Invoke(nameof(Reiniciar), tempoAntesDeReiniciar + tempoSusto);
     }
 
     /// <summary>Reinicia o nível pelo GameManager.</summary>
