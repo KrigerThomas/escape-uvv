@@ -33,10 +33,10 @@ public class ArmarioEsconderijo : Interagivel
 
     [Header("Tempo (combina com o som da porta)")]
     [Tooltip("Segundos entre apertar E e a porta bater com o jogador já dentro.")]
-    public float tempoEntrar = 0.58f;
+    public float tempoEntrar = 0f;
 
     [Tooltip("Segundos entre apertar E e a porta abrir para o jogador sair.")]
-    public float tempoSair = 0.12f;
+    public float tempoSair = 0f;
 
     private bool dentro;
     private bool emTransicao;
@@ -150,7 +150,7 @@ public class ArmarioEsconderijo : Interagivel
             jogador.transform.rotation = Quaternion.LookRotation(olhar);
 
         float t = 0f;
-        while (t < tempoEntrar)
+        while (tempoEntrar > 0.05f && t < tempoEntrar)
         {
             t += Time.deltaTime;
             float k = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01((t - 0.1f) / (tempoEntrar - 0.15f)));
@@ -187,7 +187,8 @@ public class ArmarioEsconderijo : Interagivel
     private IEnumerator SairAosPoucos()
     {
         emTransicao = true;
-        yield return new WaitForSeconds(tempoSair);
+        if (tempoSair > 0f)
+            yield return new WaitForSeconds(tempoSair);
 
         Vector3 destino = pontoSaida != null ? pontoSaida.position : posicaoAntes;
         jogador.transform.position = destino;

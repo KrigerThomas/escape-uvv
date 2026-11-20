@@ -21,6 +21,10 @@ public class PassosJogador : MonoBehaviour
     [Range(0f, 1f)] public float volume = 0.3f;
     [Range(0f, 1f)] public float volumeCorrida = 0.4f;
 
+    [Tooltip("Tempo mínimo entre dois passos andando e correndo (evita passo dobrado quando a animação troca).")]
+    public float intervaloMinimoAndando = 0.28f;
+    public float intervaloMinimoCorrendo = 0.18f;
+
     [Tooltip("Variação do tom de um passo para outro.")]
     public float variacaoTom = 0.08f;
 
@@ -113,6 +117,8 @@ public class PassosJogador : MonoBehaviour
     /// <summary>Toca um passo sorteado.</summary>
     private void Tocar(bool correndo)
     {
+        if (Time.time - UltimoPasso < (correndo ? intervaloMinimoCorrendo : intervaloMinimoAndando))
+            return;
         AudioClip[] lista = correndo && passosCorrida != null && passosCorrida.Length > 0 ? passosCorrida : passos;
         if (lista == null || lista.Length == 0)
             return;

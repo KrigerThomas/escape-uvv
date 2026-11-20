@@ -28,6 +28,11 @@ public class EventosBiblioteca : MonoBehaviour
     [Header("Sons")]
     public AudioSource zumbido;
 
+    [Tooltip("Som de quando a energia cai.")]
+    public AudioClip somQuedaEnergia;
+
+    [Range(0f, 1f)] public float volumeQuedaEnergia = 0.8f;
+
     [Tooltip("Scripts desligados quando a energia cai (ex.: livros caindo ao longe).")]
     public Behaviour[] desligarNoApagao;
 
@@ -112,6 +117,7 @@ public class EventosBiblioteca : MonoBehaviour
         apagou = true;
         yield return Piscar(1.4f);
         Ligar(false);
+        UIManager.TocarSom2D(somQuedaEnergia, volumeQuedaEnergia);
         foreach (GameObject g in esconderNoApagao)
             if (g != null)
                 g.SetActive(false);

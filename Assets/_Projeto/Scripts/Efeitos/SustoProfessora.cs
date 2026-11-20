@@ -27,7 +27,7 @@ public class SustoProfessora : MonoBehaviour
     public float duracao = 1.1f;
 
     [Tooltip("Força do tremor da câmera.")]
-    public float tremor = 0.05f;
+    public float tremor = 0.025f;
 
     [Tooltip("Distância da câmera até o rosto dela.")]
     public float distanciaRosto = 0.65f;
@@ -64,7 +64,16 @@ public class SustoProfessora : MonoBehaviour
         Animator anim = professora.GetComponentInChildren<Animator>();
         Transform cabeca = anim != null && anim.isHuman ? anim.GetBoneTransform(HumanBodyBones.Head) : null;
         Vector3 rosto = cabeca != null ? cabeca.position + Vector3.up * 0.09f : professora.position + Vector3.up * alturaRosto;
-        Vector3 posicaoCamera = rosto + professora.forward * distanciaRosto;
+        // A câmera fica entre o rosto dela e o jogador (não depende de para onde ela está virada).
+        Vector3 lado = cam != null ? cam.transform.position - rosto : professora.forward;
+        lado.y = 0f;
+        if (lado.sqrMagnitude < 0.01f)
+            lado = professora.forward;
+        lado.Normalize();
+        Vector3 posicaoCamera = rosto + lado * distanciaRosto;
+        professora.rotation = Quaternion.LookRotation(-lado);
+        if (anim != null)
+            anim.speed = 0f;
         float campoOriginal = cam != null ? cam.fieldOfView : 60f;
 
         // Luz fraca de baixo para cima no rosto dela (no escuro não daria para ver nada).
@@ -92,7 +101,7 @@ public class SustoProfessora : MonoBehaviour
             if (cam != null)
             {
                 cam.transform.position = posicaoCamera + Random.insideUnitSphere * tremor * forca;
-                cam.transform.LookAt(rosto + Random.insideUnitSphere * 0.03f);
+                cam.transform.LookAt(rosto + Random.insideUnitSphere * 0.01f);
                 cam.fieldOfView = Mathf.Lerp(campoOriginal, 38f, Mathf.Clamp01(t * 6f));
             }
 

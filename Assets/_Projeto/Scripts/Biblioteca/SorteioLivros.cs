@@ -58,7 +58,7 @@ public class SorteioLivros : MonoBehaviour
     /// <summary>Texto da lista: título, número de chamada e onde está. Livro já pego aparece riscado.</summary>
     public string TextoLista()
     {
-        StringBuilder texto = new StringBuilder("<b>Livros para pegar</b>\n<size=80%>Consulta ao acervo · Biblioteca Central</size>\n");
+        StringBuilder texto = new StringBuilder("<b>Livros para pegar</b>\n<size=80%>Consulta ao acervo · Biblioteca UVV</size>\n");
         int numero = 1;
         foreach (LivroSorteado item in livros)
         {

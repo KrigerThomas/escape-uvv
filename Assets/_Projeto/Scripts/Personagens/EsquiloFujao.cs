@@ -31,6 +31,9 @@ public class EsquiloFujao : MonoBehaviour
 
     [Header("Sons")]
     public AudioClip somChiado;
+    [Tooltip("Só chia sozinho (parado) se o jogador estiver até esta distância.")]
+    public float distanciaChiado = 10f;
+
     [Tooltip("Tempo mínimo e máximo entre chiados quando ele está parado.")]
     public Vector2 intervaloChiado = new Vector2(4f, 8f);
 
@@ -64,7 +67,7 @@ public class EsquiloFujao : MonoBehaviour
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 1f;
         audioSource.minDistance = 1f;
-        audioSource.maxDistance = 28f;
+        audioSource.maxDistance = 16f;
         audioSource.rolloffMode = AudioRolloffMode.Linear;
 
         jogador = AvisoNaTela.AcharJogador();
@@ -191,7 +194,9 @@ public class EsquiloFujao : MonoBehaviour
         if (timerChiado <= 0f)
         {
             timerChiado = Random.Range(intervaloChiado.x, intervaloChiado.y);
-            Chiar();
+            // Escondido longe no pé da árvore ele fica quieto (antes chiava sem ninguém ver).
+            if (jogador != null && AvisoNaTela.DistanciaPlana(transform.position, jogador.position) < distanciaChiado)
+                Chiar();
         }
     }
 
