@@ -70,10 +70,19 @@ public class SustoProfessora : MonoBehaviour
         if (lado.sqrMagnitude < 0.01f)
             lado = professora.forward;
         lado.Normalize();
-        Vector3 posicaoCamera = rosto + lado * distanciaRosto;
+        // Ela para e vira de frente para a câmera; a cabeça muda de lugar ao girar, então o rosto é medido de novo.
+        UnityEngine.AI.NavMeshAgent agente = professora.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        if (agente != null && agente.isOnNavMesh)
+        {
+            agente.isStopped = true;
+            agente.updateRotation = false;
+        }
         professora.rotation = Quaternion.LookRotation(-lado);
         if (anim != null)
             anim.speed = 0f;
+        if (cabeca != null)
+            rosto = cabeca.position + Vector3.up * 0.09f;
+        Vector3 posicaoCamera = rosto + lado * distanciaRosto;
         float campoOriginal = cam != null ? cam.fieldOfView : 60f;
 
         // Luz fraca de baixo para cima no rosto dela (no escuro não daria para ver nada).
