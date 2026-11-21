@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5ee1cb32cf825458f36e5e7109dbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeItem: "Livro de C\xE1lculo"
+  nomeItem: "o livro de C\xE1lculo"
   velocidadeGiro: 90
   alturaFlutuacao: 0.08
   efeitoColeta: {fileID: 5257402744445269917, guid: 89d58c592c817a24494e5d27e37ac950, type: 3}

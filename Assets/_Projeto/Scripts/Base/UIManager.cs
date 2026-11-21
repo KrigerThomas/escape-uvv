@@ -416,6 +416,11 @@ public class UIManager : MonoBehaviour
     public void AbrirPausa()
     {
         Pausado = true;
+        if (grupoMensagem != null)
+        {
+            grupoMensagem.alpha = 0f;   // a pausa esconde a notificação que estiver na tela
+            etapaMensagem = 0;
+        }
         if (textoPausaLocal != null)
             textoPausaLocal.text = nomeDoLocal;
         if (textoPausaNivel != null)

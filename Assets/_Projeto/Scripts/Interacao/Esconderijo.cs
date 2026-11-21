@@ -12,7 +12,7 @@ public class Esconderijo : MonoBehaviour
     public static bool JogadorEscondido { get; private set; }
 
     [Tooltip("Mensagem mostrada ao entrar no esconderijo. Deixe vazio para não mostrar nada.")]
-    public string textoAoEntrar = "Você se escondeu atrás dos armários.";
+    public string textoAoEntrar = "Você se escondeu atrás dos armários";
 
     /// <summary>Garante que o collider seja um trigger.</summary>
     void Reset()

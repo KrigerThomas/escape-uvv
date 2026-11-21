@@ -75,10 +75,10 @@ public class Professora : MonoBehaviour
     public AudioClip somPegou;
 
     [Header("Textos")]
-    public string textoAvistou = "Ela te viu! Corra ou se esconda!";
-    public string textoDesistiu = "Ufa... ela te perdeu de vista.";
-    public string textoPegou = "A professora te pegou.";
-    public string textoPortaAbriu = "A porta fez barulho... ela ouviu! Corra!";
+    public string textoAvistou = "Ela te viu, corra ou se esconda";
+    public string textoDesistiu = "Ufa, ela te perdeu de vista";
+    public string textoPegou = "A professora te pegou";
+    public string textoPortaAbriu = "A porta fez barulho e ela ouviu, corra";
 
     [Tooltip("Segundos entre ser pego e o nível reiniciar.")]
     public float tempoAntesDeReiniciar = 3f;

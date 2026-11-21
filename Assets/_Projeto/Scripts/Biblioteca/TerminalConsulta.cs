@@ -24,7 +24,7 @@ public class TerminalConsulta : Interagivel
     [Tooltip("Item que o jogador ganha ao imprimir a lista.")]
     public string itemLista = "Lista de livros";
 
-    [TextArea] public string textoImpresso = "Lista impressa! Aperte L para ver de novo em qualquer lugar.";
+    [TextArea] public string textoImpresso = "Lista impressa, aperte L para ver de novo";
 
     public AudioClip somTecla;
     public AudioClip somImpressora;

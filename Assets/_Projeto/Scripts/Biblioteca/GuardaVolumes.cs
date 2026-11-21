@@ -14,15 +14,15 @@ public class GuardaVolumes : Interagivel
     public string itemEmprestimo = "Empréstimo registrado";
 
     [Header("Textos")]
-    public string textoGuardou = "Mochila guardada. A chave do armário não pode sair da biblioteca.";
-    public string textoAindaNao = "Sua mochila está aqui. Termine na biblioteca antes de pegá-la.";
-    public string textoPegou = "Mochila de volta e chave devolvida. Agora é só sair!";
+    public string textoGuardou = "Mochila guardada, a chave do armário não pode sair da biblioteca";
+    public string textoAindaNao = "Sua mochila está aqui, termine na biblioteca antes de pegar";
+    public string textoPegou = "Mochila de volta, agora é só sair";
 
     [Tooltip("Objetivo depois de guardar a mochila.")]
-    [TextArea] public string objetivoDepoisDeGuardar = "Passe pela catraca e consulte o terminal do acervo.";
+    [TextArea] public string objetivoDepoisDeGuardar = "Passe pela catraca e consulte o terminal do acervo";
 
     [Tooltip("Objetivo depois de pegar a mochila de volta.")]
-    [TextArea] public string objetivoDepoisDePegar = "Saia da biblioteca pela porta de vidro do saguão.";
+    [TextArea] public string objetivoDepoisDePegar = "Saia pela porta de vidro do saguão";
 
     public AudioClip somArmario;
 

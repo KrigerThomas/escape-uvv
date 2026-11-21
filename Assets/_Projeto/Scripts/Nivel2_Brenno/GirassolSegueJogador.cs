@@ -18,7 +18,7 @@ public class GirassolSegueJogador : MonoBehaviour
     [Header("Aviso (só em um dos girassóis)")]
     public bool mostrarAviso = false;
     public float distanciaAviso = 4.5f;
-    [TextArea] public string textoAviso = "Os girassóis estão olhando pra você... de noite?!";
+    [TextArea] public string textoAviso = "Os girassóis estão olhando pra você no meio da noite";
     public AudioClip somAviso;
     [Range(0f, 1f)] public float volumeAviso = 0.7f;
 
