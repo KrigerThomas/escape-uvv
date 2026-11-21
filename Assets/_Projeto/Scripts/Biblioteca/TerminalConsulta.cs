@@ -29,16 +29,36 @@ public class TerminalConsulta : Interagivel
     public AudioClip somTecla;
     public AudioClip somImpressora;
 
+    [Header("Computador travando")]
+    [Tooltip("Tela do monitor com o programa de consulta.")]
+    public GameObject telaNormal;
+
+    [Tooltip("Tela azul que aparece no monitor depois da consulta (o PC \"dá pau\").")]
+    public GameObject telaTravada;
+
+    [Tooltip("Som de erro quando o computador trava.")]
+    public AudioClip somTravou;
+
+    private bool travou;
+
     private bool aberto;
     private bool jaConsultou;
 
     /// <summary>Texto padrão da dica.</summary>
     void Start()
     {
+        if (telaTravada != null)
+            telaTravada.SetActive(false);
         if (string.IsNullOrEmpty(textoAcao) || textoAcao == "interagir")
             textoAcao = "consultar o acervo";
         if (painel != null)
             painel.SetActive(false);
+    }
+
+    /// <summary>Com o computador travado não há mais o que fazer aqui.</summary>
+    public override bool PodeInteragir()
+    {
+        return !travou;
     }
 
     /// <summary>Com o painel aberto, E ou Esc fecham.</summary>
@@ -61,7 +81,7 @@ public class TerminalConsulta : Interagivel
         if (SorteioLivros.Instancia != null)
             resultado = SorteioLivros.Instancia.TextoLista();
         if (textoPainel != null)
-            textoPainel.text = resultado + "\n\n<size=70%><color=#9aa>Aperte E para fechar</color></size>";
+            textoPainel.text = resultado;
 
         UIManager.AbrirPainelComMouse(painel);
         aberto = true;
@@ -73,6 +93,16 @@ public class TerminalConsulta : Interagivel
     {
         UIManager.FecharPainelComMouse(painel);
         aberto = false;
+
+        // Depois da primeira consulta o computador trava (tela azul).
+        if (!travou && telaTravada != null)
+        {
+            travou = true;
+            if (telaNormal != null)
+                telaNormal.SetActive(false);
+            telaTravada.SetActive(true);
+            UIManager.TocarSom2D(somTravou, 0.5f);
+        }
 
         if (!jaConsultou)
         {

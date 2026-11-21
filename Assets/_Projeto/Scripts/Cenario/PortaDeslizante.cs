@@ -24,6 +24,12 @@ public class PortaDeslizante : MonoBehaviour
     [Tooltip("Marque para o som tocar perto do jogador (fica mais alto e claro mesmo com a porta longe).")]
     public bool somPertoDoJogador = false;
 
+    [Tooltip("Marque para a porta levar o mesmo tempo do som para abrir (fica sincronizado).")]
+    public bool acompanharSom = true;
+
+    [Tooltip("Segundos a mais depois do som (porta mais lenta).")]
+    public float tempoExtra = 0f;
+
     private bool abrindo;
     private float percorrido;
 
@@ -37,6 +43,8 @@ public class PortaDeslizante : MonoBehaviour
             return;
 
         abrindo = true;
+        if (acompanharSom && somAbrir != null)
+            duracao = somAbrir.length + tempoExtra;
 
         if (somAbrir != null)
         {

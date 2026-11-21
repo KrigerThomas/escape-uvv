@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: N4_Tela_Campo
+  m_Name: N4_Win_Titulo
   m_Shader: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -51,11 +51,11 @@ Material:
     - _Surface: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.93333334, g: 0.9490196, b: 0.96862745, a: 1}
-    - _Color: {r: 0.93333334, g: 0.9490196, b: 0.9686274, a: 1}
+    - _BaseColor: {r: 0, g: 0, b: 0.5019608, a: 1}
+    - _Color: {r: 0, g: 0, b: 0.5019608, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &6481622567457767385
+--- !u!114 &8670268951934295988
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

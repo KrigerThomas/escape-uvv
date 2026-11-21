@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: N4_Tela_Linha_Clara
+  m_Name: N4_Win_Area_de_Trabalho
   m_Shader: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -51,11 +51,11 @@ Material:
     - _Surface: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.105882354, g: 0.2, b: 0.3372549, a: 1}
-    - _Color: {r: 0.105882324, g: 0.19999996, b: 0.33725488, a: 1}
+    - _BaseColor: {r: 0, g: 0.5019608, b: 0.5019608, a: 1}
+    - _Color: {r: 0, g: 0.5019608, b: 0.5019608, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &5994376828065828195
+--- !u!114 &6263769155863303945
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

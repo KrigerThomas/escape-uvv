@@ -10384,6 +10384,8 @@ MonoBehaviour:
   somAbrir: {fileID: 8300000, guid: 3c13bf13b2461e2468a51342f09646c5, type: 3}
   volume: 1
   somPertoDoJogador: 1
+  acompanharSom: 1
+  tempoExtra: 0
 --- !u!65 &1110926689
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21112,10 +21114,14 @@ MonoBehaviour:
   itemNecessario: 
   tecla: 102
   somClique: {fileID: 8300000, guid: c334df0d60611e346a1a524d8e26a94a, type: 3}
+  intensidade: 22
+  alcance: 28
+  abertura: 80
+  aberturaMiolo: 38
   altura: 1.3
   frente: 0.45
-  inclinacao: 6
   suavidade: 14
+  distanciaMira: 40
   tempoAcender: 0.15
 --- !u!1001 &6217693747477160809
 PrefabInstance:

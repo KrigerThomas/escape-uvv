@@ -18,6 +18,12 @@ public class PortaGiratoria : MonoBehaviour
 
     [Range(0f, 1f)] public float volume = 0.9f;
 
+    [Tooltip("Marque para a porta levar o mesmo tempo do som para abrir (fica sincronizado).")]
+    public bool acompanharSom = true;
+
+    [Tooltip("Segundos a mais depois do som (porta mais lenta).")]
+    public float tempoExtra = 0f;
+
     private bool abrindo;
     private float tempo;
     private Quaternion rotacaoFechada;
@@ -40,6 +46,8 @@ public class PortaGiratoria : MonoBehaviour
             return;
 
         abrindo = true;
+        if (acompanharSom && somAbrir != null)
+            duracao = somAbrir.length + tempoExtra;
 
         if (somAbrir != null)
             AudioSource.PlayClipAtPoint(somAbrir, transform.position, volume);

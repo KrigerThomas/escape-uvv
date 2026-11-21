@@ -202,6 +202,9 @@ public class EventosBiblioteca : MonoBehaviour
         if (luzesEmergencia != null)
             luzesEmergencia.SetActive(true);
 
+        // Dica "F  Ligar a lanterna" até o jogador ligar.
+        LanternaCelular.PedirParaLigar();
+
         // Zumbido e sons de fora vão sumindo; fica o silêncio com a chuva baixinha.
         float[] volumes = new float[abaixarNoApagao.Length];
         for (int i = 0; i < volumes.Length; i++)

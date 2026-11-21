@@ -57,6 +57,9 @@ public class CatracaFacial : MonoBehaviour
     public AudioClip somNegado;
     public AudioClip somAlarme;
 
+    [Tooltip("Volume dos sons da catraca.")]
+    [Range(0f, 1f)] public float volumeSons = 0.45f;
+
     [Header("Textos")]
     public string textoMochila = "Você sabe que não pode entrar com mochila, guarde no armário primeiro";
     public string textoAlarme = "Alarme antifurto, os livros ainda não foram emprestados";
@@ -116,7 +119,7 @@ public class CatracaFacial : MonoBehaviour
 
         if (TemLivro() && !Inventario.Tem(itemEmprestimo))
         {
-            UIManager.TocarSom2D(somAlarme, 0.9f);
+            UIManager.TocarSom2D(somAlarme, volumeSons);
             Avisar(textoAlarme);
             for (int i = 0; i < 8; i++)
             {
@@ -141,7 +144,7 @@ public class CatracaFacial : MonoBehaviour
     private IEnumerator Liberar(string texto)
     {
         PintarTelas(corLiberado);
-        UIManager.TocarSom2D(somLiberado, 0.8f);
+        UIManager.TocarSom2D(somLiberado, volumeSons);
         Avisar(texto);
         if (bloqueio != null)
             bloqueio.SetActive(false);
@@ -157,7 +160,7 @@ public class CatracaFacial : MonoBehaviour
     private IEnumerator Negar(string texto, AudioClip som)
     {
         PintarTelas(corNegado);
-        UIManager.TocarSom2D(som, 0.8f);
+        UIManager.TocarSom2D(som, volumeSons);
         Avisar(texto);
         yield return new WaitForSeconds(1.5f);
         PintarTelas(corEspera);

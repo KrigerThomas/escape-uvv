@@ -26,6 +26,10 @@ public class GuardaVolumes : Interagivel
 
     public AudioClip somArmario;
 
+    [Range(0f, 1f)] public float volumeArmario = 0.7f;
+
+    private bool jaPegouDeVolta;
+
     [Tooltip("Marque para o jogador começar o nível carregando a mochila.")]
     public bool comecaComMochila = true;
 
@@ -49,13 +53,16 @@ public class GuardaVolumes : Interagivel
     /// <summary>Some a dica quando não há mais nada a fazer aqui.</summary>
     public override bool PodeInteragir()
     {
+        // Depois de pegar a mochila de volta, o armário não serve mais para nada.
+        if (jaPegouDeVolta)
+            return false;
         return Inventario.Tem(itemMochila) || Inventario.Tem(itemChave);
     }
 
     /// <summary>Guarda ou devolve a mochila.</summary>
     public override void Interagir()
     {
-        UIManager.TocarSom2D(somArmario, 0.7f);
+        UIManager.TocarSom2D(somArmario, volumeArmario);
 
         if (Inventario.Tem(itemMochila))
         {
@@ -75,6 +82,8 @@ public class GuardaVolumes : Interagivel
 
         Inventario.Remover(itemChave);
         Inventario.Adicionar(itemMochila);
+        jaPegouDeVolta = true;
+        EsconderDica();
         Avisar(textoPegou);
         if (UI != null)
             UI.MostrarObjetivo(objetivoDepoisDePegar);
