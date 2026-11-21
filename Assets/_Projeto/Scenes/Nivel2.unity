@@ -27679,7 +27679,7 @@ MonoBehaviour:
   luz: {fileID: 1062825521}
   itemNecessario: 
   tecla: 102
-  somClique: {fileID: 8300000, guid: c334df0d60611e346a1a524d8e26a94a, type: 3}
+  somClique: {fileID: 8300000, guid: 8012256f92bc9874c9d2e27693bf8798, type: 3}
   intensidade: 22
   alcance: 28
   abertura: 80

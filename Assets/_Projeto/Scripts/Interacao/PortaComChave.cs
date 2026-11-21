@@ -24,6 +24,9 @@ public class PortaComChave : Interagivel
     public AudioClip somTrancada;
     public AudioClip somDestrancar;
 
+    [Tooltip("Volume do som de porta trancada.")]
+    [Range(0f, 1f)] public float volumeTrancada = 0.6f;
+
     private bool aberta;
 
     /// <summary>Texto padrão da dica.</summary>
@@ -44,14 +47,14 @@ public class PortaComChave : Interagivel
     {
         if (!Inventario.Tem(chaveNecessaria))
         {
-            UIManager.TocarSom2D(somTrancada, 0.8f);
+            UIManager.TocarSom2D(somTrancada, volumeTrancada);
             Avisar(textoTrancada);
             return;
         }
 
         if (!string.IsNullOrEmpty(segundoItemNecessario) && !Inventario.Tem(segundoItemNecessario))
         {
-            UIManager.TocarSom2D(somTrancada, 0.8f);
+            UIManager.TocarSom2D(somTrancada, volumeTrancada);
             Avisar(textoFaltaSegundoItem);
             return;
         }

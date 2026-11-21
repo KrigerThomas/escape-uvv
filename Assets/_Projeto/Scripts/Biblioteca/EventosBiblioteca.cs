@@ -31,6 +31,9 @@ public class EventosBiblioteca : MonoBehaviour
     [Header("Sons")]
     public AudioSource zumbido;
 
+    [Tooltip("O que a porta de saída diz depois do apagão, se o jogador ainda não pegou a mochila.")]
+    public string textoPortaDepoisDoApagao = "Ainda preciso pegar minha mochila...";
+
     [Tooltip("Som de quando a energia cai.")]
     public AudioClip somQuedaEnergia;
 
@@ -190,7 +193,11 @@ public class EventosBiblioteca : MonoBehaviour
         if (guardaVolumes != null)
             guardaVolumes.itemEmprestimo = "";
         if (portaSaida != null)
+        {
             portaSaida.segundoItemNecessario = "";
+            if (!string.IsNullOrEmpty(textoPortaDepoisDoApagao))
+                portaSaida.textoTrancada = textoPortaDepoisDoApagao;
+        }
 
         if (GameManager.Instancia != null && GameManager.Instancia.ui != null)
         {

@@ -14498,7 +14498,7 @@ MonoBehaviour:
   luz: {fileID: 323161805}
   itemNecessario: Celular
   tecla: 102
-  somClique: {fileID: 8300000, guid: c334df0d60611e346a1a524d8e26a94a, type: 3}
+  somClique: {fileID: 8300000, guid: 8012256f92bc9874c9d2e27693bf8798, type: 3}
   intensidade: 22
   alcance: 28
   abertura: 80
@@ -31217,7 +31217,7 @@ MonoBehaviour:
   anguloAbertura: 90
   duracao: 1.2
   somAbrir: {fileID: 8300000, guid: c153c79547dcada42aff1a750893664e, type: 3}
-  volume: 0.7
+  volume: 0.5
   acompanharSom: 1
   tempoExtra: 0.6
 --- !u!1 &1106669869
@@ -34831,8 +34831,9 @@ MonoBehaviour:
   textoTrancada: "Est\xE1 trancada..."
   segundoItemNecessario: 
   textoFaltaSegundoItem: 
-  somTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
+  somTrancada: {fileID: 8300000, guid: 06c4c95721e61e2469dcf272cd7e1784, type: 3}
   somDestrancar: {fileID: 0}
+  volumeTrancada: 0.5
 --- !u!65 &1232777575
 BoxCollider:
   m_ObjectHideFlags: 0

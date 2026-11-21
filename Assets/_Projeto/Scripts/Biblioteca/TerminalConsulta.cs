@@ -29,6 +29,9 @@ public class TerminalConsulta : Interagivel
     public AudioClip somTecla;
     public AudioClip somImpressora;
 
+    [Tooltip("Marque se o texto do painel usa a fonte do DOS (converte os acentos).")]
+    public bool fonteDOS = true;
+
     [Header("Computador travando")]
     [Tooltip("Tela do monitor com o programa de consulta.")]
     public GameObject telaNormal;
@@ -81,7 +84,7 @@ public class TerminalConsulta : Interagivel
         if (SorteioLivros.Instancia != null)
             resultado = SorteioLivros.Instancia.TextoLista();
         if (textoPainel != null)
-            textoPainel.text = resultado;
+            textoPainel.text = fonteDOS ? TextoDOS.Converter(resultado) : resultado;
 
         UIManager.AbrirPainelComMouse(painel);
         aberto = true;

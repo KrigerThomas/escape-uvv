@@ -15,7 +15,7 @@ public class SorteioLivros : MonoBehaviour
         [Tooltip("Objeto vazio que marca a posição e a rotação do livro.")]
         public Transform ponto;
 
-        [Tooltip("Como o lugar aparece na lista (ex.: 1º andar · Estante 03).")]
+        [Tooltip("Como o lugar aparece na lista (ex.: 1º andar - Estante 03).")]
         public string descricao;
     }
 
@@ -58,7 +58,7 @@ public class SorteioLivros : MonoBehaviour
     /// <summary>Texto da lista: título, número de chamada e onde está. Livro já pego aparece riscado.</summary>
     public string TextoLista()
     {
-        StringBuilder texto = new StringBuilder("<b>Livros para pegar</b>\n<size=80%>Consulta ao acervo · Biblioteca UVV</size>\n");
+        StringBuilder texto = new StringBuilder("Lista de livros:\n");
         int numero = 1;
         foreach (LivroSorteado item in livros)
         {
@@ -66,7 +66,7 @@ public class SorteioLivros : MonoBehaviour
                 continue;
 
             bool pego = Inventario.Tem("Livro: " + item.livro.titulo);
-            string linha = numero + ". <b>" + item.livro.titulo + "</b> · " + item.chamada + "\n    " + item.lugarSorteado;
+            string linha = numero + ". " + item.livro.titulo + "\n   " + item.lugarSorteado;
             texto.Append("\n");
             texto.Append(pego ? "<color=#6b6f86><s>" + linha + "</s>  (pego)</color>" : linha);
             texto.Append("\n");
