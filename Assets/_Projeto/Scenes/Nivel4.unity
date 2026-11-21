@@ -46708,10 +46708,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaFechada: {fileID: 932406144}
-  multiplicadorAreaFechada: 0.75
+  multiplicadorAreaFechada: 0.45
   multiplicadorPainelAberto: 0.35
   corteNormal: 4500
-  corteAreaFechada: 3200
+  corteAreaFechada: 1600
   suavidade: 3
 --- !u!169 &612416467
 AudioLowPassFilter:
@@ -46749,9 +46749,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: bdf277004b86afb42b4933ef14cd673e, type: 3}
+  m_Resource: {fileID: 8300000, guid: 3fa352ca39145c843a89bf026ca8ded5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -75413,8 +75413,8 @@ MonoBehaviour:
   ui: {fileID: 1514128027}
   somPortaTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
   proximaCena: Nivel5
-  textoObjetivo: "N\xE3o \xE9 permitido entrar com mochila. Guarde-a no guarda-volumes
-    (arm\xE1rio 23)."
+  textoObjetivo: "Guarde a mochila no guarda-volumes (arm\xE1rio 23) antes de entrar
+    na biblioteca."
   textoPortaLiberada: Pode ir embora!
   textoPortaTrancada: "A porta est\xE1 trancada."
   palavraSingular: livro
