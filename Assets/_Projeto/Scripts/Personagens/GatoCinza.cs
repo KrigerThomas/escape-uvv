@@ -102,7 +102,7 @@ public class GatoCinza : MonoBehaviour
                     estado = Estado.Atento;
                     TrocarAnimacao("Idle");
                     Miar();
-                    AvisoNaTela.Mostrar(textoDica);
+                    MostrarAcaoCarinho(true);
                 }
                 break;
 
@@ -110,6 +110,7 @@ public class GatoCinza : MonoBehaviour
                 OlharPara(jogador.position);
                 if (!perto)
                 {
+                    MostrarAcaoCarinho(false);
                     Sentar();
                 }
                 else if (Input.GetKeyDown(teclaCarinho) && !UIManager.MenuAberto)
@@ -174,6 +175,7 @@ public class GatoCinza : MonoBehaviour
     /// <summary>Easter egg: patada, chiado e aviso. Depois ele muda de lugar.</summary>
     private void DarPatada()
     {
+        MostrarAcaoCarinho(false);
         carinhos = 0;
         estado = Estado.Patada;
         timer = 1.2f;
@@ -258,6 +260,21 @@ public class GatoCinza : MonoBehaviour
         transform.rotation = instantaneo
             ? rotacaoAlvo
             : Quaternion.Slerp(transform.rotation, rotacaoAlvo, velocidadeGiro * Time.deltaTime);
+    }
+
+    /// <summary>
+    /// Mostra ou esconde a ação "E  Fazer carinho no gato" no HUD.
+    /// </summary>
+    /// <param name="mostrar">Verdadeiro para mostrar, falso para esconder.</param>
+    private void MostrarAcaoCarinho(bool mostrar)
+    {
+        UIManager ui = GameManager.Instancia != null ? GameManager.Instancia.ui : null;
+        if (ui == null)
+            return;
+        if (mostrar)
+            ui.MostrarAcao(UIManager.NomeDaTecla(teclaCarinho), "fazer carinho no gato");
+        else
+            ui.EsconderDica();
     }
 
     /// <summary>Mesmo ponto, com o Y no chão do terreno.</summary>
