@@ -15,7 +15,7 @@ public class SorteioLivros : MonoBehaviour
         [Tooltip("Objeto vazio que marca a posição e a rotação do livro.")]
         public Transform ponto;
 
-        [Tooltip("Como o lugar aparece na lista (ex.: Térreo · Estante 03).")]
+        [Tooltip("Como o lugar aparece na lista (ex.: 1º andar · Estante 03).")]
         public string descricao;
     }
 
