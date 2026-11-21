@@ -77,7 +77,7 @@ public class SustoProfessora : MonoBehaviour
             agente.isStopped = true;
             agente.updateRotation = false;
         }
-        professora.rotation = Quaternion.LookRotation(-lado);
+        professora.rotation = Quaternion.LookRotation(lado);
         if (anim != null)
             anim.speed = 0f;
         if (cabeca != null)
@@ -106,6 +106,13 @@ public class SustoProfessora : MonoBehaviour
         {
             t += Time.unscaledDeltaTime;
             float forca = 1f - 0.5f * (t / duracao);
+
+            // O rosto é medido a cada quadro: a câmera acompanha a cabeça mesmo se a pose mexer um pouco.
+            if (cabeca != null)
+            {
+                rosto = cabeca.position + Vector3.up * 0.09f;
+                posicaoCamera = rosto + lado * distanciaRosto;
+            }
 
             if (cam != null)
             {
