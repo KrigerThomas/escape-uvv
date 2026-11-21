@@ -42,7 +42,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -757,6 +758,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1750,6 +1752,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2148,7 +2151,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 94a00f0961e95314a9ca2dd8842573e8, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 94a00f0961e95314a9ca2dd8842573e8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.35
@@ -2418,73 +2421,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!21 &485903591
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: LiberationSans SDF Material (Instance)
-  m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 1
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 28684132378477856, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _CullMode: 0
-    - _FaceDilate: 0
-    - _GradientScale: 10
-    - _MaskSoftnessX: 0
-    - _MaskSoftnessY: 0
-    - _OutlineSoftness: 0
-    - _OutlineWidth: 0.2
-    - _PerspectiveFilter: 0.875
-    - _ScaleRatioA: 0.9
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 0.73125
-    - _ScaleX: 1
-    - _ScaleY: 1
-    - _ShaderFlags: 0
-    - _Sharpness: 0
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _TextureHeight: 1024
-    - _TextureWidth: 1024
-    - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 0
-    - _UnderlayOffsetY: 0
-    - _UnderlaySoftness: 0
-    - _VertexOffsetX: 0
-    - _VertexOffsetY: 0
-    - _WeightBold: 0.75
-    - _WeightNormal: 0
-    m_Colors:
-    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
-    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-    - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1 &486473458
 GameObject:
   m_ObjectHideFlags: 0
@@ -7816,6 +7752,7 @@ GameObject:
   - component: {fileID: 582730821}
   - component: {fileID: 582730820}
   - component: {fileID: 582730819}
+  - component: {fileID: 582730822}
   m_Layer: 0
   m_Name: _GameManager
   m_TagString: Untagged
@@ -7850,12 +7787,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalItens: 5
   rotuloContador: Itens
+  saidaAbertaDesdeOInicio: 0
+  destrancarAoCompletar: 1
+  prefixoAviso: "Voc\xEA encontrou: "
   portaSaida: {fileID: 1110926688}
+  portaGiratoria: {fileID: 0}
   ui: {fileID: 368293451}
   somPortaTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
   proximaCena: Nivel2
   textoObjetivo: "A porta est\xE1 trancada. Encontre os 5 itens perdidos do laborat\xF3rio."
   textoPortaLiberada: "Porta destrancada! V\xE1 at\xE9 a sa\xEDda."
+  textoPortaTrancada: "A porta est\xE1 trancada."
+  palavraSingular: item
+  palavraPlural: itens
+  textoTudoEncontrado: 
+  tempoFadeInSom: 2.5
 --- !u!4 &582730821
 Transform:
   m_ObjectHideFlags: 0
@@ -7871,6 +7817,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &582730822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582730818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0838619323adb7d4496bf01549c08734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mensagens:
+  - remetente: Daphne
+    texto: "vc ainda t\xE1 no inovalab?? o seguran\xE7a j\xE1 t\xE1 fechando os blocos"
+    esperar: 3
+  - remetente: Brenno
+    texto: "se achar meu fone a\xED na bancada me avisa pfv"
+    esperar: 7
+  esperarItem: 
 --- !u!1 &589800722
 GameObject:
   m_ObjectHideFlags: 0
@@ -11432,7 +11398,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 416066718842d9346a22807872a0779c, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 416066718842d9346a22807872a0779c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
@@ -12022,6 +11988,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -12434,6 +12401,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4481949333202216, guid: 8430fd56cfcb15941a1f31ea7f8f1915, type: 3}
   m_PrefabInstance: {fileID: 1553198708}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1553601098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1553601100}
+  - component: {fileID: 1553601099}
+  m_Layer: 0
+  m_Name: Pos_Processamento (Volume global)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1553601099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553601098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 1b0a0a723b7f38a4c909217a85ccd0b0, type: 2}
+--- !u!4 &1553601100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553601098}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1564451903
 GameObject:
   m_ObjectHideFlags: 0
@@ -13556,6 +13572,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -18501,7 +18518,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7f4c2da56dbabc04e9b1106538badddc, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 7f4c2da56dbabc04e9b1106538badddc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.6
@@ -18650,73 +18667,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4423371226264234, guid: 5510dbd75f54c1547bcfa4dfea8c488d, type: 3}
   m_PrefabInstance: {fileID: 1780736760}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1790539705
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: LiberationSans SDF Material (Instance)
-  m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 1
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 28684132378477856, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _ColorMask: 15
-    - _CullMode: 0
-    - _FaceDilate: 0
-    - _GradientScale: 10
-    - _MaskSoftnessX: 0
-    - _MaskSoftnessY: 0
-    - _OutlineSoftness: 0
-    - _OutlineWidth: 0.2
-    - _PerspectiveFilter: 0.875
-    - _ScaleRatioA: 0.9
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 0.73125
-    - _ScaleX: 1
-    - _ScaleY: 1
-    - _ShaderFlags: 0
-    - _Sharpness: 0
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _TextureHeight: 1024
-    - _TextureWidth: 1024
-    - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 0
-    - _UnderlayOffsetY: 0
-    - _UnderlaySoftness: 0
-    - _VertexOffsetX: 0
-    - _VertexOffsetY: 0
-    - _WeightBold: 0.75
-    - _WeightNormal: 0
-    m_Colors:
-    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
-    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0.78431374}
-    - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1 &1808240075
 GameObject:
   m_ObjectHideFlags: 0
@@ -19667,6 +19617,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460d45f63ac628441984a114d1f7fc99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  apenasAviso: 0
+  fraseSaida: 
+  tempoAntesDeTrocar: 1.8
 --- !u!65 &1927139103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21109,42 +21062,26 @@ PrefabInstance:
       propertyPath: m_fontMaterial
       value: 
       objectReference: {fileID: 373457476}
-    - target: {fileID: 408682346965005322, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 373457476}
     - target: {fileID: 1468963345496759538, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_fontMaterial
       value: 
       objectReference: {fileID: 1906631338}
-    - target: {fileID: 1468963345496759538, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 1906631338}
-    - target: {fileID: 2280838878306101076, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2319014993116762894, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_fontMaterial
       value: 
       objectReference: {fileID: 1174376271}
-    - target: {fileID: 2319014993116762894, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 1174376271}
     - target: {fileID: 2390113544976722995, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_fontMaterial
-      value: 
-      objectReference: {fileID: 884637712}
-    - target: {fileID: 2390113544976722995, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 884637712}
     - target: {fileID: 2531585272003070772, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: musicaIntro
       value: 
       objectReference: {fileID: 424531877}
+    - target: {fileID: 2531585272003070772, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: nomeDoLocal
+      value: InovaLab
+      objectReference: {fileID: 0}
     - target: {fileID: 3402267087739894984, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -21153,16 +21090,8 @@ PrefabInstance:
       propertyPath: m_fontMaterial
       value: 
       objectReference: {fileID: 498505676}
-    - target: {fileID: 3713374024430370532, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 498505676}
     - target: {fileID: 4336222310911934578, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_fontMaterial
-      value: 
-      objectReference: {fileID: 321694230}
-    - target: {fileID: 4336222310911934578, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 321694230}
     - target: {fileID: 4566880093634857423, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
@@ -21173,26 +21102,10 @@ PrefabInstance:
       propertyPath: m_fontMaterial
       value: 
       objectReference: {fileID: 1335378307}
-    - target: {fileID: 4624159614840204339, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 1335378307}
     - target: {fileID: 5126043231678574431, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5277946179662911999, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5709997199226738473, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_fontMaterial
-      value: 
-      objectReference: {fileID: 485903591}
-    - target: {fileID: 5709997199226738473, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 485903591}
     - target: {fileID: 5945740185130660658, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -21209,14 +21122,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7211127796812930245, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_fontMaterial
-      value: 
-      objectReference: {fileID: 1790539705}
-    - target: {fileID: 7211127796812930245, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 1790539705}
     - target: {fileID: 7247669062234571292, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -21333,3 +21238,4 @@ SceneRoots:
   - {fileID: 582730821}
   - {fileID: 8031775726591299537}
   - {fileID: 5801052820685962491}
+  - {fileID: 1553601100}

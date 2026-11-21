@@ -104,7 +104,7 @@ public abstract class Interagivel : MonoBehaviour
             return;
 
         if (PodeInteragir())
-            UI.MostrarDica("Aperte <b>" + tecla + "</b> para " + TextoDica());
+            UI.MostrarAcao(UIManager.NomeDaTecla(tecla), TextoDica());
         else
             UI.EsconderDica();
     }

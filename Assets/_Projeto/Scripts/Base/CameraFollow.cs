@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Câmera em terceira pessoa que orbita ao redor do jogador com o mouse.
 /// Se houver uma parede entre o jogador e a câmera, a câmera se aproxima para não atravessá-la.
-/// A tecla Esc libera o cursor (útil para clicar nos botões) e um clique com o botão esquerdo trava o cursor de novo.
+/// Um clique com o botão esquerdo trava o cursor de novo se ele estiver solto (Esc abre a pausa, no UIManager).
 /// </summary>
 public class CameraFollow : MonoBehaviour
 {
@@ -53,15 +53,14 @@ public class CameraFollow : MonoBehaviour
         distanciaAtual = distancia;
     }
 
-    /// <summary>Esc solta o cursor do mouse e um clique prende o cursor de volta (fora de menus).</summary>
+    /// <summary>Fora de menus, um clique prende o cursor de volta se ele estiver solto.</summary>
     void Update()
     {
         if (UIManager.MenuAberto)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-            TravarCursor(false);
-        else if (Input.GetMouseButtonDown(0) && Cursor.lockState != CursorLockMode.Locked)
+        // Esc agora abre a pausa (UIManager). Se o cursor ficar solto por algum motivo, um clique prende de novo.
+        if (Input.GetMouseButtonDown(0) && Cursor.lockState != CursorLockMode.Locked)
             TravarCursor(true);
     }
 

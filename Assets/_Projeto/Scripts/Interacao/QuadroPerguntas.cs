@@ -136,16 +136,29 @@ public class QuadroPerguntas : MonoBehaviour
         return GameManager.Instancia != null && GameManager.Instancia.PortaDestrancada;
     }
 
-    /// <summary>Liga ou desliga o texto "Aperte E para ler o quadro".</summary>
+    /// <summary>
+    /// Mostra ou esconde a ação "E  Ler o Quadro do Abrantes" no HUD.
+    /// Se o campo avisoInteracao estiver preenchido, usa esse texto antigo no lugar.
+    /// </summary>
     private void AtualizarDica()
     {
-        if (avisoInteracao == null)
-            return;
-
         bool mostrar = jogadorPerto && !painelAberto && !DesafioConcluido();
-        avisoInteracao.SetActive(mostrar);
-        if (mostrar && textoInteracao != null)
-            textoInteracao.text = "Aperte <b>" + teclaInteragir + "</b> para ler o Quadro do Abrantes";
+
+        if (avisoInteracao != null)
+        {
+            avisoInteracao.SetActive(mostrar);
+            if (mostrar && textoInteracao != null)
+                textoInteracao.text = "Aperte <b>" + teclaInteragir + "</b> para ler o Quadro do Abrantes";
+            return;
+        }
+
+        UIManager ui = GameManager.Instancia != null ? GameManager.Instancia.ui : null;
+        if (ui == null)
+            return;
+        if (mostrar)
+            ui.MostrarAcao(UIManager.NomeDaTecla(teclaInteragir), "ler o Quadro do Abrantes");
+        else
+            ui.EsconderDica();
     }
 
     /// <summary>Coloca todas as perguntas numa fila em ordem aleatória.</summary>

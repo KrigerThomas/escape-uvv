@@ -33,6 +33,9 @@ public class TelaFimDeJogo : MonoBehaviour
 
         if (botaoSair != null)
             botaoSair.onClick.AddListener(Sair);
+
+        if (botaoJogarDeNovo != null && UnityEngine.EventSystems.EventSystem.current != null)
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(botaoJogarDeNovo.gameObject);
     }
 
     /// <summary>Volta para o primeiro nível.</summary>
