@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Lanterna do celular (fica no Jogador). Só funciona depois que o jogador pega o item "Celular".
+/// Lanterna do celular (fica no Jogador). Nos níveis 1 a 4 funciona desde o começo; no Nível 5 só depois que o jogador pega o item "Celular".
 /// A tecla F liga e desliga. A luz acompanha a câmera (para onde o jogador está olhando),
 /// saindo da altura do peito, um pouco à frente, para não iluminar as costas do personagem.
 /// Atenção: com a lanterna ligada, a Professora vê o jogador de mais longe.
@@ -53,7 +53,7 @@ public class LanternaCelular : MonoBehaviour
     /// <summary>Liga/desliga com F. Dentro do armário, a lanterna apaga sozinha.</summary>
     void Update()
     {
-        if (luz == null || !Inventario.Tem(itemNecessario))
+        if (luz == null || !Liberada())
             return;
 
         if (ArmarioEsconderijo.JogadorDentro && Ligada)
@@ -89,6 +89,15 @@ public class LanternaCelular : MonoBehaviour
 
         luz.transform.position = posicao;
         luz.transform.rotation = Quaternion.Slerp(luz.transform.rotation, rotacao, Time.deltaTime * suavidade);
+    }
+
+    /// <summary>
+    /// Confere se o jogador já pode usar a lanterna.
+    /// </summary>
+    /// <returns>Verdadeiro se não precisa de item (níveis 1 a 4) ou se o item já foi pego (Nível 5).</returns>
+    public bool Liberada()
+    {
+        return string.IsNullOrEmpty(itemNecessario) || Inventario.Tem(itemNecessario);
     }
 
     /// <summary>Inverte o estado da lanterna.</summary>
