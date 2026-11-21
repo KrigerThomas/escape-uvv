@@ -207,10 +207,10 @@ MonoBehaviour:
   passos: {fileID: 3957052946722626449}
   somAvistou: {fileID: 8300000, guid: e7473e3c0c29b6940a3c46126db029ed, type: 3}
   somPegou: {fileID: 0}
-  textoAvistou: Ela te viu! Corra ou se esconda!
-  textoDesistiu: Ufa... ela te perdeu de vista.
-  textoPegou: A professora te pegou.
-  textoPortaAbriu: A porta fez barulho... ela ouviu! Corra!
+  textoAvistou: Ela te viu, corra ou se esconda
+  textoDesistiu: Ufa, ela te perdeu de vista
+  textoPegou: A professora te pegou
+  textoPortaAbriu: A porta fez barulho e ela ouviu, corra
   tempoAntesDeReiniciar: 3
 --- !u!82 &3957052946722626449
 AudioSource:

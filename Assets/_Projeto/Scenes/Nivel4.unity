@@ -873,7 +873,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 02</b>\n<size=60%>004 \xB7 Computa\xE7\xE3o</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -968,7 +968,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1733,7 +1733,7 @@ MonoBehaviour:
   m_text: EXTINTOR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1828,7 +1828,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2569,6 +2569,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 10.020001
       objectReference: {fileID: 0}
+    - target: {fileID: 2692047175029329938, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
     - target: {fileID: 4435565481275431346, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44
@@ -2612,6 +2616,18 @@ PrefabInstance:
     - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_text
       value: BLOCO D
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294107353
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3780,11 +3796,11 @@ MonoBehaviour:
   itemMochila: Mochila
   itemChave: "Chave do arm\xE1rio"
   itemEmprestimo: "Empr\xE9stimo registrado"
-  textoGuardou: "Mochila guardada. A chave do arm\xE1rio n\xE3o pode sair da biblioteca."
-  textoAindaNao: "Sua mochila est\xE1 aqui. Termine na biblioteca antes de peg\xE1-la."
-  textoPegou: "Mochila de volta e chave devolvida. Agora \xE9 s\xF3 sair!"
-  objetivoDepoisDeGuardar: Passe pela catraca e consulte o terminal do acervo.
-  objetivoDepoisDePegar: "Saia da biblioteca pela porta de vidro do sagu\xE3o."
+  textoGuardou: "Mochila guardada, a chave do arm\xE1rio n\xE3o pode sair da biblioteca"
+  textoAindaNao: "Sua mochila est\xE1 aqui, termine na biblioteca antes de pegar"
+  textoPegou: "Mochila de volta, agora \xE9 s\xF3 sair"
+  objetivoDepoisDeGuardar: Passe pela catraca e consulte o terminal do acervo
+  objetivoDepoisDePegar: "Saia pela porta de vidro do sagu\xE3o"
   somArmario: {fileID: 8300000, guid: 3ca00152304d83845a48515db24ef28c, type: 3}
   comecaComMochila: 1
 --- !u!65 &48979503
@@ -4801,7 +4817,7 @@ MonoBehaviour:
   m_text: 31
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4896,7 +4912,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8630,7 +8646,7 @@ MonoBehaviour:
   m_text: EXTINTOR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8725,7 +8741,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9349,7 +9365,7 @@ MonoBehaviour:
   m_text: EXTINTOR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9444,7 +9460,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9580,7 +9596,7 @@ MonoBehaviour:
   m_text: CABINES DE GRUPO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9675,7 +9691,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16415,7 +16431,7 @@ MonoBehaviour:
   m_text: CABINE DE GRUPO 02
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -16510,7 +16526,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18964,7 +18980,7 @@ MonoBehaviour:
   m_text: 29
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19059,7 +19075,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27767,7 +27783,7 @@ MonoBehaviour:
   m_text: 22
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -27862,7 +27878,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -32540,7 +32556,7 @@ MonoBehaviour:
   m_text: "ESCADA \xB7 1\xBA ANDAR"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -32635,7 +32651,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -38561,7 +38577,7 @@ MonoBehaviour:
   m_text: 27
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -38656,7 +38672,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -40931,7 +40947,7 @@ MonoBehaviour:
   m_text: 23
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -41026,7 +41042,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -50843,7 +50859,7 @@ MonoBehaviour:
   m_text: 21
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -50938,7 +50954,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -51430,7 +51446,7 @@ MonoBehaviour:
   m_text: "\xC1REA DE ESTUDO"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -51525,7 +51541,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -52249,7 +52265,7 @@ MonoBehaviour:
   m_text: 26
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -52344,7 +52360,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -53401,7 +53417,7 @@ MonoBehaviour:
   m_text: 30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -53496,7 +53512,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -54462,6 +54478,9 @@ MonoBehaviour:
   zumbido: {fileID: 2002418933}
   somQuedaEnergia: {fileID: 8300000, guid: bca267cf17991d946b261d5837fa5463, type: 3}
   volumeQuedaEnergia: 0.75
+  adiantarSomQueda: 0.7
+  somLuzFalhando: {fileID: 8300000, guid: c31f1e7c4ac79094ab6e47953328d65d, type: 3}
+  volumeLuzFalhando: 0.6
   desligarNoApagao:
   - {fileID: 260793339}
   - {fileID: 612416466}
@@ -54472,8 +54491,8 @@ MonoBehaviour:
   catraca: {fileID: 1970815362}
   guardaVolumes: {fileID: 48979502}
   portaSaida: {fileID: 2041529042}
-  avisoApagao: A energia caiu.
-  objetivoApagao: "A energia caiu. Pegue sua mochila no arm\xE1rio 23 e saia da biblioteca."
+  avisoApagao: A energia caiu
+  objetivoApagao: "Pegue a mochila no arm\xE1rio 23 e saia da biblioteca"
 --- !u!1001 &688668333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55170,7 +55189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anguloAbertura: 95
   duracao: 1.2
-  somAbrir: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
+  somAbrir: {fileID: 8300000, guid: c153c79547dcada42aff1a750893664e, type: 3}
   volume: 0.9
 --- !u!1 &697187958
 GameObject:
@@ -71283,7 +71302,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 01</b>\n<size=60%>000 \xB7 Generalidades</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -71378,7 +71397,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72276,7 +72295,7 @@ MonoBehaviour:
   m_text: CABINE DE GRUPO 04
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -72371,7 +72390,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74732,7 +74751,7 @@ MonoBehaviour:
     <size=55%>Mochilas, bolsas e pastas devem ficar aqui</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -74827,7 +74846,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77486,16 +77505,15 @@ MonoBehaviour:
   rotuloContador: Livros
   saidaAbertaDesdeOInicio: 0
   destrancarAoCompletar: 0
-  prefixoAviso: "Voc\xEA encontrou: "
+  prefixoAviso: "Voc\xEA achou o livro "
   portaSaida: {fileID: 0}
   portaGiratoria: {fileID: 696631448}
   ui: {fileID: 1514128027}
   somPortaTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
   proximaCena: Nivel5
-  textoObjetivo: "Guarde a mochila no guarda-volumes (arm\xE1rio 23) antes de entrar
-    na biblioteca."
-  textoPortaLiberada: Pode ir embora!
-  textoPortaTrancada: "A porta est\xE1 trancada."
+  textoObjetivo: "Guarde a mochila no arm\xE1rio 23 antes de entrar na biblioteca"
+  textoPortaLiberada: Pode ir embora
+  textoPortaTrancada: "A porta est\xE1 trancada"
   palavraSingular: livro
   palavraPlural: livros
   textoTudoEncontrado: 
@@ -85705,7 +85723,7 @@ MonoBehaviour:
   m_text: "CABINES INDIVIDUAIS \xB7 SIL\xCANCIO"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -85800,7 +85818,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89118,7 +89136,7 @@ MonoBehaviour:
   m_text: BIBLIOTECA UVV
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -89213,7 +89231,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91718,7 +91736,7 @@ MonoBehaviour:
   m_text: 24
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -91813,7 +91831,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93241,7 +93259,7 @@ MonoBehaviour:
   m_text: "ACERVO \xB7 ESTANTES 01 A 08"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93336,7 +93354,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93453,7 +93471,7 @@ MonoBehaviour:
   m_text: 28
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93548,7 +93566,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94549,7 +94567,7 @@ MonoBehaviour:
   m_text: "SANIT\xC1RIOS"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -94644,7 +94662,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96634,6 +96652,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2692047175029329938, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
     - target: {fileID: 4435565481275431346, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -96677,6 +96699,18 @@ PrefabInstance:
     - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_text
       value: BLOCO C
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294107353
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -98017,7 +98051,7 @@ MonoBehaviour:
   m_text: "ESCADA \xB7 1\xBA ANDAR"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -98112,7 +98146,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -101711,6 +101745,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 10.020001
       objectReference: {fileID: 0}
+    - target: {fileID: 2692047175029329938, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
     - target: {fileID: 4435565481275431346, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -44
@@ -101754,6 +101792,18 @@ PrefabInstance:
     - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_text
       value: BLOCO E
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294107353
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -105220,7 +105270,7 @@ MonoBehaviour:
   m_text: "CABINES INDIVIDUAIS \xB7 SIL\xCANCIO"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -105315,7 +105365,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107112,7 +107162,7 @@ MonoBehaviour:
   m_text: 25
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -107207,7 +107257,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107655,7 +107705,7 @@ MonoBehaviour:
   m_text: CABINE DE GRUPO 01
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -107750,7 +107800,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108074,7 +108124,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 10</b>\n<size=60%>900 \xB7 Hist\xF3ria</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -108169,7 +108219,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108983,7 +109033,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 12</b>\n<size=60%>100 \xB7 Filosofia</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -109078,7 +109128,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110878,7 +110928,7 @@ MonoBehaviour:
   m_text: EXTINTOR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -110973,7 +111023,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128681,7 +128731,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 11</b>\n<size=60%>050 \xB7 Peri\xF3dicos</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -128776,7 +128826,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130243,7 +130293,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 07</b>\n<size=60%>540 \xB7 Qu\xEDmica</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -130338,7 +130388,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132713,7 +132763,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 04</b>\n<size=60%>006 \xB7 Intelig\xEAncia Artificial</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -132808,7 +132858,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135592,6 +135642,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2319014993116762894, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_text
+      value: "Voc\xEA ficou at\xE9 tarde no InovaLab e o campus fechou, encontre
+        um jeito de sair"
+      objectReference: {fileID: 0}
     - target: {fileID: 2531585272003070772, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: nomeDoLocal
       value: Biblioteca UVV
@@ -135942,7 +135997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 237.23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -137699,7 +137754,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 08</b>\n<size=60%>600 \xB7 Tecnologia</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -137794,7 +137849,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140087,7 +140142,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 09</b>\n<size=60%>869 \xB7 Esp\xEDrito Santo</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -140182,7 +140237,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140649,7 +140704,7 @@ MonoBehaviour:
   m_text: EXTINTOR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -140744,7 +140799,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148136,7 +148191,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 14</b>\n<size=60%>800 \xB7 Literatura</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -148231,7 +148286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148838,7 +148893,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 03</b>\n<size=60%>005 \xB7 Programa\xE7\xE3o</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -148933,7 +148988,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -150937,9 +150992,9 @@ MonoBehaviour:
   grupo: {fileID: 1653060141}
   texto: {fileID: 444117989}
   textoAbertura: "<size=64>Biblioteca UVV</size>\n\n<size=30><color=#9AA3AE>J\xE1
-    passou do hor\xE1rio... mas a porta ainda estava aberta.</color></size>"
+    passou do hor\xE1rio, mas a porta ainda estava aberta</color></size>"
   tempoAbertura: 4.5
-  textoRecomeco: De novo...
+  textoRecomeco: De novo
   tempoRecomeco: 1
   tempoTransicao: 1.5
 --- !u!225 &1653060141
@@ -153477,7 +153532,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 06</b>\n<size=60%>530 \xB7 F\xEDsica</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -153572,7 +153627,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -154404,7 +154459,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 13</b>\n<size=60%>300 \xB7 Ci\xEAncias Sociais</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -154499,7 +154554,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -155885,7 +155940,7 @@ MonoBehaviour:
   m_text: "ACERVO \xB7 ESTANTES 01 A 08"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -155980,7 +156035,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157100,7 +157155,7 @@ MonoBehaviour:
   m_text: "SANIT\xC1RIO FEMININO"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -157195,7 +157250,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157363,7 +157418,7 @@ MonoBehaviour:
   m_text: "\xC1REA DE ESTUDO"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -157458,7 +157513,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168506,7 +168561,7 @@ MonoBehaviour:
   m_text: "ATENDIMENTO \xB7 EMPR\xC9STIMO"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -168601,7 +168656,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -174975,7 +175030,7 @@ MonoBehaviour:
   m_text: "SANIT\xC1RIO MASCULINO"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -175070,7 +175125,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -180212,7 +180267,7 @@ MonoBehaviour:
   m_text: "<b>ESTANTE 05</b>\n<size=60%>510 \xB7 Matem\xE1tica</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -180307,7 +180362,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -180887,7 +180942,7 @@ MonoBehaviour:
   m_text: "ATENDIMENTO \xB7 EMPR\xC9STIMO"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -180982,7 +181037,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -181779,9 +181834,9 @@ MonoBehaviour:
   painel: {fileID: 1455705621}
   textoPainel: {fileID: 440406393}
   resultado: 
-  objetivoDepois: Encontre os 3 livros da lista (aperte L para ver a lista).
+  objetivoDepois: Encontre os 3 livros da lista, aperte L para ver
   itemLista: Lista de livros
-  textoImpresso: Lista impressa! Aperte L para ver de novo em qualquer lugar.
+  textoImpresso: Lista impressa, aperte L para ver de novo
   somTecla: {fileID: 8300000, guid: c334df0d60611e346a1a524d8e26a94a, type: 3}
   somImpressora: {fileID: 8300000, guid: bc5778e70085e594299801c83f4fb9c3, type: 3}
 --- !u!65 &1941506501
@@ -183325,7 +183380,7 @@ MonoBehaviour:
   m_text: CABINES DE GRUPO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -183420,7 +183475,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -184434,9 +184489,9 @@ MonoBehaviour:
   somLiberado: {fileID: 8300000, guid: 60e2a660f240fed429a837e6dec6847e, type: 3}
   somNegado: {fileID: 8300000, guid: dbd2e6cfe18ab1d4cafcd0fac42808f2, type: 3}
   somAlarme: {fileID: 8300000, guid: d6cb3dc0b40f2484a86fb8099ec54a7a, type: 3}
-  textoMochila: "Voc\xEA sabe que n\xE3o pode entrar com mochila. Guarde no arm\xE1rio
-    primeiro."
-  textoAlarme: "ALARME ANTIFURTO! Os livros n\xE3o foram emprestados. Use o autoatendimento."
+  textoMochila: "Voc\xEA sabe que n\xE3o pode entrar com mochila, guarde no arm\xE1rio
+    primeiro"
+  textoAlarme: "Alarme antifurto, os livros ainda n\xE3o foram emprestados"
 --- !u!65 &1970815363
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -186031,7 +186086,7 @@ MonoBehaviour:
   m_text: CABINE DE GRUPO 03
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -186126,7 +186181,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -189831,9 +189886,9 @@ MonoBehaviour:
   textoAcao: interagir
   tecla: 101
   chaveNecessaria: Mochila
-  textoTrancada: "Sua mochila ainda est\xE1 no guarda-volumes (arm\xE1rio 23)."
+  textoTrancada: "Sua mochila ainda est\xE1 no arm\xE1rio 23"
   segundoItemNecessario: "Empr\xE9stimo registrado"
-  textoFaltaSegundoItem: "Voc\xEA ainda n\xE3o registrou o empr\xE9stimo dos livros."
+  textoFaltaSegundoItem: "Voc\xEA ainda n\xE3o registrou o empr\xE9stimo dos livros"
   somTrancada: {fileID: 0}
   somDestrancar: {fileID: 0}
 --- !u!65 &2041529043

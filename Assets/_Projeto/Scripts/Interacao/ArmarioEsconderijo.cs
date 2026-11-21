@@ -104,7 +104,7 @@ public class ArmarioEsconderijo : Interagivel
         if (professora != null && professora.EstadoAtual == Professora.Estado.Perseguindo &&
             Vector3.Distance(professora.transform.position, transform.position) < distanciaSegura)
         {
-            Avisar("Ela está vendo você! Não dá tempo de se esconder.");
+            Avisar("Ela está vendo você, não dá tempo de se esconder");
             return;
         }
 

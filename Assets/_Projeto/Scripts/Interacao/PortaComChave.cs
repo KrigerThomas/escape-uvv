@@ -12,7 +12,7 @@ public class PortaComChave : Interagivel
     public string chaveNecessaria = "Chave do bloco";
 
     [Tooltip("Aviso quando o jogador tenta abrir sem a chave.")]
-    public string textoTrancada = "Trancada. A chave do bloco ficou com a professora.";
+    public string textoTrancada = "Trancada, a chave do bloco ficou com a professora";
 
     [Tooltip("Segundo item exigido (opcional). Ex.: no Nível 4, a porta pede o empréstimo E a mochila.")]
     public string segundoItemNecessario = "";

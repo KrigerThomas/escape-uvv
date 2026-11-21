@@ -41,13 +41,13 @@ public class GatoCinza : MonoBehaviour
     public float tomMiado = 0.8f;
 
     [Header("Textos")]
-    public string textoDica = "[E] Fazer carinho no gato cinza";
+    public string textoDica = "Fazer carinho no gato cinza";
     public string[] textosCarinho =
     {
-        "Prrrr... o gato cinza ronrona.",
-        "Ele fecha os olhos e ronrona mais alto.",
+        "O gato cinza ronrona",
+        "Ele fecha os olhos e ronrona mais alto",
     };
-    [TextArea] public string textoPatada = "PSSST! O Cinza tem limite de carinho por noite. Ele foi sentar em outro lugar.";
+    [TextArea] public string textoPatada = "Pssst, o gato cinza cansou de carinho e foi sentar em outro lugar";
 
     private enum Estado { Sentado, Atento, Carinho, Patada, Andando }
 

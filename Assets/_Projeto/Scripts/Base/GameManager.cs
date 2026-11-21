@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     public bool destrancarAoCompletar = true;
 
     [Tooltip("Texto que aparece antes do nome do item no aviso da tela.")]
-    public string prefixoAviso = "Você encontrou: ";
+    public string prefixoAviso = "Você achou ";
 
     [Header("Referências")]
     [Tooltip("Porta que desliza quando o contador chega ao total.")]
@@ -48,10 +48,10 @@ public class GameManager : MonoBehaviour
     public string proximaCena = "Nivel2";
 
     [Header("Textos")]
-    [TextArea] public string textoObjetivo = "A porta está trancada. Encontre os 5 itens perdidos do laboratório.";
-    [TextArea] public string textoPortaLiberada = "Porta destrancada! Vá até a saída.";
+    [TextArea] public string textoObjetivo = "A porta está trancada, encontre os 5 itens perdidos do laboratório";
+    [TextArea] public string textoPortaLiberada = "A porta destrancou, pode sair";
     [Tooltip("Começo do aviso quando o jogador tenta sair antes da hora. Depois vem \"Faltam X itens.\"")]
-    public string textoPortaTrancada = "A porta está trancada.";
+    public string textoPortaTrancada = "A porta está trancada";
     [Tooltip("Palavra do aviso \"Faltam 1 ...\" (singular). Ex.: item, acerto.")]
     public string palavraSingular = "item";
     [Tooltip("Palavra do aviso \"Faltam 2 ...\" (plural). Ex.: itens, acertos.")]
@@ -144,6 +144,16 @@ public class GameManager : MonoBehaviour
     /// <param name="nomeItem">Nome do item, mostrado no aviso da tela.</param>
     public void ColetarItem(string nomeItem)
     {
+        ColetarItem(nomeItem, true);
+    }
+
+    /// <summary>
+    /// Igual ao ColetarItem acima, mas escolhe como o aviso aparece.
+    /// </summary>
+    /// <param name="texto">Nome do item ou frase pronta.</param>
+    /// <param name="usarPrefixo">Verdadeiro: mostra "Você encontrou " + texto. Falso: mostra só o texto (frase pronta). Texto vazio: não mostra aviso.</param>
+    public void ColetarItem(string texto, bool usarPrefixo)
+    {
         if (ItensColetados >= totalItens)
             return;
 
@@ -152,7 +162,8 @@ public class GameManager : MonoBehaviour
         if (ui != null)
         {
             ui.AtualizarContador(rotuloContador, ItensColetados, totalItens);
-            ui.MostrarAviso(prefixoAviso + nomeItem);
+            if (!string.IsNullOrEmpty(texto))
+                ui.MostrarAviso(usarPrefixo ? prefixoAviso + texto : texto);
         }
 
         if (ItensColetados < totalItens)
@@ -188,7 +199,7 @@ public class GameManager : MonoBehaviour
             return;
 
         string palavra = ItensFaltando == 1 ? palavraSingular : palavraPlural;
-        ui.MostrarAviso(textoPortaTrancada + " Faltam " + ItensFaltando + " " + palavra + ".");
+        ui.MostrarAviso(textoPortaTrancada.TrimEnd('.', ' ') + ", faltam " + ItensFaltando + " " + palavra);
     }
 
     /// <summary>Carrega a cena configurada em proximaCena (ou volta para a primeira, se não existir).</summary>

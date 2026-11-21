@@ -25,6 +25,9 @@ public class EventosBiblioteca : MonoBehaviour
     [Tooltip("Luz do ambiente depois que a energia cai (fração da luz normal).")]
     [Range(0f, 1f)] public float ambienteNoApagao = 0.12f;
 
+    [Tooltip("Reflexo do ambiente no chão e nos vidros depois que a energia cai (fração do normal). Sem isso o escuro fica cinza.")]
+    [Range(0f, 1f)] public float reflexoNoApagao = 0.3f;
+
     [Header("Sons")]
     public AudioSource zumbido;
 
@@ -32,6 +35,14 @@ public class EventosBiblioteca : MonoBehaviour
     public AudioClip somQuedaEnergia;
 
     [Range(0f, 1f)] public float volumeQuedaEnergia = 0.8f;
+
+    [Tooltip("O som da queda de energia começa devagar (fade in). Ele toca estes segundos ANTES das luzes apagarem de vez, para o 'tum' bater junto com o escuro.")]
+    public float adiantarSomQueda = 0.7f;
+
+    [Tooltip("Som das lâmpadas falhando enquanto as luzes piscam.")]
+    public AudioClip somLuzFalhando;
+
+    [Range(0f, 1f)] public float volumeLuzFalhando = 0.6f;
 
     [Tooltip("Scripts desligados quando a energia cai (ex.: livros caindo ao longe).")]
     public Behaviour[] desligarNoApagao;
@@ -46,14 +57,15 @@ public class EventosBiblioteca : MonoBehaviour
     public GuardaVolumes guardaVolumes;
     public PortaComChave portaSaida;
 
-    [TextArea] public string avisoApagao = "A energia caiu.";
-    [TextArea] public string objetivoApagao = "A energia caiu. Pegue sua mochila no armário 23 e saia da biblioteca.";
+    [TextArea] public string avisoApagao = "A energia caiu";
+    [TextArea] public string objetivoApagao = "Pegue a mochila no armário 23 e saia da biblioteca";
 
     private readonly List<Light> luzes = new List<Light>();
     private Renderer[] lampadas;
     private MaterialPropertyBlock apagada;
     private int faltandoAntes = -1;
     private bool apagou;
+    private AudioSource fonteLuz;
 
     /// <summary>Guarda as luzes acesas e deixa a emergência desligada.</summary>
     void Start()
@@ -71,6 +83,10 @@ public class EventosBiblioteca : MonoBehaviour
 
         if (luzesEmergencia != null)
             luzesEmergencia.SetActive(false);
+
+        fonteLuz = gameObject.AddComponent<AudioSource>();
+        fonteLuz.playOnAwake = false;
+        fonteLuz.spatialBlend = 0f;
     }
 
     /// <summary>Confere se o jogador acabou de pegar um livro.</summary>
@@ -100,6 +116,15 @@ public class EventosBiblioteca : MonoBehaviour
     /// <summary>As luzes piscam por alguns instantes e voltam.</summary>
     private IEnumerator Piscar(float duracao)
     {
+        if (somLuzFalhando != null)
+        {
+            fonteLuz.Stop();
+            fonteLuz.volume = volumeLuzFalhando;
+            fonteLuz.pitch = Random.Range(0.95f, 1.05f);
+            fonteLuz.clip = somLuzFalhando;
+            fonteLuz.Play();
+        }
+
         float t = 0f;
         while (t < duracao)
         {
@@ -109,15 +134,39 @@ public class EventosBiblioteca : MonoBehaviour
             yield return new WaitForSeconds(espera);
         }
         Ligar(true);
+        StartCoroutine(SumirSomLuz());
+    }
+
+    /// <summary>Abaixa rapidinho o som das lâmpadas falhando quando elas param de piscar.</summary>
+    private IEnumerator SumirSomLuz()
+    {
+        float inicio = fonteLuz.volume;
+        for (float t = 0f; t < 1f; t += Time.deltaTime / 0.15f)
+        {
+            fonteLuz.volume = Mathf.Lerp(inicio, 0f, t);
+            yield return null;
+        }
+        fonteLuz.Stop();
+    }
+
+    /// <summary>
+    /// Toca o som da queda de energia depois de um tempo.
+    /// </summary>
+    /// <param name="espera">Segundos até tocar.</param>
+    private IEnumerator TocarQuedaDepois(float espera)
+    {
+        yield return new WaitForSeconds(Mathf.Max(0f, espera));
+        UIManager.TocarSom2D(somQuedaEnergia, volumeQuedaEnergia);
     }
 
     /// <summary>A energia cai: luzes apagam, sons somem e a saída fica liberada.</summary>
     private IEnumerator Apagao()
     {
         apagou = true;
-        yield return Piscar(1.4f);
+        const float tempoPiscando = 1.4f;
+        StartCoroutine(TocarQuedaDepois(tempoPiscando - adiantarSomQueda));
+        yield return Piscar(tempoPiscando);
         Ligar(false);
-        UIManager.TocarSom2D(somQuedaEnergia, volumeQuedaEnergia);
         foreach (GameObject g in esconderNoApagao)
             if (g != null)
                 g.SetActive(false);
@@ -132,6 +181,9 @@ public class EventosBiblioteca : MonoBehaviour
         RenderSettings.ambientSkyColor *= ambienteNoApagao;
         RenderSettings.ambientEquatorColor *= ambienteNoApagao;
         RenderSettings.ambientGroundColor *= ambienteNoApagao;
+        RenderSettings.reflectionIntensity *= reflexoNoApagao;
+        foreach (ReflectionProbe sonda in FindObjectsByType<ReflectionProbe>(FindObjectsSortMode.None))
+            sonda.intensity *= reflexoNoApagao;
 
         if (catraca != null)
             catraca.Desligar();

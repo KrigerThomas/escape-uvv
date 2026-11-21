@@ -1014,6 +1014,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 10.020001
       objectReference: {fileID: 0}
+    - target: {fileID: 2692047175029329938, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
     - target: {fileID: 4435565481275431346, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 58
@@ -1057,6 +1061,18 @@ PrefabInstance:
     - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_text
       value: BLOCO D
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294107353
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2107,10 +2123,10 @@ MonoBehaviour:
   grupo: {fileID: 77220121}
   texto: {fileID: 242558497}
   textoAbertura: "<size=64>Sala 12</size>\n\n<size=32>Voc\xEA cochilou na \xFAltima
-    aula da noite.\nAcordou no escuro. O bloco est\xE1 trancado.</size>\n\n<size=28><color=#9AA3AE>A
-    professora ainda est\xE1 fazendo a ronda...</color></size>"
+    aula e acordou com o bloco trancado</size>\n\n<size=28><color=#9AA3AE>A professora
+    ainda est\xE1 fazendo a ronda</color></size>"
   tempoAbertura: 5.5
-  textoRecomeco: De novo...
+  textoRecomeco: De novo
   tempoRecomeco: 1.2
   tempoTransicao: 1.5
 --- !u!225 &77220121
@@ -8295,15 +8311,15 @@ MonoBehaviour:
   rotuloContador: 
   saidaAbertaDesdeOInicio: 0
   destrancarAoCompletar: 1
-  prefixoAviso: "Voc\xEA pegou: "
+  prefixoAviso: "Voc\xEA pegou "
   portaSaida: {fileID: 0}
   portaGiratoria: {fileID: 1102464737}
   ui: {fileID: 779745410}
   somPortaTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
   proximaCena: FimDeJogo
-  textoObjetivo: Pegue seu celular na sua carteira, no fundo da sala.
-  textoPortaLiberada: "A porta abriu! Saia do pr\xE9dio!"
-  textoPortaTrancada: "Voc\xEA n\xE3o pode ir embora sem suas coisas."
+  textoObjetivo: Pegue seu celular na carteira do fundo da sala
+  textoPortaLiberada: "A porta abriu, saia do pr\xE9dio"
+  textoPortaTrancada: "Voc\xEA n\xE3o pode ir embora sem suas coisas"
   palavraSingular: item
   palavraPlural: itens
   textoTudoEncontrado: 
@@ -8384,7 +8400,7 @@ MonoBehaviour:
     texto: "VOC\xCA AINDA T\xC1 A\xCD??"
     esperar: 2
   - remetente: Daphne
-    texto: "a professora t\xE1 fazendo ronda no bloco. sai quietinho"
+    texto: "a professora t\xE1 fazendo ronda no bloco, sai quietinho"
     esperar: 3
   esperarItem: Celular
 --- !u!1 &137284890
@@ -17134,8 +17150,8 @@ MonoBehaviour:
   tecla: 101
   nomeItem: Chave do bloco
   contaNoObjetivo: 0
-  mensagem: "Voc\xEA pegou a chave do bloco!"
-  novoObjetivo: Fuja pela porta de vidro no fim do corredor.
+  mensagem: "Voc\xEA pegou a chave do bloco"
+  novoObjetivo: Fuja pela porta de vidro no fim do corredor
   somPegar: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   volume: 0.8
 --- !u!65 &470012277
@@ -19041,6 +19057,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2692047175029329938, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
     - target: {fileID: 4435565481275431346, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14
@@ -19084,6 +19104,18 @@ PrefabInstance:
     - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_text
       value: BLOCO C
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294107353
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23578,6 +23610,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2319014993116762894, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_text
+      value: "Voc\xEA ficou at\xE9 tarde no InovaLab e o campus fechou, encontre
+        um jeito de sair"
+      objectReference: {fileID: 0}
     - target: {fileID: 2531585272003070772, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: nomeDoLocal
       value: Sala 12
@@ -25087,7 +25124,7 @@ MonoBehaviour:
   m_text: "SA\xCDDA  \u2192"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -25182,7 +25219,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -32101,7 +32138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anguloAbertura: 90
   duracao: 1.2
-  somAbrir: {fileID: 8300000, guid: 3c13bf13b2461e2468a51342f09646c5, type: 3}
+  somAbrir: {fileID: 8300000, guid: c153c79547dcada42aff1a750893664e, type: 3}
   volume: 0.9
 --- !u!1 &1106669869
 GameObject:
@@ -33302,7 +33339,7 @@ MonoBehaviour:
   m_text: SALA 12
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -33397,7 +33434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -33657,7 +33694,7 @@ MonoBehaviour:
   m_text: SALA 13
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -33752,7 +33789,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -35621,7 +35658,7 @@ MonoBehaviour:
   textoAcao: "abrir a porta de sa\xEDda"
   tecla: 101
   chaveNecessaria: Chave do bloco
-  textoTrancada: Trancada. A chave do bloco ficou na mesa da professora.
+  textoTrancada: Trancada, a chave do bloco ficou na mesa da professora
   segundoItemNecessario: 
   textoFaltaSegundoItem: 
   somTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
@@ -46803,7 +46840,7 @@ MonoBehaviour:
   m_text: EXTINTOR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -46898,7 +46935,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -47384,7 +47421,7 @@ MonoBehaviour:
   m_text: "N\xE3o permane\xE7a\nnem sente\nno corredor\nno hor\xE1rio\nde aula."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -47479,7 +47516,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -57739,6 +57776,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 10.020001
       objectReference: {fileID: 0}
+    - target: {fileID: 2692047175029329938, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
     - target: {fileID: 4435565481275431346, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -38
@@ -57782,6 +57823,18 @@ PrefabInstance:
     - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
       propertyPath: m_text
       value: BLOCO A
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294107353
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898256751108595505, guid: b29f35dc09356e74abb49adef159e11f, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -58905,7 +58958,7 @@ MonoBehaviour:
   m_text: EXTINTOR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -59000,7 +59053,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -62938,7 +62991,7 @@ MonoBehaviour:
   m_text: SALA 11
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -63033,7 +63086,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -63911,9 +63964,9 @@ MonoBehaviour:
   tecla: 101
   nomeItem: Celular
   contaNoObjetivo: 0
-  mensagem: "Celular na m\xE3o. Aperte F para ligar a lanterna (ela tamb\xE9m te
-    deixa mais vis\xEDvel)."
-  novoObjetivo: A chave do bloco ficou na mesa da professora. Pegue-a sem ser visto.
+  mensagem: "Celular na m\xE3o, aperte F para a lanterna mas cuidado que a luz te
+    entrega"
+  novoObjetivo: Pegue a chave do bloco na mesa da professora sem ser visto
   somPegar: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   volume: 0.8
 --- !u!65 &7491134040956411882

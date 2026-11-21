@@ -27,7 +27,7 @@ public class TelaPreta : MonoBehaviour
     public float tempoAbertura = 4f;
 
     [Tooltip("Frase curta quando o nível recomeça (a abertura completa só aparece na primeira vez).")]
-    public string textoRecomeco = "De novo...";
+    public string textoRecomeco = "De novo";
 
     [Tooltip("Segundos da frase de recomeço.")]
     public float tempoRecomeco = 1.2f;

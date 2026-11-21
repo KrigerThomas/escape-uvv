@@ -41,8 +41,8 @@ public class EsquiloFujao : MonoBehaviour
     public int fugasAteCansar = 4;
     public AudioClip somPresente;
     public GameObject efeitoPresente;
-    public string textoPrimeiraFuga = "Um esquilo! Será que dá pra alcançar ele?";
-    [TextArea] public string textoPresente = "O esquilo cansou de fugir e te deixou uma bolota. Amizade feita!";
+    public string textoPrimeiraFuga = "Um esquilo, será que dá pra alcançar ele";
+    [TextArea] public string textoPresente = "O esquilo cansou de fugir e deixou uma bolota pra você";
 
     private enum Estado { Parado, Correndo, Amigo }
 

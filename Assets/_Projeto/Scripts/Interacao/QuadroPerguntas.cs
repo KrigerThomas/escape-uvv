@@ -259,13 +259,13 @@ public class QuadroPerguntas : MonoBehaviour
 
         if (certa)
         {
-            textoResultado.text = "<color=#1f7a1f>Certa resposta!</color> " + p.explicacao;
+            textoResultado.text = string.IsNullOrEmpty(p.explicacao) ? "<color=#1f7a1f>Certo</color>" : "<color=#1f7a1f>Certo</color>, " + p.explicacao;
             if (GameManager.Instancia != null)
-                GameManager.Instancia.ColetarItem("Resposta certa!");
+                GameManager.Instancia.ColetarItem("", false);
         }
         else
         {
-            textoResultado.text = "<color=#b3261e>Errou!</color> O Abrantes apaga o quadro e escreve outra pergunta...";
+            textoResultado.text = "<color=#b3261e>Errado</color>, o Abrantes apaga e escreve outra pergunta";
             fila.Add(perguntaAtual); // a pergunta errada volta para o fim da fila
         }
 

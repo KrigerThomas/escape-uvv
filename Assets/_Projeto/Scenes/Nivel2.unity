@@ -1266,6 +1266,78 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1206353150172168161, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206353150172168161, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206353150172168161, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206353150172168161, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206353150172168161, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206353150172168161, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590279381622869815, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590279381622869815, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590279381622869815, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590279381622869815, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590279381622869815, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1590279381622869815, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076628690124717362, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076628690124717362, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076628690124717362, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076628690124717362, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076628690124717362, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076628690124717362, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2531585272003070772, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: nomeDoLocal
       value: "P\xE1tio"
@@ -1278,6 +1350,174 @@ PrefabInstance:
       propertyPath: botaoContinuar
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3091502651741146594, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091502651741146594, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091502651741146594, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091502651741146594, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091502651741146594, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3091502651741146594, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795653841961040887, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692653010703510176, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692653010703510176, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692653010703510176, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692653010703510176, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692653010703510176, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692653010703510176, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757183153239903793, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757183153239903793, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757183153239903793, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757183153239903793, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757183153239903793, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757183153239903793, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757183153239903793, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757183153239903793, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021623290117888576, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021623290117888576, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021623290117888576, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021623290117888576, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021623290117888576, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021623290117888576, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021623290117888576, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6021623290117888576, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022184409434685368, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022184409434685368, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022184409434685368, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022184409434685368, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022184409434685368, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885160924081909380, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885160924081909380, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885160924081909380, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885160924081909380, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885160924081909380, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885160924081909380, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885160924081909380, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885160924081909380, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7079025756097248332, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -1285,6 +1525,38 @@ PrefabInstance:
     - target: {fileID: 7108854869006722112, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277810506189315271, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277810506189315271, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277810506189315271, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277810506189315271, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277810506189315271, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277810506189315271, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277810506189315271, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7277810506189315271, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7485721374627020295, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_Pivot.x
@@ -1377,6 +1649,34 @@ PrefabInstance:
     - target: {fileID: 7485721374627020295, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 434
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -7923,7 +8223,7 @@ MonoBehaviour:
   correcaoAngulo: 0
   mostrarAviso: 1
   distanciaAviso: 4.5
-  textoAviso: "Os girass\xF3is est\xE3o olhando pra voc\xEA... de noite?!"
+  textoAviso: "Os girass\xF3is est\xE3o olhando pra voc\xEA no meio da noite"
   somAviso: {fileID: 8300000, guid: a324de4c53bfe5e4abc411327ce1fb77, type: 3}
   volumeAviso: 0.7
 --- !u!1001 &199521072
@@ -12914,7 +13214,7 @@ MonoBehaviour:
   m_text: INOVALAB
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13009,7 +13309,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13356,7 +13656,7 @@ MonoBehaviour:
   m_text: "SA\xCDDA"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13451,7 +13751,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16958,8 +17258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b83f47c5b1911a4981a453f501f13c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeSegredo: Misty, a gata do campus
-  frase: "Ela sempre aparece quando algu\xE9m fica at\xE9 tarde."
+  nomeSegredo: Misty
+  frase: "No seu colar o nome diz ser Misty, de quem ser\xE1 que \xE9 essa gata"
   efeitoDescoberta: {fileID: 5257402744445269917, guid: 89d58c592c817a24494e5d27e37ac950, type: 3}
   somDescoberta: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   volume: 0.8
@@ -17359,7 +17659,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17454,7 +17754,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17641,7 +17941,7 @@ MonoBehaviour:
   m_text: "SA\xCDDA"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17736,7 +18036,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25353,7 +25653,7 @@ MonoBehaviour:
   correcaoAngulo: 0
   mostrarAviso: 0
   distanciaAviso: 4.5
-  textoAviso: "Os girass\xF3is est\xE3o olhando pra voc\xEA... de noite?!"
+  textoAviso: "Os girass\xF3is est\xE3o olhando pra voc\xEA no meio da noite"
   somAviso: {fileID: 8300000, guid: a324de4c53bfe5e4abc411327ce1fb77, type: 3}
   volumeAviso: 0.7
 --- !u!1001 &844507479
@@ -26984,7 +27284,7 @@ MonoBehaviour:
   m_text: LABIRINTO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -27079,7 +27379,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28578,15 +28878,15 @@ MonoBehaviour:
   rotuloContador: Itens
   saidaAbertaDesdeOInicio: 0
   destrancarAoCompletar: 1
-  prefixoAviso: "Voc\xEA encontrou: "
+  prefixoAviso: "Voc\xEA achou "
   portaSaida: {fileID: 1672511205}
   portaGiratoria: {fileID: 0}
   ui: {fileID: 79615221}
-  somPortaTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
+  somPortaTrancada: {fileID: 8300000, guid: 9060e4aea04655e4f88e9ac1b0bb5678, type: 3}
   proximaCena: Nivel3
-  textoObjetivo: "Ache os 5 itens perdidos para abrir o port\xE3o do labirinto."
-  textoPortaLiberada: "O port\xE3o abriu! V\xE1 at\xE9 a sa\xEDda do labirinto."
-  textoPortaTrancada: "O port\xE3o est\xE1 trancado."
+  textoObjetivo: "Ache os 5 itens perdidos para abrir o port\xE3o do labirinto"
+  textoPortaLiberada: "O port\xE3o abriu, siga at\xE9 a sa\xEDda do labirinto"
+  textoPortaTrancada: "O port\xE3o est\xE1 trancado"
   palavraSingular: item
   palavraPlural: itens
   textoTudoEncontrado: 
@@ -29667,7 +29967,7 @@ MonoBehaviour:
   m_text: "Ache os 5 itens para abrir o port\xE3o."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -29762,7 +30062,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30228,7 +30528,7 @@ MonoBehaviour:
   m_text: "Ache os 5 itens para abrir o port\xE3o."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -30323,7 +30623,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30675,7 +30975,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -30770,7 +31070,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -42510,7 +42810,7 @@ MonoBehaviour:
   correcaoAngulo: 0
   mostrarAviso: 0
   distanciaAviso: 4.5
-  textoAviso: "Os girass\xF3is est\xE3o olhando pra voc\xEA... de noite?!"
+  textoAviso: "Os girass\xF3is est\xE3o olhando pra voc\xEA no meio da noite"
   somAviso: {fileID: 8300000, guid: a324de4c53bfe5e4abc411327ce1fb77, type: 3}
   volumeAviso: 0.7
 --- !u!1 &1276084781
@@ -46314,7 +46614,7 @@ MonoBehaviour:
   m_text: LABIRINTO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -46409,7 +46709,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 2100000, guid: 18c513b75422d4e4b81d65c6ee7b2341, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -47539,12 +47839,11 @@ MonoBehaviour:
   somRonronar: {fileID: 8300000, guid: 14449cff8aee64c57a3be0883d712e93, type: 3}
   somChiado: {fileID: 8300000, guid: 3b3e8eca4488a47c1ae680bd69ac3fb4, type: 3}
   tomMiado: 0.8
-  textoDica: '[E] Fazer carinho no gato cinza'
+  textoDica: Fazer carinho no gato cinza
   textosCarinho:
-  - Prrrr... o gato cinza ronrona.
-  - Ele fecha os olhos e ronrona mais alto.
-  textoPatada: PSSST! O Cinza tem limite de carinho por noite. Ele foi sentar em
-    outro lugar.
+  - O gato cinza ronrona
+  - Ele fecha os olhos e ronrona mais alto
+  textoPatada: Pssst, o gato cinza cansou de carinho e foi sentar em outro lugar
 --- !u!82 &1649875822
 AudioSource:
   m_ObjectHideFlags: 0
@@ -48218,6 +48517,8 @@ MonoBehaviour:
   distancia: 6.3
   duracao: 3
   somAbrir: {fileID: 8300000, guid: 194504cdf4509d34a865e1b94749e37c, type: 3}
+  volume: 1
+  somPertoDoJogador: 0
 --- !u!65 &1672511206
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56178,8 +56479,8 @@ MonoBehaviour:
   fugasAteCansar: 4
   somPresente: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   efeitoPresente: {fileID: 5257402744445269917, guid: 89d58c592c817a24494e5d27e37ac950, type: 3}
-  textoPrimeiraFuga: "Um esquilo! Ser\xE1 que d\xE1 pra alcan\xE7ar ele?"
-  textoPresente: O esquilo cansou de fugir e te deixou uma bolota. Amizade feita!
+  textoPrimeiraFuga: "Um esquilo, ser\xE1 que d\xE1 pra alcan\xE7ar ele"
+  textoPresente: "O esquilo cansou de fugir e deixou uma bolota pra voc\xEA"
 --- !u!82 &1874031743
 AudioSource:
   m_ObjectHideFlags: 0

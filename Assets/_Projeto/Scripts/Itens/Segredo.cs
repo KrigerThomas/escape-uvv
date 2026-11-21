@@ -74,9 +74,13 @@ public class Segredo : MonoBehaviour
         if (dicaVisual != null)
             dicaVisual.SetActive(false);
 
-        string texto = string.IsNullOrEmpty(frase) ? nomeSegredo : nomeSegredo + ". " + frase;
-
+        // Com frase: mostra só a frase (ela já fala do achado). Sem frase: "Você encontrou " + nome.
         if (GameManager.Instancia != null)
-            GameManager.Instancia.ColetarItem(texto);
+        {
+            if (string.IsNullOrEmpty(frase))
+                GameManager.Instancia.ColetarItem(nomeSegredo, true);
+            else
+                GameManager.Instancia.ColetarItem(frase, false);
+        }
     }
 }

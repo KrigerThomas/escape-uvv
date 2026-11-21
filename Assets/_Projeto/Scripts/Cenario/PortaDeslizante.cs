@@ -18,6 +18,12 @@ public class PortaDeslizante : MonoBehaviour
     [Tooltip("Som tocado quando a porta começa a abrir.")]
     public AudioClip somAbrir;
 
+    [Tooltip("Volume do som de abrir.")]
+    [Range(0f, 1f)] public float volume = 1f;
+
+    [Tooltip("Marque para o som tocar perto do jogador (fica mais alto e claro mesmo com a porta longe).")]
+    public bool somPertoDoJogador = false;
+
     private bool abrindo;
     private float percorrido;
 
@@ -33,7 +39,10 @@ public class PortaDeslizante : MonoBehaviour
         abrindo = true;
 
         if (somAbrir != null)
-            AudioSource.PlayClipAtPoint(somAbrir, transform.position);
+        {
+            Vector3 ponto = somPertoDoJogador && Camera.main != null ? Camera.main.transform.position : transform.position;
+            AudioSource.PlayClipAtPoint(somAbrir, ponto, volume);
+        }
     }
 
     /// <summary>Move a porta um pouco a cada quadro até chegar ao fim do trilho.</summary>

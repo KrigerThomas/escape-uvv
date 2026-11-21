@@ -69,7 +69,16 @@ public class PassosJogador : MonoBehaviour
         Vector3 velocidade = rb.linearVelocity;
         velocidade.y = 0f;
         float rapidez = velocidade.magnitude;
-        bool andando = rapidez > 0.4f && NoChao();
+        bool noChao = NoChao();
+        bool andando = rapidez > 0.4f && noChao;
+
+        // No ar (pulo ou queda) os pés fazem outro movimento: esquece os limites para recomeçar do zero ao pousar.
+        if (!noChao)
+        {
+            Zerar(esquerdo);
+            Zerar(direito);
+            return;
+        }
 
         Conferir(esquerdo, peEsquerdo, andando, rapidez);
         Conferir(direito, peDireito, andando, rapidez);
@@ -112,6 +121,18 @@ public class PassosJogador : MonoBehaviour
 
         pe.descendo = altura < pe.anterior;
         pe.anterior = altura;
+    }
+
+    /// <summary>
+    /// Esquece a altura mínima e máxima guardadas de um pé.
+    /// </summary>
+    /// <param name="pe">Pé a zerar.</param>
+    private void Zerar(Pe pe)
+    {
+        pe.minimo = float.MaxValue;
+        pe.maximo = float.MinValue;
+        pe.noAr = false;
+        pe.descendo = false;
     }
 
     /// <summary>Toca um passo sorteado.</summary>
