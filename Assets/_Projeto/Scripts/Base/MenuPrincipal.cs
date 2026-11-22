@@ -34,6 +34,9 @@ public class MenuPrincipal : MonoBehaviour
     public string primeiraCena = "Nivel1";
     [Tooltip("Música do menu (some aos poucos ao apertar Jogar).")]
     public AudioSource musica;
+
+    [Tooltip("Tempo que a música leva para subir quando o menu abre, em segundos.")]
+    public float tempoEntradaMusica = 4f;
     public AudioClip somClique;
     [Range(0f, 1f)] public float volumeClique = 0.7f;
 
@@ -54,6 +57,9 @@ public class MenuPrincipal : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         AudioListener.volume = Configuracoes.VolumeGeral;
+
+        if (musica != null)
+            StartCoroutine(EntrarMusica(musica.volume));
 
         if (cameraFundo != null)
         {
@@ -191,5 +197,19 @@ public class MenuPrincipal : MonoBehaviour
         }
         grupo.alpha = para;
         grupo.blocksRaycasts = para > 0.5f;
+    }
+
+    /// <summary>A música do menu começa em silêncio e sobe devagar.</summary>
+    /// <param name="volumeFinal">Volume que a música tem no Inspector.</param>
+    private System.Collections.IEnumerator EntrarMusica(float volumeFinal)
+    {
+        musica.volume = 0f;
+        float t = 0f;
+        while (t < tempoEntradaMusica)
+        {
+            t += Time.unscaledDeltaTime;
+            musica.volume = Mathf.Lerp(0f, volumeFinal, Mathf.SmoothStep(0f, 1f, t / tempoEntradaMusica));
+            yield return null;
+        }
     }
 }

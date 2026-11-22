@@ -34822,9 +34822,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 94a00f0961e95314a9ca2dd8842573e8, type: 3}
+  m_Resource: {fileID: 8300000, guid: 775a7db872f3b31418f9748419cc706b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -117881,7 +117881,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4293126893
   m_fontColor: {r: 0.929, g: 0.918, b: 0.89, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -117894,7 +117894,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
