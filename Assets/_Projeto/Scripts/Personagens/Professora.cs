@@ -340,7 +340,7 @@ public class Professora : MonoBehaviour
 
         if (anim != null)
         {
-            anim.SetFloat("Velocidade", velocidade, 0.1f, Time.deltaTime);
+            anim.SetFloat("Velocidade", ValorDaAnimacao(velocidade), 0.15f, Time.deltaTime);
             anim.SetBool("NoChao", true);
         }
 
@@ -359,6 +359,21 @@ public class Professora : MonoBehaviour
             float pitchAlvo = EstadoAtual == Estado.Perseguindo ? 1.5f : 1f;
             passos.pitch = Mathf.MoveTowards(passos.pitch, pitchAlvo, Time.deltaTime);
         }
+    }
+
+    /// <summary>
+    /// O Animator é o mesmo do calouro, que anda a 3,5 m/s e corre a 6 m/s. A professora anda e corre
+    /// mais devagar, então a velocidade dela é convertida: andando na ronda vira a animação de andar inteira
+    /// e correndo atrás do jogador vira a de correr (sem o pé escorregar no chão).
+    /// </summary>
+    /// <param name="velocidade">Velocidade real do NavMeshAgent, em metros por segundo.</param>
+    /// <returns>Valor para o parâmetro Velocidade do Animator.</returns>
+    private float ValorDaAnimacao(float velocidade)
+    {
+        if (velocidade <= velocidadeRonda)
+            return velocidade / Mathf.Max(0.01f, velocidadeRonda) * 3.5f;
+        float k = (velocidade - velocidadeRonda) / Mathf.Max(0.01f, velocidadePerseguicao - velocidadeRonda);
+        return 3.5f + Mathf.Clamp01(k) * 2.5f;
     }
 
     /// <summary>Abaixa o volume de um som até zero em alguns segundos e para.</summary>
