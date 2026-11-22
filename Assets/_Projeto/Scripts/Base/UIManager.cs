@@ -31,6 +31,9 @@ public class UIManager : MonoBehaviour
     /// <summary>Lembra se a introdução já foi vista nesta sessão de jogo.</summary>
     private static bool introJaVista;
 
+    /// <summary>Verdadeiro enquanto o menu inicial do jogo está na tela ou ainda vai aparecer nesta cena.</summary>
+    public bool MenuInicialNaTela => painelIntro != null && (!introJaVista || painelIntro.activeInHierarchy);
+
     /// <summary>Quadro em que um painel foi fechado (o mesmo Esc não pode fechar o painel e abrir a pausa).</summary>
     private static int quadroPainelFechado = -1;
 
