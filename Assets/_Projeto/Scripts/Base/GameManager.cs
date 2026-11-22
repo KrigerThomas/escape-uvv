@@ -10,6 +10,9 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    [Header("Volumes dos sons")]
+    [Range(0f, 1f)] public float volumePortaTrancada = 0.8f;
+
     /// <summary>Acesso rápido ao GameManager da cena atual.</summary>
     public static GameManager Instancia { get; private set; }
 
@@ -193,7 +196,7 @@ public class GameManager : MonoBehaviour
     /// <summary>Avisa quantos itens faltam quando o jogador tenta sair antes da hora.</summary>
     public void AvisarPortaTrancada()
     {
-        UIManager.TocarSom2D(somPortaTrancada, 0.8f);
+        UIManager.TocarSom2D(somPortaTrancada, volumePortaTrancada);
 
         if (ui == null)
             return;

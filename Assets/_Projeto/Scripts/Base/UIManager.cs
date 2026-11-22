@@ -18,6 +18,10 @@ using UnityEngine.UI;
 /// </summary>
 public class UIManager : MonoBehaviour
 {
+    [Header("Volumes dos sons")]
+    [Range(0f, 1f)] public float volumeMensagem = 0.5f;
+    [Range(0f, 1f)] public float volumeClique = 0.7f;
+
     /// <summary>Verdadeiro enquanto um painel que precisa do mouse está aberto (pausa, quadro, lista...).</summary>
     public static bool MenuAberto { get; private set; }
 
@@ -353,7 +357,7 @@ public class UIManager : MonoBehaviour
                     return;
                 Mensagem m = filaMensagens.Dequeue();
                 PreencherMensagem(m);
-                TocarSom2D(somMensagem, 0.5f);
+                TocarSom2D(somMensagem, volumeMensagem);
                 duracaoMensagem = TempoDeLeitura(m.texto) + 1.5f;
                 etapaMensagem = 1;
                 tempoEtapa = 0f;
@@ -574,7 +578,7 @@ public class UIManager : MonoBehaviour
     /// <summary>Toca o som de clique dos botões.</summary>
     private void TocarClique()
     {
-        TocarSom2D(somClique, 0.7f);
+        TocarSom2D(somClique, volumeClique);
     }
 
     /// <summary>Reinicia o nível atual (botão da pausa).</summary>

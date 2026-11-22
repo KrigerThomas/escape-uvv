@@ -19,6 +19,10 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Professora : MonoBehaviour
 {
+    [Header("Volumes dos sons")]
+    [Range(0f, 1f)] public float volumeAvistou = 1f;
+    [Range(0f, 1f)] public float volumePegou = 1f;
+
     /// <summary>O que a professora está fazendo agora.</summary>
     public enum Estado { Ronda, Perseguindo }
 
@@ -206,7 +210,7 @@ public class Professora : MonoBehaviour
         ultimaPosicaoVista = jogador.position;
 
         if (somAvistou != null)
-            UIManager.TocarSom2D(somAvistou, 1f);
+            UIManager.TocarSom2D(somAvistou, volumeAvistou);
 
         if (lanterna != null)
             lanterna.color = new Color(1f, 0.55f, 0.4f);
@@ -290,7 +294,7 @@ public class Professora : MonoBehaviour
             StartCoroutine(AbaixarSom(passos, 0.8f));
 
         if (somPegou != null)
-            UIManager.TocarSom2D(somPegou, 1f);
+            UIManager.TocarSom2D(somPegou, volumePegou);
 
         if (controleJogador != null)
         {

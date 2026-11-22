@@ -8,6 +8,9 @@ using UnityEngine.UI;
 /// </summary>
 public class TelaFimDeJogo : MonoBehaviour
 {
+    [Header("Volumes dos sons")]
+    [Range(0f, 1f)] public float volumeClique = 0.7f;
+
     [Tooltip("Botão que volta para o Nível 1.")]
     public Button botaoJogarDeNovo;
 
@@ -41,14 +44,14 @@ public class TelaFimDeJogo : MonoBehaviour
     /// <summary>Volta para o primeiro nível.</summary>
     public void JogarDeNovo()
     {
-        UIManager.TocarSom2D(somClique, 0.7f);
+        UIManager.TocarSom2D(somClique, volumeClique);
         SceneManager.LoadScene(primeiraCena);
     }
 
     /// <summary>Fecha o jogo. Dentro do Editor, apenas sai do modo Play.</summary>
     public void Sair()
     {
-        UIManager.TocarSom2D(somClique, 0.7f);
+        UIManager.TocarSom2D(somClique, volumeClique);
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

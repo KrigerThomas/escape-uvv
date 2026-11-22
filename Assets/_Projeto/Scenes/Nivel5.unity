@@ -2057,9 +2057,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grupo: {fileID: 77220121}
   texto: {fileID: 242558497}
-  textoAbertura: "<size=64>Sala 12</size>\n\n<size=32>Voc\xEA cochilou na \xFAltima
-    aula e acordou com o bloco trancado</size>\n\n<size=28><color=#9AA3AE>A professora
-    ainda est\xE1 fazendo a ronda</color></size>"
+  textoAbertura: "<size=64>Sala 12</size>\n\n<size=32>Cochilei na \xFAltima aula...
+    e acordei com o bloco trancado.</size>\n\n<size=28><color=#9AA3AE>Tem algu\xE9m
+    andando no corredor.</color></size>"
   tempoAbertura: 5.5
   textoRecomeco: De novo...
   tempoRecomeco: 1.2
@@ -23301,7 +23301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 236.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x

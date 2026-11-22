@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class PortaComChave : Interagivel
 {
+    [Header("Volumes dos sons")]
+    [Range(0f, 1f)] public float volumeDestrancar = 0.9f;
+
     [Header("Chave")]
     [Tooltip("Nome do item que abre esta porta (igual ao \"Nome Item\" do ItemPegavel).")]
     public string chaveNecessaria = "Chave do bloco";
@@ -60,7 +63,7 @@ public class PortaComChave : Interagivel
         }
 
         aberta = true;
-        UIManager.TocarSom2D(somDestrancar, 0.9f);
+        UIManager.TocarSom2D(somDestrancar, volumeDestrancar);
 
         if (GameManager.Instancia != null)
             GameManager.Instancia.DestrancarPorta();

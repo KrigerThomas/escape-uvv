@@ -9,6 +9,11 @@ using UnityEngine;
 /// </summary>
 public class TerminalConsulta : Interagivel
 {
+    [Header("Volumes dos sons")]
+    [Range(0f, 1f)] public float volumeTecla = 0.6f;
+    [Range(0f, 1f)] public float volumeTravou = 0.5f;
+    [Range(0f, 1f)] public float volumeImpressora = 0.7f;
+
     [Tooltip("Painel do Canvas que mostra o resultado da consulta.")]
     public GameObject painel;
 
@@ -80,7 +85,7 @@ public class TerminalConsulta : Interagivel
     /// <summary>Abre o painel com o resultado da consulta.</summary>
     public override void Interagir()
     {
-        UIManager.TocarSom2D(somTecla, 0.6f);
+        UIManager.TocarSom2D(somTecla, volumeTecla);
         if (SorteioLivros.Instancia != null)
             resultado = SorteioLivros.Instancia.TextoLista();
         if (textoPainel != null)
@@ -104,13 +109,13 @@ public class TerminalConsulta : Interagivel
             if (telaNormal != null)
                 telaNormal.SetActive(false);
             telaTravada.SetActive(true);
-            UIManager.TocarSom2D(somTravou, 0.5f);
+            UIManager.TocarSom2D(somTravou, volumeTravou);
         }
 
         if (!jaConsultou)
         {
             Inventario.Adicionar(itemLista);
-            UIManager.TocarSom2D(somImpressora, 0.7f);
+            UIManager.TocarSom2D(somImpressora, volumeImpressora);
             Avisar(textoImpresso);
             if (UI != null && !string.IsNullOrEmpty(objetivoDepois))
                 UI.MostrarObjetivo(objetivoDepois);

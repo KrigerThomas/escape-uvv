@@ -9,6 +9,9 @@ using UnityEngine;
 /// </summary>
 public class ArmarioEsconderijo : Interagivel
 {
+    [Header("Volumes dos sons")]
+    [Range(0f, 1f)] public float volumePorta = 0.7f;
+
     [Tooltip("Dica do E do lado de fora.")]
     [TextArea] public string textoAcaoEntrar = "se esconder no armário";
     [Tooltip("Dica do E dentro do armário.")]
@@ -137,7 +140,7 @@ public class ArmarioEsconderijo : Interagivel
         JogadorDentro = true;
         quadroDaTroca = Time.frameCount;
         EsconderDica();
-        UIManager.TocarSom2D(somPorta, 0.7f);
+        UIManager.TocarSom2D(somPorta, volumePorta);
         StartCoroutine(EntrarAosPoucos());
     }
 

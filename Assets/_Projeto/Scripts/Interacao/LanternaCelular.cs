@@ -9,6 +9,9 @@ using UnityEngine;
 /// </summary>
 public class LanternaCelular : MonoBehaviour
 {
+    [Header("Volumes dos sons")]
+    [Range(0f, 1f)] public float volumeClique = 0.5f;
+
     /// <summary>Verdadeiro enquanto a lanterna está acesa.</summary>
     public static bool Ligada { get; private set; }
 
@@ -166,7 +169,7 @@ public class LanternaCelular : MonoBehaviour
         Ligada = !Ligada;
         if (Ligada)
             PedindoParaLigar = false;
-        UIManager.TocarSom2D(somClique, 0.5f);
+        UIManager.TocarSom2D(somClique, volumeClique);
     }
 
     /// <summary>Apaga ao sair da cena.</summary>

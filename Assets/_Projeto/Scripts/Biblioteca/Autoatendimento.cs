@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class Autoatendimento : Interagivel
 {
+    [Header("Volumes dos sons")]
+    [Range(0f, 1f)] public float volumeConfirmar = 0.8f;
+
     public string itemEmprestimo = "Empréstimo registrado";
 
     [Tooltip("Objetivo depois de registrar.")]
@@ -38,7 +41,7 @@ public class Autoatendimento : Interagivel
         }
 
         Inventario.Adicionar(itemEmprestimo);
-        UIManager.TocarSom2D(somConfirmar, 0.8f);
+        UIManager.TocarSom2D(somConfirmar, volumeConfirmar);
         Avisar("Empréstimo registrado: 3 livros, devolução em 7 dias úteis.");
         if (UI != null)
             UI.MostrarObjetivo(objetivoDepois);

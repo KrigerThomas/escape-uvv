@@ -8,6 +8,9 @@ using UnityEngine;
 /// </summary>
 public class ListaLivros : MonoBehaviour
 {
+    [Header("Volumes dos sons")]
+    [Range(0f, 1f)] public float volumePapel = 0.6f;
+
     public string itemLista = "Lista de livros";
     public KeyCode tecla = KeyCode.L;
 
@@ -42,7 +45,7 @@ public class ListaLivros : MonoBehaviour
         if (textoPainel != null && SorteioLivros.Instancia != null)
             textoPainel.text = SorteioLivros.Instancia.TextoLista() + "\n<size=70%><color=#9aa>Aperte L para fechar</color></size>";
 
-        UIManager.TocarSom2D(somPapel, 0.6f);
+        UIManager.TocarSom2D(somPapel, volumePapel);
         UIManager.AbrirPainelComMouse(painel);
         aberta = true;
     }
@@ -50,7 +53,7 @@ public class ListaLivros : MonoBehaviour
     /// <summary>Fecha a lista.</summary>
     private void Fechar()
     {
-        UIManager.TocarSom2D(somPapel, 0.4f);
+        UIManager.TocarSom2D(somPapel, volumePapel);
         UIManager.FecharPainelComMouse(painel);
         aberta = false;
     }
