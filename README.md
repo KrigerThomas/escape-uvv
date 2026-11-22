@@ -45,7 +45,11 @@ Os comandos também aparecem em **Opções**, na tela inicial, junto com volume,
 Assets/
 ├── _Projeto/      ← tudo que o grupo fez: cenas, scripts, prefabs, materiais, áudio, interface
 │   ├── Scenes/    ← Menu, Nivel1 a Nivel5 e FimDeJogo
-│   ├── Scripts/   ← Base, Interacao, Itens, Cenario, Efeitos, Som, Personagens, Biblioteca
+│   ├── Audio/     ← sons separados por nível; Geral = sons usados em vários níveis, Menu = música do menu e do final
+│   ├── Materiais/ ← Geral (usados em vários níveis) e uma pasta por nível
+│   ├── Models/    ← modelos 3D baixados, separados por lugar (Banheiro, Biblioteca, Campus, Corredor, Itens...)
+│   ├── Prefabs/   ← objetos prontos para arrastar na cena
+│   ├── Scripts/   ← Base, Interacao, Itens, Cenario, Natureza, Efeitos, Som, Personagens, Biblioteca
 │   └── Editor/    ← janelas do menu Escape UVV (Textos do nível e Sons do nível)
 ├── _Pacotes/      ← pacotes de terceiros (School Assets, POLYGON city, animais, plantas...)
 ├── TextMesh Pro/
@@ -60,11 +64,11 @@ Para mudar textos e sons sem mexer em código, use o menu **Escape UVV > Textos 
 
 | Requisito | Onde está no jogo |
 |---|---|
-| Colisão e trigger | `OnTriggerEnter` nos itens, portas e saídas; `OnCollisionEnter` nas cadeiras do InovaLab (`CadeiraEmpurravel`) |
+| Colisão e trigger | `OnTriggerEnter` nos itens, portas e saídas; `OnCollisionEnter` no livro que cai da estante no Nível 4 (`LivroCaindo`) |
 | Translate | Portas de correr (`PortaDeslizante`) |
-| AddForce | Pulo do jogador (`PlayerController`) e cadeiras empurradas no Nível 1 |
+| AddForce | Pulo do jogador (`PlayerController`) e livro empurrado para fora da estante no Nível 4 |
 | Rotação | Câmera, portas giratórias, catraca, itens girando, gatos e girassóis |
-| Torque | `AddTorque` nas cadeiras do Nível 1, que giram quando o calouro esbarra |
+| Torque | `AddTorque` no livro que despenca girando da estante a cada livro pego no Nível 4 (`LivroCaindo`, chamado pelo `EventosBiblioteca`) |
 | Vetor de prefabs e posição sorteada | `SpawnItens` (Níveis 1 e 2) e `SorteioLivros` (Nível 4) |
 | Spawn por função | `SpawnItens.Instantiate` e o efeito de coleta |
 | Partículas criadas pelo grupo | Faíscas e fumaça (N1), vagalumes (N2), chuva (N3 a N5), estouro da lâmpada no apagão (N4), brilho dos segredos e efeito de coleta |
@@ -97,7 +101,8 @@ Para mudar textos e sons sem mexer em código, use o menu **Escape UVV > Textos 
 | PBR Lamps Pack, OldExtinguisher, Modular Sofa, QA Books, Free Rug Pack | Unity Asset Store | Luminárias, extintores, sofás, livros e tapetes |
 | Texturas do terreno | ambientCG (CC0) | Nível 2 |
 | Fonte da praça (simulação em Alembic) | Sketchfab | Nível 2 |
-| Arduino, mouse, fone, celular, pen drive, chave, poste e latinha | Sketchfab | Itens e cenário |
+| Arduino, mouse, fone, celular, pen drive, chave e poste | Sketchfab | Itens e cenário |
+| Guarda-chuva | CGTrader | Nível 2 |
 | Elizabeth Warren caricature | Unity Asset Store | Modelo da professora do Nível 5 |
 | Personagem Remy e animações | Mixamo (Adobe) | Jogador |
 | Fontes Barlow e Kalam | Google Fonts (OFL) | Interface |
