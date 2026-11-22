@@ -3941,9 +3941,9 @@ MonoBehaviour:
   itemMochila: Mochila
   itemChave: "Chave do arm\xE1rio"
   itemEmprestimo: "Empr\xE9stimo registrado"
-  textoGuardou: "Mochila guardada, a chave do arm\xE1rio n\xE3o pode sair da biblioteca"
-  textoAindaNao: "Sua mochila est\xE1 aqui, termine na biblioteca antes de pegar"
-  textoPegou: "Mochila de volta, agora \xE9 s\xF3 sair"
+  textoGuardou: 
+  textoAindaNao: 
+  textoPegou: 
   objetivoDepoisDeGuardar: Passe pela catraca e consulte o terminal do acervo
   objetivoDepoisDePegar: "Saia pela porta de vidro do sagu\xE3o"
   somArmario: {fileID: 8300000, guid: 3ca00152304d83845a48515db24ef28c, type: 3}
@@ -179788,9 +179788,8 @@ MonoBehaviour:
   somNegado: {fileID: 8300000, guid: dbd2e6cfe18ab1d4cafcd0fac42808f2, type: 3}
   somAlarme: {fileID: 8300000, guid: d6cb3dc0b40f2484a86fb8099ec54a7a, type: 3}
   volumeSons: 0.28
-  textoMochila: "Voc\xEA sabe que n\xE3o pode entrar com mochila, guarde no arm\xE1rio
-    primeiro"
-  textoAlarme: "Alarme antifurto, os livros ainda n\xE3o foram emprestados"
+  textoMochila: Toda vez a mesma coisa...
+  textoAlarme: "N\xE3o posso sair antes de devolver os livros"
 --- !u!65 &1970815363
 BoxCollider:
   m_ObjectHideFlags: 0
