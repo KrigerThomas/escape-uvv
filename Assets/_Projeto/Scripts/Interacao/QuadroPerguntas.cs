@@ -32,6 +32,11 @@ public class Pergunta
 [RequireComponent(typeof(Collider))]
 public class QuadroPerguntas : MonoBehaviour
 {
+    [Tooltip("Começo do resultado quando acerta (depois vem a explicação).")]
+    [TextArea] public string textoCerto = "Certo,";
+    [Tooltip("Resultado quando erra.")]
+    [TextArea] public string textoErrado = "Errado, o Abrantes apaga e escreve outra pergunta";
+
     [Header("Perguntas")]
     [Tooltip("Banco de perguntas. O grupo pode adicionar quantas quiser.")]
     public List<Pergunta> perguntas = new List<Pergunta>();
@@ -259,13 +264,13 @@ public class QuadroPerguntas : MonoBehaviour
 
         if (certa)
         {
-            textoResultado.text = string.IsNullOrEmpty(p.explicacao) ? "<color=#1f7a1f>Certo</color>" : "<color=#1f7a1f>Certo</color>, " + p.explicacao;
+            textoResultado.text = string.IsNullOrEmpty(p.explicacao) ? "<color=#1f7a1f>" + textoCerto + "</color>" : "<color=#1f7a1f>" + textoCerto + "</color> " + p.explicacao;
             if (GameManager.Instancia != null)
                 GameManager.Instancia.ColetarItem("", false);
         }
         else
         {
-            textoResultado.text = "<color=#b3261e>Errado</color>, o Abrantes apaga e escreve outra pergunta";
+            textoResultado.text = "<color=#b3261e>" + textoErrado + "</color>";
             fila.Add(perguntaAtual); // a pergunta errada volta para o fim da fila
         }
 

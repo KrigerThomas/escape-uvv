@@ -2061,7 +2061,7 @@ MonoBehaviour:
     aula e acordou com o bloco trancado</size>\n\n<size=28><color=#9AA3AE>A professora
     ainda est\xE1 fazendo a ronda</color></size>"
   tempoAbertura: 5.5
-  textoRecomeco: De novo
+  textoRecomeco: De novo...
   tempoRecomeco: 1.2
   tempoTransicao: 1.5
 --- !u!225 &77220121
@@ -8308,15 +8308,15 @@ MonoBehaviour:
   rotuloContador: 
   saidaAbertaDesdeOInicio: 0
   destrancarAoCompletar: 1
-  prefixoAviso: "Voc\xEA pegou "
+  prefixoAviso: 'Peguei '
   portaSaida: {fileID: 0}
   portaGiratoria: {fileID: 1102464737}
   ui: {fileID: 779745410}
   somPortaTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
   proximaCena: FimDeJogo
   textoObjetivo: Pegue seu celular na carteira do fundo da sala
-  textoPortaLiberada: "A porta abriu, saia do pr\xE9dio"
-  textoPortaTrancada: "Voc\xEA n\xE3o pode ir embora sem suas coisas"
+  textoPortaLiberada: Abriu. Agora corre.
+  textoPortaTrancada: "N\xE3o vou embora sem as minhas coisas"
   palavraSingular: item
   palavraPlural: itens
   textoTudoEncontrado: 
@@ -9021,6 +9021,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 1492382427}
   pontoSaida: {fileID: 1256863157}
   painelFrestas: {fileID: 721443186}
@@ -15077,6 +15080,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 574710899}
   pontoSaida: {fileID: 1272436540}
   painelFrestas: {fileID: 721443186}
@@ -16258,6 +16264,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 1068352716}
   pontoSaida: {fileID: 891610599}
   painelFrestas: {fileID: 721443186}
@@ -16634,7 +16643,7 @@ MonoBehaviour:
   tecla: 101
   nomeItem: Chave do bloco
   contaNoObjetivo: 0
-  mensagem: "Voc\xEA pegou a chave do bloco"
+  mensagem: A chave do bloco. Por que ela largaria isso aqui?
   novoObjetivo: Fuja pela porta de vidro no fim do corredor
   somPegar: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   volume: 0.8
@@ -22880,8 +22889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319014993116762894, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_text
-      value: "Voc\xEA ficou at\xE9 tarde no InovaLab e o campus fechou, encontre
-        um jeito de sair"
+      value: "Peguei no sono no InovaLab. Quando acordei, o campus j\xE1 tinha fechado."
       objectReference: {fileID: 0}
     - target: {fileID: 2531585272003070772, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: nomeDoLocal
@@ -23293,7 +23301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 236.81
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -30252,6 +30260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 1680730412}
   pontoSaida: {fileID: 548020169}
   painelFrestas: {fileID: 721443186}
@@ -34990,6 +35001,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 243826229}
   pontoSaida: {fileID: 357875392}
   painelFrestas: {fileID: 721443186}
@@ -38040,6 +38054,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 1759680065}
   pontoSaida: {fileID: 844068544}
   painelFrestas: {fileID: 721443186}
@@ -39671,6 +39688,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 585813849}
   pontoSaida: {fileID: 429024041}
   painelFrestas: {fileID: 721443186}
@@ -41586,6 +41606,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 588282388}
   pontoSaida: {fileID: 689035067}
   painelFrestas: {fileID: 721443186}
@@ -42406,6 +42429,22 @@ PrefabInstance:
       value: Professora
       objectReference: {fileID: 0}
     - target: {fileID: 8962405661632256525, guid: 26d7a3f2e92cddc498b57b5d7354775a, type: 3}
+      propertyPath: textoPegou
+      value: Ela me pegou.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962405661632256525, guid: 26d7a3f2e92cddc498b57b5d7354775a, type: 3}
+      propertyPath: textoAvistou
+      value: Ela me viu. Corre!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962405661632256525, guid: 26d7a3f2e92cddc498b57b5d7354775a, type: 3}
+      propertyPath: textoDesistiu
+      value: Acho que ela me perdeu de vista...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962405661632256525, guid: 26d7a3f2e92cddc498b57b5d7354775a, type: 3}
+      propertyPath: textoPortaAbriu
+      value: Essa porta rangeu alto demais... ela ouviu.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962405661632256525, guid: 26d7a3f2e92cddc498b57b5d7354775a, type: 3}
       propertyPath: pontosRonda.Array.size
       value: 8
       objectReference: {fileID: 0}
@@ -43160,6 +43199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 669228062}
   pontoSaida: {fileID: 1850795495}
   painelFrestas: {fileID: 721443186}
@@ -45375,6 +45417,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 2144547630}
   pontoSaida: {fileID: 1490847500}
   painelFrestas: {fileID: 721443186}
@@ -53236,6 +53281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 1300052630}
   pontoSaida: {fileID: 946228398}
   painelFrestas: {fileID: 721443186}
@@ -55481,6 +55529,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 1679288583}
   pontoSaida: {fileID: 134842696}
   painelFrestas: {fileID: 721443186}
@@ -58029,6 +58080,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 1899985757}
   pontoSaida: {fileID: 155554472}
   painelFrestas: {fileID: 721443186}
@@ -58994,6 +59048,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 333879061}
   pontoSaida: {fileID: 792635688}
   painelFrestas: {fileID: 721443186}
@@ -60921,6 +60978,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 1596311742}
   pontoSaida: {fileID: 262577327}
   painelFrestas: {fileID: 721443186}
@@ -61753,6 +61813,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoEntrar: "se esconder no arm\xE1rio"
+  textoAcaoSair: "sair do arm\xE1rio"
+  textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
   pontoCamera: {fileID: 1881411298}
   pontoSaida: {fileID: 5495}
   painelFrestas: {fileID: 721443186}
@@ -62952,8 +63015,7 @@ MonoBehaviour:
   tecla: 101
   nomeItem: Celular
   contaNoObjetivo: 0
-  mensagem: "Celular na m\xE3o, aperte F para a lanterna mas cuidado que a luz te
-    entrega"
+  mensagem: Meu celular. A lanterna ajuda... mas ela vai ver a luz. (F)
   novoObjetivo: Pegue a chave do bloco na mesa da professora sem ser visto
   somPegar: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   volume: 0.8

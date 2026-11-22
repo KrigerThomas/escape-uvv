@@ -1402,6 +1402,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4439036324028695087, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439036324028695087, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4515815483918734726, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1458,6 +1466,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5692653010703510176, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692653010703510176, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5757183153239903793, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1540,6 +1556,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6022184409434685368, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022184409434685368, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6022184409434685368, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6885160924081909380, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
@@ -1724,7 +1748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 236.81
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -8279,7 +8303,7 @@ MonoBehaviour:
   correcaoAngulo: 0
   mostrarAviso: 1
   distanciaAviso: 4.5
-  textoAviso: "Os girass\xF3is est\xE3o olhando pra voc\xEA no meio da noite"
+  textoAviso: "Esses girass\xF3is... est\xE3o virando pra mim?"
   somAviso: {fileID: 8300000, guid: a324de4c53bfe5e4abc411327ce1fb77, type: 3}
   volumeAviso: 0.7
 --- !u!1001 &199521072
@@ -17315,7 +17339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nomeSegredo: Misty
-  frase: "No seu colar o nome diz ser Misty, de quem ser\xE1 que \xE9 essa gata"
+  frase: "No seu colar o nome diz ser Misty, de quem ser\xE1 que \xE9 essa gata?"
   efeitoDescoberta: {fileID: 5257402744445269917, guid: 89d58c592c817a24494e5d27e37ac950, type: 3}
   somDescoberta: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   volume: 0.8
@@ -25709,7 +25733,7 @@ MonoBehaviour:
   correcaoAngulo: 0
   mostrarAviso: 0
   distanciaAviso: 4.5
-  textoAviso: "Os girass\xF3is est\xE3o olhando pra voc\xEA no meio da noite"
+  textoAviso: "Esses girass\xF3is... est\xE3o virando pra mim?"
   somAviso: {fileID: 8300000, guid: a324de4c53bfe5e4abc411327ce1fb77, type: 3}
   volumeAviso: 0.7
 --- !u!1001 &844507479
@@ -28962,15 +28986,15 @@ MonoBehaviour:
   rotuloContador: Itens
   saidaAbertaDesdeOInicio: 0
   destrancarAoCompletar: 1
-  prefixoAviso: "Voc\xEA achou "
+  prefixoAviso: 'Achei '
   portaSaida: {fileID: 1672511205}
   portaGiratoria: {fileID: 0}
   ui: {fileID: 79615221}
   somPortaTrancada: {fileID: 8300000, guid: 9060e4aea04655e4f88e9ac1b0bb5678, type: 3}
   proximaCena: Nivel3
-  textoObjetivo: "Ache os 5 itens perdidos para abrir o port\xE3o do labirinto"
-  textoPortaLiberada: "O port\xE3o abriu, siga at\xE9 a sa\xEDda do labirinto"
-  textoPortaTrancada: "O port\xE3o est\xE1 trancado"
+  textoObjetivo: "Ache os 5 itens perdidos para abrir o port\xE3o"
+  textoPortaLiberada: "O port\xE3o abriu sozinho... de novo."
+  textoPortaTrancada: Ainda trancado
   palavraSingular: item
   palavraPlural: itens
   textoTudoEncontrado: 
@@ -42991,7 +43015,7 @@ MonoBehaviour:
   correcaoAngulo: 0
   mostrarAviso: 0
   distanciaAviso: 4.5
-  textoAviso: "Os girass\xF3is est\xE3o olhando pra voc\xEA no meio da noite"
+  textoAviso: "Esses girass\xF3is... est\xE3o virando pra mim?"
   somAviso: {fileID: 8300000, guid: a324de4c53bfe5e4abc411327ce1fb77, type: 3}
   volumeAviso: 0.7
 --- !u!1 &1276084781
@@ -48020,11 +48044,11 @@ MonoBehaviour:
   somRonronar: {fileID: 8300000, guid: 14449cff8aee64c57a3be0883d712e93, type: 3}
   somChiado: {fileID: 8300000, guid: 3b3e8eca4488a47c1ae680bd69ac3fb4, type: 3}
   tomMiado: 0.8
-  textoDica: Fazer carinho no gato cinza
+  textoDica: fazer carinho no gato
   textosCarinho:
-  - O gato cinza ronrona
-  - Ele fecha os olhos e ronrona mais alto
-  textoPatada: Pssst, o gato cinza cansou de carinho e foi sentar em outro lugar
+  - "Ele t\xE1 ronronando."
+  - Fechou os olhos... acho que gostou.
+  textoPatada: "Ai! T\xE1 bom, chega de carinho."
 --- !u!82 &1649875822
 AudioSource:
   m_ObjectHideFlags: 0
@@ -56662,8 +56686,8 @@ MonoBehaviour:
   fugasAteCansar: 4
   somPresente: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   efeitoPresente: {fileID: 5257402744445269917, guid: 89d58c592c817a24494e5d27e37ac950, type: 3}
-  textoPrimeiraFuga: "Um esquilo, ser\xE1 que d\xE1 pra alcan\xE7ar ele"
-  textoPresente: "O esquilo cansou de fugir e deixou uma bolota pra voc\xEA"
+  textoPrimeiraFuga: "Um esquilo acordado a essa hora? Ser\xE1 que consigo pegar?"
+  textoPresente: Ele cansou de fugir e me deixou uma bolota. Amizade feita.
 --- !u!82 &1874031743
 AudioSource:
   m_ObjectHideFlags: 0

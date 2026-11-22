@@ -7886,15 +7886,15 @@ MonoBehaviour:
   rotuloContador: Itens
   saidaAbertaDesdeOInicio: 0
   destrancarAoCompletar: 1
-  prefixoAviso: "Voc\xEA achou "
+  prefixoAviso: 'Achei '
   portaSaida: {fileID: 1110926688}
   portaGiratoria: {fileID: 0}
   ui: {fileID: 368293451}
   somPortaTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
   proximaCena: Nivel2
-  textoObjetivo: "A porta est\xE1 trancada, encontre os 5 itens perdidos do laborat\xF3rio"
-  textoPortaLiberada: A porta destrancou, pode sair
-  textoPortaTrancada: "A porta est\xE1 trancada"
+  textoObjetivo: Encontre os 5 itens perdidos no lab
+  textoPortaLiberada: "A porta destrancou sozinha... tem mais algu\xE9m aqui?"
+  textoPortaTrancada: Ainda trancada
   palavraSingular: item
   palavraPlural: itens
   textoTudoEncontrado: 
@@ -21282,8 +21282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319014993116762894, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_text
-      value: "Voc\xEA ficou at\xE9 tarde no InovaLab e o campus fechou, encontre
-        um jeito de sair"
+      value: "Peguei no sono no InovaLab. Quando acordei, o campus j\xE1 tinha fechado."
       objectReference: {fileID: 0}
     - target: {fileID: 2319014993116762894, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_fontMaterial

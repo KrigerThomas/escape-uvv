@@ -18,6 +18,13 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class CatracaFacial : MonoBehaviour
 {
+    [Tooltip("Enquanto a catraca lê o rosto.")]
+    [TextArea] public string textoLendoRosto = "Reconhecimento facial";
+    [Tooltip("Quando a catraca libera a entrada.")]
+    [TextArea] public string textoEntrada = "Acesso liberado. Bem-vindo à Biblioteca UVV.";
+    [Tooltip("Quando a catraca libera a saída.")]
+    [TextArea] public string textoSaida = "Volte sempre!";
+
     [Header("Peças")]
     [Tooltip("Objeto com as portinholas de vidro e o collider que bloqueia a passagem. Some quando a catraca libera.")]
     public GameObject bloqueio;
@@ -104,9 +111,9 @@ public class CatracaFacial : MonoBehaviour
         else
         {
             PintarTelas(corEspera);
-            Avisar("Reconhecimento facial");
+            Avisar(textoLendoRosto);
             yield return new WaitForSeconds(0.8f);
-            yield return Liberar("Acesso liberado. Bem-vindo à Biblioteca UVV.");
+            yield return Liberar(textoEntrada);
         }
 
         ocupada = false;
@@ -134,7 +141,7 @@ public class CatracaFacial : MonoBehaviour
         }
         else
         {
-            yield return Liberar("Volte sempre!");
+            yield return Liberar(textoSaida);
         }
 
         ocupada = false;

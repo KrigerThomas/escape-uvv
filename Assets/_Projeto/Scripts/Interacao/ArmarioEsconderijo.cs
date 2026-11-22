@@ -9,6 +9,13 @@ using UnityEngine;
 /// </summary>
 public class ArmarioEsconderijo : Interagivel
 {
+    [Tooltip("Dica do E do lado de fora.")]
+    [TextArea] public string textoAcaoEntrar = "se esconder no armário";
+    [Tooltip("Dica do E dentro do armário.")]
+    [TextArea] public string textoAcaoSair = "sair do armário";
+    [Tooltip("Ao tentar entrar com a professora olhando.")]
+    [TextArea] public string textoSemTempo = "Ela está vendo você, não dá tempo de se esconder";
+
     /// <summary>Verdadeiro enquanto o jogador está dentro de algum armário.</summary>
     public static bool JogadorDentro { get; private set; }
 
@@ -83,7 +90,7 @@ public class ArmarioEsconderijo : Interagivel
     /// <summary>Texto da dica muda se o jogador já está dentro.</summary>
     protected override string TextoDica()
     {
-        return dentro ? "sair do armário" : "se esconder no armário";
+        return dentro ? textoAcaoSair : textoAcaoEntrar;
     }
 
     /// <summary>Entra ou sai, conforme o caso.</summary>
@@ -104,7 +111,7 @@ public class ArmarioEsconderijo : Interagivel
         if (professora != null && professora.EstadoAtual == Professora.Estado.Perseguindo &&
             Vector3.Distance(professora.transform.position, transform.position) < distanciaSegura)
         {
-            Avisar("Ela está vendo você, não dá tempo de se esconder");
+            Avisar(textoSemTempo);
             return;
         }
 

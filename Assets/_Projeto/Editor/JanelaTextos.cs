@@ -13,11 +13,11 @@ using UnityEngine;
 /// </summary>
 public class JanelaTextos : EditorWindow
 {
-    private enum Aba { Legendas, Objetivos, Mensagens, TelasPretas, Dicas, Perguntas, ListaLivros, Placas }
+    private enum Aba { Legendas, Objetivos, Mensagens, TelasPretas, Dicas, Perguntas, ListaLivros, Placas, Menus }
 
     private static readonly string[] nomesAbas =
     {
-        "Legendas", "Objetivos", "Mensagens do celular", "Telas pretas", "Dicas de tecla", "Perguntas do quadro", "Lista de livros", "Placas"
+        "Legendas", "Objetivos", "Mensagens do celular", "Telas pretas", "Dicas de tecla", "Perguntas do quadro", "Lista de livros", "Placas do cenário", "Menus e botões"
     };
 
     private static readonly string[] explicacaoAbas =
@@ -29,7 +29,8 @@ public class JanelaTextos : EditorWindow
         "O que aparece ao lado da tecla E quando o jogador chega perto de algo.",
         "Perguntas do quadro do Nível 3.",
         "Nomes dos livros e os lugares que podem aparecer na lista do Nível 4.",
-        "Textos fixos do cenário: placas, etiquetas e telas."
+        "Textos fixos do cenário: placas, etiquetas e telas.",
+        "Tela de começo, pausa, botões e lista de controles."
     };
 
     /// <summary>Aba e explicação de cada campo conhecido (Classe.campo, sem os índices das listas).</summary>
@@ -47,6 +48,7 @@ public class JanelaTextos : EditorWindow
         { "PortaComChave.textoFaltaSegundoItem", (Aba.Legendas, "Ao tentar abrir quando só falta o segundo item") },
         { "Esconderijo.textoAoEntrar", (Aba.Legendas, "Ao entrar neste esconderijo") },
         { "Segredo.frase", (Aba.Legendas, "Frase que aparece junto com o nome deste item") },
+        { "ItemColetavel.nomeItem", (Aba.Legendas, "Nome no aviso ao pegar (vem depois do \"Achei\")") },
         { "Interagivel.textoAcao", (Aba.Dicas, "Ao chegar perto (aparece com a tecla E)") },
         { "MensagensDoNivel.mensagens.remetente", (Aba.Mensagens, "Quem manda") },
         { "MensagensDoNivel.mensagens.texto", (Aba.Mensagens, "Mensagem") },
@@ -57,7 +59,8 @@ public class JanelaTextos : EditorWindow
         // Nível 2
         { "EsquiloFujao.textoPrimeiraFuga", (Aba.Legendas, "Quando o esquilo foge pela primeira vez") },
         { "EsquiloFujao.textoPresente", (Aba.Legendas, "Quando o esquilo cansa e deixa a bolota") },
-        { "GatoCinza.textoDica", (Aba.Legendas, "Quando o jogador chega perto do gato") },
+        { "GatoCinza.textoDica", (Aba.Dicas, "Ao chegar perto do gato (aparece com a tecla E)") },
+        { "GatoCinza.textosCarinho", (Aba.Legendas, "Ao fazer carinho no gato") },
         { "GatoCinza.textoPatada", (Aba.Legendas, "Quando o gato dá uma patada") },
         { "GirassolSegueJogador.textoAviso", (Aba.Legendas, "Quando o girassol começa a seguir o jogador") },
 
@@ -68,6 +71,16 @@ public class JanelaTextos : EditorWindow
         // Nível 4
         { "CatracaFacial.textoMochila", (Aba.Legendas, "Catraca barra o jogador com a mochila") },
         { "CatracaFacial.textoAlarme", (Aba.Legendas, "Catraca apita ao sair com livro sem empréstimo") },
+        { "CatracaFacial.textoLendoRosto", (Aba.Legendas, "Enquanto a catraca lê o rosto") },
+        { "CatracaFacial.textoEntrada", (Aba.Legendas, "Quando a catraca libera a entrada") },
+        { "CatracaFacial.textoSaida", (Aba.Legendas, "Quando a catraca libera a saída") },
+        { "GuardaVolumes.textoAcaoGuardar", (Aba.Dicas, "Ao chegar perto com a mochila") },
+        { "GuardaVolumes.textoAcaoPegar", (Aba.Dicas, "Ao chegar perto para pegar a mochila") },
+        { "ArmarioEsconderijo.textoAcaoEntrar", (Aba.Dicas, "Ao chegar perto do armário") },
+        { "ArmarioEsconderijo.textoAcaoSair", (Aba.Dicas, "Dentro do armário") },
+        { "ArmarioEsconderijo.textoSemTempo", (Aba.Legendas, "Ao tentar se esconder com a professora olhando") },
+        { "QuadroPerguntas.textoCerto", (Aba.Perguntas, "Quando acerta (depois vem a explicação)") },
+        { "QuadroPerguntas.textoErrado", (Aba.Perguntas, "Quando erra") },
         { "GuardaVolumes.textoGuardou", (Aba.Legendas, "Ao guardar a mochila no armário") },
         { "GuardaVolumes.textoAindaNao", (Aba.Legendas, "Ao tentar pegar a mochila antes da hora") },
         { "GuardaVolumes.textoPegou", (Aba.Legendas, "Ao pegar a mochila de volta") },
@@ -110,7 +123,12 @@ public class JanelaTextos : EditorWindow
         public string quando;
         public string objeto;
         public int ordem;
+        public string chave;
+        public List<Object> iguais = new List<Object>();
     }
+
+    /// <summary>Scripts que escolhem a própria dica do E (o campo "textoAcao" deles não aparece no jogo).</summary>
+    private static readonly HashSet<string> dicaPropria = new HashSet<string> { "ArmarioEsconderijo", "GuardaVolumes" };
 
     private readonly List<Campo> campos = new List<Campo>();
     private Aba aba = Aba.Legendas;
@@ -148,10 +166,13 @@ public class JanelaTextos : EditorWindow
     }
 
     /// <summary>Procura de novo todos os textos da cena aberta.</summary>
+    private readonly HashSet<Object> preenchidosPorScript = new HashSet<Object>();
+
     private void Recarregar()
     {
         campos.Clear();
         int ordem = 0;
+        AcharPreenchidosPorScript();
 
         foreach (MonoBehaviour mb in FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
@@ -178,6 +199,8 @@ public class JanelaTextos : EditorWindow
 
                 string chave = Chave(mb, it.propertyPath);
                 if (chave == null || ignorados.Contains(chave))
+                    continue;
+                if (chave == "Interagivel.textoAcao" && dicaPropria.Contains(mb.GetType().Name))
                     continue;
 
                 Aba abaCampo;
@@ -208,10 +231,14 @@ public class JanelaTextos : EditorWindow
                     aba = abaCampo,
                     quando = quando,
                     objeto = NomeDoDono(mb, so, it.propertyPath),
-                    ordem = ordem++
+                    ordem = ordem++,
+                    chave = mb.GetType().Name + "|" + chave + "|" + it.stringValue
                 });
             }
         }
+
+        AdicionarPrefabsSorteados(ref ordem);
+        JuntarRepetidos();
 
         campos.Sort((a, b) =>
         {
@@ -223,22 +250,23 @@ public class JanelaTextos : EditorWindow
     /// <summary>Placas e telas do cenário (os textos da interface preenchidos por script ficam de fora).</summary>
     private void AdicionarPlaca(TMP_Text tmp, int ordem)
     {
-        if (tmp is TextMeshProUGUI)
-        {
-            foreach (string nome in interfacePreenchida)
-                if (tmp.name == nome)
-                    return;
-            if (tmp.GetComponentInParent<Canvas>(true) != null && tmp.transform.parent != null && tmp.transform.parent.name.StartsWith("Painel_Consulta"))
+        foreach (string nome in interfacePreenchida)
+            if (tmp.name == nome)
                 return;
-        }
+        // Textos que algum script troca durante o jogo (ex.: resultado do quadro) não adianta editar aqui.
+        if (preenchidosPorScript.Contains(tmp))
+            return;
+
+        bool menu = tmp is TextMeshProUGUI && tmp.canvas != null && tmp.canvas.renderMode != RenderMode.WorldSpace;
+        Transform alvo = tmp.transform.parent != null && (tmp.name.StartsWith("Texto") || tmp.name == "Titulo" || tmp.name == "Subtitulo") ? tmp.transform.parent : tmp.transform;
 
         campos.Add(new Campo
         {
             dono = tmp,
             caminho = "m_text",
-            aba = Aba.Placas,
-            quando = tmp is TextMeshProUGUI ? "Texto da interface" : "Texto da placa",
-            objeto = NomeAmigavel(tmp.transform.parent != null && tmp.name.StartsWith("Texto") ? tmp.transform.parent : tmp.transform),
+            aba = menu ? Aba.Menus : Aba.Placas,
+            quando = menu ? DescricaoMenu(tmp) : "Texto escrito",
+            objeto = NomeAmigavel(alvo),
             ordem = ordem
         });
     }
@@ -304,7 +332,7 @@ public class JanelaTextos : EditorWindow
                     EditorGUILayout.LabelField(c.objeto, estiloObjeto);
                     if (GUILayout.Button("Mostrar na cena", EditorStyles.miniButton, GUILayout.Width(100)))
                     {
-                        Selection.activeObject = ((Component)c.dono).gameObject;
+                        Selection.activeObject = EditorUtility.IsPersistent(c.dono) ? (Object)((Component)c.dono).transform.root.gameObject : ((Component)c.dono).gameObject;
                         EditorGUIUtility.PingObject(c.dono);
                     }
                 }
@@ -322,7 +350,26 @@ public class JanelaTextos : EditorWindow
             {
                 p.stringValue = novo;
                 so.ApplyModifiedProperties();
-                EditorSceneManager.MarkSceneDirty(((Component)c.dono).gameObject.scene);
+                foreach (Object outro in c.iguais)
+                {
+                    if (outro == null)
+                        continue;
+                    SerializedObject soOutro = new SerializedObject(outro);
+                    SerializedProperty pOutro = soOutro.FindProperty(c.caminho);
+                    if (pOutro == null)
+                        continue;
+                    pOutro.stringValue = novo;
+                    soOutro.ApplyModifiedProperties();
+                }
+                if (EditorUtility.IsPersistent(c.dono))
+                {
+                    EditorUtility.SetDirty(c.dono);
+                    AssetDatabase.SaveAssetIfDirty(c.dono);
+                }
+                else
+                {
+                    EditorSceneManager.MarkSceneDirty(((Component)c.dono).gameObject.scene);
+                }
             }
         }
 
@@ -333,6 +380,122 @@ public class JanelaTextos : EditorWindow
     }
 
     // ---------- ajudantes ----------
+
+    /// <summary>
+    /// Itens que o nível sorteia (prefabs) não estão na cena até o jogo começar.
+    /// Os textos deles entram na lista pelo prefab que a cena usa.
+    /// </summary>
+    private void AdicionarPrefabsSorteados(ref int ordem)
+    {
+        HashSet<GameObject> prefabs = new HashSet<GameObject>();
+        foreach (MonoBehaviour mb in FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            if (mb == null || mb is TMP_Text || mb.GetType().Assembly.GetName().Name != "Assembly-CSharp")
+                continue;
+            SerializedProperty it = new SerializedObject(mb).GetIterator();
+            bool entrar = true;
+            while (it.NextVisible(entrar))
+            {
+                entrar = it.propertyType == SerializedPropertyType.Generic;
+                if (it.propertyType == SerializedPropertyType.ObjectReference && it.objectReferenceValue is GameObject go
+                    && EditorUtility.IsPersistent(go) && AssetDatabase.GetAssetPath(go).StartsWith("Assets/_Projeto/Prefabs/"))
+                    prefabs.Add(go);
+            }
+        }
+
+        foreach (GameObject prefab in prefabs)
+        {
+            foreach (MonoBehaviour mb in prefab.GetComponents<MonoBehaviour>())
+            {
+                if (mb == null || mb.GetType().Assembly.GetName().Name != "Assembly-CSharp")
+                    continue;
+                SerializedObject so = new SerializedObject(mb);
+                SerializedProperty it = so.GetIterator();
+                bool entrar = true;
+                while (it.NextVisible(entrar))
+                {
+                    entrar = false;
+                    if (it.propertyType != SerializedPropertyType.String)
+                        continue;
+                    string chave = mb.GetType().Name + "." + it.propertyPath;
+                    if (!conhecidos.TryGetValue(chave, out var info))
+                        continue;
+                    campos.Add(new Campo
+                    {
+                        dono = mb,
+                        caminho = it.propertyPath,
+                        aba = info.aba,
+                        quando = info.quando,
+                        objeto = "Item sorteado: " + NomeAmigavel(prefab.transform).Replace("Item ", "").Replace("Segredo ", ""),
+                        ordem = ordem++
+                    });
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Vários objetos iguais com o mesmo texto (ex.: os 16 armários) viram uma linha só.
+    /// Editar essa linha muda o texto em todos eles.
+    /// </summary>
+    private void JuntarRepetidos()
+    {
+        Dictionary<string, Campo> primeiro = new Dictionary<string, Campo>();
+        List<Campo> final = new List<Campo>();
+        foreach (Campo c in campos)
+        {
+            if (c.chave == null || c.aba == Aba.Placas || c.aba == Aba.Menus || c.aba == Aba.ListaLivros)
+            {
+                final.Add(c);
+                continue;
+            }
+            if (primeiro.TryGetValue(c.chave, out Campo dono))
+            {
+                dono.iguais.Add(c.dono);
+                continue;
+            }
+            primeiro[c.chave] = c;
+            final.Add(c);
+        }
+        foreach (Campo c in final)
+            if (c.iguais.Count > 0)
+                c.objeto += " (" + (c.iguais.Count + 1) + " iguais)";
+        campos.Clear();
+        campos.AddRange(final);
+    }
+
+    /// <summary>Textos de UI ligados a scripts do projeto (o script escreve neles durante o jogo).</summary>
+    private void AcharPreenchidosPorScript()
+    {
+        preenchidosPorScript.Clear();
+        foreach (MonoBehaviour mb in FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            if (mb == null || mb is TMP_Text || mb.GetType().Assembly.GetName().Name != "Assembly-CSharp")
+                continue;
+            SerializedProperty it = new SerializedObject(mb).GetIterator();
+            bool entrar = true;
+            while (it.NextVisible(entrar))
+            {
+                entrar = it.propertyType == SerializedPropertyType.Generic;
+                if (it.propertyType == SerializedPropertyType.ObjectReference && it.objectReferenceValue is TMP_Text alvo)
+                    preenchidosPorScript.Add(alvo);
+            }
+        }
+    }
+
+    private static string DescricaoMenu(TMP_Text tmp)
+    {
+        string pai = tmp.transform.parent != null ? tmp.transform.parent.name : "";
+        if (pai.StartsWith("Botao") || tmp.name.StartsWith("Botao"))
+            return "Texto do botão";
+        if (tmp.name == "Titulo")
+            return "Título";
+        if (tmp.name == "Controles")
+            return "Lista de teclas";
+        if (pai.StartsWith("Painel_Intro") || tmp.name == "Texto_Intro")
+            return "Texto da tela de começo";
+        return "Texto";
+    }
 
     /// <summary>"Classe.campo" sem os índices das listas (ex.: MensagensDoNivel.mensagens.texto).</summary>
     private static string Chave(MonoBehaviour mb, string caminho)
@@ -423,6 +586,10 @@ public class JanelaTextos : EditorWindow
         nome = nome.Replace('_', ' ').Trim();
         if (nome == "GameManager")
             nome = "Nível (geral)";
+        if (nome.StartsWith("Botao "))
+            nome = "Botão " + nome.Substring(6);
+        if (nome == "Painel Intro")
+            nome = "Tela de começo";
         return nome;
     }
 }

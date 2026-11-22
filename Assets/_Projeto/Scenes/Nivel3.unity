@@ -43458,6 +43458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b54af8093a17246992f34701cee8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textoCerto: Certo,
+  textoErrado: Errado... e o quadro se apagou sozinho.
   perguntas:
   - enunciado: "Em C, com <b>unsigned short</b> de 16 bits, quanto d\xE1 <b>3 - 5</b>?"
     alternativas:
@@ -52262,10 +52264,9 @@ MonoBehaviour:
   ui: {fileID: 1989822909}
   somPortaTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
   proximaCena: Nivel4
-  textoObjetivo: Acerte 3 perguntas no Quadro do Abrantes para destrancar a porta
-    corta-fogo
-  textoPortaLiberada: "A porta corta-fogo abriu, a sa\xEDda fica no fim do corredor"
-  textoPortaTrancada: "A porta corta-fogo est\xE1 trancada"
+  textoObjetivo: Acerte 3 perguntas do Quadro do Abrantes para abrir a porta corta-fogo
+  textoPortaLiberada: "A porta corta-fogo abriu. O Abrantes ainda t\xE1 no pr\xE9dio?"
+  textoPortaTrancada: Ainda trancada
   palavraSingular: acerto
   palavraPlural: acertos
   textoTudoEncontrado: 
@@ -71592,8 +71593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319014993116762894, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_text
-      value: "Voc\xEA ficou at\xE9 tarde no InovaLab e o campus fechou, encontre
-        um jeito de sair"
+      value: "Peguei no sono no InovaLab. Quando acordei, o campus j\xE1 tinha fechado."
       objectReference: {fileID: 0}
     - target: {fileID: 2531585272003070772, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: nomeDoLocal

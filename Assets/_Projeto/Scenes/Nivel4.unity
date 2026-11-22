@@ -3938,13 +3938,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  textoAcaoGuardar: guardar a mochila
+  textoAcaoPegar: pegar a mochila
   itemMochila: Mochila
   itemChave: "Chave do arm\xE1rio"
   itemEmprestimo: "Empr\xE9stimo registrado"
-  textoGuardou: 
-  textoAindaNao: 
-  textoPegou: 
-  objetivoDepoisDeGuardar: Passe pela catraca e consulte o terminal do acervo
+  textoGuardou: "Arm\xE1rio 67. Claro que tinha que ser o 67."
+  textoAindaNao: "Ainda n\xE3o. Primeiro os livros."
+  textoPegou: "Mochila de volta. Agora \xE9 achar a sa\xEDda no escuro."
+  objetivoDepoisDeGuardar: Passe pela catraca e consulte o computador do acervo
   objetivoDepoisDePegar: "Saia pela porta de vidro do sagu\xE3o"
   somArmario: {fileID: 8300000, guid: 3ca00152304d83845a48515db24ef28c, type: 3}
   volumeArmario: 0.7
@@ -20113,7 +20115,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 434, y: -28}
-  m_SizeDelta: {x: 205.42, y: 52}
+  m_SizeDelta: {x: 0, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &246696851
 MonoBehaviour:
@@ -74982,15 +74984,15 @@ MonoBehaviour:
   rotuloContador: Livros
   saidaAbertaDesdeOInicio: 0
   destrancarAoCompletar: 0
-  prefixoAviso: "Voc\xEA achou o livro "
+  prefixoAviso: 'Achei o livro '
   portaSaida: {fileID: 0}
   portaGiratoria: {fileID: 696631448}
   ui: {fileID: 1514128027}
   somPortaTrancada: {fileID: 8300000, guid: 4231951bfc481fc4dba8e52ea0c230c6, type: 3}
   proximaCena: Nivel5
   textoObjetivo: "Guarde a mochila no arm\xE1rio 67 antes de entrar na biblioteca"
-  textoPortaLiberada: Pode ir embora
-  textoPortaTrancada: "A porta est\xE1 trancada"
+  textoPortaLiberada: "Pronto. Agora \xE9 s\xF3 ir embora... n\xE9?"
+  textoPortaTrancada: Ainda trancada
   palavraSingular: livro
   palavraPlural: livros
   textoTudoEncontrado: 
@@ -132646,8 +132648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2319014993116762894, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_text
-      value: "Voc\xEA ficou at\xE9 tarde no InovaLab e o campus fechou, encontre
-        um jeito de sair"
+      value: "Peguei no sono no InovaLab. Quando acordei, o campus j\xE1 tinha fechado."
       objectReference: {fileID: 0}
     - target: {fileID: 2531585272003070772, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: nomeDoLocal
@@ -133063,7 +133064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 236.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -177431,10 +177432,9 @@ MonoBehaviour:
   painel: {fileID: 567974133}
   textoPainel: {fileID: 1825441422}
   resultado: 
-  objetivoDepois: Encontre os 3 livros da lista, aperte L para ver
+  objetivoDepois: Encontre os 3 livros da lista (L para ver)
   itemLista: Lista de livros
-  textoImpresso: O computador travou... pelo menos a lista saiu na impressora (L
-    para ver)
+  textoImpresso: Travou. Ainda bem que a lista saiu na impressora. (L para ver)
   somTecla: {fileID: 8300000, guid: c334df0d60611e346a1a524d8e26a94a, type: 3}
   somImpressora: {fileID: 8300000, guid: bc5778e70085e594299801c83f4fb9c3, type: 3}
   fonteDOS: 1
@@ -179768,6 +179768,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f37ae3490067da540b9a3412fabb5d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textoLendoRosto: Lendo rosto...
+  textoEntrada: Acesso liberado. Boa noite, calouro.
+  textoSaida: Volte sempre.
   bloqueio: {fileID: 1635364547}
   braco: {fileID: 944907233}
   anguloBraco: -90
@@ -184795,7 +184798,7 @@ MonoBehaviour:
   chaveNecessaria: Mochila
   textoTrancada: Ainda tenho coisas para fazer
   segundoItemNecessario: "Empr\xE9stimo registrado"
-  textoFaltaSegundoItem: "Voc\xEA ainda n\xE3o registrou o empr\xE9stimo dos livros"
+  textoFaltaSegundoItem: Ainda tenho coisas para fazer
   somTrancada: {fileID: 8300000, guid: 06c4c95721e61e2469dcf272cd7e1784, type: 3}
   somDestrancar: {fileID: 0}
   volumeTrancada: 0.5

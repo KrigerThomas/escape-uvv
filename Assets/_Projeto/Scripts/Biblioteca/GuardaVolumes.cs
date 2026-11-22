@@ -8,6 +8,11 @@ using UnityEngine;
 /// </summary>
 public class GuardaVolumes : Interagivel
 {
+    [Tooltip("Dica do E com a mochila nas costas.")]
+    [TextArea] public string textoAcaoGuardar = "guardar a mochila no armário";
+    [Tooltip("Dica do E para pegar a mochila.")]
+    [TextArea] public string textoAcaoPegar = "pegar a mochila de volta";
+
     [Header("Itens")]
     public string itemMochila = "Mochila";
     public string itemChave = "Chave do armário";
@@ -44,9 +49,9 @@ public class GuardaVolumes : Interagivel
     protected override string TextoDica()
     {
         if (Inventario.Tem(itemMochila))
-            return "guardar a mochila no armário";
+            return textoAcaoGuardar;
         if (Inventario.Tem(itemChave))
-            return "pegar a mochila de volta";
+            return textoAcaoPegar;
         return textoAcao;
     }
 
