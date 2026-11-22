@@ -30,6 +30,13 @@ public static class TextoDOS
                 continue;
             }
 
+            // O "á" do DOS fica na posição que a Unity trata como espaço sem quebra: vira "a".
+            if (c == 'á')
+            {
+                saida.Append('a');
+                continue;
+            }
+
             int posicao = Tabela437.IndexOf(c);
             if (posicao >= 0)
             {
