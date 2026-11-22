@@ -15,14 +15,19 @@ public class MenuPrincipal : MonoBehaviour
     public CanvasGroup painelPrincipal;
     [Tooltip("Painel de opções (começa escondido).")]
     public CanvasGroup painelOpcoes;
+    [Tooltip("Painel de créditos (começa escondido).")]
+    public CanvasGroup painelCreditos;
     [Tooltip("Painel preto que cobre a tela no começo e ao sair do menu.")]
     public CanvasGroup telaPreta;
 
     [Header("Botões")]
     public Button botaoJogar;
     public Button botaoOpcoes;
+    public Button botaoCreditos;
     public Button botaoSair;
     public Button botaoVoltar;
+    [Tooltip("Botão Voltar do painel de créditos.")]
+    public Button botaoVoltarCreditos;
 
     [Header("Opções")]
     public Slider sliderVolume;
@@ -37,6 +42,7 @@ public class MenuPrincipal : MonoBehaviour
 
     [Tooltip("Tempo que a música leva para subir quando o menu abre, em segundos.")]
     public float tempoEntradaMusica = 4f;
+
     public AudioClip somClique;
     [Range(0f, 1f)] public float volumeClique = 0.7f;
 
@@ -71,6 +77,10 @@ public class MenuPrincipal : MonoBehaviour
         botaoOpcoes.onClick.AddListener(AbrirOpcoes);
         botaoSair.onClick.AddListener(Sair);
         botaoVoltar.onClick.AddListener(FecharOpcoes);
+        if (botaoCreditos != null)
+            botaoCreditos.onClick.AddListener(AbrirCreditos);
+        if (botaoVoltarCreditos != null)
+            botaoVoltarCreditos.onClick.AddListener(FecharCreditos);
 
         sliderVolume.value = Configuracoes.VolumeGeral;
         sliderSensibilidade.value = Configuracoes.Sensibilidade;
@@ -80,7 +90,10 @@ public class MenuPrincipal : MonoBehaviour
         toggleTelaCheia.onValueChanged.AddListener(v => Configuracoes.TelaCheia = v);
 
         MostrarPainel(painelOpcoes, false);
+        if (painelCreditos != null)
+            MostrarPainel(painelCreditos, false);
         MostrarPainel(painelPrincipal, true);
+        telaPreta.alpha = 1f;
         StartCoroutine(Fade(telaPreta, 1f, 0f, 2.5f));
     }
 
@@ -98,6 +111,8 @@ public class MenuPrincipal : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && painelOpcoes.interactable)
             FecharOpcoes();
+        else if (Input.GetKeyDown(KeyCode.Escape) && painelCreditos != null && painelCreditos.interactable)
+            FecharCreditos();
     }
 
     /// <summary>Escurece a tela, abaixa a música e carrega o primeiro nível.</summary>
@@ -123,6 +138,22 @@ public class MenuPrincipal : MonoBehaviour
     {
         Clique();
         MostrarPainel(painelOpcoes, false);
+        MostrarPainel(painelPrincipal, true);
+    }
+
+    /// <summary>Troca os botões principais pelo painel de créditos.</summary>
+    public void AbrirCreditos()
+    {
+        Clique();
+        MostrarPainel(painelPrincipal, false);
+        MostrarPainel(painelCreditos, true);
+    }
+
+    /// <summary>Volta dos créditos para os botões principais.</summary>
+    public void FecharCreditos()
+    {
+        Clique();
+        MostrarPainel(painelCreditos, false);
         MostrarPainel(painelPrincipal, true);
     }
 
