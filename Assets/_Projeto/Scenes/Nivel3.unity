@@ -43475,8 +43475,8 @@ MonoBehaviour:
     - AddForce
     - transform.position
     indiceCorreta: 0
-    explicacao: "torque \xE9 a for\xE7a que faz girar, como nas cadeiras do InovaLab
-      quando voc\xEA esbarra nelas"
+    explicacao: "torque \xE9 a for\xE7a que faz girar, como um livro que tomba girando
+      da estante"
   - enunciado: "Para o <b>OnTriggerEnter</b> ser chamado, o Collider precisa estar
       com qual op\xE7\xE3o marcada?"
     alternativas:
@@ -71709,6 +71709,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4439036324028695087, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439036324028695087, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4515815483918734726, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -72071,7 +72079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 236.81
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x

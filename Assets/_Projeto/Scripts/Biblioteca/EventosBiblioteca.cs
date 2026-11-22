@@ -58,6 +58,25 @@ public class EventosBiblioteca : MonoBehaviour
 
     [Range(0f, 1f)] public float fracaoSomFora = 0.5f;
 
+    [Header("Livro caindo da estante")]
+    [Tooltip("Pontos nas prateleiras (os mesmos usados para sortear os livros). Um deles, perto do jogador, solta um livro a cada livro pego.")]
+    public Transform lugaresLivros;
+
+    [Tooltip("Modelos de livro que podem cair.")]
+    public GameObject[] modelosLivro;
+
+    [Tooltip("Som do livro batendo no chão.")]
+    public AudioClip somLivroCaindo;
+
+    [Tooltip("Distância mínima e máxima do jogador até a estante de onde o livro cai.")]
+    public Vector2 distanciaLivroCaindo = new Vector2(3f, 9f);
+
+    [Tooltip("Altura do livro que cai, em metros.")]
+    public float alturaLivro = 0.26f;
+
+    [Tooltip("Quanto o livro nasce para fora do ponto da prateleira, para não começar dentro da estante.")]
+    public float distanciaBeirada = 0.2f;
+
     [Header("Saída sem energia")]
     public CatracaFacial catraca;
     public GuardaVolumes guardaVolumes;
@@ -115,8 +134,75 @@ public class EventosBiblioteca : MonoBehaviour
             if (faltando == 0)
                 StartCoroutine(Apagao());
             else
+            {
                 StartCoroutine(Piscar(1.0f));
+                StartCoroutine(DerrubarLivroDepois(1.6f));
+            }
         }
+    }
+
+    /// <summary>Espera um pouco depois das luzes piscarem e derruba um livro de uma estante perto.</summary>
+    /// <param name="espera">Segundos até o livro cair.</param>
+    private IEnumerator DerrubarLivroDepois(float espera)
+    {
+        yield return new WaitForSeconds(espera);
+        DerrubarLivroPerto();
+    }
+
+    /// <summary>
+    /// Escolhe um ponto de prateleira perto do jogador (sem livro do objetivo nele), cria um livro ali
+    /// e deixa o LivroCaindo empurrar (AddForce) e girar (AddTorque) o livro para fora da estante.
+    /// </summary>
+    private void DerrubarLivroPerto()
+    {
+        if (lugaresLivros == null || modelosLivro == null || modelosLivro.Length == 0)
+            return;
+
+        GameObject jogador = GameObject.FindWithTag("Player");
+        if (jogador == null)
+            return;
+
+        Livro[] livrosDoObjetivo = FindObjectsByType<Livro>(FindObjectsSortMode.None);
+        List<Transform> candidatos = new List<Transform>();
+        foreach (Transform ponto in lugaresLivros.GetComponentsInChildren<Transform>())
+        {
+            if (ponto.childCount > 0)
+                continue;
+            float d = Vector3.Distance(ponto.position, jogador.transform.position);
+            if (d < distanciaLivroCaindo.x || d > distanciaLivroCaindo.y)
+                continue;
+
+            bool ocupado = false;
+            foreach (Livro livro in livrosDoObjetivo)
+                if (Vector3.Distance(livro.transform.position, ponto.position) < 0.4f)
+                    ocupado = true;
+            if (!ocupado)
+                candidatos.Add(ponto);
+        }
+        if (candidatos.Count == 0)
+            return;
+
+        Transform escolhido = candidatos[Random.Range(0, candidatos.Count)];
+        GameObject modelo = modelosLivro[Random.Range(0, modelosLivro.Length)];
+        // nasce já na beirada da prateleira, fora do colisor da estante
+        Vector3 beirada = escolhido.position - escolhido.forward * distanciaBeirada;
+        GameObject livroNovo = Instantiate(modelo, beirada, escolhido.rotation);
+        livroNovo.name = "Livro_Caido";
+
+        // deixa o livro do tamanho dos outros da estante, com a base na prateleira
+        Renderer forma = livroNovo.GetComponentInChildren<Renderer>();
+        if (forma != null && forma.bounds.size.y > 0f)
+        {
+            livroNovo.transform.localScale *= alturaLivro / forma.bounds.size.y;
+            livroNovo.transform.position += Vector3.up * (beirada.y - forma.bounds.min.y + 0.01f);
+        }
+
+        // a frente do ponto aponta para dentro da estante: o livro sai para o lado contrário
+        Vector3 saida = -escolhido.forward;
+
+        LivroCaindo queda = livroNovo.AddComponent<LivroCaindo>();
+        queda.somQueda = somLivroCaindo;
+        queda.Derrubar(saida);
     }
 
     /// <summary>As luzes piscam por alguns instantes e voltam.</summary>
