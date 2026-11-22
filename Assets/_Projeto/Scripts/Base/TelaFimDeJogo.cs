@@ -57,6 +57,8 @@ public class TelaFimDeJogo : MonoBehaviour
     {
         Time.timeScale = 1f;
         AudioListener.volume = Configuracoes.VolumeGeral;
+        // no editor a tela preta fica guardada transparente; no jogo ela começa cobrindo tudo
+        telaPreta.alpha = 1f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 

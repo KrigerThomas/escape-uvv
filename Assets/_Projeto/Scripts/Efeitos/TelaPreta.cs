@@ -60,6 +60,10 @@ public class TelaPreta : MonoBehaviour
     {
         Instancia = this;
         AberturaNaTela = !string.IsNullOrEmpty(textoLugar);
+
+        // no editor a tela fica guardada transparente (para não tampar a Scene); no jogo ela já nasce preta
+        if (AberturaNaTela && grupo != null)
+            grupo.alpha = 1f;
     }
 
     /// <summary>Roda a abertura (se houver) ou começa transparente.</summary>
