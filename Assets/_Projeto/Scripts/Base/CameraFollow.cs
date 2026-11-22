@@ -75,8 +75,8 @@ public class CameraFollow : MonoBehaviour
 
         if (Cursor.lockState == CursorLockMode.Locked && !UIManager.MenuAberto)
         {
-            yaw += Input.GetAxis("Mouse X") * sensibilidade;
-            pitch -= Input.GetAxis("Mouse Y") * sensibilidade;
+            yaw += Input.GetAxis("Mouse X") * sensibilidade * Configuracoes.Sensibilidade;
+            pitch -= Input.GetAxis("Mouse Y") * sensibilidade * Configuracoes.Sensibilidade;
             pitch = Mathf.Clamp(pitch, anguloMinimo, anguloMaximo);
         }
 

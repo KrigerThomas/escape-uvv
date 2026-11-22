@@ -96,6 +96,8 @@ public class UIManager : MonoBehaviour
     [Tooltip("Painel de abertura do jogo (só no Nível 1). Deixe vazio em níveis sem introdução.")]
     public GameObject painelIntro;
     public Button botaoContinuar;
+    [Tooltip("Cena da tela inicial, aberta pelo botão Menu principal da pausa.")]
+    public string cenaMenu = "Menu";
     [Tooltip("Botão do menu inicial que fecha o jogo. Pode ficar vazio.")]
     public Button botaoSairIntro;
     [Tooltip("Música que toca só enquanto a introdução está aberta.")]
@@ -131,7 +133,7 @@ public class UIManager : MonoBehaviour
         Ligar(botaoContinuar, FecharIntro);
         Ligar(botaoContinuarPausa, FecharPausa);
         Ligar(botaoReiniciar, Reiniciar);
-        Ligar(botaoSair, Sair);
+        Ligar(botaoSair, VoltarAoMenu);
         Ligar(botaoSairIntro, Sair);
 
         if (caixaDica != null)
@@ -594,6 +596,14 @@ public class UIManager : MonoBehaviour
         AudioListener.pause = false;
         if (GameManager.Instancia != null)
             GameManager.Instancia.ReiniciarNivel();
+    }
+
+    /// <summary>Volta para a tela inicial do jogo (botão da pausa).</summary>
+    private void VoltarAoMenu()
+    {
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(cenaMenu);
     }
 
     /// <summary>Fecha o jogo (no editor, para o modo Play).</summary>
