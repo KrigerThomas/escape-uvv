@@ -43461,110 +43461,151 @@ MonoBehaviour:
   textoCerto: Certo,
   textoErrado: Errado... e o quadro se apagou sozinho.
   perguntas:
-  - enunciado: "Em C, com <b>unsigned short</b> de 16 bits, quanto d\xE1 <b>3 - 5</b>?"
+  - enunciado: "Qual m\xE9todo do <b>Rigidbody</b> empurra o objeto usando a f\xEDsica?"
     alternativas:
-    - 65534
-    - -2
-    - 65535
+    - AddForce
+    - transform.Translate
+    - transform.LookAt
     indiceCorreta: 0
-    explicacao: "n\xE3o existe negativo em unsigned, ent\xE3o -2 vira 2<sup>16</sup>
-      - 2 = 65534"
-  - enunciado: "Quanto vale o n\xFAmero bin\xE1rio <b>1010</b> em decimal?"
+    explicacao: "o AddForce aplica uma for\xE7a e a f\xEDsica calcula o resto, j\xE1
+      o Translate s\xF3 muda a posi\xE7\xE3o"
+  - enunciado: "Qual m\xE9todo faz um <b>Rigidbody</b> girar aplicando for\xE7a de
+      rota\xE7\xE3o?"
     alternativas:
-    - 10
-    - 12
-    - 5
+    - AddTorque
+    - AddForce
+    - transform.position
     indiceCorreta: 0
-    explicacao: 8 + 2 = 10
-  - enunciado: Quantos bits tem <b>1 byte</b>?
+    explicacao: "torque \xE9 a for\xE7a que faz girar, como no chute das latinhas
+      do p\xE1tio"
+  - enunciado: "Para o <b>OnTriggerEnter</b> ser chamado, o Collider precisa estar
+      com qual op\xE7\xE3o marcada?"
     alternativas:
-    - 8
-    - 16
-    - 4
+    - Is Trigger
+    - Is Kinematic
+    - Static
     indiceCorreta: 0
-    explicacao: 1 byte tem 8 bits
-  - enunciado: "Qual estrutura de dados segue a regra <b>\"o \xFAltimo a entrar \xE9
-      o primeiro a sair\"</b> (LIFO)?"
+    explicacao: "com Is Trigger o objeto deixa passar e s\xF3 avisa que algu\xE9m
+      entrou"
+  - enunciado: "Por que a velocidade \xE9 multiplicada por <b>Time.deltaTime</b>
+      no Update?"
     alternativas:
-    - Pilha
-    - Fila
-    - "\xC1rvore"
+    - Para andar igual em qualquer FPS
+    - "Para o jogo rodar mais r\xE1pido"
+    - Para ligar a gravidade
     indiceCorreta: 0
-    explicacao: "pilha \xE9 LIFO e fila \xE9 FIFO"
-  - enunciado: "Qual a complexidade da <b>busca bin\xE1ria</b> num vetor ordenado
-      com n elementos?"
+    explicacao: "deltaTime \xE9 o tempo do \xFAltimo quadro, ent\xE3o o movimento
+      passa a ser por segundo e n\xE3o por quadro"
+  - enunciado: "Qual fun\xE7\xE3o cria uma c\xF3pia de um <b>prefab</b> durante o
+      jogo?"
     alternativas:
-    - O(log n)
-    - O(n)
-    - "O(n\xB2)"
+    - Instantiate
+    - Destroy
+    - FindWithTag
     indiceCorreta: 0
-    explicacao: a cada passo ela descarta metade do vetor
-  - enunciado: "Qual porta l\xF3gica d\xE1 <b>1</b> s\xF3 quando as duas entradas
-      s\xE3o <b>diferentes</b>?"
+    explicacao: "\xE9 assim que os itens perdidos do InovaLab aparecem nos pontos
+      sorteados"
+  - enunciado: "Com n\xFAmeros inteiros, <b>Random.Range(0, 5)</b> pode devolver
+      quais valores?"
     alternativas:
-    - XOR
-    - AND
-    - NOR
+    - De 0 a 4
+    - De 0 a 5
+    - De 1 a 5
     indiceCorreta: 0
-    explicacao: "XOR \xE9 o ou exclusivo"
-  - enunciado: Quanto vale <b>FF</b> (hexadecimal) em decimal?
+    explicacao: "na vers\xE3o com int o segundo n\xFAmero fica de fora"
+  - enunciado: Como os scripts do jogo sabem que quem entrou no trigger foi o <b>jogador</b>?
     alternativas:
-    - 255
-    - 256
-    - 15
+    - Pela Tag Player
+    - Pelo material
+    - Pela cor do objeto
     indiceCorreta: 0
-    explicacao: "15 \xD7 16 + 15 = 255"
-  - enunciado: "Quem descreveu a <b>m\xE1quina universal</b> e \xE9 chamado de pai
-      da Ci\xEAncia da Computa\xE7\xE3o?"
+    explicacao: "o CompareTag(\"Player\") aparece em quase todo script de intera\xE7\xE3o"
+  - enunciado: "Qual componente troca as anima\xE7\xF5es de <b>parado, andando, correndo
+      e pulando</b>?"
     alternativas:
-    - Alan Turing
-    - Charles Babbage
-    - Bill Gates
+    - Animator
+    - Rigidbody
+    - Audio Listener
     indiceCorreta: 0
-    explicacao: Turing publicou a ideia em 1936
-  - enunciado: "Qual destas mem\xF3rias \xE9 a <b>mais r\xE1pida</b>?"
+    explicacao: "o Animator passa de um estado para outro pelos par\xE2metros e transi\xE7\xF5es"
+  - enunciado: "Em qual m\xE9todo deve ficar o c\xF3digo de <b>f\xEDsica</b>, como
+      o AddForce?"
     alternativas:
-    - Registradores da CPU
-    - "Mem\xF3ria RAM"
-    - SSD
+    - FixedUpdate
+    - Update
+    - Start
     indiceCorreta: 0
-    explicacao: os registradores ficam dentro do processador
-  - enunciado: Em complemento de 2 com 8 bits, como se escreve <b>-1</b>?
+    explicacao: "o FixedUpdate roda em passos fixos, 50 vezes por segundo no padr\xE3o
+      da Unity"
+  - enunciado: "Qual componente faz um <b>NPC</b> andar sozinho desviando dos obst\xE1culos?"
     alternativas:
-    - 11111111
-    - 10000001
-    - 00000001
+    - NavMeshAgent
+    - CharacterController
+    - Terrain Collider
     indiceCorreta: 0
-    explicacao: inverte 00000001 e soma 1
-  - enunciado: "Em C, quanto d\xE1 <b>7 % 3</b>?"
+    explicacao: "ele calcula o caminho em cima do NavMesh, \xE9 o que faz a professora
+      perseguir o calouro"
+  - enunciado: Uma luz no modo <b>Baked</b>...
     alternativas:
-    - 1
-    - 2
-    - 2,33
+    - Fica gravada no lightmap antes do jogo
+    - "\xC9 calculada de novo a cada quadro"
+    - "S\xF3 funciona no Terrain"
     indiceCorreta: 0
-    explicacao: "% \xE9 o resto da divis\xE3o, 7 = 2 \xD7 3 + 1"
-  - enunciado: Uma matriz <b>2x3</b> vezes uma matriz <b>3x4</b> gera uma matriz
-      de que tamanho?
+    explicacao: "por isso ela pesa pouco, mas n\xE3o muda durante o jogo"
+  - enunciado: O que o <b>normal map</b> faz num material?
     alternativas:
-    - 2x4
-    - 3x3
-    - 4x2
+    - Simula relevo sem mudar a malha
+    - Muda a cor base do objeto
+    - Deixa o objeto transparente
     indiceCorreta: 0
-    explicacao: "linhas da primeira \xD7 colunas da segunda"
-  - enunciado: "No modelo de <b>von Neumann</b>, dados e instru\xE7\xF5es ficam..."
+    explicacao: "ele muda como a luz bate em cada ponto e d\xE1 a impress\xE3o de
+      ranhuras e sali\xEAncias"
+  - enunciado: "Qual comando carrega o <b>pr\xF3ximo n\xEDvel</b>?"
     alternativas:
-    - "Na mesma mem\xF3ria"
-    - "Em mem\xF3rias separadas"
-    - "S\xF3 dentro da CPU"
+    - SceneManager.LoadScene
+    - Application.Quit
+    - DontDestroyOnLoad
     indiceCorreta: 0
-    explicacao: "a arquitetura com mem\xF3rias separadas \xE9 a de Harvard"
-  - enunciado: Quanto vale <b>(1 AND 0) OR 1</b>?
+    explicacao: "cada n\xEDvel do Escape UVV \xE9 uma cena separada na lista do build"
+  - enunciado: "Qual sistema da Unity cria efeitos como <b>fuma\xE7a, fa\xEDscas
+      e chuva</b>?"
     alternativas:
-    - 1
-    - 0
-    - Indefinido
+    - Particle System
+    - Line Renderer
+    - Animator
     indiceCorreta: 0
-    explicacao: 1 AND 0 = 0 e depois 0 OR 1 = 1
+    explicacao: "ele solta v\xE1rias part\xEDculas com cor, tamanho e velocidade
+      que mudam com o tempo"
+  - enunciado: "Qual destas luzes da Unity s\xF3 funciona <b>pr\xE9-calculada</b>
+      (baked)?"
+    alternativas:
+    - Area Light
+    - Point Light
+    - Spot Light
+    indiceCorreta: 0
+    explicacao: "a Area Light ilumina a partir de um ret\xE2ngulo e precisa ser assada
+      no lightmap"
+  - enunciado: Na Unity, qual eixo aponta <b>para cima</b>?
+    alternativas:
+    - Y
+    - Z
+    - X
+    indiceCorreta: 0
+    explicacao: "Vector3.up \xE9 (0, 1, 0)"
+  - enunciado: "Qual documento descreve o jogo antes de come\xE7ar a programar?"
+    alternativas:
+    - GDD
+    - UML
+    - Changelog
+    indiceCorreta: 0
+    explicacao: "o Game Design Document junta ideia, mec\xE2nicas, n\xEDveis e arte"
+  - enunciado: "O que \xE9 um <b>prefab</b>?"
+    alternativas:
+    - "Um objeto salvo para reaproveitar v\xE1rias vezes"
+    - Uma cena vazia
+    - Um tipo de luz
+    indiceCorreta: 0
+    explicacao: "mudou o prefab, mudam todas as c\xF3pias dele nas cenas"
   teclaInteragir: 101
   painelQuadro: {fileID: 620470847}
   textoPergunta: {fileID: 1371138543}
@@ -44736,6 +44777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17cb30b0690b034794689498dd31fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeClique: 0.5
   luz: {fileID: 604769969}
   itemNecessario: 
   tecla: 102
@@ -52254,6 +52296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac40fe469f7afbd4d849a5c8457c12b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumePortaTrancada: 0.8
   totalItens: 3
   rotuloContador: Acertos
   saidaAbertaDesdeOInicio: 0
