@@ -24,6 +24,7 @@ public class Espelho : MonoBehaviour
     private Camera camPrincipal;
     private static readonly int ID_TEXTURA = Shader.PropertyToID("_ReflexoTex");
 
+    /// <summary>Cria a câmera escondida que desenha o reflexo e se inscreve no evento de desenho do URP.</summary>
     void Start()
     {
         rend = GetComponent<Renderer>();
@@ -38,6 +39,7 @@ public class Espelho : MonoBehaviour
         RenderPipelineManager.beginCameraRendering += AntesDeDesenhar;
     }
 
+    /// <summary>Sai do evento de desenho e apaga a câmera e a textura do reflexo.</summary>
     void OnDestroy()
     {
         RenderPipelineManager.beginCameraRendering -= AntesDeDesenhar;
@@ -45,6 +47,10 @@ public class Espelho : MonoBehaviour
         if (textura != null) textura.Release();
     }
 
+    /// <summary>
+    /// Liga a câmera do reflexo só quando o espelho está na tela e perto do jogador
+    /// e ajusta o tamanho da textura ao tamanho da tela.
+    /// </summary>
     void LateUpdate()
     {
         camPrincipal = Camera.main;
@@ -69,8 +75,12 @@ public class Espelho : MonoBehaviour
         camReflexo.enabled = true;
     }
 
-    // Chamado logo antes de cada câmera desenhar: posiciona a câmera do reflexo
-    // já com a posição final da câmera do jogador (sem atraso de um quadro).
+    /// <summary>
+    /// Chamado logo antes de cada câmera desenhar: posiciona a câmera do reflexo como a imagem
+    /// espelhada da câmera do jogador (sem atraso de um quadro).
+    /// </summary>
+    /// <param name="contexto">Contexto de desenho do URP (não usado).</param>
+    /// <param name="cam">Câmera que vai desenhar agora. Só age quando é a câmera do reflexo.</param>
     private void AntesDeDesenhar(ScriptableRenderContext contexto, Camera cam)
     {
         if (cam != camReflexo || camPrincipal == null) return;

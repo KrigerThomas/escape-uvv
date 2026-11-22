@@ -69,6 +69,8 @@ public class Tempestade : MonoBehaviour
         StartCoroutine(Clarao(perto));
     }
 
+    /// <summary>Faz o relâmpago piscar duas ou três vezes e depois toca o trovão com atraso.</summary>
+    /// <param name="perto">Verdadeiro para um raio perto: clarão mais forte e trovão mais rápido.</param>
     private IEnumerator Clarao(bool perto)
     {
         int piscadas = Random.Range(2, 4);

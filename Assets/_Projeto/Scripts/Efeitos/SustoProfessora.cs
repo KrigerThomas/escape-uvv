@@ -54,6 +54,12 @@ public class SustoProfessora : MonoBehaviour
         StartCoroutine(Rotina(professora, frase));
     }
 
+    /// <summary>
+    /// Sequência do susto: tira o controle da câmera, aponta para o rosto da professora,
+    /// liga os efeitos de estática e termina na tela preta com a frase.
+    /// </summary>
+    /// <param name="professora">Professora que pegou o jogador.</param>
+    /// <param name="frase">Texto mostrado na tela preta no fim.</param>
     private IEnumerator Rotina(Transform professora, string frase)
     {
         Camera cam = Camera.main;

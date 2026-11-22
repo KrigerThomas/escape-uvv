@@ -104,8 +104,7 @@ public class JanelaTextos : EditorWindow
     /// <summary>Campos que só guardam dados do jogo (não aparecem na tela).</summary>
     private static readonly HashSet<string> ignorados = new HashSet<string>
     {
-        "SorteioLivros.livros.chamada", "SorteioLivros.livros.lugarSorteado", "CatShowcase.cats.displayName",
-        "Autoatendimento.objetivoDepois"
+        "SorteioLivros.livros.chamada", "SorteioLivros.livros.lugarSorteado", "CatShowcase.cats.displayName"
     };
 
     /// <summary>Textos da interface que os scripts preenchem sozinhos (editar aqui não adianta).</summary>
@@ -139,6 +138,7 @@ public class JanelaTextos : EditorWindow
     private GUIStyle estiloObjeto;
     private GUIStyle estiloTexto;
 
+    /// <summary>Abre a janela pelo menu Escape UVV e lê a cena aberta.</summary>
     [MenuItem("Escape UVV/Textos do nível")]
     public static void Abrir()
     {
@@ -147,6 +147,7 @@ public class JanelaTextos : EditorWindow
         janela.Recarregar();
     }
 
+    /// <summary>Passa a ouvir a troca de cena e monta a lista.</summary>
     void OnEnable()
     {
         EditorSceneManager.sceneOpened -= AoAbrirCena;
@@ -154,20 +155,25 @@ public class JanelaTextos : EditorWindow
         Recarregar();
     }
 
+    /// <summary>Para de ouvir a troca de cena quando a janela fecha.</summary>
     void OnDisable()
     {
         EditorSceneManager.sceneOpened -= AoAbrirCena;
     }
 
+    /// <summary>Quando outra cena é aberta, monta a lista de novo.</summary>
+    /// <param name="cena">Cena que acabou de abrir (não usada).</param>
+    /// <param name="modo">Como a cena foi aberta (não usado).</param>
     private void AoAbrirCena(UnityEngine.SceneManagement.Scene cena, OpenSceneMode modo)
     {
         Recarregar();
         Repaint();
     }
 
-    /// <summary>Procura de novo todos os textos da cena aberta.</summary>
+    /// <summary>Textos da interface que algum script preenche sozinho durante o jogo.</summary>
     private readonly HashSet<Object> preenchidosPorScript = new HashSet<Object>();
 
+    /// <summary>Procura de novo todos os textos da cena aberta.</summary>
     private void Recarregar()
     {
         campos.Clear();
@@ -271,6 +277,7 @@ public class JanelaTextos : EditorWindow
         });
     }
 
+    /// <summary>Desenha a janela: abas por tipo de texto e uma caixa editável para cada texto.</summary>
     void OnGUI()
     {
         if (estiloQuando == null)
@@ -483,6 +490,9 @@ public class JanelaTextos : EditorWindow
         }
     }
 
+    /// <summary>Diz que tipo de texto de menu é este (botão, título, lista de teclas...).</summary>
+    /// <param name="tmp">Texto da interface.</param>
+    /// <returns>Descrição curta mostrada na janela.</returns>
     private static string DescricaoMenu(TMP_Text tmp)
     {
         string pai = tmp.transform.parent != null ? tmp.transform.parent.name : "";
@@ -516,6 +526,9 @@ public class JanelaTextos : EditorWindow
 
     private static readonly string[] palavrasDeTexto = { "texto", "mensagem", "objetivo", "aviso", "frase", "legenda" };
 
+    /// <summary>Confere pelo nome do campo se ele guarda um texto que aparece no jogo.</summary>
+    /// <param name="caminho">Caminho da propriedade serializada.</param>
+    /// <returns>Verdadeiro se o nome parece de texto de tela.</returns>
     private static bool PareceTextoDeTela(string caminho)
     {
         string nome = UltimoNome(caminho).ToLower();
@@ -525,12 +538,18 @@ public class JanelaTextos : EditorWindow
         return false;
     }
 
+    /// <summary>Pega só o nome do campo no fim de um caminho de propriedade.</summary>
+    /// <param name="caminho">Caminho da propriedade serializada.</param>
+    /// <returns>Último nome do caminho.</returns>
     private static string UltimoNome(string caminho)
     {
         string[] partes = caminho.Split('.');
         return partes[partes.Length - 1];
     }
 
+    /// <summary>Pega o último índice de lista de um caminho de propriedade.</summary>
+    /// <param name="caminho">Caminho da propriedade serializada.</param>
+    /// <returns>O índice, ou -1 se o caminho não tem lista.</returns>
     private static int UltimoIndice(string caminho)
     {
         MatchCollection ms = Regex.Matches(caminho, @"\[(\d+)\]");
@@ -552,6 +571,11 @@ public class JanelaTextos : EditorWindow
         { "QuadroPerguntas", "Quadro de perguntas" },
     };
 
+    /// <summary>Descobre quem "fala" o texto, para agrupar na janela.</summary>
+    /// <param name="mb">Script que guarda o texto.</param>
+    /// <param name="so">Versão serializada do script.</param>
+    /// <param name="caminho">Caminho da propriedade do texto.</param>
+    /// <returns>Nome do dono do texto.</returns>
     private static string NomeDoDono(MonoBehaviour mb, SerializedObject so, string caminho)
     {
         // Na lista sorteada, o grupo é o próprio livro.

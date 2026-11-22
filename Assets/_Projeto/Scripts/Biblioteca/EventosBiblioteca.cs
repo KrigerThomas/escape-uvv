@@ -22,6 +22,9 @@ public class EventosBiblioteca : MonoBehaviour
     [Tooltip("Objetos que somem quando a energia cai (ex.: telas acesas dos computadores).")]
     public GameObject[] esconderNoApagao;
 
+    [Tooltip("Efeito da lâmpada estourando (faíscas, fumaça e clarão). Toca na luminária mais perto do jogador quando a energia cai.")]
+    public ParticleSystem estouroLampada;
+
     [Tooltip("Luz do ambiente depois que a energia cai (fração da luz normal).")]
     [Range(0f, 1f)] public float ambienteNoApagao = 0.12f;
 
@@ -61,7 +64,7 @@ public class EventosBiblioteca : MonoBehaviour
     public PortaComChave portaSaida;
 
     [TextArea] public string avisoApagao = "A energia caiu";
-    [TextArea] public string objetivoApagao = "Pegue a mochila no armário 23 e saia da biblioteca";
+    [TextArea] public string objetivoApagao = "Pegue a mochila no armário 67 e saia da biblioteca";
 
     private readonly List<Light> luzes = new List<Light>();
     private Renderer[] lampadas;
@@ -162,6 +165,54 @@ public class EventosBiblioteca : MonoBehaviour
         UIManager.TocarSom2D(somQuedaEnergia, volumeQuedaEnergia);
     }
 
+    /// <summary>
+    /// Leva o efeito de estouro até a luminária mais perto do jogador e toca: faíscas caindo,
+    /// um pouco de fumaça e um clarão rápido.
+    /// </summary>
+    private void EstourarLampadaPerto()
+    {
+        if (estouroLampada == null || luzes.Count == 0)
+            return;
+
+        GameObject jogador = GameObject.FindWithTag("Player");
+        Vector3 referencia = jogador != null ? jogador.transform.position : transform.position;
+        Light maisPerto = null;
+        float menor = float.MaxValue;
+        foreach (Light luz in luzes)
+        {
+            if (luz == null)
+                continue;
+            float d = (luz.transform.position - referencia).sqrMagnitude;
+            if (d < menor)
+            {
+                menor = d;
+                maisPerto = luz;
+            }
+        }
+        if (maisPerto == null)
+            return;
+
+        estouroLampada.transform.position = maisPerto.transform.position;
+        estouroLampada.Play(true);
+        Light clarao = estouroLampada.GetComponentInChildren<Light>();
+        if (clarao != null)
+            StartCoroutine(Clarao(clarao));
+    }
+
+    /// <summary>Acende a luz do estouro forte e apaga em poucos décimos de segundo.</summary>
+    /// <param name="clarao">Luz que fica junto do efeito.</param>
+    private IEnumerator Clarao(Light clarao)
+    {
+        float t = 0f;
+        while (t < 0.35f)
+        {
+            t += Time.deltaTime;
+            clarao.intensity = Mathf.Lerp(6f, 0f, t / 0.35f);
+            yield return null;
+        }
+        clarao.intensity = 0f;
+    }
+
     /// <summary>A energia cai: luzes apagam, sons somem e a saída fica liberada.</summary>
     private IEnumerator Apagao()
     {
@@ -170,6 +221,7 @@ public class EventosBiblioteca : MonoBehaviour
         StartCoroutine(TocarQuedaDepois(tempoPiscando - adiantarSomQueda));
         yield return Piscar(tempoPiscando);
         Ligar(false);
+        EstourarLampadaPerto();
         foreach (GameObject g in esconderNoApagao)
             if (g != null)
                 g.SetActive(false);

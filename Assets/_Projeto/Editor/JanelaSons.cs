@@ -55,6 +55,7 @@ public class JanelaSons : EditorWindow
     private GUIStyle estiloCinza;
     private GUIStyle estiloTitulo;
 
+    /// <summary>Abre a janela pelo menu Escape UVV e lê a cena aberta.</summary>
     [MenuItem("Escape UVV/Sons do nível")]
     public static void Abrir()
     {
@@ -63,6 +64,7 @@ public class JanelaSons : EditorWindow
         janela.Recarregar();
     }
 
+    /// <summary>Passa a ouvir a troca de cena e monta a lista.</summary>
     void OnEnable()
     {
         EditorSceneManager.sceneOpened -= AoAbrirCena;
@@ -70,12 +72,16 @@ public class JanelaSons : EditorWindow
         Recarregar();
     }
 
+    /// <summary>Para de ouvir a troca de cena quando a janela fecha.</summary>
     void OnDisable()
     {
         EditorSceneManager.sceneOpened -= AoAbrirCena;
         PararPrevia();
     }
 
+    /// <summary>Quando outra cena é aberta, monta a lista de novo.</summary>
+    /// <param name="cena">Cena que acabou de abrir (não usada).</param>
+    /// <param name="modo">Como a cena foi aberta (não usado).</param>
     private void AoAbrirCena(UnityEngine.SceneManagement.Scene cena, OpenSceneMode modo)
     {
         Recarregar();
@@ -86,6 +92,7 @@ public class JanelaSons : EditorWindow
     // Montar a lista
     // ------------------------------------------------------------------
 
+    /// <summary>Procura na cena todas as AudioSources e campos AudioClip dos scripts e agrupa por arquivo de som.</summary>
     private void Recarregar()
     {
         Dictionary<AudioClip, Som> porClip = new Dictionary<AudioClip, Som>();
@@ -245,6 +252,7 @@ public class JanelaSons : EditorWindow
     // Tela
     // ------------------------------------------------------------------
 
+    /// <summary>Desenha a janela: um bloco por som, com prévia, volume e edição.</summary>
     void OnGUI()
     {
         if (estiloCinza == null)
@@ -287,6 +295,8 @@ public class JanelaSons : EditorWindow
         EditorGUILayout.EndScrollView();
     }
 
+    /// <summary>Desenha o bloco de um som: botão de prévia, forma de onda, onde ele é usado e a edição.</summary>
+    /// <param name="som">Som (ou grupo de sons) a desenhar.</param>
     private void DesenharSom(Som som)
     {
         EditorGUILayout.Space(6);
@@ -349,6 +359,8 @@ public class JanelaSons : EditorWindow
         }
     }
 
+    /// <summary>Desenha uma linha com o lugar onde o som toca e o controle de volume daquele lugar.</summary>
+    /// <param name="uso">Lugar (objeto e campo) onde o som é usado.</param>
     private void DesenharUso(Uso uso)
     {
         if (uso.dono == null)
@@ -386,6 +398,8 @@ public class JanelaSons : EditorWindow
         }
     }
 
+    /// <summary>Desenha os controles de edição do arquivo: ganho, cortes e suavização do final.</summary>
+    /// <param name="som">Som que está sendo editado.</param>
     private void DesenharEdicao(Som som)
     {
         EditorGUI.indentLevel++;
@@ -426,6 +440,8 @@ public class JanelaSons : EditorWindow
 
     private static System.Type TipoAudioUtil => typeof(AudioImporter).Assembly.GetType("UnityEditor.AudioUtil");
 
+    /// <summary>Toca o som no editor, sem precisar dar Play.</summary>
+    /// <param name="clip">Arquivo de som a tocar.</param>
     private static void TocarPrevia(AudioClip clip)
     {
         PararPrevia();
@@ -434,6 +450,7 @@ public class JanelaSons : EditorWindow
         m?.Invoke(null, new object[] { clip, 0, false });
     }
 
+    /// <summary>Para qualquer prévia de som que esteja tocando.</summary>
     private static void PararPrevia()
     {
         TipoAudioUtil?.GetMethod("StopAllPreviewClips", BindingFlags.Static | BindingFlags.Public)?.Invoke(null, null);
@@ -441,6 +458,8 @@ public class JanelaSons : EditorWindow
 
     private AudioClip previaEditada;
 
+    /// <summary>Toca como o som vai ficar com a edição atual, sem mexer no arquivo.</summary>
+    /// <param name="som">Som com os ajustes de edição.</param>
     private void OuvirEditado(Som som)
     {
         AudioClip alvo = som.clips[Random.Range(0, som.clips.Count)];
@@ -518,6 +537,8 @@ public class JanelaSons : EditorWindow
         return saida;
     }
 
+    /// <summary>Grava a edição em todos os arquivos do grupo e zera os controles.</summary>
+    /// <param name="som">Som com os ajustes de edição.</param>
     private void AplicarEdicao(Som som)
     {
         foreach (AudioClip c in new List<AudioClip>(som.clips))
@@ -531,6 +552,9 @@ public class JanelaSons : EditorWindow
         Recarregar();
     }
 
+    /// <summary>Guarda uma cópia do original e grava o arquivo editado como .wav.</summary>
+    /// <param name="clip">Arquivo que vai ser editado.</param>
+    /// <param name="som">Ajustes de edição.</param>
     private void AplicarEdicaoNoArquivo(AudioClip clip, Som som)
     {
         if (!LerAmostras(clip, out float[] dados, out int canais, out int frequencia))
@@ -561,6 +585,8 @@ public class JanelaSons : EditorWindow
             AssetDatabase.ImportAsset(caminho, ImportAssetOptions.ForceUpdate);
     }
 
+    /// <summary>Restaura os arquivos do grupo a partir da cópia guardada antes da edição.</summary>
+    /// <param name="som">Som que volta ao original.</param>
     private void VoltarOriginal(Som som)
     {
         foreach (AudioClip c in som.clips)
@@ -576,6 +602,9 @@ public class JanelaSons : EditorWindow
         Recarregar();
     }
 
+    /// <summary>Confere se existe uma cópia do original deste arquivo.</summary>
+    /// <param name="clip">Arquivo de som.</param>
+    /// <returns>Verdadeiro se o original foi guardado.</returns>
     private static bool TemBackup(AudioClip clip)
     {
         string guid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(clip));
@@ -612,6 +641,11 @@ public class JanelaSons : EditorWindow
             EditorSceneManager.OpenScene(cenaAberta);
     }
 
+    /// <summary>Grava amostras de áudio num arquivo .wav de 16 bits.</summary>
+    /// <param name="caminho">Caminho do arquivo a criar.</param>
+    /// <param name="dados">Amostras de -1 a 1, intercaladas por canal.</param>
+    /// <param name="canais">Número de canais (1 mono, 2 estéreo).</param>
+    /// <param name="frequencia">Amostras por segundo.</param>
     private static void EscreverWav(string caminho, float[] dados, int canais, int frequencia)
     {
         using (BinaryWriter w = new BinaryWriter(File.Create(caminho)))
@@ -656,6 +690,8 @@ public class JanelaSons : EditorWindow
     // Forma de onda
     // ------------------------------------------------------------------
 
+    /// <summary>Desenha a forma de onda do som numa textura pequena e calcula o volume do arquivo.</summary>
+    /// <param name="som">Som que ganha a imagem da onda.</param>
     private void GerarOnda(Som som)
     {
         if (!LerAmostras(som.clip, out float[] dados, out int canais, out int frequencia) || dados.Length == 0)
@@ -694,6 +730,9 @@ public class JanelaSons : EditorWindow
         som.volumeMedioDb = 10f * Mathf.Log10((float)(soma / dados.Length) + 1e-10f);
     }
 
+    /// <summary>Traduz o volume médio em decibéis para uma palavra.</summary>
+    /// <param name="db">Volume médio do arquivo, em dB.</param>
+    /// <returns>"muito alto", "alto", "normal", "baixo" ou "muito baixo".</returns>
     private static string DescreverVolume(float db)
     {
         if (db > -14f) return "muito alto";
@@ -724,6 +763,9 @@ public class JanelaSons : EditorWindow
         { "QuadroPerguntas", "Quadro do Abrantes" },
     };
 
+    /// <summary>Pega só o nome do campo no fim de um caminho de propriedade.</summary>
+    /// <param name="caminho">Caminho da propriedade serializada.</param>
+    /// <returns>Último nome do caminho, com índices de lista escritos como número.</returns>
     private static string UltimoNome(string caminho)
     {
         string limpo = Regex.Replace(caminho, @"\.Array\.data\[(\d+)\]", " $1");
@@ -731,6 +773,9 @@ public class JanelaSons : EditorWindow
         return partes[partes.Length - 1];
     }
 
+    /// <summary>Deixa o nome de um objeto mais legível (sem sublinhados e prefixos).</summary>
+    /// <param name="t">Objeto da cena.</param>
+    /// <returns>Nome para mostrar na janela.</returns>
     private static string NomeDoObjeto(Transform t)
     {
         string nome = Regex.Replace(t.name, @"\s*\(.*?\)", "");

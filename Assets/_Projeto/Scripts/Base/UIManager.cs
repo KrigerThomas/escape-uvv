@@ -96,6 +96,8 @@ public class UIManager : MonoBehaviour
     [Tooltip("Painel de abertura do jogo (só no Nível 1). Deixe vazio em níveis sem introdução.")]
     public GameObject painelIntro;
     public Button botaoContinuar;
+    [Tooltip("Botão do menu inicial que fecha o jogo. Pode ficar vazio.")]
+    public Button botaoSairIntro;
     [Tooltip("Música que toca só enquanto a introdução está aberta.")]
     public AudioSource musicaIntro;
     [Tooltip("Tempo, em segundos, para a música da introdução sumir.")]
@@ -130,6 +132,7 @@ public class UIManager : MonoBehaviour
         Ligar(botaoContinuarPausa, FecharPausa);
         Ligar(botaoReiniciar, Reiniciar);
         Ligar(botaoSair, Sair);
+        Ligar(botaoSairIntro, Sair);
 
         if (caixaDica != null)
             caixaDica.SetActive(false);

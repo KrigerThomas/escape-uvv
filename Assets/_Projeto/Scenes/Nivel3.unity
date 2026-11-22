@@ -2207,7 +2207,7 @@ GameObject:
   - component: {fileID: 90067242}
   - component: {fileID: 90067244}
   m_Layer: 0
-  m_Name: Som_Chuva (la fora)
+  m_Name: Som_Chuva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5008,7 +5008,7 @@ GameObject:
   - component: {fileID: 176021159}
   - component: {fileID: 176021158}
   m_Layer: 0
-  m_Name: Placa_Sala03 (foto)
+  m_Name: Placa_Sala03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5092,7 +5092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 177159913}
   m_Layer: 0
-  m_Name: Parede_Salas (esquerda)
+  m_Name: Parede_Salas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11372,7 +11372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 269653705}
   m_Layer: 0
-  m_Name: Labirinto_Nivel2 (lembranca)
+  m_Name: Labirinto_Nivel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12616,7 +12616,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1965528337302418, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_Name
-      value: Porta (pack school)
+      value: Porta
       objectReference: {fileID: 0}
     - target: {fileID: 4173873760860446, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_LocalScale.x
@@ -12873,7 +12873,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1965528337302418, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_Name
-      value: Porta (pack school)
+      value: Porta
       objectReference: {fileID: 0}
     - target: {fileID: 4173873760860446, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_LocalScale.x
@@ -14382,7 +14382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 368743311}
   m_Layer: 0
-  m_Name: Ponto_Inicio (referencia)
+  m_Name: Ponto_Inicio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15205,7 +15205,6 @@ Transform:
   m_Children:
   - {fileID: 2038503205}
   - {fileID: 1261281668}
-  - {fileID: 621777436}
   - {fileID: 1975158824}
   m_Father: {fileID: 286690928}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15307,7 +15306,7 @@ GameObject:
   - component: {fileID: 400860969}
   - component: {fileID: 400860968}
   m_Layer: 0
-  m_Name: Aviso_Proibido_Fumar (foto)
+  m_Name: Aviso_Proibido_Fumar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18055,7 +18054,7 @@ GameObject:
   - component: {fileID: 489249723}
   - component: {fileID: 489249722}
   m_Layer: 0
-  m_Name: Saida_Nivel (depois da porta)
+  m_Name: Saida_Nivel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20482,7 +20481,7 @@ GameObject:
   m_Component:
   - component: {fileID: 570188084}
   m_Layer: 0
-  m_Name: Lixeira_Azul_2 (placeholder)
+  m_Name: Lixeira_Azul_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20951,7 +20950,7 @@ GameObject:
   m_Component:
   - component: {fileID: 592690111}
   m_Layer: 0
-  m_Name: Lixeira_Cinza_1 (placeholder)
+  m_Name: Lixeira_Cinza_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21909,7 +21908,7 @@ GameObject:
   - component: {fileID: 621777436}
   - component: {fileID: 621777437}
   m_Layer: 0
-  m_Name: Pos_Processamento (Volume global)
+  m_Name: Pos_Processamento
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21923,12 +21922,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621777435}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 400595236}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &621777437
 MonoBehaviour:
@@ -23269,7 +23268,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1965528337302418, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_Name
-      value: Porta (pack school)
+      value: Porta
       objectReference: {fileID: 0}
     - target: {fileID: 4173873760860446, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_LocalScale.x
@@ -24670,7 +24669,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1965528337302418, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_Name
-      value: Porta (pack school)
+      value: Porta
       objectReference: {fileID: 0}
     - target: {fileID: 4173873760860446, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_LocalScale.x
@@ -26329,7 +26328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782056625}
   m_Layer: 0
-  m_Name: Lixeira_Azul_1 (placeholder)
+  m_Name: Lixeira_Azul_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26366,7 +26365,7 @@ GameObject:
   - component: {fileID: 783817455}
   - component: {fileID: 783817454}
   m_Layer: 0
-  m_Name: Aviso_Porta (foto)
+  m_Name: Aviso_Porta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28400,7 +28399,7 @@ GameObject:
   - component: {fileID: 842491086}
   - component: {fileID: 842491085}
   m_Layer: 0
-  m_Name: Chuva_Perto_Das_Aberturas_1 (antes do banheiro)
+  m_Name: Chuva_Abertura_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37411,7 +37410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1016463921}
   m_Layer: 0
-  m_Name: Porta_Sala_03 (Lab de Hardware)
+  m_Name: Porta_Lab_Hardware
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37814,7 +37813,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: d9441b8ce74d4f74da075233ad9d3b7d, type: 3}
       propertyPath: m_Name
-      value: Extintor (pack OldExtinguisher)
+      value: Extintor
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d9441b8ce74d4f74da075233ad9d3b7d, type: 3}
       propertyPath: m_LocalScale.x
@@ -40883,7 +40882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1140198727}
   m_Layer: 0
-  m_Name: Lado_Aberturas (direita)
+  m_Name: Lado_Aberturas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42597,7 +42596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1182364494}
   m_Layer: 0
-  m_Name: Porta_Entrada (aberta)
+  m_Name: Porta_Entrada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43245,7 +43244,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1965528337302418, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_Name
-      value: Porta (pack school)
+      value: Porta
       objectReference: {fileID: 0}
     - target: {fileID: 4173873760860446, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_LocalScale.x
@@ -48388,7 +48387,7 @@ GameObject:
   - component: {fileID: 1421546956}
   - component: {fileID: 1421546955}
   m_Layer: 0
-  m_Name: Som_Trovoes (fundo)
+  m_Name: Som_Trovoes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55096,7 +55095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1627572023}
   m_Layer: 0
-  m_Name: Porta_CorteFogo_Entrada (trancada)
+  m_Name: Porta_CorteFogo_Entrada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55194,7 +55193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1631275661}
   m_Layer: 0
-  m_Name: Escada_Entrada (fechada)
+  m_Name: Escada_Entrada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60158,7 +60157,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: d9441b8ce74d4f74da075233ad9d3b7d, type: 3}
       propertyPath: m_Name
-      value: Extintor (pack OldExtinguisher)
+      value: Extintor
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d9441b8ce74d4f74da075233ad9d3b7d, type: 3}
       propertyPath: m_LocalScale.x
@@ -61436,7 +61435,7 @@ GameObject:
   - component: {fileID: 1837534682}
   - component: {fileID: 1837534681}
   m_Layer: 0
-  m_Name: Placa_Lab_Hardware (foto)
+  m_Name: Placa_Lab_Hardware
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62003,7 +62002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1856559265}
   m_Layer: 0
-  m_Name: Neblina_Externa (camadas)
+  m_Name: Neblina_Externa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62205,7 +62204,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1965528337302418, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_Name
-      value: Porta (pack school)
+      value: Porta
       objectReference: {fileID: 0}
     - target: {fileID: 4173873760860446, guid: c46afe706fb2cde4883f7afaeaa67a78, type: 3}
       propertyPath: m_LocalScale.x
@@ -64836,7 +64835,7 @@ GameObject:
   - component: {fileID: 1933892872}
   - component: {fileID: 1933892871}
   m_Layer: 0
-  m_Name: Chuva_Perto_Das_Aberturas_2 (depois do banheiro)
+  m_Name: Chuva_Abertura_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72030,6 +72029,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: textoAbertura
+      value: '<size=64>O Corredor</size>
+
+
+        <size=30><color=#9AA3AE>Quem deixa
+        pergunta no quadro a essa hora da noite?</color></size>'
+      objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -73613,7 +73620,7 @@ GameObject:
   - component: {fileID: 2035508194}
   - component: {fileID: 2035508195}
   m_Layer: 2
-  m_Name: Area_Banheiro (abafa a chuva)
+  m_Name: Area_Banheiro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76313,7 +76320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2139066396}
   m_Layer: 0
-  m_Name: Lixeira_Cinza_2 (placeholder)
+  m_Name: Lixeira_Cinza_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76839,4 +76846,5 @@ SceneRoots:
   - {fileID: 1989822908}
   - {fileID: 343537806}
   - {fileID: 286690928}
+  - {fileID: 621777436}
   - {fileID: 604769970}

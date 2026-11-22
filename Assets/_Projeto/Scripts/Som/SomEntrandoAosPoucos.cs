@@ -24,6 +24,8 @@ public class SomEntrandoAosPoucos : MonoBehaviour
         StartCoroutine(Subir(fonte));
     }
 
+    /// <summary>Espera um pouco e sobe o volume do zero até o volume final.</summary>
+    /// <param name="fonte">Fonte de som que vai subir de volume.</param>
     private IEnumerator Subir(AudioSource fonte)
     {
         yield return new WaitForSeconds(espera);

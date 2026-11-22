@@ -202,6 +202,8 @@ public class CatracaFacial : MonoBehaviour
         giro = StartCoroutine(Girar(alvo));
     }
 
+    /// <summary>Gira o braço da catraca até a rotação pedida, com início e fim suaves.</summary>
+    /// <param name="alvo">Rotação final do braço.</param>
     private IEnumerator Girar(Quaternion alvo)
     {
         Quaternion inicio = braco.localRotation;

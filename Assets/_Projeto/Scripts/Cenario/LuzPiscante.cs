@@ -52,6 +52,7 @@ public class LuzPiscante : MonoBehaviour
     private float trocaEstado;
     private bool acesa = true;
 
+    /// <summary>Guarda a intensidade e o brilho normais da lâmpada e prepara o som da falha.</summary>
     void Start()
     {
         luz = GetComponent<Light>();
@@ -111,6 +112,10 @@ public class LuzPiscante : MonoBehaviour
         fonteSom.Play();
     }
 
+    /// <summary>
+    /// A cada quadro decide se a luz fica acesa ou apagada: segue o volume do áudio (som longo)
+    /// ou faz piscadas sorteadas de tempos em tempos.
+    /// </summary>
     void Update()
     {
         // Som longo: a luz segue o áudio

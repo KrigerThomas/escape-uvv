@@ -26,6 +26,7 @@ public class SomChuvaDinamico : MonoBehaviour
     private Transform jogador;
     private float volumeBase;
 
+    /// <summary>Guarda o volume do Inspector e acha o jogador.</summary>
     void Start()
     {
         fonte = GetComponent<AudioSource>();
@@ -35,6 +36,7 @@ public class SomChuvaDinamico : MonoBehaviour
         if (j != null) jogador = j.transform;
     }
 
+    /// <summary>Abafa a chuva (menos volume e som mais grave) quando o jogador está numa área fechada ou num painel aberto.</summary>
     void Update()
     {
         bool dentro = jogador != null && areaFechada != null && areaFechada.bounds.Contains(jogador.position);

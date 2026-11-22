@@ -17,6 +17,7 @@ public class PortaCabine : MonoBehaviour
     private bool estavaPerto;
     private Vector3 centroPorta;
 
+    /// <summary>Guarda a rotação da porta fechada, acha o jogador e prepara o som.</summary>
     void Start()
     {
         rotacaoFechada = transform.localRotation;
@@ -34,6 +35,7 @@ public class PortaCabine : MonoBehaviour
         }
     }
 
+    /// <summary>Abre a porta aos poucos quando o jogador chega perto e fecha quando ele se afasta.</summary>
     void Update()
     {
         if (jogador == null) return;

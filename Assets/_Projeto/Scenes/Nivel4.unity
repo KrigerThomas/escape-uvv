@@ -3297,6 +3297,73 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1001 &39972214
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1658018971}
+    m_Modifications:
+    - target: {fileID: 2353545726317963636, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353545726317963636, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353545726317963636, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353545726317963636, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353545726317963636, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353545726317963636, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353545726317963636, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353545726317963636, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353545726317963636, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353545726317963636, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113346967591022335, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+      propertyPath: m_Name
+      value: Estouro_Lampada
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+--- !u!198 &39972215 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3504539603848707662, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+  m_PrefabInstance: {fileID: 39972214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &39972216 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2353545726317963636, guid: 29749a47f6fc2c943860ffd78c6b553d, type: 3}
+  m_PrefabInstance: {fileID: 39972214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &40308211
 GameObject:
   m_ObjectHideFlags: 0
@@ -3903,7 +3970,7 @@ GameObject:
   - component: {fileID: 48979503}
   - component: {fileID: 48979502}
   m_Layer: 0
-  m_Name: Area_Guarda_Volumes (armario 67)
+  m_Name: Area_Guarda_Volumes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7976,7 +8043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 102567241}
   m_Layer: 0
-  m_Name: Iluminacao_Emergencia (liga no apagao)
+  m_Name: Iluminacao_Emergencia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10857,7 +10924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 135881039}
   m_Layer: 0
-  m_Name: Ilha_de_Consulta (computador e impressora)
+  m_Name: Ilha_de_Consulta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21115,7 +21182,7 @@ GameObject:
   - component: {fileID: 260793338}
   - component: {fileID: 260793339}
   m_Layer: 0
-  m_Name: Sons_Aleatorios_Biblioteca (livro caindo longe)
+  m_Name: Sons_Aleatorios_Biblioteca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22658,7 +22725,7 @@ GameObject:
   - component: {fileID: 281798296}
   - component: {fileID: 281798295}
   m_Layer: 0
-  m_Name: Extintor (pack OldExtinguisher)
+  m_Name: Extintor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24138,7 +24205,7 @@ GameObject:
   - component: {fileID: 294816541}
   - component: {fileID: 294816540}
   m_Layer: 0
-  m_Name: Parede_Guarda_Volumes (direita)
+  m_Name: Parede_Guarda_Volumes_Direita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32118,7 +32185,7 @@ GameObject:
   - component: {fileID: 413047285}
   - component: {fileID: 413047284}
   m_Layer: 0
-  m_Name: Som_Trovoes (fundo)
+  m_Name: Som_Trovoes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34977,143 +35044,6 @@ Transform:
   - {fileID: 1808173202}
   m_Father: {fileID: 125569818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &444117987
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 444117988}
-  - component: {fileID: 444117990}
-  - component: {fileID: 444117989}
-  m_Layer: 0
-  m_Name: Texto
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &444117988
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444117987}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1653060139}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1500, y: 400}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &444117989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444117987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d36b73b94c6b36489f8f7858a31879e, type: 2}
-  m_sharedMaterial: {fileID: 5371791249900017045, guid: 9d36b73b94c6b36489f8f7858a31879e, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 0.92941177, g: 0.91764706, b: 0.8901961, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 6
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &444117990
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444117987}
-  m_CullTransparentMesh: 1
 --- !u!1 &445390889
 GameObject:
   m_ObjectHideFlags: 0
@@ -43198,7 +43128,7 @@ GameObject:
   - component: {fileID: 567974136}
   - component: {fileID: 567974135}
   m_Layer: 0
-  m_Name: Painel_Consulta (tela do computador)
+  m_Name: Painel_Consulta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46557,7 +46487,7 @@ GameObject:
   - component: {fileID: 612416467}
   - component: {fileID: 612416466}
   m_Layer: 0
-  m_Name: Som_Chuva (la fora)
+  m_Name: Som_Chuva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52864,6 +52794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02975f7ef98fc484fa46c47287a939d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumePapel: 0.6
   itemLista: Lista de livros
   tecla: 108
   painel: {fileID: 1455705621}
@@ -52886,6 +52817,7 @@ MonoBehaviour:
   esconderNoApagao:
   - {fileID: 781128446}
   - {fileID: 426355772}
+  estouroLampada: {fileID: 39972215}
   ambienteNoApagao: 0.22
   reflexoNoApagao: 0.45
   zumbido: {fileID: 2002418933}
@@ -53703,7 +53635,7 @@ GameObject:
   - component: {fileID: 696631447}
   - component: {fileID: 696631448}
   m_Layer: 0
-  m_Name: Porta_Vidro_Entrada (Dobradica)
+  m_Name: Dobradica_Porta_Vidro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73776,7 +73708,7 @@ GameObject:
   - component: {fileID: 932406145}
   - component: {fileID: 932406144}
   m_Layer: 0
-  m_Name: Area_Predio (abafa a chuva)
+  m_Name: Area_Predio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74161,7 +74093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 944907233}
   m_Layer: 0
-  m_Name: Braco_Portinhola (gira ao liberar)
+  m_Name: Braco_Portinhola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74980,6 +74912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac40fe469f7afbd4d849a5c8457c12b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumePortaTrancada: 0.8
   totalItens: 3
   rotuloContador: Livros
   saidaAbertaDesdeOInicio: 0
@@ -77891,7 +77824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 992026313}
   m_Layer: 0
-  m_Name: Lugares_dos_Livros (sorteio)
+  m_Name: Lugares_dos_Livros
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92278,7 +92211,7 @@ GameObject:
   - component: {fileID: 1177299585}
   - component: {fileID: 1177299584}
   m_Layer: 0
-  m_Name: Extintor (pack OldExtinguisher)
+  m_Name: Extintor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95882,7 +95815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1bf044962dc24dc4cb616a40ac7d3884, type: 3}
       propertyPath: m_Name
-      value: Catraca_Modelo_Direita (decorativa)
+      value: Catraca_Direita
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -96621,7 +96554,7 @@ GameObject:
   - component: {fileID: 1229954092}
   - component: {fileID: 1229954091}
   m_Layer: 0
-  m_Name: Pos_Processamento (Volume global)
+  m_Name: Pos_Processamento
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97942,7 +97875,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1253978492}
   m_Layer: 0
-  m_Name: Parede_Banheiros (esquerda)
+  m_Name: Parede_Banheiros
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98566,7 +98499,7 @@ GameObject:
   - component: {fileID: 1258704265}
   - component: {fileID: 1258704264}
   m_Layer: 0
-  m_Name: Extintor (pack OldExtinguisher)
+  m_Name: Extintor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104885,7 +104818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1335519460}
   m_Layer: 0
-  m_Name: Porta (pack school)
+  m_Name: Porta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119670,7 +119603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1415592680}
   m_Layer: 0
-  m_Name: Porta (pack school)
+  m_Name: Porta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127801,7 +127734,7 @@ GameObject:
   - component: {fileID: 1455705624}
   - component: {fileID: 1455705623}
   m_Layer: 0
-  m_Name: Painel_Lista_Livros (papel)
+  m_Name: Painel_Lista_Livros
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133046,6 +132979,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: textoAbertura
+      value: "<size=64>A Biblioteca</size>\n\n<size=30><color=#9AA3AE>J\xE1 passou
+        do hor\xE1rio, mas a porta ainda estava aberta...</color></size>"
+      objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -133090,9 +133028,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7485721374627020295, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 567974134}
-    - targetCorrespondingSourceObject: {fileID: 7485721374627020295, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1653060139}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
 --- !u!114 &1514128027 stripped
@@ -143453,7 +143388,7 @@ GameObject:
   - component: {fileID: 1587148674}
   - component: {fileID: 1587148673}
   m_Layer: 0
-  m_Name: Extintor (pack OldExtinguisher)
+  m_Name: Extintor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146890,7 +146825,7 @@ GameObject:
   - component: {fileID: 1635364549}
   - component: {fileID: 1635364548}
   m_Layer: 0
-  m_Name: Bloqueio_Passagem (invisivel)
+  m_Name: Bloqueio_Passagem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147916,116 +147851,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652599843}
   m_Mesh: {fileID: 6239881831769578202, guid: c9316ef3a5efffa4b8b4afa9f8c0fd34, type: 3}
---- !u!1 &1653060138
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1653060139}
-  - component: {fileID: 1653060143}
-  - component: {fileID: 1653060142}
-  - component: {fileID: 1653060141}
-  - component: {fileID: 1653060140}
-  m_Layer: 0
-  m_Name: Tela_Preta
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1653060139
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653060138}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 444117988}
-  m_Father: {fileID: 1514128028}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000061035156}
-  m_SizeDelta: {x: 0, y: -0.000030517578}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1653060140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653060138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0285076f9e8d9c8488725a3fd69d0653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grupo: {fileID: 1653060141}
-  texto: {fileID: 444117989}
-  textoAbertura: "<size=64>A Biblioteca</size>\n\n<size=30><color=#9AA3AE>J\xE1 passou
-    do hor\xE1rio, mas a porta ainda estava aberta...</color></size>"
-  tempoAbertura: 4.5
-  textoRecomeco: De novo...
-  tempoRecomeco: 1
-  tempoTransicao: 1.5
---- !u!225 &1653060141
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653060138}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
---- !u!114 &1653060142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653060138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1653060143
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653060138}
-  m_CullTransparentMesh: 1
 --- !u!1 &1655155648
 GameObject:
   m_ObjectHideFlags: 0
@@ -148276,6 +148101,7 @@ Transform:
   - {fileID: 1752762702}
   - {fileID: 135881039}
   - {fileID: 102567241}
+  - {fileID: 39972216}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1658026333
@@ -150932,7 +150758,7 @@ GameObject:
   - component: {fileID: 1686563216}
   - component: {fileID: 1686563215}
   m_Layer: 0
-  m_Name: Extintor (pack OldExtinguisher)
+  m_Name: Extintor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151475,7 +151301,7 @@ GameObject:
   - component: {fileID: 1688441383}
   - component: {fileID: 1688441382}
   m_Layer: 0
-  m_Name: Rampa_Invisivel (colisao da escada)
+  m_Name: Rampa_Escada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152518,6 +152344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17cb30b0690b034794689498dd31fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeClique: 0.5
   luz: {fileID: 1370956930}
   itemNecessario: 
   tecla: 102
@@ -177429,6 +177256,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumeTecla: 0.6
+  volumeTravou: 0.5
+  volumeImpressora: 0.7
   painel: {fileID: 567974133}
   textoPainel: {fileID: 1825441422}
   resultado: 
@@ -184795,6 +184625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumeDestrancar: 0.9
   chaveNecessaria: Mochila
   textoTrancada: Ainda tenho coisas para fazer
   segundoItemNecessario: "Empr\xE9stimo registrado"
@@ -188953,7 +188784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2096129923}
   m_Layer: 0
-  m_Name: Vidro_Esq_3 (junto da catraca)
+  m_Name: Vidro_Esq_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -192776,7 +192607,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450653013319304}
   m_Layer: 0
-  m_Name: Catraca_Modelo_Esquerda (passagem principal)
+  m_Name: Catraca_Esquerda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

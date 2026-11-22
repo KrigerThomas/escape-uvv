@@ -40,6 +40,7 @@ public class GatoPatrulha : MonoBehaviour
     private float timerParado;
     private bool jogadorEstavaPerto = false;
 
+    /// <summary>Pega o Animator e o AudioSource, acha o jogador e começa andando.</summary>
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -54,6 +55,7 @@ public class GatoPatrulha : MonoBehaviour
         TrocarAnimacao("andar");
     }
 
+    /// <summary>A cada quadro: espera o miado acabar, mia se o jogador chegou perto, mia sozinho de tempos em tempos ou anda.</summary>
     void Update()
     {
         // 1) Se está parado miando, só espera o tempo acabar
@@ -90,6 +92,7 @@ public class GatoPatrulha : MonoBehaviour
         Andar();
     }
 
+    /// <summary>Anda em direção ao ponto atual (Vector3.MoveTowards) e passa para o próximo ao chegar.</summary>
     void Andar()
     {
         if (pontos == null || pontos.Length == 0) return;
@@ -105,6 +108,7 @@ public class GatoPatrulha : MonoBehaviour
             pontoAtual = (pontoAtual + 1) % pontos.Length;
     }
 
+    /// <summary>Para, troca para a animação de miar e toca o miado com um tom sorteado.</summary>
     void Miar()
     {
         TrocarAnimacao("miar");
@@ -117,6 +121,9 @@ public class GatoPatrulha : MonoBehaviour
         timerMiado = intervaloMiado;
     }
 
+    /// <summary>Vira o gato para um ponto, só no plano do chão.</summary>
+    /// <param name="alvo">Posição para onde o gato deve olhar.</param>
+    /// <param name="instantaneo">Verdadeiro: vira na hora. Falso: vira aos poucos.</param>
     void OlharPara(Vector3 alvo, bool instantaneo)
     {
         Vector3 direcao = alvo - transform.position;
@@ -129,12 +136,14 @@ public class GatoPatrulha : MonoBehaviour
             : Quaternion.Slerp(transform.rotation, rotacaoAlvo, velocidadeGiro * Time.deltaTime);
     }
 
+    /// <summary>Troca o estado do Animator com uma transição curta.</summary>
+    /// <param name="estado">Nome do estado: andar, parado ou miar.</param>
     void TrocarAnimacao(string estado)
     {
         if (animator != null) animator.CrossFade(estado, 0.15f);
     }
 
-    // Desenha o caminho na Scene View (linha amarela) para facilitar a edição
+    /// <summary>Desenha o caminho na Scene View (linha amarela) para facilitar a edição.</summary>
     void OnDrawGizmos()
     {
         if (pontos == null || pontos.Length < 2) return;

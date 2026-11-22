@@ -1881,7 +1881,6 @@ Transform:
   - {fileID: 916646308}
   - {fileID: 659199209}
   - {fileID: 1290246283}
-  - {fileID: 893220523}
   - {fileID: 575677734}
   m_Father: {fileID: 2076758987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2003,117 +2002,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5316724737786064577, guid: 36398e57af3682647ab73e79814899f2, type: 3}
   m_PrefabInstance: {fileID: 71800886}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &77220118
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 77220119}
-  - component: {fileID: 77220123}
-  - component: {fileID: 77220122}
-  - component: {fileID: 77220121}
-  - component: {fileID: 77220120}
-  m_Layer: 0
-  m_Name: Tela_Preta
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &77220119
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77220118}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 242558496}
-  m_Father: {fileID: 779745411}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000061035156}
-  m_SizeDelta: {x: 0, y: -0.000030517578}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &77220120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77220118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0285076f9e8d9c8488725a3fd69d0653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grupo: {fileID: 77220121}
-  texto: {fileID: 242558497}
-  textoAbertura: "<size=64>Sala 12</size>\n\n<size=32>Cochilei na \xFAltima aula...
-    e acordei com o bloco trancado.</size>\n\n<size=28><color=#9AA3AE>Tem algu\xE9m
-    andando no corredor.</color></size>"
-  tempoAbertura: 5.5
-  textoRecomeco: De novo...
-  tempoRecomeco: 1.2
-  tempoTransicao: 1.5
---- !u!225 &77220121
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77220118}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
---- !u!114 &77220122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77220118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &77220123
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77220118}
-  m_CullTransparentMesh: 1
 --- !u!1 &79983392
 GameObject:
   m_ObjectHideFlags: 0
@@ -8304,6 +8192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac40fe469f7afbd4d849a5c8457c12b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumePortaTrancada: 0.8
   totalItens: 0
   rotuloContador: 
   saidaAbertaDesdeOInicio: 0
@@ -9021,6 +8910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -9528,7 +9418,7 @@ GameObject:
   - component: {fileID: 198867893}
   - component: {fileID: 198867892}
   m_Layer: 0
-  m_Name: Area_Predio (abafa a chuva)
+  m_Name: Area_Predio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10172,143 +10062,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241334852}
   m_Mesh: {fileID: 6239881831769578202, guid: c9316ef3a5efffa4b8b4afa9f8c0fd34, type: 3}
---- !u!1 &242558495
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 242558496}
-  - component: {fileID: 242558498}
-  - component: {fileID: 242558497}
-  m_Layer: 0
-  m_Name: Texto
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &242558496
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242558495}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 77220119}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1500, y: 400}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &242558497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242558495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9d36b73b94c6b36489f8f7858a31879e, type: 2}
-  m_sharedMaterial: {fileID: 5371791249900017045, guid: 9d36b73b94c6b36489f8f7858a31879e, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 0.92941177, g: 0.91764706, b: 0.8901961, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 6
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &242558498
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242558495}
-  m_CullTransparentMesh: 1
 --- !u!1 &243826228
 GameObject:
   m_ObjectHideFlags: 0
@@ -12220,7 +11973,7 @@ GameObject:
   - component: {fileID: 348010628}
   - component: {fileID: 348010627}
   m_Layer: 0
-  m_Name: Som_Trovoes (fundo)
+  m_Name: Som_Trovoes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14498,6 +14251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b17cb30b0690b034794689498dd31fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeClique: 0.5
   luz: {fileID: 323161805}
   itemNecessario: Celular
   tecla: 102
@@ -15080,6 +14834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -16264,6 +16019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -20289,7 +20045,7 @@ GameObject:
   m_Component:
   - component: {fileID: 659199209}
   m_Layer: 0
-  m_Name: Luminaria_Piscando (perto dos armarios)
+  m_Name: Luminaria_Piscando
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23283,6 +23039,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: textoAbertura
+      value: "<size=64>Sala 12</size>\n\n<size=32>A bateria acabou de tanto usar
+        a lanterna, deixei o celular carregando l\xE1 no fundo</size>\n\n<size=28><color=#9AA3AE>Tem
+        algu\xE9m andando no corredor</color></size>"
+      objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -23327,9 +23089,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7485721374627020295, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 766728525}
-    - targetCorrespondingSourceObject: {fileID: 7485721374627020295, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 77220119}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
 --- !u!114 &779745410 stripped
@@ -23480,7 +23239,7 @@ GameObject:
   - component: {fileID: 784216379}
   - component: {fileID: 784216378}
   m_Layer: 0
-  m_Name: Extintor (pack OldExtinguisher)
+  m_Name: Extintor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26173,7 +25932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 848177948}
   m_Layer: 0
-  m_Name: Porta (pack school)
+  m_Name: Porta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27246,7 +27005,7 @@ GameObject:
   - component: {fileID: 893220523}
   - component: {fileID: 893220524}
   m_Layer: 0
-  m_Name: Pos_Processamento (Volume global)
+  m_Name: Pos_Processamento
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27260,12 +27019,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893220522}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 56676116}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &893220524
 MonoBehaviour:
@@ -28897,7 +28656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1008037353}
   m_Layer: 0
-  m_Name: Porta (pack school)
+  m_Name: Porta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30260,6 +30019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -32151,7 +31911,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1316731507923750, guid: ec15f5ae191975f4d8de236356aaec36, type: 3}
       propertyPath: m_Name
-      value: Notebook (aceso)
+      value: Notebook
       objectReference: {fileID: 0}
     - target: {fileID: 4525299494038442, guid: ec15f5ae191975f4d8de236356aaec36, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34803,7 +34563,7 @@ GameObject:
   - component: {fileID: 1232777575}
   - component: {fileID: 1232777574}
   m_Layer: 0
-  m_Name: Area_Porta_Saida (precisa da chave)
+  m_Name: Area_Porta_Saida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34838,6 +34598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: "abrir a porta de sa\xEDda"
   tecla: 101
+  volumeDestrancar: 0.9
   chaveNecessaria: Chave do bloco
   textoTrancada: "Est\xE1 trancada..."
   segundoItemNecessario: 
@@ -35001,6 +34762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -38054,6 +37816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -39688,6 +39451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -41606,6 +41370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -43199,6 +42964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -44030,7 +43796,7 @@ GameObject:
   - component: {fileID: 1550209278}
   - component: {fileID: 1550209277}
   m_Layer: 0
-  m_Name: Saida_Nivel (do lado de fora)
+  m_Name: Saida_Nivel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45417,6 +45183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -53281,6 +53048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -53684,7 +53452,7 @@ GameObject:
   - component: {fileID: 1725225406}
   - component: {fileID: 1725225405}
   m_Layer: 0
-  m_Name: Extintor (pack OldExtinguisher)
+  m_Name: Extintor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55529,6 +55297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -58080,6 +57849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -59048,6 +58818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -60199,7 +59970,7 @@ GameObject:
   - component: {fileID: 2034472869}
   - component: {fileID: 2034472868}
   m_Layer: 0
-  m_Name: Som_Chuva (la fora)
+  m_Name: Som_Chuva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60978,6 +60749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -61813,6 +61585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textoAcao: interagir
   tecla: 101
+  volumePorta: 0.7
   textoAcaoEntrar: "se esconder no arm\xE1rio"
   textoAcaoSair: "sair do arm\xE1rio"
   textoSemTempo: "Ela t\xE1 olhando. N\xE3o d\xE1 tempo!"
@@ -62334,7 +62107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2086885981}
   m_Layer: 0
-  m_Name: Porta (pack school)
+  m_Name: Porta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62633,7 +62406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115237930}
   m_Layer: 0
-  m_Name: Porta_Sala_12 (aberta)
+  m_Name: Porta_Sala_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62976,7 +62749,7 @@ GameObject:
   - component: {fileID: 7491134040956411881}
   - component: {fileID: 7491134040956411883}
   m_Layer: 0
-  m_Name: Celular (na sua carteira)
+  m_Name: Celular
   m_TagString: ItemPerdido
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63174,5 +62947,6 @@ SceneRoots:
   - {fileID: 779745409}
   - {fileID: 1922626948}
   - {fileID: 2076758987}
+  - {fileID: 893220523}
   - {fileID: 1501575050}
   - {fileID: 419329391}

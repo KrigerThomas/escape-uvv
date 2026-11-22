@@ -932,6 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6774880992c9fca45a19aee8f5c8e225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeClique: 0.7
   botaoJogarDeNovo: {fileID: 2127399504}
   botaoSair: {fileID: 741725374}
   somClique: {fileID: 8300000, guid: c334df0d60611e346a1a524d8e26a94a, type: 3}
