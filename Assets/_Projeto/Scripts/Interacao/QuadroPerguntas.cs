@@ -74,7 +74,8 @@ public class QuadroPerguntas : MonoBehaviour
     private bool jogadorPerto;
     private bool painelAberto;
     private bool esperandoResultado;
-    private readonly List<int> fila = new List<int>();
+    // a fila é estática: se o jogador recomeçar o nível, as perguntas que ele já viu não voltam logo
+    private static readonly List<int> fila = new List<int>();
     private int perguntaAtual = -1;
     private int[] ordemAlternativas = new int[3];
 
@@ -98,7 +99,8 @@ public class QuadroPerguntas : MonoBehaviour
         if (botaoFechar != null)
             botaoFechar.onClick.AddListener(Fechar);
 
-        EmbaralharFila();
+        if (fila.Count == 0 || fila.Exists(i => i >= perguntas.Count))
+            EmbaralharFila();
     }
 
     /// <summary>Abre o quadro com E e fecha com Esc.</summary>

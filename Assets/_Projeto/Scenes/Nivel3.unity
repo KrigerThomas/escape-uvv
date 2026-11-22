@@ -43575,15 +43575,14 @@ MonoBehaviour:
     indiceCorreta: 0
     explicacao: "ele solta v\xE1rias part\xEDculas com cor, tamanho e velocidade
       que mudam com o tempo"
-  - enunciado: "Qual destas luzes da Unity s\xF3 funciona <b>pr\xE9-calculada</b>
-      (baked)?"
+  - enunciado: Qual componente <b>toca um som</b> num objeto da cena?
     alternativas:
-    - Area Light
-    - Point Light
-    - Spot Light
+    - AudioSource
+    - AudioListener
+    - Animator
     indiceCorreta: 0
-    explicacao: "a Area Light ilumina a partir de um ret\xE2ngulo e precisa ser assada
-      no lightmap"
+    explicacao: "o AudioSource toca o som, e o AudioListener, que fica na c\xE2mera,
+      \xE9 quem ouve"
   - enunciado: Na Unity, qual eixo aponta <b>para cima</b>?
     alternativas:
     - Y
@@ -43598,13 +43597,44 @@ MonoBehaviour:
     - Changelog
     indiceCorreta: 0
     explicacao: "o Game Design Document junta ideia, mec\xE2nicas, n\xEDveis e arte"
-  - enunciado: "O que \xE9 um <b>prefab</b>?"
+  - enunciado: Em qual janela aparecem as mensagens do <b>Debug.Log</b>?
     alternativas:
-    - "Um objeto salvo para reaproveitar v\xE1rias vezes"
-    - Uma cena vazia
-    - Um tipo de luz
+    - Console
+    - Inspector
+    - Hierarchy
     indiceCorreta: 0
-    explicacao: "mudou o prefab, mudam todas as c\xF3pias dele nas cenas"
+    explicacao: o Console mostra os logs, os avisos e os erros dos scripts
+  - enunciado: "Qual m\xE9todo roda <b>uma vez s\xF3</b>, quando o objeto come\xE7a?"
+    alternativas:
+    - Start
+    - Update
+    - OnTriggerEnter
+    indiceCorreta: 0
+    explicacao: "o Start roda uma vez no come\xE7o, e o Update roda a cada quadro"
+  - enunciado: "Onde ficam os bot\xF5es e textos da <b>interface</b> do jogo?"
+    alternativas:
+    - Dentro de um Canvas
+    - Dentro do Terrain
+    - Dentro de um Rigidbody
+    indiceCorreta: 0
+    explicacao: todo elemento de UI precisa estar dentro de um Canvas para aparecer
+      na tela
+  - enunciado: O que precisa ser feito antes de um <b>NavMeshAgent</b> conseguir
+      andar?
+    alternativas:
+    - Gerar (bake) o NavMesh
+    - Marcar Is Trigger
+    - Colocar um AudioSource
+    indiceCorreta: 0
+    explicacao: "sem o NavMesh gerado o agente n\xE3o tem por onde calcular o caminho"
+  - enunciado: O que a <b>Hierarchy</b> mostra?
+    alternativas:
+    - Os objetos da cena aberta
+    - Os arquivos do projeto
+    - "As configura\xE7\xF5es do Build"
+    indiceCorreta: 0
+    explicacao: a Hierarchy lista os objetos da cena; os arquivos ficam na janela
+      Project
   teclaInteragir: 101
   painelQuadro: {fileID: 620470847}
   textoPergunta: {fileID: 1371138543}
@@ -72079,7 +72109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 236.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x
