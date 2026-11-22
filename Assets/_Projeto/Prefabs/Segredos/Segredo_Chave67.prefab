@@ -74,6 +74,7 @@ MonoBehaviour:
   somDescoberta: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   volume: 0.8
   dicaVisual: {fileID: 1251878099223619600}
+  imagemDetalhe: {fileID: 0}
 --- !u!1 &1044239155329677662
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,15 +383,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6fad90eb371e5464ab7d63a23e2c21a3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.9
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6fad90eb371e5464ab7d63a23e2c21a3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.9
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6fad90eb371e5464ab7d63a23e2c21a3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.9
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6fad90eb371e5464ab7d63a23e2c21a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -398,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6fad90eb371e5464ab7d63a23e2c21a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.012
+      value: 0.006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6fad90eb371e5464ab7d63a23e2c21a3, type: 3}
       propertyPath: m_LocalPosition.z

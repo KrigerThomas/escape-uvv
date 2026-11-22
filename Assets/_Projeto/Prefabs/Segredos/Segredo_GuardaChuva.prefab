@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1083063825664188848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.1305262, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: -0.028, z: 0}
+  m_LocalPosition: {x: 0, y: 0.002, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -194,6 +194,7 @@ MonoBehaviour:
   somDescoberta: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   volume: 0.8
   dicaVisual: {fileID: 5160507296419922716}
+  imagemDetalhe: {fileID: 0}
 --- !u!1 &7743503705793743142
 GameObject:
   m_ObjectHideFlags: 0
