@@ -74,6 +74,7 @@ MonoBehaviour:
   somDescoberta: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   volume: 0.8
   dicaVisual: {fileID: 1251878099223619600}
+  imagemDetalhe: {fileID: 2800000, guid: 9280eb8f7f1acbd4883d99a8702624d7, type: 3}
 --- !u!1 &1044239155329677662
 GameObject:
   m_ObjectHideFlags: 0

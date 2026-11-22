@@ -25,8 +25,12 @@ public class SomAmbienteAleatorio : MonoBehaviour
 
     [Range(0f, 1f)] public float volume = 0.6f;
 
+    [Tooltip("Até essa distância o som toca no volume cheio. Valores maiores deixam o som de longe mais audível.")]
+    public float alcanceCheio = 15f;
+
     private Transform jogador;
     private float proximoSom;
+    private AudioSource fonte;
 
     /// <summary>Procura o jogador pela tag e agenda o primeiro som.</summary>
     void Start()
@@ -34,6 +38,18 @@ public class SomAmbienteAleatorio : MonoBehaviour
         GameObject objJogador = GameObject.FindWithTag("Player");
         if (objJogador != null)
             jogador = objJogador.transform;
+
+        // um AudioSource só, que muda de lugar a cada som. O PlayClipAtPoint usa um alcance
+        // muito curto e deixava a coruja quase muda a essa distância
+        GameObject objFonte = new GameObject("Som_Aleatorio");
+        objFonte.transform.SetParent(transform);
+        fonte = objFonte.AddComponent<AudioSource>();
+        fonte.playOnAwake = false;
+        fonte.spatialBlend = 0.85f;
+        fonte.rolloffMode = AudioRolloffMode.Linear;
+        fonte.minDistance = alcanceCheio;
+        fonte.maxDistance = alcanceCheio * 4f;
+        fonte.dopplerLevel = 0f;
 
         AgendarProximo();
     }
@@ -54,7 +70,7 @@ public class SomAmbienteAleatorio : MonoBehaviour
     /// </summary>
     private void TocarSomAleatorio()
     {
-        if (sons == null || sons.Length == 0 || jogador == null)
+        if (sons == null || sons.Length == 0 || jogador == null || fonte == null)
             return;
 
         AudioClip som = sons[Random.Range(0, sons.Length)];
@@ -63,7 +79,8 @@ public class SomAmbienteAleatorio : MonoBehaviour
 
         Vector2 direcao = Random.insideUnitCircle.normalized * Random.Range(distancia.x, distancia.y);
         Vector3 ponto = jogador.position + new Vector3(direcao.x, 2f, direcao.y);
-        AudioSource.PlayClipAtPoint(som, ponto, volume);
+        fonte.transform.position = ponto;
+        fonte.PlayOneShot(som, volume);
     }
 
     /// <summary>Sorteia quando o próximo som vai tocar.</summary>

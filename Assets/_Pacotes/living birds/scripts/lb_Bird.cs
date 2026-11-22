@@ -552,13 +552,7 @@ public class lb_Bird : MonoBehaviour {
 	}
 
 	void PlaySong(){
-		if (!dead){
-			if(Random.value < .5){
-				GetComponent<AudioSource>().PlayOneShot (song1,1);
-			}else{
-				GetComponent<AudioSource>().PlayOneShot (song2,1);
-			}
-		}
+		// o jogo se passa de noite: os pássaros não cantam
 	}
 
 	void Update () {

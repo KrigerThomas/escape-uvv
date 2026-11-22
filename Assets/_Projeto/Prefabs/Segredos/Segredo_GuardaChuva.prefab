@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3116864830495314682
+--- !u!1 &1083063825664188848
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,78 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 253870809007632681}
-  - component: {fileID: 9006495182647095745}
-  - component: {fileID: 6677251853650922347}
+  - component: {fileID: 1760610786660061372}
   m_Layer: 0
-  m_Name: Lata_Refrigerante
+  m_Name: Modelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &253870809007632681
+--- !u!4 &1760610786660061372
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3116864830495314682}
+  m_GameObject: {fileID: 1083063825664188848}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.24575134, z: 0}
-  m_LocalScale: {x: 0.005936792, y: 0.005936792, z: 0.005936792}
+  m_LocalRotation: {x: 0, y: 0.1305262, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: -0.028, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 291371903849387262}
   m_Father: {fileID: 5243636131052754388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &9006495182647095745
+--- !u!1 &2281121628087339500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 291371903849387262}
+  - component: {fileID: 3814106698256975501}
+  - component: {fileID: 6382838371842495846}
+  m_Layer: 0
+  m_Name: GuardaChuva
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &291371903849387262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2281121628087339500}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.0075476775, y: 0.06836668, z: -0.049446277}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1760610786660061372}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3814106698256975501
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3116864830495314682}
-  m_Mesh: {fileID: 8150116196911664783, guid: dc42f065fdd681e44a012c3b7119aa10, type: 3}
---- !u!23 &6677251853650922347
+  m_GameObject: {fileID: 2281121628087339500}
+  m_Mesh: {fileID: -5157894731085446497, guid: 9a46112f7e42e13429fbb614a362c200, type: 3}
+--- !u!23 &6382838371842495846
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3116864830495314682}
+  m_GameObject: {fileID: 2281121628087339500}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,8 +96,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 66091e9c841954c4dbc3cd861b7999d1, type: 2}
-  - {fileID: 2100000, guid: 75f4ec6466be0ac48a998dd4e2e38b4d, type: 2}
+  - {fileID: 2100000, guid: dce30d82152061541859f3d177559f5c, type: 2}
+  - {fileID: 2100000, guid: 37509dc0ae05b2548b7d819c38a32d1e, type: 2}
+  - {fileID: 2100000, guid: f6bfbb656f072804cbf6b2c4ed635eaf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,7 +132,7 @@ GameObject:
   - component: {fileID: 2321018589113674853}
   - component: {fileID: 7497412697055126271}
   m_Layer: 0
-  m_Name: Segredo_Latinha
+  m_Name: Segredo_GuardaChuva
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,8 +151,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 253870809007632681}
   - {fileID: 4117074609910956363}
+  - {fileID: 1760610786660061372}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2321018589113674853
@@ -155,8 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b83f47c5b1911a4981a453f501f13c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeSegredo: Latinha de refri do intervalo
-  frase: "Uma latinha de refri ainda gelada. Algu\xE9m saiu com pressa."
+  nomeSegredo: Guarda-chuva esquecido
+  frase: Um guarda-chuva fechado e seco. Quem deixou vai se molhar hoje.
   efeitoDescoberta: {fileID: 5257402744445269917, guid: 89d58c592c817a24494e5d27e37ac950, type: 3}
   somDescoberta: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   volume: 0.8

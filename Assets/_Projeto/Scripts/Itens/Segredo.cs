@@ -35,6 +35,9 @@ public class Segredo : MonoBehaviour
     [Tooltip("Objeto de dica (ex.: brilho em volta do segredo) que é desligado depois de encontrado. Opcional.")]
     public GameObject dicaVisual;
 
+    [Tooltip("Imagem mostrada de perto no meio da tela quando o segredo é encontrado (ex.: a carteirinha). Opcional.")]
+    public Texture imagemDetalhe;
+
     /// <summary>Verdadeiro depois que o jogador encontrou este segredo.</summary>
     public bool Encontrado { get; private set; }
 
@@ -73,6 +76,9 @@ public class Segredo : MonoBehaviour
 
         if (dicaVisual != null)
             dicaVisual.SetActive(false);
+
+        if (imagemDetalhe != null)
+            DetalheItem.Mostrar(imagemDetalhe);
 
         // Com frase: mostra só a frase (ela já fala do achado). Sem frase: "Você encontrou " + nome.
         if (GameManager.Instancia != null)
