@@ -43475,8 +43475,8 @@ MonoBehaviour:
     - AddForce
     - transform.position
     indiceCorreta: 0
-    explicacao: "torque \xE9 a for\xE7a que faz girar, como no chute das latinhas
-      do p\xE1tio"
+    explicacao: "torque \xE9 a for\xE7a que faz girar, como nas cadeiras do InovaLab
+      quando voc\xEA esbarra nelas"
   - enunciado: "Para o <b>OnTriggerEnter</b> ser chamado, o Collider precisa estar
       com qual op\xE7\xE3o marcada?"
     alternativas:
@@ -52312,7 +52312,7 @@ MonoBehaviour:
   palavraSingular: acerto
   palavraPlural: acertos
   textoTudoEncontrado: 
-  tempoFadeInSom: 2.5
+  tempoFadeInSom: 4
 --- !u!4 &1512574394
 Transform:
   m_ObjectHideFlags: 0
@@ -72030,12 +72030,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: textoLugar
+      value: O Corredor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: textoNivel
+      value: "N\xEDvel 3"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: tempoAbertura
+      value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: textoAbertura
       value: '<size=64>O Corredor</size>
 
 
         <size=30><color=#9AA3AE>Quem deixa
         pergunta no quadro a essa hora da noite?</color></size>'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: tempoTransicao
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchorMax.x

@@ -81,19 +81,30 @@ public class GameManager : MonoBehaviour
     }
 
     [Tooltip("Segundos para o som do nível subir do silêncio até o volume normal.")]
-    public float tempoFadeInSom = 2.5f;
+    public float tempoFadeInSom = 4f;
 
-    /// <summary>No começo do nível o som sobe aos poucos, em vez de começar alto de uma vez.</summary>
+    /// <summary>
+    /// No começo do nível o som sobe aos poucos, em vez de começar alto de uma vez.
+    /// Enquanto a abertura (tela preta com o nome do lugar) está na tela, fica em silêncio;
+    /// o som entra junto com a imagem do nível.
+    /// </summary>
     private IEnumerator SomEntrando()
     {
+        AudioListener.volume = 0f;
+        yield return null; // deixa a TelaPreta começar
+
+        float limite = Time.unscaledTime + 20f;
+        while (TelaPreta.AberturaNaTela && Time.unscaledTime < limite)
+            yield return null;
+
         float t = 0f;
         while (t < tempoFadeInSom)
         {
             t += Time.unscaledDeltaTime;
-            AudioListener.volume = Mathf.Clamp01(t / tempoFadeInSom);
+            AudioListener.volume = Mathf.SmoothStep(0f, Configuracoes.VolumeGeral, t / tempoFadeInSom);
             yield return null;
         }
-        AudioListener.volume = 1f;
+        AudioListener.volume = Configuracoes.VolumeGeral;
     }
 
     /// <summary>

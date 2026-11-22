@@ -1,17 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 /// <summary>
 /// Tela preta com texto, usada para:
-///  - a abertura de cada nível (tela preta com o nome do lugar e um pensamento do calouro);
-///  - escurecer a tela quando algo acontece (ex.: a professora pegou o jogador, a saída do nível).
+///  - a abertura de cada nível: o nome do lugar no meio da tela, piscando como uma lâmpada
+///    que demora a acender, e o número do nível pequeno embaixo;
+///  - escurecer a tela quando algo acontece (a professora pegou o jogador, a saída do nível).
 /// Fica num painel do Canvas com um CanvasGroup (que controla a transparência).
-///
-/// Como escrever a abertura (campo Texto Abertura):
-///  - uma linha em branco separa os blocos: cada bloco aparece alguns segundos depois do anterior;
-///  - uma linha só com --- troca de tela (o texto some e começa a próxima tela).
+/// Enquanto a abertura está na tela o jogo fica em silêncio; o som do nível entra junto com a imagem.
 /// Qualquer tecla pula a abertura.
 /// </summary>
 public class TelaPreta : MonoBehaviour
@@ -19,74 +16,71 @@ public class TelaPreta : MonoBehaviour
     /// <summary>Acesso rápido à tela preta da cena.</summary>
     public static TelaPreta Instancia { get; private set; }
 
+    /// <summary>Verdadeiro enquanto a abertura ainda cobre a tela (o som do nível espera).</summary>
+    public static bool AberturaNaTela { get; private set; }
+
     [Tooltip("CanvasGroup do painel preto (Alpha 1 = tudo preto).")]
     public CanvasGroup grupo;
 
     [Tooltip("Texto no meio da tela preta.")]
     public TMP_Text texto;
 
+    [Tooltip("Texto pequeno embaixo da tela (número do nível).")]
+    public TMP_Text textoRodape;
+
     [Header("Abertura do nível")]
-    [Tooltip("Frase mostrada no começo. Vazio = sem abertura. Linha em branco = próximo bloco. Linha com --- = próxima tela.")]
-    [TextArea(4, 12)] public string textoAbertura = "";
+    [Tooltip("Nome do lugar, no meio da tela. Vazio = sem abertura.")]
+    public string textoLugar = "";
 
-    [Tooltip("Segundos que a última frase de cada tela fica parada antes de seguir.")]
-    public float tempoAbertura = 2.5f;
+    [Tooltip("Linha pequena embaixo da tela. Ex.: Nível 1")]
+    public string textoNivel = "";
 
-    [Tooltip("Segundos entre um bloco de texto e o próximo.")]
-    public float tempoPorBloco = 1.6f;
+    [Tooltip("Segundos que o nome do lugar fica na tela depois de acender.")]
+    public float tempoAbertura = 2.6f;
 
-    [Tooltip("Segundos para cada bloco de texto aparecer.")]
-    public float tempoFadeBloco = 0.8f;
+    [Tooltip("Segundos piscando antes do nome firmar.")]
+    public float tempoPiscando = 0.9f;
 
     [Tooltip("Frase curta quando o nível recomeça (a abertura completa só aparece na primeira vez).")]
-    public string textoRecomeco = "De novo";
+    public string textoRecomeco = "De novo...";
 
     [Tooltip("Segundos da frase de recomeço.")]
     public float tempoRecomeco = 1.2f;
 
     [Tooltip("Segundos para clarear ou escurecer.")]
-    public float tempoTransicao = 1.5f;
+    public float tempoTransicao = 1.8f;
 
     /// <summary>Cenas em que a abertura completa já foi mostrada nesta sessão de jogo.</summary>
-    private static readonly HashSet<string> aberturasVistas = new HashSet<string>();
+    private static readonly System.Collections.Generic.HashSet<string> aberturasVistas = new System.Collections.Generic.HashSet<string>();
 
-    private bool pularAbertura;
-    private int[] blocoDoCaractere;
-    private Color32[][] coresOriginais;
+    private bool pular;
 
-    /// <summary>Registra a instância.</summary>
+    /// <summary>Registra a instância. Se houver abertura, o som do nível já começa esperando por ela.</summary>
     void Awake()
     {
         Instancia = this;
+        AberturaNaTela = !string.IsNullOrEmpty(textoLugar);
     }
 
     /// <summary>Roda a abertura (se houver) ou começa transparente.</summary>
     void Start()
     {
-        if (!string.IsNullOrEmpty(textoAbertura))
+        if (textoRodape != null)
+            textoRodape.text = "";
+
+        if (!string.IsNullOrEmpty(textoLugar))
             StartCoroutine(Abertura());
         else
             grupo.alpha = 0f;
     }
 
     /// <summary>
-    /// Abertura do nível: espera o menu inicial fechar (só existe no Nível 1), segura o jogador,
-    /// mostra as telas de texto e depois clareia.
+    /// Abertura do nível: tela preta, nome do lugar acendendo, número do nível embaixo;
+    /// depois a imagem do jogo clareia e o jogador é liberado.
     /// </summary>
     private IEnumerator Abertura()
     {
         PlayerController jogador = FindFirstObjectByType<PlayerController>();
-        UIManager ui = FindFirstObjectByType<UIManager>();
-
-        // No Nível 1 o menu aparece primeiro: a tela preta só entra depois do "Começar"
-        if (ui != null && ui.MenuInicialNaTela)
-        {
-            grupo.alpha = 0f;
-            texto.text = "";
-            while (ui.MenuInicialNaTela)
-                yield return null;
-        }
-
         if (jogador != null)
             jogador.enabled = false;
 
@@ -94,121 +88,106 @@ public class TelaPreta : MonoBehaviour
         bool primeiraVez = aberturasVistas.Add(cena);
 
         grupo.alpha = 1f;
-        pularAbertura = false;
+        texto.text = "";
+        pular = false;
 
         if (primeiraVez)
-        {
-            string[] telas = textoAbertura.Replace("\r", "").Split(new[] { "\n---\n", "\n---", "---\n" }, System.StringSplitOptions.RemoveEmptyEntries);
-            foreach (string tela in telas)
-            {
-                yield return MostrarTela(tela.Trim('\n'));
-                if (pularAbertura)
-                    break;
-            }
-        }
+            yield return MostrarNomeDoLugar();
         else
         {
             texto.text = textoRecomeco;
-            yield return new WaitForSecondsRealtime(tempoRecomeco);
+            yield return Esperar(tempoRecomeco);
+            texto.text = "";
         }
 
         if (jogador != null)
             jogador.enabled = true;
 
+        AberturaNaTela = false;
         yield return Fade(1f, 0f);
-        texto.text = "";
     }
 
     /// <summary>
-    /// Mostra uma tela da abertura: os blocos aparecem um de cada vez, a tela fica parada
-    /// um pouco e o texto some. Uma tecla apertada pula o resto da abertura.
+    /// O nome do lugar pisca algumas vezes, como uma lâmpada fluorescente acendendo,
+    /// e as letras se aproximam devagar enquanto ele fica na tela.
     /// </summary>
-    /// <param name="tela">Texto da tela (blocos separados por linha em branco).</param>
-    private IEnumerator MostrarTela(string tela)
+    private IEnumerator MostrarNomeDoLugar()
     {
-        PrepararBlocos(tela);
-        int total = blocoDoCaractere.Length == 0 ? 1 : blocoDoCaractere[blocoDoCaractere.Length - 1] + 1;
-        float[] alfas = new float[total];
+        yield return Esperar(0.6f);
 
-        float duracao = (total - 1) * tempoPorBloco + tempoFadeBloco + tempoAbertura;
+        texto.text = textoLugar;
+        if (textoRodape != null)
+            textoRodape.text = textoNivel;
+
+        float espacoInicial = 18f, espacoFinal = 6f;
+        float duracao = tempoPiscando + tempoAbertura;
         float t = 0f;
-        while (t < duracao && !pularAbertura)
+        float proximaTroca = 0f;
+        bool aceso = false;
+
+        while (t < duracao && !pular)
         {
             t += Time.unscaledDeltaTime;
-            for (int b = 0; b < total; b++)
-                alfas[b] = Mathf.Clamp01((t - b * tempoPorBloco) / tempoFadeBloco);
-            AplicarAlfas(alfas);
 
-            if (t > 0.5f && Input.anyKeyDown)
-                pularAbertura = true;
+            // Piscando no começo, depois firme
+            if (t < tempoPiscando)
+            {
+                if (t >= proximaTroca)
+                {
+                    aceso = !aceso;
+                    proximaTroca = t + (aceso ? Random.Range(0.05f, 0.14f) : Random.Range(0.04f, 0.2f));
+                }
+                texto.alpha = aceso ? Random.Range(0.55f, 0.9f) : 0.05f;
+            }
+            else
+            {
+                texto.alpha = Mathf.MoveTowards(texto.alpha, 1f, Time.unscaledDeltaTime * 3f);
+            }
+
+            texto.characterSpacing = Mathf.Lerp(espacoInicial, espacoFinal, Mathf.SmoothStep(0f, 1f, t / duracao));
+            if (textoRodape != null)
+                textoRodape.alpha = Mathf.Clamp01((t - tempoPiscando * 0.5f) / 1f) * 0.8f;
+
+            if (t > 0.4f && Input.anyKeyDown)
+                pular = true;
             yield return null;
         }
 
-        // o texto inteiro some antes da próxima tela (ou antes de clarear)
-        float inicio = 1f;
-        t = 0f;
-        while (t < 0.5f)
+        // Os textos somem antes de clarear
+        float inicioTexto = texto.alpha;
+        float inicioRodape = textoRodape != null ? textoRodape.alpha : 0f;
+        float s = 0f;
+        while (s < 0.7f)
         {
-            t += Time.unscaledDeltaTime;
-            float a = Mathf.Lerp(inicio, 0f, t / 0.5f);
-            for (int b = 0; b < total; b++)
-                alfas[b] = Mathf.Min(alfas[b], a);
-            AplicarAlfas(alfas);
+            s += Time.unscaledDeltaTime;
+            texto.alpha = Mathf.Lerp(inicioTexto, 0f, s / 0.7f);
+            if (textoRodape != null)
+                textoRodape.alpha = Mathf.Lerp(inicioRodape, 0f, s / 0.7f);
             yield return null;
         }
+
         texto.text = "";
+        texto.alpha = 1f;
+        texto.characterSpacing = 0f;
+        if (textoRodape != null)
+        {
+            textoRodape.text = "";
+            textoRodape.alpha = 1f;
+        }
     }
 
-    /// <summary>
-    /// Escreve a tela inteira no texto e descobre a qual bloco pertence cada letra
-    /// (um bloco termina numa linha em branco). Guarda as cores originais das letras.
-    /// </summary>
-    /// <param name="tela">Texto da tela.</param>
-    private void PrepararBlocos(string tela)
+    /// <summary>Espera alguns segundos em tempo real; uma tecla apertada encurta a espera.</summary>
+    /// <param name="segundos">Tempo de espera.</param>
+    private IEnumerator Esperar(float segundos)
     {
-        texto.text = tela;
-        texto.ForceMeshUpdate();
-        TMP_TextInfo info = texto.textInfo;
-
-        blocoDoCaractere = new int[info.characterCount];
-        int bloco = 0;
-        char anterior = '\0';
-        for (int i = 0; i < info.characterCount; i++)
+        float t = 0f;
+        while (t < segundos && !pular)
         {
-            char c = info.characterInfo[i].character;
-            if (c == '\n' && anterior == '\n')
-                bloco++;
-            blocoDoCaractere[i] = bloco;
-            anterior = c;
+            t += Time.unscaledDeltaTime;
+            if (t > 0.3f && Input.anyKeyDown)
+                pular = true;
+            yield return null;
         }
-
-        coresOriginais = new Color32[info.meshInfo.Length][];
-        for (int m = 0; m < info.meshInfo.Length; m++)
-            coresOriginais[m] = (Color32[])info.meshInfo[m].colors32.Clone();
-    }
-
-    /// <summary>Aplica a transparência de cada bloco nas letras dele.</summary>
-    /// <param name="alfas">Transparência de cada bloco (0 = invisível, 1 = normal).</param>
-    private void AplicarAlfas(float[] alfas)
-    {
-        TMP_TextInfo info = texto.textInfo;
-        for (int i = 0; i < info.characterCount && i < blocoDoCaractere.Length; i++)
-        {
-            TMP_CharacterInfo ci = info.characterInfo[i];
-            if (!ci.isVisible)
-                continue;
-
-            int m = ci.materialReferenceIndex;
-            int v = ci.vertexIndex;
-            Color32[] cores = info.meshInfo[m].colors32;
-            if (m >= coresOriginais.Length || v + 3 >= cores.Length || v + 3 >= coresOriginais[m].Length)
-                continue;
-
-            float a = alfas[Mathf.Min(blocoDoCaractere[i], alfas.Length - 1)];
-            for (int k = 0; k < 4; k++)
-                cores[v + k].a = (byte)(coresOriginais[m][v + k].a * a);
-        }
-        texto.UpdateVertexData(TMP_VertexDataUpdateFlags.Colors32);
     }
 
     /// <summary>Escurece a tela e mostra uma frase (chamado de outros scripts).</summary>
@@ -216,6 +195,8 @@ public class TelaPreta : MonoBehaviour
     public void Escurecer(string frase)
     {
         StopAllCoroutines();
+        texto.alpha = 1f;
+        texto.characterSpacing = 0f;
         texto.text = frase;
         StartCoroutine(Fade(grupo.alpha, 1f));
         StartCoroutine(AbaixarVolumeGeral());
@@ -227,6 +208,8 @@ public class TelaPreta : MonoBehaviour
     {
         StopAllCoroutines();
         grupo.alpha = 1f;
+        texto.alpha = 1f;
+        texto.characterSpacing = 0f;
         texto.text = frase;
         AudioListener.volume = 0f;
     }
@@ -255,7 +238,7 @@ public class TelaPreta : MonoBehaviour
         while (t < tempoTransicao)
         {
             t += Time.unscaledDeltaTime;
-            grupo.alpha = Mathf.Lerp(de, para, t / tempoTransicao);
+            grupo.alpha = Mathf.Lerp(de, para, Mathf.SmoothStep(0f, 1f, t / tempoTransicao));
             yield return null;
         }
         grupo.alpha = para;
@@ -266,5 +249,6 @@ public class TelaPreta : MonoBehaviour
     {
         if (Instancia == this)
             Instancia = null;
+        AberturaNaTela = false;
     }
 }

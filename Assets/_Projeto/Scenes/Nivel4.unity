@@ -20182,7 +20182,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 434, y: -28}
-  m_SizeDelta: {x: 0, y: 52}
+  m_SizeDelta: {x: 205.42, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &246696851
 MonoBehaviour:
@@ -74929,7 +74929,7 @@ MonoBehaviour:
   palavraSingular: livro
   palavraPlural: livros
   textoTudoEncontrado: 
-  tempoFadeInSom: 2.5
+  tempoFadeInSom: 4
 --- !u!4 &953104906
 Transform:
   m_ObjectHideFlags: 0
@@ -92637,6 +92637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187826881}
   - component: {fileID: 1187826880}
+  - component: {fileID: 1187826882}
   m_Layer: 0
   m_Name: Luz_Alarme
   m_TagString: Untagged
@@ -92724,6 +92725,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 900728353}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1187826882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187826879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &1187876815
 GameObject:
   m_ObjectHideFlags: 0
@@ -106982,6 +107006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1370956931}
   - component: {fileID: 1370956930}
+  - component: {fileID: 1370956932}
   m_Layer: 0
   m_Name: Lanterna_Celular
   m_TagString: Untagged
@@ -107069,6 +107094,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1370956932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370956929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &1375913447
 GameObject:
   m_ObjectHideFlags: 0
@@ -132980,9 +133028,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: textoLugar
+      value: A Biblioteca
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: textoNivel
+      value: "N\xEDvel 4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: tempoAbertura
+      value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: textoAbertura
       value: "<size=64>A Biblioteca</size>\n\n<size=30><color=#9AA3AE>J\xE1 passou
         do hor\xE1rio, mas a porta ainda estava aberta...</color></size>"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645211895990718004, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
+      propertyPath: tempoTransicao
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -133002,7 +133066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 236.81
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x

@@ -52,7 +52,8 @@ public class JanelaTextos : EditorWindow
         { "Interagivel.textoAcao", (Aba.Dicas, "Ao chegar perto (aparece com a tecla E)") },
         { "MensagensDoNivel.mensagens.remetente", (Aba.Mensagens, "Quem manda") },
         { "MensagensDoNivel.mensagens.texto", (Aba.Mensagens, "Mensagem") },
-        { "TelaPreta.textoAbertura", (Aba.TelasPretas, "Abertura do nível") },
+        { "TelaPreta.textoLugar", (Aba.TelasPretas, "Abertura do nível: nome do lugar no meio da tela") },
+        { "TelaPreta.textoNivel", (Aba.TelasPretas, "Abertura do nível: linha pequena embaixo") },
         { "TelaPreta.textoRecomeco", (Aba.TelasPretas, "Ao recomeçar o nível depois de perder") },
         { "SaidaNivel.fraseSaida", (Aba.TelasPretas, "Ao sair do nível") },
 
