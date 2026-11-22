@@ -31,6 +31,9 @@ public class CameraFollow : MonoBehaviour
     [Tooltip("Raio da esfera usada para detectar paredes entre o alvo e a câmera.")]
     public float raioColisao = 0.3f;
 
+    [Tooltip("Mais perto que isso a câmera não chega do jogador, mesmo encostado na parede.")]
+    public float distanciaMinima = 0.35f;
+
     [Tooltip("Camadas que a câmera não pode atravessar.")]
     public LayerMask camadasObstaculo = ~0;
 
@@ -41,6 +44,11 @@ public class CameraFollow : MonoBehaviour
     /// <summary>Procura o jogador e começa olhando na mesma direção que ele.</summary>
     void Start()
     {
+        // com a câmera perto da parede, um plano de corte grande deixaria ver o outro lado
+        Camera cam = GetComponent<Camera>();
+        if (cam != null && cam.nearClipPlane > 0.1f)
+            cam.nearClipPlane = 0.1f;
+
         if (alvo == null)
         {
             GameObject jogador = GameObject.FindGameObjectWithTag("Player");
@@ -95,26 +103,38 @@ public class CameraFollow : MonoBehaviour
     }
 
     /// <summary>
-    /// Mede até onde a câmera pode ir sem atravessar uma parede.
+    /// Mede até onde a câmera pode ir sem atravessar uma parede. Usa um raio fino, que acha a parede
+    /// mesmo com o jogador encostado nela, e uma esfera, que pega as quinas e os vãos estreitos.
     /// </summary>
     /// <param name="pivo">Ponto de onde a câmera "sai" (a cabeça do jogador).</param>
     /// <param name="direcao">Direção para trás do jogador, de onde a câmera olha.</param>
-    /// <returns>A distância livre, nunca menor que 0,8 m e nunca maior que a distância normal.</returns>
+    /// <returns>A distância livre, entre a distância mínima e a distância normal.</returns>
     private float DistanciaLivre(Vector3 pivo, Vector3 direcao)
     {
         float menor = distancia;
-        RaycastHit[] batidas = Physics.SphereCastAll(pivo, raioColisao, direcao, distancia, camadasObstaculo, QueryTriggerInteraction.Ignore);
 
+        RaycastHit[] raios = Physics.RaycastAll(pivo, direcao, distancia + raioColisao, camadasObstaculo, QueryTriggerInteraction.Ignore);
+        for (int i = 0; i < raios.Length; i++)
+        {
+            if (raios[i].transform.IsChildOf(alvo))
+                continue;
+            float livre = raios[i].distance - raioColisao;
+            if (livre < menor)
+                menor = livre;
+        }
+
+        RaycastHit[] batidas = Physics.SphereCastAll(pivo, raioColisao, direcao, distancia, camadasObstaculo, QueryTriggerInteraction.Ignore);
         for (int i = 0; i < batidas.Length; i++)
         {
             if (batidas[i].transform.IsChildOf(alvo))
                 continue;
 
+            // distância zero = a esfera já começou encostada; o raio fino acima cuida desse caso
             if (batidas[i].distance > 0f && batidas[i].distance < menor)
                 menor = batidas[i].distance;
         }
 
-        return Mathf.Max(menor, 0.8f);
+        return Mathf.Clamp(menor, distanciaMinima, distancia);
     }
 
     /// <summary>Trava ou solta o cursor do mouse.</summary>

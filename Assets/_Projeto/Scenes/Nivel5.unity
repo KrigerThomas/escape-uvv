@@ -23110,7 +23110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 236.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -55643,6 +55643,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1843479143}
+  - component: {fileID: 1843479144}
   m_Layer: 0
   m_Name: Neblina_Externa
   m_TagString: Untagged
@@ -55668,6 +55669,21 @@ Transform:
   - {fileID: 290680412}
   m_Father: {fileID: 1571774888}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1843479144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843479142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cd4a21185934d43bc2cf4859bd3e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanciaSumir: 5
+  distanciaInvisivel: 1.5
+  centro: {fileID: 198867893}
 --- !u!1 &1846128765
 GameObject:
   m_ObjectHideFlags: 0

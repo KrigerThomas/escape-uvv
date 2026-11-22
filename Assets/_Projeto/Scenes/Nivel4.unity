@@ -10961,6 +10961,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 136925198}
+  - component: {fileID: 136925199}
   m_Layer: 0
   m_Name: Neblina_Externa
   m_TagString: Untagged
@@ -10986,6 +10987,21 @@ Transform:
   - {fileID: 1481256074}
   m_Father: {fileID: 1303462808}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &136925199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136925197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2cd4a21185934d43bc2cf4859bd3e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanciaSumir: 5
+  distanciaInvisivel: 1.5
+  centro: {fileID: 932406145}
 --- !u!1 &137026020
 GameObject:
   m_ObjectHideFlags: 0
@@ -20182,7 +20198,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 434, y: -28}
-  m_SizeDelta: {x: 205.42, y: 52}
+  m_SizeDelta: {x: 0, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &246696851
 MonoBehaviour:
@@ -21221,6 +21237,7 @@ MonoBehaviour:
   intervaloMaximo: 70
   distancia: {x: 9, y: 16}
   volume: 0.45
+  alcanceCheio: 15
 --- !u!1 &261667687
 GameObject:
   m_ObjectHideFlags: 0
@@ -52834,6 +52851,18 @@ MonoBehaviour:
   abaixarNoApagao:
   - {fileID: 612416468}
   fracaoSomFora: 0.6
+  lugaresLivros: {fileID: 992026313}
+  modelosLivro:
+  - {fileID: 1095381659082510, guid: d4ea1b5a817a24748a674f21c65f6c1d, type: 3}
+  - {fileID: 1759568052887882, guid: f59a33c8074a57247b87c5b2160c5660, type: 3}
+  - {fileID: 1130181810577922, guid: c33441093f64d17408edb5fff22c8b3d, type: 3}
+  - {fileID: 1720063213766256, guid: afa8cf251f4d24d4bac5124efaae45f4, type: 3}
+  - {fileID: 1556729874926288, guid: 634bb5e240f1cdc4eabfc48f21381190, type: 3}
+  - {fileID: 1229112540837290, guid: a143fa61fa75c1948b865ebba53b13cd, type: 3}
+  somLivroCaindo: {fileID: 8300000, guid: c7d69b39aa85c344f8cf45a4b80a6c30, type: 3}
+  distanciaLivroCaindo: {x: 3, y: 9}
+  alturaLivro: 0.26
+  distanciaBeirada: 0.2
   catraca: {fileID: 1970815362}
   guardaVolumes: {fileID: 48979502}
   portaSaida: {fileID: 2041529042}
@@ -133066,7 +133095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 236.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x
