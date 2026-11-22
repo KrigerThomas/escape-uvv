@@ -67,7 +67,7 @@ public class EsquiloFujao : MonoBehaviour
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 1f;
         audioSource.minDistance = 1f;
-        audioSource.maxDistance = 16f;
+        audioSource.maxDistance = 10f;
         audioSource.rolloffMode = AudioRolloffMode.Linear;
 
         jogador = AvisoNaTela.AcharJogador();
@@ -109,7 +109,7 @@ public class EsquiloFujao : MonoBehaviour
                 if (perto)
                 {
                     OlharPara(jogador.position);
-                    if (!jogadorEstavaPerto)
+                    if (!jogadorEstavaPerto && JogadorVe())
                         Chiar();
                 }
                 jogadorEstavaPerto = perto;
@@ -153,6 +153,8 @@ public class EsquiloFujao : MonoBehaviour
             // Ao chegar, vira para o lado de onde veio o jogador (fica "vigiando")
             if (jogador != null)
                 OlharPara(jogador.position, true);
+            if (!JogadorVe())
+                audioSource.Stop();
             FicarParado();
         }
     }
@@ -195,9 +197,26 @@ public class EsquiloFujao : MonoBehaviour
         {
             timerChiado = Random.Range(intervaloChiado.x, intervaloChiado.y);
             // Escondido longe no pé da árvore ele fica quieto (antes chiava sem ninguém ver).
-            if (jogador != null && AvisoNaTela.DistanciaPlana(transform.position, jogador.position) < distanciaChiado)
+            if (JogadorVe())
                 Chiar();
         }
+    }
+
+    /// <summary>
+    /// Confere se o jogador está perto e enxerga o esquilo (sem sebe ou árvore no meio).
+    /// Assim ele não chia escondido do outro lado do labirinto.
+    /// </summary>
+    /// <returns>Verdadeiro se o jogador está a menos de distanciaChiado e com o caminho livre.</returns>
+    private bool JogadorVe()
+    {
+        if (jogador == null || AvisoNaTela.DistanciaPlana(transform.position, jogador.position) > distanciaChiado)
+            return false;
+
+        Vector3 de = transform.position + Vector3.up * 0.3f;
+        Vector3 ate = jogador.position + Vector3.up * 1.2f;
+        if (Physics.Linecast(de, ate, out RaycastHit batida, ~0, QueryTriggerInteraction.Ignore))
+            return batida.transform == jogador || batida.transform.IsChildOf(jogador) || batida.transform.IsChildOf(transform);
+        return true;
     }
 
     /// <summary>Volta para o estado parado.</summary>
