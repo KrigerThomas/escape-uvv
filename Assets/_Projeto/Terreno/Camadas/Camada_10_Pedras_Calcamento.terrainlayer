@@ -9,7 +9,7 @@ TerrainLayer:
   m_Name: Camada_10_Pedras_Calcamento
   m_DiffuseTexture: {fileID: 2800000, guid: dfd0b4119a7274d4caffbbad2ad30e14, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 05cb9003134334d44954516420e4d085, type: 3}
-  m_MaskMapTexture: {fileID: 0}
+  m_MaskMapTexture: {fileID: 2800000, guid: f73af15ae6309a14dacaff01f3edc79c, type: 3}
   m_TileSize: {x: 3, y: 3}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
@@ -18,6 +18,6 @@ TerrainLayer:
   m_NormalScale: 1
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
-  m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
-  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_MaskMapRemapMin: {x: 0, y: 0.3, z: 0, w: 0}
+  m_MaskMapRemapMax: {x: 0, y: 1, z: 1, w: 0.2}
   m_SmoothnessSource: 1

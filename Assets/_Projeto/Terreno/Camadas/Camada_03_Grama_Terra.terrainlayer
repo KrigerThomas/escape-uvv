@@ -9,7 +9,7 @@ TerrainLayer:
   m_Name: Camada_03_Grama_Terra
   m_DiffuseTexture: {fileID: 2800000, guid: b62cf3330e733494e9252e6d20496291, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: b1f013e7cb489b943871a95455efe2b7, type: 3}
-  m_MaskMapTexture: {fileID: 0}
+  m_MaskMapTexture: {fileID: 2800000, guid: f9b06481b68004641b4fc99fa80c82c0, type: 3}
   m_TileSize: {x: 4, y: 4}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
@@ -18,6 +18,6 @@ TerrainLayer:
   m_NormalScale: 1
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
-  m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
-  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_MaskMapRemapMin: {x: 0, y: 0.3, z: 0, w: 0}
+  m_MaskMapRemapMax: {x: 0, y: 1, z: 1, w: 0.2}
   m_SmoothnessSource: 1

@@ -9,7 +9,7 @@ TerrainLayer:
   m_Name: Camada_02_Grama_Musgo
   m_DiffuseTexture: {fileID: 2800000, guid: 6460b0cc4ec1d81419938eb050294961, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 607910e3a7825194ead2ae1b5976685b, type: 3}
-  m_MaskMapTexture: {fileID: 0}
+  m_MaskMapTexture: {fileID: 2800000, guid: cffbee66c632f544bba81a32a05b0d09, type: 3}
   m_TileSize: {x: 4, y: 4}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
@@ -18,6 +18,6 @@ TerrainLayer:
   m_NormalScale: 1
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
-  m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
-  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_MaskMapRemapMin: {x: 0, y: 0.3, z: 0, w: 0}
+  m_MaskMapRemapMax: {x: 0, y: 1, z: 1, w: 0.2}
   m_SmoothnessSource: 1

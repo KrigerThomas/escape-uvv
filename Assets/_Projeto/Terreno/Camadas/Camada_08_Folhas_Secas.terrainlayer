@@ -9,7 +9,7 @@ TerrainLayer:
   m_Name: Camada_08_Folhas_Secas
   m_DiffuseTexture: {fileID: 2800000, guid: ba6717706ff12294a8a881c2b2432146, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 4c8079504b95138469476d814dbf3910, type: 3}
-  m_MaskMapTexture: {fileID: 0}
+  m_MaskMapTexture: {fileID: 2800000, guid: d4b3f4dde2ad2e34a9d21e21b3304cd5, type: 3}
   m_TileSize: {x: 4, y: 4}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
@@ -18,6 +18,6 @@ TerrainLayer:
   m_NormalScale: 1
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
-  m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
-  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_MaskMapRemapMin: {x: 0, y: 0.3, z: 0, w: 0}
+  m_MaskMapRemapMax: {x: 0, y: 1, z: 1, w: 0.2}
   m_SmoothnessSource: 1
