@@ -1,7 +1,8 @@
 using UnityEngine;
 
 /// <summary>
-/// Lanterna do celular (fica no Jogador). Nos níveis 1 a 4 funciona desde o começo; no Nível 5 só depois que o jogador pega o item "Celular".
+/// Lanterna do celular (fica no Jogador). Fica desligada nos níveis 1 a 3 (o componente vem desmarcado na cena);
+/// no Nível 4 funciona desde o começo e no Nível 5 só depois que o jogador pega o item "Celular".
 /// A tecla F liga e desliga, inclusive dentro do armário.
 /// A luz sai da altura do peito e aponta para o ponto que está no meio da tela,
 /// então ilumina exatamente para onde o jogador está olhando.
