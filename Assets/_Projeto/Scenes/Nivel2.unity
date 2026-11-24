@@ -48585,7 +48585,7 @@ MonoBehaviour:
   teclaCarinho: 101
   carinhosAteArranhar: 3
   tempoParaEsquecer: 15
-  somMiado: {fileID: 8300000, guid: 69f7f34df5670a049806c22e03778c81, type: 3}
+  somMiado: {fileID: 0}
   somRonronar: {fileID: 8300000, guid: 14449cff8aee64c57a3be0883d712e93, type: 3}
   somChiado: {fileID: 8300000, guid: 3b3e8eca4488a47c1ae680bd69ac3fb4, type: 3}
   tomMiado: 0.8
@@ -57152,8 +57152,7 @@ MonoBehaviour:
   somPresente: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   efeitoPresente: {fileID: 5257402744445269917, guid: 89d58c592c817a24494e5d27e37ac950, type: 3}
   textoPrimeiraFuga: "Um esquilo acordado a essa hora? Ser\xE1 que consigo pegar?"
-  textoSumiu: "Sumiu de novo... mas juro que ainda t\xF4 ouvindo o chiado dele. Esse
-    esquilo \xE9 bugado"
+  textoSumiu: "O esquilo sumiu, mas ainda tenho a impress\xE3o de que consigo ouvir ele..."
   textoPresente: O esquilo cansou de fugir e me deixou uma bolota. Amizade feita
 --- !u!82 &1874031743
 AudioSource:
