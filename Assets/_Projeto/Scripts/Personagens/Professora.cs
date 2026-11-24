@@ -140,6 +140,15 @@ public class Professora : MonoBehaviour
         if (pegouJogador || jogador == null)
             return;
 
+        // o jogador já saiu do prédio: ela para na porta e não pega mais ninguém
+        if (SaidaNivel.NivelTerminando)
+        {
+            if (agente.enabled && agente.isOnNavMesh)
+                agente.isStopped = true;
+            AtualizarAnimacaoESom();
+            return;
+        }
+
         ChecarPortaAberta();
 
         bool ve = VeJogador();

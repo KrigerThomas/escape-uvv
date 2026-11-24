@@ -24,6 +24,15 @@ public class SaidaNivel : MonoBehaviour
 
     private bool saindo;
 
+    /// <summary>Verdadeiro depois que o jogador atravessou a saída e a cena está trocando.</summary>
+    public static bool NivelTerminando { get; private set; }
+
+    /// <summary>Cada cena começa com a saída fechada.</summary>
+    void Awake()
+    {
+        NivelTerminando = false;
+    }
+
     /// <summary>Garante que o collider funcione como trigger.</summary>
     void Reset()
     {
@@ -51,6 +60,7 @@ public class SaidaNivel : MonoBehaviour
     private IEnumerator Sair(GameManager gm)
     {
         saindo = true;
+        NivelTerminando = true;
         if (TelaPreta.Instancia != null)
         {
             TelaPreta.Instancia.Escurecer(fraseSaida);
