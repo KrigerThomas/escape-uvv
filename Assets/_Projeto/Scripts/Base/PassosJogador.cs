@@ -3,17 +3,28 @@ using UnityEngine;
 /// <summary>
 /// Som dos passos do jogador, sincronizado com a animação: acompanha a altura dos dois pés
 /// do personagem e toca um passo no instante em que cada pé encosta no chão.
-/// Andando usa os sons de passo normal; correndo (Shift), os sons de corrida.
-/// Cada passo sorteia um som da lista e varia um pouco o tom (para não ficar repetitivo).
+/// O som muda conforme o chão embaixo do jogador: piso (dentro dos prédios), pedra/cascalho
+/// (caminhos do pátio) ou grama. No terreno do Nível 2 vale a textura mais forte naquele ponto;
+/// nos outros objetos vale o nome do material.
+/// Cada passo sorteia um som da lista, sem repetir o último, e varia um pouco o tom.
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class PassosJogador : MonoBehaviour
 {
-    [Tooltip("Sons de passo andando (vários, para variar).")]
+    [Tooltip("Passos em piso liso (dentro dos prédios).")]
     public AudioClip[] passos;
 
-    [Tooltip("Sons de passo correndo. Vazio = usa os de andar.")]
-    public AudioClip[] passosCorrida;
+    [Tooltip("Passos em pedra e cascalho (caminhos do pátio).")]
+    public AudioClip[] passosPedra;
+
+    [Tooltip("Passos na grama e na terra.")]
+    public AudioClip[] passosGrama;
+
+    [Tooltip("Pedaços do nome do material ou da textura do terreno que contam como pedra.")]
+    public string[] palavrasPedra = { "pedra", "cascalho", "rocha", "seixo", "calcamento", "calcada", "paving", "gravel", "rock" };
+
+    [Tooltip("Pedaços do nome do material ou da textura do terreno que contam como grama.")]
+    public string[] palavrasGrama = { "grama", "lama", "terra", "folha", "areia", "gramado", "grass", "ground" };
 
     [Tooltip("Acima desta velocidade conta como correndo.")]
     public float velocidadeCorrida = 4.5f;
@@ -35,6 +46,7 @@ public class PassosJogador : MonoBehaviour
     private AudioSource fonte;
     private Transform peEsquerdo, peDireito;
     private Pe esquerdo = new Pe(), direito = new Pe();
+    private AudioClip ultimoSom;
 
     /// <summary>Guarda a altura de um pé ao longo do tempo para saber quando ele pisa.</summary>
     private class Pe
@@ -135,18 +147,78 @@ public class PassosJogador : MonoBehaviour
         pe.descendo = false;
     }
 
-    /// <summary>Toca um passo sorteado.</summary>
+    /// <summary>Toca um passo sorteado da lista do chão em que o jogador está.</summary>
     private void Tocar(bool correndo)
     {
         if (Time.time - UltimoPasso < (correndo ? intervaloMinimoCorrendo : intervaloMinimoAndando))
             return;
-        AudioClip[] lista = correndo && passosCorrida != null && passosCorrida.Length > 0 ? passosCorrida : passos;
+        AudioClip[] lista = ListaDoChao();
         if (lista == null || lista.Length == 0)
             return;
 
+        // sorteia sem repetir o último som
+        AudioClip som = lista[Random.Range(0, lista.Length)];
+        if (som == ultimoSom && lista.Length > 1)
+            som = lista[(System.Array.IndexOf(lista, som) + Random.Range(1, lista.Length)) % lista.Length];
+        ultimoSom = som;
+
         UltimoPasso = Time.time;
-        fonte.pitch = 1f + Random.Range(-variacaoTom, variacaoTom);
-        fonte.PlayOneShot(lista[Random.Range(0, lista.Length)], correndo ? volumeCorrida : volume);
+        fonte.pitch = 1f + Random.Range(-variacaoTom, variacaoTom) + (correndo ? 0.04f : 0f);
+        fonte.PlayOneShot(som, (correndo ? volumeCorrida : volume) * Random.Range(0.85f, 1f));
+    }
+
+    /// <summary>Descobre o tipo de chão embaixo do jogador e devolve a lista de sons certa.</summary>
+    private AudioClip[] ListaDoChao()
+    {
+        string nome = "";
+        if (Physics.Raycast(transform.position + Vector3.up * 0.3f, Vector3.down, out RaycastHit chao, 1f, ~0, QueryTriggerInteraction.Ignore))
+        {
+            Terrain terreno = chao.collider.GetComponent<Terrain>();
+            if (terreno != null)
+                nome = CamadaMaisForte(terreno, chao.point);
+            else
+            {
+                Renderer r = chao.collider.GetComponent<Renderer>();
+                if (r != null && r.sharedMaterial != null)
+                    nome = r.sharedMaterial.name;
+            }
+        }
+        nome = nome.ToLowerInvariant();
+
+        if (Contem(nome, palavrasPedra) && passosPedra != null && passosPedra.Length > 0)
+            return passosPedra;
+        if (Contem(nome, palavrasGrama) && passosGrama != null && passosGrama.Length > 0)
+            return passosGrama;
+        return passos;
+    }
+
+    /// <summary>Verdadeiro se o nome tiver algum dos pedaços da lista.</summary>
+    private static bool Contem(string nome, string[] palavras)
+    {
+        if (palavras == null)
+            return false;
+        foreach (string palavra in palavras)
+            if (!string.IsNullOrEmpty(palavra) && nome.Contains(palavra))
+                return true;
+        return false;
+    }
+
+    /// <summary>Nome da textura do terreno que mais aparece no ponto.</summary>
+    private static string CamadaMaisForte(Terrain terreno, Vector3 ponto)
+    {
+        TerrainData dados = terreno.terrainData;
+        Vector3 local = ponto - terreno.transform.position;
+        int x = Mathf.Clamp(Mathf.RoundToInt(local.x / dados.size.x * (dados.alphamapWidth - 1)), 0, dados.alphamapWidth - 1);
+        int z = Mathf.Clamp(Mathf.RoundToInt(local.z / dados.size.z * (dados.alphamapHeight - 1)), 0, dados.alphamapHeight - 1);
+        float[,,] pesos = dados.GetAlphamaps(x, z, 1, 1);
+
+        int melhor = 0;
+        for (int i = 1; i < pesos.GetLength(2); i++)
+            if (pesos[0, 0, i] > pesos[0, 0, melhor])
+                melhor = i;
+
+        TerrainLayer camada = melhor < dados.terrainLayers.Length ? dados.terrainLayers[melhor] : null;
+        return camada != null ? camada.name : "";
     }
 
     /// <summary>Confere se há chão logo abaixo dos pés.</summary>
