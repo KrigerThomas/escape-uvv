@@ -12,7 +12,8 @@ public class AtalhosTeste : MonoBehaviour
     /// <summary>Lê as teclas R e N a cada quadro.</summary>
     void Update()
     {
-        if (!ativo || GameManager.Instancia == null)
+        // só no editor da Unity e em builds de desenvolvimento: no jogo final as teclas não fazem nada
+        if (!ativo || !Debug.isDebugBuild || GameManager.Instancia == null)
             return;
 
         if (Input.GetKeyDown(KeyCode.R))
