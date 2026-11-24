@@ -10,17 +10,19 @@ public class Livro : ItemPegavel
 {
     [Header("Livro")]
     [Tooltip("Título que aparece na tela.")]
-    public string titulo = "Cálculo Volume 1";
+    public string titulo = "Cálculo 1";
 
     /// <summary>Monta o nome e os textos a partir do título.</summary>
     void Awake()
     {
         nomeItem = "Livro: " + titulo;
         contaNoObjetivo = true;
-        textoAcao = "pegar \"" + titulo + "\"";
+        textoAcao = "pegar o livro";
+        if (string.IsNullOrEmpty(mensagem))
+            mensagem = "Esse era o livro de " + titulo;
     }
 
-    /// <summary>Nos avisos aparece só o título ("Você encontrou: Cálculo").</summary>
+    /// <summary>Nome curto do livro, usado na lista impressa.</summary>
     protected override string NomeNaTela()
     {
         return titulo;

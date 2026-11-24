@@ -20198,7 +20198,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 434, y: -28}
-  m_SizeDelta: {x: 0, y: 52}
+  m_SizeDelta: {x: 205.42, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &246696851
 MonoBehaviour:
@@ -42123,7 +42123,7 @@ GameObject:
   - component: {fileID: 557272904}
   - component: {fileID: 557272903}
   m_Layer: 0
-  m_Name: "Livro_C\xE1lculo_Volume_1"
+  m_Name: "Livro_C\xE1lculo_1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42149,7 +42149,7 @@ MonoBehaviour:
   novoObjetivo: 
   somPegar: {fileID: 8300000, guid: c7d69b39aa85c344f8cf45a4b80a6c30, type: 3}
   volume: 0.8
-  titulo: "C\xE1lculo, Volume 1"
+  titulo: "C\xE1lculo 1"
 --- !u!65 &557272904
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -133095,7 +133095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 236.81
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x

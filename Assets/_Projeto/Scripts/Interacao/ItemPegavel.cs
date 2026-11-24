@@ -44,11 +44,16 @@ public class ItemPegavel : Interagivel
         UIManager.TocarSom2D(somPegar, volume);
 
         if (contaNoObjetivo && GameManager.Instancia != null)
-            GameManager.Instancia.ColetarItem(NomeNaTela());
-
-        if (!string.IsNullOrEmpty(mensagem))
+        {
+            // com mensagem própria, ela substitui o "Você encontrou" do contador
+            if (!string.IsNullOrEmpty(mensagem))
+                GameManager.Instancia.ColetarItem(mensagem, false);
+            else
+                GameManager.Instancia.ColetarItem(NomeNaTela());
+        }
+        else if (!string.IsNullOrEmpty(mensagem))
             Avisar(mensagem);
-        else if (!contaNoObjetivo)
+        else
             Avisar("Você pegou: " + NomeNaTela());
 
         if (!string.IsNullOrEmpty(novoObjetivo) && UI != null)
