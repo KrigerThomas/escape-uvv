@@ -33,7 +33,7 @@ O calouro pegou no sono no InovaLab e acordou com o campus fechado. Para sair, e
 | Espaço | Pular |
 | Mouse | Girar a câmera |
 | E | Interagir |
-| F | Lanterna do celular |
+| F | Lanterna do celular (Níveis 4 e 5) |
 | Tab | Ver o objetivo |
 | Esc | Pausa (continuar, reiniciar o nível ou voltar ao menu) |
 
@@ -72,7 +72,7 @@ Para mudar textos e sons sem mexer em código, use o menu **Escape UVV > Textos 
 | Vetor de prefabs e posição sorteada | `SpawnItens` (Níveis 1 e 2) e `SorteioLivros` (Nível 4) |
 | Spawn por função | `SpawnItens.Instantiate` e o efeito de coleta |
 | Partículas criadas pelo grupo | Faíscas e fumaça (N1), vagalumes (N2), chuva (N3 a N5), estouro da lâmpada no apagão (N4), brilho dos segredos e efeito de coleta |
-| Som | Ambiente por nível, passos por piso, portas, interface, perseguição |
+| Som | Ambiente por nível, passos que mudam com o chão (piso, pedra e grama), portas, interface, perseguição |
 | Animação | Parado, andando, correndo, pulando e caindo (Mixamo); gato, esquilo e professora |
 | Materiais com cor, textura e normal map | Mais de 20 materiais em `_Projeto/Materiais` |
 | UI com botão de reiniciar | Tela inicial com Opções, pausa (Reiniciar nível) e tela final (Jogar de novo) |
