@@ -1,109 +1,104 @@
-# Escape UVV
+<p align="center">
+  <img src="Docs/Imagens/menu.jpg" alt="Escape UVV" width="100%">
+</p>
 
-Jogo 3D em terceira pessoa feito na Unity para a disciplina de **Desenvolvimento de Games** da Universidade Vila Velha (UVV), 2026/2.
+<h1 align="center">Escape UVV</h1>
 
-O calouro pegou no sono no InovaLab e acordou com o campus fechado. Para sair, ele passa por cinco lugares da UVV, cada um com uma tarefa.
+<p align="center">
+  Aventura de suspense em terceira pessoa ambientada no campus da Universidade Vila Velha.<br>
+  Feita em Unity 6 com URP.
+</p>
 
-**Grupo:** Brenno Gomes Breda, Daphne Rocha Amigo, Giovanna Rocha Santana e Thomás Kriger de Souza
-**Professor:** Saulo Pereira Ribeiro
+---
 
-## Níveis
+Era para ser só mais uma noite estudando no InovaLab. O calouro pegou no sono e, quando acordou, o campus já tinha fechado. As coisas dele estão espalhadas pelo prédio, o portão está trancado e tem alguém fazendo ronda.
 
-| Nível | Lugar | O que fazer |
-|---|---|---|
-| 1 | InovaLab | Achar os 5 itens perdidos (sorteados a cada partida) e sair pela porta |
-| 2 | Pátio à noite | Atravessar o labirinto de sebes, com a fonte no centro, e achar 5 itens para abrir o portão |
-| 3 | Corredor | Acertar 3 perguntas do Quadro do Abrantes para abrir a porta corta-fogo |
-| 4 | Biblioteca | Guardar a mochila no armário, passar pela catraca, achar 3 livros e sair no apagão |
-| 5 | Sala 12 | Pegar o celular, achar a chave do bloco e fugir da professora que faz a ronda |
+Para sair, ele precisa atravessar cinco lugares da UVV. Em cada um, o caminho de volta para casa depende de explorar, prestar atenção e não fazer barulho demais.
 
-## Como abrir
+## Os lugares
 
-1. Instale a **Unity 6000.0.80f1** pelo Unity Hub (a mesma versão do laboratório 12).
-2. Clone o repositório pelo **GitHub Desktop**. Ele baixa os arquivos grandes (áudios, modelos, texturas) pelo Git LFS automaticamente. Se usar outro programa, instale o [Git LFS](https://git-lfs.com) antes de clonar.
-3. No Unity Hub, clique em **Add** e escolha a pasta do projeto.
-4. Abra a cena `Assets/_Projeto/Scenes/Menu` e aperte **Play**.
+<table>
+  <tr>
+    <td width="50%"><img src="Docs/Imagens/nivel1.jpg" alt="InovaLab"></td>
+    <td width="50%"><img src="Docs/Imagens/nivel2.jpg" alt="O Pátio"></td>
+  </tr>
+  <tr>
+    <td><b>O InovaLab.</b> O laboratório onde tudo começa. Os objetos do calouro aparecem em lugares diferentes a cada partida.</td>
+    <td><b>O Pátio.</b> Um labirinto de sebes ao redor de uma fonte, com gatos, um esquilo que não para quieto e uma tempestade chegando.</td>
+  </tr>
+  <tr>
+    <td><img src="Docs/Imagens/nivel3.jpg" alt="O Corredor"></td>
+    <td><img src="Docs/Imagens/nivel4.jpg" alt="A Biblioteca"></td>
+  </tr>
+  <tr>
+    <td><b>O Corredor.</b> A porta corta-fogo só abre para quem acertar as perguntas deixadas no Quadro do Abrantes.</td>
+    <td><b>A Biblioteca.</b> Catraca, armário, terminal de consulta e três livros para achar antes da energia cair.</td>
+  </tr>
+  <tr>
+    <td><img src="Docs/Imagens/nivel5.jpg" alt="Sala 12"></td>
+    <td valign="top"><b>Sala 12.</b> O celular ficou carregando no fundo da sala, a chave do bloco está na mesa da professora e ela ainda está no prédio. Dá para se esconder nos armários do corredor, mas a lanterna chama atenção.</td>
+  </tr>
+</table>
+
+## Destaques
+
+- Cinco níveis com objetivos próprios, ligados por aberturas curtas e uma tela final com créditos
+- Itens e livros sorteados a cada partida
+- Professora com navegação por NavMesh, ronda, perseguição e esconderijos
+- Apagão com lâmpada estourando, relâmpagos e chuva que soa abafada dentro dos prédios
+- Passos que mudam de som conforme o chão: piso, pedra ou grama
+- Easter eggs espalhados pelo pátio
+- Menu com opções de volume, sensibilidade do mouse e tela cheia
 
 ## Controles
 
 | Tecla | Ação |
 |---|---|
-| W, A, S, D ou setas | Andar |
+| W A S D | Andar |
 | Shift | Correr |
 | Espaço | Pular |
-| Mouse | Girar a câmera |
+| Mouse | Olhar em volta |
 | E | Interagir |
-| F | Lanterna do celular (Níveis 4 e 5) |
+| F | Lanterna do celular |
 | Tab | Ver o objetivo |
-| Esc | Pausa (continuar, reiniciar o nível ou voltar ao menu) |
+| Esc | Pausa |
 
-Os comandos também aparecem em **Opções**, na tela inicial, junto com volume, sensibilidade do mouse e tela cheia.
+## Rodando o projeto
 
-## Organização
+1. Instale a **Unity 6000.0.80f1** pelo Unity Hub.
+2. Clone o repositório com o **GitHub Desktop**, que já baixa os arquivos grandes pelo Git LFS. Em outros programas, instale o [Git LFS](https://git-lfs.com) antes.
+3. No Unity Hub, clique em **Add** e escolha a pasta do projeto.
+4. Abra a cena `Assets/_Projeto/Scenes/Menu` e aperte **Play**.
+
+Para gerar o executável: **File > Build Profiles > Windows > Build**. As cenas já estão na ordem certa.
+
+## Estrutura
 
 ```
 Assets/
-├── _Projeto/      ← tudo que o grupo fez: cenas, scripts, prefabs, materiais, áudio, interface
-│   ├── Scenes/    ← Menu, Nivel1 a Nivel5 e FimDeJogo
-│   ├── Audio/     ← sons separados por nível; Geral = sons usados em vários níveis, Menu = música do menu e do final
-│   ├── Materiais/ ← Geral (usados em vários níveis) e uma pasta por nível
-│   ├── Models/    ← modelos 3D baixados, separados por lugar (Banheiro, Biblioteca, Campus, Corredor, Itens...)
-│   ├── Prefabs/   ← objetos prontos para arrastar na cena
-│   ├── Scripts/   ← Base, Interacao, Itens, Cenario, Natureza, Efeitos, Som, Personagens, Biblioteca
-│   └── Editor/    ← janelas do menu Escape UVV (Textos do nível e Sons do nível)
-├── _Pacotes/      ← pacotes de terceiros (School Assets, POLYGON city, animais, plantas...)
-├── TextMesh Pro/
-└── Settings/      ← configurações do URP
+├── _Projeto/        conteúdo do jogo
+│   ├── Scenes/      Menu, Nivel1 a Nivel5 e FimDeJogo
+│   ├── Scripts/     código em C#, separado por sistema
+│   ├── Prefabs/     objetos prontos para usar nas cenas
+│   ├── Models/      modelos 3D, separados por lugar
+│   ├── Materiais/   Geral e uma pasta por nível
+│   ├── Audio/       Geral, Menu e uma pasta por nível
+│   ├── Terreno/     camadas e texturas do terreno do pátio
+│   └── UI/          fontes, imagens e o HUD
+└── _Pacotes/        pacotes de terceiros
+Docs/                GDD, requisitos da disciplina, créditos e imagens
 ```
 
-Todas as cenas seguem a mesma estrutura: `Main Camera`, `Jogador`, `_GameManager`, `Canvas_HUD`, `EventSystem`, `NivelX_Cenario` e `Pos_Processamento`.
+Textos e sons de cada nível podem ser ajustados sem mexer no código pelo menu **Escape UVV** da Unity.
 
-Para mudar textos e sons sem mexer em código, use o menu **Escape UVV > Textos do nível** e **Escape UVV > Sons do nível**.
+## Documentação
 
-## Onde cada requisito aparece
+- [Game Design Document](Docs/GDD_Escape_UVV.pdf)
+- [Requisitos da disciplina](Docs/Requisitos.md)
+- [Créditos](Docs/Creditos.md)
 
-| Requisito | Onde está no jogo |
-|---|---|
-| Colisão e trigger | `OnTriggerEnter` nos itens, portas e saídas; `OnCollisionEnter` no livro que cai da estante no Nível 4 (`LivroCaindo`) |
-| Translate | Portas de correr (`PortaDeslizante`) |
-| AddForce | Pulo do jogador (`PlayerController`) e livro empurrado para fora da estante no Nível 4 |
-| Rotação | Câmera, portas giratórias, catraca, itens girando, gatos e girassóis |
-| Torque | `AddTorque` no livro que despenca girando da estante a cada livro pego no Nível 4 (`LivroCaindo`, chamado pelo `EventosBiblioteca`) |
-| Vetor de prefabs e posição sorteada | `SpawnItens` (Níveis 1 e 2) e `SorteioLivros` (Nível 4) |
-| Spawn por função | `SpawnItens.Instantiate` e o efeito de coleta |
-| Partículas criadas pelo grupo | Faíscas e fumaça (N1), vagalumes (N2), chuva (N3 a N5), estouro da lâmpada no apagão (N4), brilho dos segredos e efeito de coleta |
-| Som | Ambiente por nível, passos que mudam com o chão (piso, pedra e grama), portas, interface, perseguição |
-| Animação | Parado, andando, correndo, pulando e caindo (Mixamo); gato, esquilo e professora |
-| Materiais com cor, textura e normal map | Mais de 20 materiais em `_Projeto/Materiais` |
-| UI com botão de reiniciar | Tela inicial com Opções, pausa (Reiniciar nível) e tela final (Jogar de novo) |
-| Terreno com 10 camadas | Nível 2 (`Terreno/Camadas`) |
-| Tag | Player, Chao, Porta, ItemPerdido |
-| NavMesh e NPC | Professora do Nível 5 |
-| Iluminação pontual, área, baked e mixed | Nível 1: luminárias Mixed, luzes de área e lua Baked, lightmap e light probes |
+## Equipe
 
-## Tecnologias
+**Brenno Gomes Breda**, **Daphne Rocha Amigo**, **Giovanna Rocha Santana** e **Thomás Kriger de Souza**
 
-- Unity 6 (6000.0.80f1) com Universal Render Pipeline (URP)
-- C# com documentação XML em cada função
-- TextMeshPro, Particle System, Animator (Mixamo), AI Navigation e Volume (pós-processamento)
-
-## Créditos de terceiros
-
-| Asset | Origem | Uso |
-|---|---|---|
-| School Assets | Unity Asset Store | Salas, corredores e móveis |
-| POLYGON city pack | Unity Asset Store | Pátio e prédios |
-| Gato Misty (Ladymito) | Unity Asset Store | Nível 2 |
-| Realistic Cat Demo | Unity Asset Store | Gato cinza do Nível 2 |
-| Furry Squirrel | Unity Asset Store | Esquilo do Nível 2 |
-| Living Birds | Unity Asset Store | Pássaros do Nível 2 |
-| Ornamental Flower Set e Patchmesh | Unity Asset Store | Flores e canteiros do Nível 2 |
-| PBR Lamps Pack, OldExtinguisher, Modular Sofa, QA Books, Free Rug Pack | Unity Asset Store | Luminárias, extintores, sofás, livros e tapetes |
-| Texturas do terreno | ambientCG (CC0) | Nível 2 |
-| Fonte da praça (simulação em Alembic) | Sketchfab | Nível 2 |
-| Arduino, mouse, fone, celular, pen drive, chave e poste | Sketchfab | Itens e cenário |
-| Guarda-chuva | CGTrader | Nível 2 |
-| Elizabeth Warren caricature | Unity Asset Store | Modelo da professora do Nível 5 |
-| Personagem Remy e animações | Mixamo (Adobe) | Jogador |
-| Fontes Barlow e Kalam | Google Fonts (OFL) | Interface |
-| Sons e músicas | Pixabay e outras bibliotecas gratuitas | Todos os níveis |
+Desenvolvido para a disciplina de Desenvolvimento de Games da Universidade Vila Velha, 2026/2, com orientação do professor Saulo Pereira Ribeiro.
