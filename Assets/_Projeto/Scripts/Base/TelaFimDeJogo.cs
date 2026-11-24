@@ -55,6 +55,8 @@ public class TelaFimDeJogo : MonoBehaviour
     /// <summary>Solta o mouse, liga os botões e começa o encerramento.</summary>
     void Start()
     {
+        TelaPreta.EsquecerAberturas();
+
         Time.timeScale = 1f;
         AudioListener.volume = Configuracoes.VolumeGeral;
         // no editor a tela preta fica guardada transparente; no jogo ela começa cobrindo tudo

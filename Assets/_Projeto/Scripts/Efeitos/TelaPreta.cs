@@ -53,6 +53,15 @@ public class TelaPreta : MonoBehaviour
     /// <summary>Cenas em que a abertura completa já foi mostrada nesta sessão de jogo.</summary>
     private static readonly System.Collections.Generic.HashSet<string> aberturasVistas = new System.Collections.Generic.HashSet<string>();
 
+    /// <summary>
+    /// Esquece quais níveis já mostraram a abertura. Chamado no menu e na tela final,
+    /// para uma partida nova começar com o texto de abertura e não com o de recomeço.
+    /// </summary>
+    public static void EsquecerAberturas()
+    {
+        aberturasVistas.Clear();
+    }
+
     private bool pular;
 
     /// <summary>Registra a instância. Se houver abertura, o som do nível já começa esperando por ela.</summary>

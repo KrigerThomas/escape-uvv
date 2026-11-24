@@ -59,6 +59,8 @@ public class MenuPrincipal : MonoBehaviour
     /// <summary>Solta o mouse, lê as opções salvas, liga os botões e clareia a tela.</summary>
     void Start()
     {
+        TelaPreta.EsquecerAberturas();
+
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
