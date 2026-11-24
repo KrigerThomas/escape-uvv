@@ -43,7 +43,7 @@ public class EsquiloFujao : MonoBehaviour
     public GameObject efeitoPresente;
     public string textoPrimeiraFuga = "Um esquilo, será que dá pra alcançar ele";
     [Tooltip("Aviso de quando o esquilo some de vista depois de fugir algumas vezes.")]
-    [TextArea] public string textoSumiu = "Sumiu de novo... mas juro que ainda tô ouvindo o chiado dele. Esse esquilo é bugado";
+    [TextArea] public string textoSumiu = "O esquilo sumiu, mas ainda tenho a impressão de que consigo ouvir ele...";
 
     [TextArea] public string textoPresente = "O esquilo cansou de fugir e deixou uma bolota pra você";
 
