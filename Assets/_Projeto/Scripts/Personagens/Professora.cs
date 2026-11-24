@@ -13,7 +13,8 @@ using UnityEngine.AI;
 ///
 /// Como ela "vê": o jogador precisa estar perto, na frente dela (dentro do ângulo de visão,
 /// o mesmo da lanterna) e sem parede ou móvel alto no meio (Linecast).
-/// Ela também ouve o jogador correndo perto, e vê de mais longe se a lanterna do celular estiver ligada.
+/// Ela também ouve o jogador correndo (de bem mais longe do que enxerga, e mesmo de costas),
+/// e vê de mais longe se a lanterna do celular estiver ligada.
 /// Dentro de um armário (ArmarioEsconderijo) ela não vê nem pega ninguém.
 /// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
@@ -60,7 +61,10 @@ public class Professora : MonoBehaviour
     public float distanciaPegar = 1.0f;
 
     [Tooltip("Raio em que ela ouve o jogador correndo, mesmo de costas. Use 0 para desligar.")]
-    public float raioAudicaoCorrida = 3.5f;
+    public float raioAudicaoCorrida = 9f;
+
+    [Tooltip("Raio em que ela ouve o jogador andando, só bem de perto.")]
+    public float raioAudicaoAndando = 1.5f;
 
     [Tooltip("Quando a porta destrancar, ela ouve o barulho e vai atrás do jogador.")]
     public bool perseguirQuandoPortaAbrir = true;
@@ -79,7 +83,8 @@ public class Professora : MonoBehaviour
     public AudioClip somPegou;
 
     [Header("Textos")]
-    public string textoAvistou = "Ela te viu, corra ou se esconda";
+    public string textoAvistou = "Ela me viu. Corre!";
+    public string textoOuviu = "Ela ouviu meus passos. Corre!";
     public string textoDesistiu = "Ufa, ela te perdeu de vista";
     public string textoPegou = "A professora te pegou";
     public string textoPortaAbriu = "A porta fez barulho e ela ouviu, corra";
@@ -105,6 +110,7 @@ public class Professora : MonoBehaviour
     private bool pegouJogador;
     private float volumePassos = 1f;
     private bool portaJaAbriu;
+    private bool soOuviu;
 
     /// <summary>Pega os componentes e encontra o jogador pela tag Player.</summary>
     void Start()
@@ -157,7 +163,7 @@ public class Professora : MonoBehaviour
         {
             FazerRonda();
             if (ve)
-                ComecarPerseguicao(textoAvistou);
+                ComecarPerseguicao(soOuviu ? textoOuviu : textoAvistou);
         }
         else
         {
@@ -249,18 +255,23 @@ public class Professora : MonoBehaviour
 
     /// <summary>
     /// Testa se ela enxerga o jogador: distância, ângulo e nada no meio do caminho.
-    /// Também "ouve" o jogador correndo perto dela.
+    /// Também "ouve" o jogador: correndo, de longe; andando, só quando ele passa colado nela.
     /// </summary>
     private bool VeJogador()
     {
+        soOuviu = false;
         if (ArmarioEsconderijo.JogadorDentro || Esconderijo.JogadorEscondido)
             return false;
 
         float distancia = DistanciaAteJogador();
 
         bool correndo = controleJogador != null && controleJogador.VelocidadeAtual > controleJogador.velocidadeAndar + 0.1f;
-        if (correndo && distancia <= raioAudicaoCorrida)
+        bool andando = controleJogador != null && controleJogador.VelocidadeAtual > 0.1f;
+        if ((correndo && distancia <= raioAudicaoCorrida) || (andando && distancia <= raioAudicaoAndando))
+        {
+            soOuviu = true;
             return true;
+        }
 
         float alcance = distanciaVisao * (LanternaCelular.Ligada ? multiplicadorLanternaJogador : 1f);
         if (distancia > alcance)
@@ -447,6 +458,7 @@ public class Professora : MonoBehaviour
 
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, raioAudicaoCorrida);
+        Gizmos.DrawWireSphere(transform.position, raioAudicaoAndando);
 
         if (pontosRonda == null)
             return;

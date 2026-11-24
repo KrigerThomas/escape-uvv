@@ -8948,7 +8948,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 1492382427}
   pontoSaida: {fileID: 1256863157}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -14872,7 +14872,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 574710899}
   pontoSaida: {fileID: 1272436540}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -16057,7 +16057,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 1068352716}
   pontoSaida: {fileID: 891610599}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -23110,7 +23110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 236.81
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -30073,7 +30073,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 1680730412}
   pontoSaida: {fileID: 548020169}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -34868,7 +34868,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 243826229}
   pontoSaida: {fileID: 357875392}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -37922,7 +37922,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 1759680065}
   pontoSaida: {fileID: 844068544}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -39557,7 +39557,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 585813849}
   pontoSaida: {fileID: 429024041}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -41502,7 +41502,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 588282388}
   pontoSaida: {fileID: 689035067}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -42319,6 +42319,10 @@ PrefabInstance:
       value: Professora
       objectReference: {fileID: 0}
     - target: {fileID: 8962405661632256525, guid: 26d7a3f2e92cddc498b57b5d7354775a, type: 3}
+      propertyPath: textoOuviu
+      value: Ela ouviu meus passos. Corre!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962405661632256525, guid: 26d7a3f2e92cddc498b57b5d7354775a, type: 3}
       propertyPath: textoPegou
       value: Ela me pegou.
       objectReference: {fileID: 0}
@@ -42333,6 +42337,10 @@ PrefabInstance:
     - target: {fileID: 8962405661632256525, guid: 26d7a3f2e92cddc498b57b5d7354775a, type: 3}
       propertyPath: textoPortaAbriu
       value: Essa porta rangeu alto demais... ela ouviu.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8962405661632256525, guid: 26d7a3f2e92cddc498b57b5d7354775a, type: 3}
+      propertyPath: raioAudicaoCorrida
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8962405661632256525, guid: 26d7a3f2e92cddc498b57b5d7354775a, type: 3}
       propertyPath: pontosRonda.Array.size
@@ -43096,7 +43104,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 669228062}
   pontoSaida: {fileID: 1850795495}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -45315,7 +45323,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 2144547630}
   pontoSaida: {fileID: 1490847500}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -53180,7 +53188,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 1300052630}
   pontoSaida: {fileID: 946228398}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -55429,7 +55437,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 1679288583}
   pontoSaida: {fileID: 134842696}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -58028,7 +58036,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 1899985757}
   pontoSaida: {fileID: 155554472}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -58997,7 +59005,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 333879061}
   pontoSaida: {fileID: 792635688}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -60928,7 +60936,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 1596311742}
   pontoSaida: {fileID: 262577327}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0
@@ -61764,7 +61772,7 @@ MonoBehaviour:
   pontoCamera: {fileID: 1881411298}
   pontoSaida: {fileID: 5495}
   painelFrestas: {fileID: 721443186}
-  distanciaSegura: 4
+  distanciaSegura: 1.8
   somPorta: {fileID: 8300000, guid: 1f0f9267a4a17f645a39f21502be3c2c, type: 3}
   somSair: {fileID: 8300000, guid: 167971856ba6b9849b6f8c44e876ade1, type: 3}
   tempoEntrar: 0

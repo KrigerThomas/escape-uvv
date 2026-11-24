@@ -5,7 +5,7 @@ using UnityEngine;
 /// Armário onde o jogador se esconde com E (e sai com E de novo).
 /// Dentro do armário: o jogador fica invisível e parado, a câmera vai para as frestas
 /// da porta (ponto "Ponto_Camera") e a Professora não consegue vê-lo nem pegá-lo.
-/// Se a professora já está correndo atrás e muito perto, não dá tempo de entrar.
+/// Só não dá para entrar se a professora já estiver praticamente encostando no jogador.
 /// </summary>
 public class ArmarioEsconderijo : Interagivel
 {
@@ -32,8 +32,8 @@ public class ArmarioEsconderijo : Interagivel
     [Tooltip("Painel da interface com as frestas escuras (fica ligado só dentro do armário).")]
     public GameObject painelFrestas;
 
-    [Tooltip("Distância em que a professora, correndo atrás, impede o jogador de se esconder.")]
-    public float distanciaSegura = 4f;
+    [Tooltip("Distância entre a professora e o jogador em que não dá mais tempo de se esconder.")]
+    public float distanciaSegura = 1.8f;
 
     [Tooltip("Som ao entrar no armário.")]
     public AudioClip somPorta;
@@ -110,17 +110,17 @@ public class ArmarioEsconderijo : Interagivel
     /// <summary>Esconde o jogador e leva a câmera para dentro do armário.</summary>
     private void Entrar()
     {
+        jogador = GameObject.FindGameObjectWithTag("Player");
+        if (jogador == null)
+            return;
+
         Professora professora = FindFirstObjectByType<Professora>();
         if (professora != null && professora.EstadoAtual == Professora.Estado.Perseguindo &&
-            Vector3.Distance(professora.transform.position, transform.position) < distanciaSegura)
+            Vector3.Distance(professora.transform.position, jogador.transform.position) < distanciaSegura)
         {
             Avisar(textoSemTempo);
             return;
         }
-
-        jogador = GameObject.FindGameObjectWithTag("Player");
-        if (jogador == null)
-            return;
 
         rb = jogador.GetComponent<Rigidbody>();
         controle = jogador.GetComponent<PlayerController>();
