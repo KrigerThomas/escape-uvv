@@ -181,3 +181,6 @@ LightingData.asset     binary
 # Sem estas linhas o Git trata o arquivo como texto (eol=lf), apaga bytes e corrompe o terreno.
 Assets/_Projeto/Terreno/*.asset   binary
 NavMesh*.asset                    binary
+
+# Build do jogo (arquivos grandes)
+Jogo/**                           lfs

@@ -116,3 +116,4 @@ InitTestScene*.unity*
 # Builds do jogo e configurações locais do editor
 /[Bb]uild_*/
 .vscode/
+/Jogo/*_DoNotShip/
