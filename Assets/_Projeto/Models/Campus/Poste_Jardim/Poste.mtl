@@ -1,8 +1,0 @@
-newmtl T_lamp_post_2_1001
-Kd 1 1 1
-map_Kd T_lamp_post_2_1001_baseColor.jpg
-
-newmtl T_light_glass_1001
-Kd 1 1 1
-map_Kd T_light_glass_1001_baseColor.png
-
