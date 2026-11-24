@@ -48585,7 +48585,7 @@ MonoBehaviour:
   teclaCarinho: 101
   carinhosAteArranhar: 3
   tempoParaEsquecer: 15
-  somMiado: {fileID: 8300000, guid: 235eb3d56b3e4c340a8938f70c173cbd, type: 3}
+  somMiado: {fileID: 8300000, guid: 69f7f34df5670a049806c22e03778c81, type: 3}
   somRonronar: {fileID: 8300000, guid: 14449cff8aee64c57a3be0883d712e93, type: 3}
   somChiado: {fileID: 8300000, guid: 3b3e8eca4488a47c1ae680bd69ac3fb4, type: 3}
   tomMiado: 0.8
