@@ -29,7 +29,7 @@ Onde cada item pedido no trabalho de Desenvolvimento de Games (UVV, 2026/2) apar
 | Materiais com cor, textura e normal map | Mais de 20 materiais em `Assets/_Projeto/Materiais` |
 | UI com texto e botão de reiniciar | Menu com Opções e Créditos, HUD, pausa com Reiniciar nível e tela final com Jogar de novo |
 | Terreno com 10 camadas | Pátio do Nível 2 (`Assets/_Projeto/Terreno/Camadas`), com relevo, lago, caminhos, cascalho, grama e árvores |
-| Texturas do terreno com diffuse, normal e height | As 10 camadas do Nível 2 |
+| Texturas do terreno com diffuse, normal e height | As 10 camadas do Nível 2 têm diffuse e normal; o height map entra com as texturas originais do ambientCG |
 | NavMesh e NPC | Professora do Nível 5, com ronda, perseguição e NavMesh Link na porta de saída |
 | Iluminação pontual, de área, baked e mixed | Nível 1: luminárias Mixed, luzes de área e lua Baked, lightmap e light probes; luzes pontuais em todos os níveis |
 
