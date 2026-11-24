@@ -17,6 +17,9 @@ public class SomAbafado : MonoBehaviour
     [Tooltip("Trecho perto do som que não conta como obstáculo (ex.: a borda da fonte em volta do som da água).")]
     public float margem = 0.3f;
 
+    [Tooltip("Colisores que não contam como obstáculo (ex.: a colisão da própria fonte).")]
+    public Collider[] ignorar;
+
     [Tooltip("Quantas vezes por segundo o caminho é conferido.")]
     public float checagensPorSegundo = 8f;
 
@@ -36,6 +39,8 @@ public class SomAbafado : MonoBehaviour
     {
         fonte = GetComponent<AudioSource>();
         volumeNormal = fonte.volume;
+        if (ignorar == null)
+            ignorar = new Collider[0];
         filtro = GetComponent<AudioLowPassFilter>();
         if (filtro == null)
             filtro = gameObject.AddComponent<AudioLowPassFilter>();
@@ -76,7 +81,7 @@ public class SomAbafado : MonoBehaviour
         {
             if (batida.transform.IsChildOf(transform) || transform.IsChildOf(batida.transform))
                 continue;
-            if (batida.collider.CompareTag("Player"))
+            if (batida.collider.CompareTag("Player") || System.Array.IndexOf(ignorar, batida.collider) >= 0)
                 continue;
             return true;
         }

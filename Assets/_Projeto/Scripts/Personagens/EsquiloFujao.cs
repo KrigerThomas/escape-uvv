@@ -42,6 +42,9 @@ public class EsquiloFujao : MonoBehaviour
     public AudioClip somPresente;
     public GameObject efeitoPresente;
     public string textoPrimeiraFuga = "Um esquilo, será que dá pra alcançar ele";
+    [Tooltip("Aviso de quando o esquilo some de vista depois de fugir algumas vezes.")]
+    [TextArea] public string textoSumiu = "Sumiu de novo... mas juro que ainda tô ouvindo o chiado dele. Esse esquilo é bugado";
+
     [TextArea] public string textoPresente = "O esquilo cansou de fugir e deixou uma bolota pra você";
 
     private enum Estado { Parado, Correndo, Amigo }
@@ -55,6 +58,8 @@ public class EsquiloFujao : MonoBehaviour
     private bool jogadorEstavaPerto;
     private float timerChiado;
     private float timerPose;
+
+    private bool mostrouSumiu;
 
     /// <summary>Pega os componentes, configura o som 3D e vai para o primeiro esconderijo.</summary>
     void Start()
@@ -154,7 +159,14 @@ public class EsquiloFujao : MonoBehaviour
             if (jogador != null)
                 OlharPara(jogador.position, true);
             if (!JogadorVe())
+            {
                 audioSource.Stop();
+                if (!mostrouSumiu && fugas >= 2 && fugas < fugasAteCansar)
+                {
+                    mostrouSumiu = true;
+                    AvisoNaTela.Mostrar(textoSumiu);
+                }
+            }
             FicarParado();
         }
     }

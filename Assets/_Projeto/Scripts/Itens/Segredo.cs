@@ -50,14 +50,38 @@ public class Segredo : MonoBehaviour
             GameManager.Instancia.RegistrarSegredo();
     }
 
-    /// <summary>Detecta o jogador (tag Player) entrando na área do segredo.</summary>
-    /// <param name="outro">Collider que entrou no trigger.</param>
-    void OnTriggerEnter(Collider outro)
+    /// <summary>
+    /// Enquanto o jogador está na área do segredo, confere se ele consegue ver o segredo
+    /// (sem sebe ou parede no meio). Só assim o segredo conta como encontrado.
+    /// </summary>
+    /// <param name="outro">Collider que está dentro do trigger.</param>
+    void OnTriggerStay(Collider outro)
     {
         if (Encontrado || !outro.CompareTag("Player"))
             return;
 
-        Descobrir();
+        if (JogadorVe(outro.transform))
+            Descobrir();
+    }
+
+    /// <summary>Verdadeiro se nada sólido estiver entre os olhos do jogador e o segredo.</summary>
+    /// <param name="jogador">Transform do jogador.</param>
+    private bool JogadorVe(Transform jogador)
+    {
+        Vector3 olhos = jogador.position + Vector3.up * 1.5f;
+        Vector3 alvo = transform.position + Vector3.up * 0.3f;
+        Vector3 direcao = alvo - olhos;
+        RaycastHit[] batidas = Physics.RaycastAll(olhos, direcao.normalized, direcao.magnitude, ~0, QueryTriggerInteraction.Ignore);
+        foreach (RaycastHit batida in batidas)
+        {
+            if (batida.transform.IsChildOf(transform) || batida.transform.IsChildOf(jogador))
+                continue;
+            // o banco ou a mesa em que o item está apoiado não conta
+            if (Vector3.Distance(batida.point, alvo) < 0.8f)
+                continue;
+            return false;
+        }
+        return true;
     }
 
     /// <summary>Toca o efeito e o som, desliga a dica visual e soma o segredo no GameManager.</summary>

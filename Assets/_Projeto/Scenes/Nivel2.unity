@@ -1769,7 +1769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 236.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -15847,7 +15847,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d00a6d7ce5b1ae44a855300159e64da9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.45
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -15855,10 +15855,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
-  MinDistance: 2.5
-  MaxDistance: 16
+  MinDistance: 1
+  MaxDistance: 42
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -15868,8 +15868,44 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.5000001
+      outSlope: -0.5000001
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.95
+      inSlope: -1.5833333
+      outSlope: -1.5833333
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.25
+      value: 0.55
+      inSlope: -2.0083332
+      outSlope: -2.0083332
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.45
+      value: 0.28
+      inSlope: -1.0350001
+      outSlope: -1.0350001
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7
+      value: 0.1
+      inSlope: -0.52666664
+      outSlope: -0.52666664
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -15877,12 +15913,12 @@ AudioSource:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.3333333
+      outSlope: -0.3333333
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -15943,9 +15979,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e372d68535e49c46a64157a57c6d98d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeAtras: 0.35
-  corteAtras: 900
-  margem: 2.6
+  volumeAtras: 0.45
+  corteAtras: 1400
+  margem: 0.6
+  ignorar:
+  - {fileID: 1290468990}
   checagensPorSegundo: 8
   suavidade: 6
 --- !u!1 &580473261
@@ -17766,7 +17804,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.1
+  m_Radius: 0.77
   m_Center: {x: 0, y: 0.3, z: 0}
 --- !u!114 &680194553
 MonoBehaviour:
@@ -17798,6 +17836,7 @@ MonoBehaviour:
   volumeAtras: 0.35
   corteAtras: 900
   margem: 0.3
+  ignorar: []
   checagensPorSegundo: 8
   suavidade: 6
 --- !u!1001 &684539635
@@ -28252,7 +28291,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345310515}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b17cb30b0690b034794689498dd31fa4, type: 3}
   m_Name: 
@@ -30590,7 +30629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1062825521
 Light:
   m_ObjectHideFlags: 0
@@ -48846,7 +48885,8 @@ MonoBehaviour:
   textosCarinho:
   - "Ele t\xE1 ronronando."
   - Fechou os olhos... acho que gostou.
-  textoPatada: "Ai! T\xE1 bom, chega de carinho."
+  textoPatada: 'Easter egg: levei uma patada do gato cinza. Acho que exagerei no
+    carinho'
 --- !u!82 &1649875822
 AudioSource:
   m_ObjectHideFlags: 0
@@ -48959,6 +48999,7 @@ MonoBehaviour:
   volumeAtras: 0.35
   corteAtras: 900
   margem: 0.3
+  ignorar: []
   checagensPorSegundo: 8
   suavidade: 6
 --- !u!43 &1651183427
@@ -57539,7 +57580,10 @@ MonoBehaviour:
   somPresente: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
   efeitoPresente: {fileID: 5257402744445269917, guid: 89d58c592c817a24494e5d27e37ac950, type: 3}
   textoPrimeiraFuga: "Um esquilo acordado a essa hora? Ser\xE1 que consigo pegar?"
-  textoPresente: Ele cansou de fugir e me deixou uma bolota. Amizade feita.
+  textoSumiu: "Sumiu de novo... mas juro que ainda t\xF4 ouvindo o chiado dele. Esse
+    esquilo \xE9 bugado"
+  textoPresente: 'Easter egg: o esquilo cansou de fugir e me deixou uma bolota. Amizade
+    feita'
 --- !u!82 &1874031743
 AudioSource:
   m_ObjectHideFlags: 0
@@ -57652,6 +57696,7 @@ MonoBehaviour:
   volumeAtras: 0.35
   corteAtras: 900
   margem: 0.3
+  ignorar: []
   checagensPorSegundo: 8
   suavidade: 6
 --- !u!1 &1878609423
