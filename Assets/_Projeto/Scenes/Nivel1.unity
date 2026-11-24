@@ -12007,9 +12007,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direcaoAbertura: {x: 0, y: 0, z: 1}
-  distancia: 2.35
+  distancia: 0
   duracao: 1.5
-  somAbrir: {fileID: 8300000, guid: 3c13bf13b2461e2468a51342f09646c5, type: 3}
+  somAbrir: {fileID: 0}
   volume: 1
   somPertoDoJogador: 1
   acompanharSom: 1
