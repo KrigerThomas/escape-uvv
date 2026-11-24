@@ -19,7 +19,6 @@ Disciplina: Desenvolvimento de Games, Universidade Vila Velha, 2026/2
 | Ladymito (gata Misty) | Unity Asset Store | Nível 2 |
 | Realistic Cat Demo | Unity Asset Store | Gato cinza do Nível 2 |
 | Furry Squirrel | Unity Asset Store | Esquilo do Nível 2 |
-| Living Birds | Unity Asset Store | Pássaros do Nível 2 |
 | Ornamental Flower Set e Patchmesh | Unity Asset Store | Flores e canteiros do Nível 2 |
 | PBR Lamps Pack | Unity Asset Store | Luminárias |
 | OldExtinguisher | Unity Asset Store | Extintores |

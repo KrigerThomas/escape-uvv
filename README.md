@@ -1,18 +1,20 @@
 # Escape UVV
 
-![Escape UVV](Docs/Imagens/menu.jpg)
-
 Jogo de aventura em terceira pessoa feito em Unity para a disciplina de Desenvolvimento de Games da Universidade Vila Velha (2026/2).
 
 Você é um calouro que dormiu estudando no InovaLab e acordou com a UVV fechada. Para ir embora, tem que passar por cinco lugares do campus: achar suas coisas no laboratório, atravessar o labirinto do pátio, responder o quadro do corredor, pegar livros na biblioteca durante um apagão e sair da Sala 12 sem ser pego pela professora.
 
 | | |
 |---|---|
-| ![InovaLab](Docs/Imagens/nivel1.jpg) | ![Pátio](Docs/Imagens/nivel2.jpg) |
-| ![Corredor](Docs/Imagens/nivel3.jpg) | ![Biblioteca](Docs/Imagens/nivel4.jpg) |
-| ![Sala 12](Docs/Imagens/nivel5.jpg) | |
+| ![Menu](Docs/Imagens/menu.jpg) | ![InovaLab](Docs/Imagens/nivel1.jpg) |
+| ![Pátio](Docs/Imagens/nivel2.jpg) | ![Corredor](Docs/Imagens/nivel3.jpg) |
+| ![Biblioteca](Docs/Imagens/nivel4.jpg) | ![Sala 12](Docs/Imagens/nivel5.jpg) |
 
-## Como jogar
+## Jogar
+
+Clone o repositório (pelo GitHub Desktop, por exemplo), abra a pasta `Jogo` e execute `Escape UVV.exe`. Roda no Windows e não precisa instalar nada.
+
+## Controles
 
 | Tecla | Ação |
 |---|---|
@@ -28,7 +30,7 @@ Você é um calouro que dormiu estudando no InovaLab e acordou com a UVV fechada
 
 Volume, sensibilidade do mouse e tela cheia ficam em **Opções**, no menu inicial.
 
-## Abrindo o projeto
+## Abrindo o projeto na Unity
 
 Precisa da Unity **6000.0.80f1** e do [Git LFS](https://git-lfs.com) (o GitHub Desktop já vem com ele).
 
