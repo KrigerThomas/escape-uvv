@@ -5,9 +5,9 @@ using UnityEngine;
 //  Um esquilo que fica no pé das árvores. Quando o jogador chega perto
 //  ele chia e corre para a próxima árvore da lista.
 //
-//  EASTER EGG: depois de fugir algumas vezes (padrão: 4) ele cansa,
-//  desiste de fugir e "deixa uma bolota" para o jogador. A partir daí
-//  ele fica amigo: só olha e chia quando o jogador chega perto.
+//  EASTER EGG: depois de fugir algumas vezes (padrão: 4) ele some de vez.
+//  Mesmo sumido, o chiado dele continua aparecendo de vez em quando
+//  perto do último esconderijo (piada com um bug de som que tivemos).
 //
 //  COMO USAR:
 //   1. Coloque este script num objeto vazio; o modelo do esquilo
@@ -38,16 +38,17 @@ public class EsquiloFujao : MonoBehaviour
     public Vector2 intervaloChiado = new Vector2(4f, 8f);
 
     [Header("Easter egg")]
-    public int fugasAteCansar = 4;
-    public AudioClip somPresente;
-    public GameObject efeitoPresente;
-    public string textoPrimeiraFuga = "Um esquilo, será que dá pra alcançar ele";
-    [Tooltip("Aviso de quando o esquilo some de vista depois de fugir algumas vezes.")]
+    [Tooltip("Quantas vezes ele foge antes de sumir de vez.")]
+    [UnityEngine.Serialization.FormerlySerializedAs("fugasAteCansar")]
+    public int fugasAteSumir = 4;
+    [Tooltip("Aviso na primeira vez que o esquilo foge.")]
+    public string textoPrimeiraFuga = "Um esquilo aqui pela UVV? Para onde será que ele vai?";
+    [Tooltip("Som de folhas quando ele entra no mato e some.")]
+    public AudioClip somSumir;
+    [Tooltip("Aviso de quando o esquilo some de vez.")]
     [TextArea] public string textoSumiu = "O esquilo sumiu, mas ainda tenho a impressão de que consigo ouvir ele...";
 
-    [TextArea] public string textoPresente = "O esquilo cansou de fugir e deixou uma bolota pra você";
-
-    private enum Estado { Parado, Correndo, Amigo }
+    private enum Estado { Parado, Correndo, Sumido }
 
     private Estado estado = Estado.Parado;
     private Animator animator;
@@ -55,11 +56,9 @@ public class EsquiloFujao : MonoBehaviour
     private Transform jogador;
     private int esconderijoAtual;
     private int fugas;
-    private bool jogadorEstavaPerto;
     private float timerChiado;
     private float timerPose;
 
-    private bool mostrouSumiu;
 
     /// <summary>Pega os componentes, configura o som 3D e vai para o primeiro esconderijo.</summary>
     void Start()
@@ -97,10 +96,7 @@ public class EsquiloFujao : MonoBehaviour
             case Estado.Parado:
                 if (perto)
                 {
-                    if (fugas >= fugasAteCansar)
-                        VirarAmigo();
-                    else
-                        Fugir();
+                    Fugir();
                     break;
                 }
                 PosesEChiados();
@@ -110,15 +106,8 @@ public class EsquiloFujao : MonoBehaviour
                 Correr();
                 break;
 
-            case Estado.Amigo:
-                if (perto)
-                {
-                    OlharPara(jogador.position);
-                    if (!jogadorEstavaPerto && JogadorVe())
-                        Chiar();
-                }
-                jogadorEstavaPerto = perto;
-                PosesEChiados();
+            case Estado.Sumido:
+                ChiadoFantasma();
                 break;
         }
     }
@@ -159,39 +148,39 @@ public class EsquiloFujao : MonoBehaviour
             if (jogador != null)
                 OlharPara(jogador.position, true);
             if (!JogadorVe())
-            {
                 audioSource.Stop();
-                if (!mostrouSumiu && fugas >= 2 && fugas < fugasAteCansar)
-                {
-                    mostrouSumiu = true;
-                    AvisoNaTela.Mostrar(textoSumiu);
-                }
-            }
-            FicarParado();
+            // na última fuga ele entra no mato do pé da árvore e some de vez
+            if (fugas >= fugasAteSumir)
+                Sumir();
+            else
+                FicarParado();
         }
     }
 
-    /// <summary>Easter egg: para de fugir, toca o som e o efeito do presente e mostra o aviso.</summary>
-    private void VirarAmigo()
+    /// <summary>Easter egg: o esquilo entra no mato, some de vez e o aviso aparece.</summary>
+    private void Sumir()
     {
-        estado = Estado.Amigo;
-        jogadorEstavaPerto = true;
-        TrocarAnimacao("parado2");
+        estado = Estado.Sumido;
+        audioSource.Stop();
+        if (somSumir != null)
+            AudioSource.PlayClipAtPoint(somSumir, transform.position, 0.8f);
+        foreach (Renderer r in GetComponentsInChildren<Renderer>())
+            r.enabled = false;
+        if (animator != null)
+            animator.enabled = false;
+        timerChiado = Random.Range(intervaloChiado.x, intervaloChiado.y);
+        AvisoNaTela.Mostrar(textoSumiu);
+    }
 
-        if (jogador != null)
-            OlharPara(jogador.position, true);
-
-        if (efeitoPresente != null)
-        {
-            GameObject efeito = Instantiate(efeitoPresente, transform.position + Vector3.up * 0.2f, Quaternion.identity);
-            Destroy(efeito, 3f);
-        }
-
-        if (somPresente != null)
-            AudioSource.PlayClipAtPoint(somPresente, transform.position, 0.8f);
-
-        Chiar();
-        AvisoNaTela.Mostrar(textoPresente);
+    /// <summary>Depois de sumir, o chiado ainda toca de vez em quando se o jogador passar perto.</summary>
+    private void ChiadoFantasma()
+    {
+        timerChiado -= Time.deltaTime;
+        if (timerChiado > 0f)
+            return;
+        timerChiado = Random.Range(intervaloChiado.x, intervaloChiado.y) * 1.5f;
+        if (jogador != null && AvisoNaTela.DistanciaPlana(transform.position, jogador.position) < distanciaChiado)
+            Chiar();
     }
 
     /// <summary>Alterna entre as duas poses paradas e chia de vez em quando.</summary>

@@ -1716,7 +1716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 236.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -29474,8 +29474,8 @@ MonoBehaviour:
   somPortaTrancada: {fileID: 8300000, guid: 9060e4aea04655e4f88e9ac1b0bb5678, type: 3}
   proximaCena: Nivel3
   textoObjetivo: "Ache os 5 itens perdidos para abrir o port\xE3o"
-  textoPortaLiberada: "O port\xE3o abriu sozinho... de novo."
-  textoPortaTrancada: Ainda trancado
+  textoPortaLiberada: "O port\xE3o se abriu sozinho..."
+  textoPortaTrancada: Ainda trancado...
   palavraSingular: item
   palavraPlural: itens
   textoTudoEncontrado: 
@@ -57148,14 +57148,11 @@ MonoBehaviour:
   somChiado: {fileID: 8300000, guid: 663429383c27b434a890dfd9749fd490, type: 3}
   distanciaChiado: 7
   intervaloChiado: {x: 4, y: 8}
-  fugasAteCansar: 4
-  somPresente: {fileID: 8300000, guid: 469ce1aff4387e84f9e98a3ca34499c9, type: 3}
-  efeitoPresente: {fileID: 5257402744445269917, guid: 89d58c592c817a24494e5d27e37ac950, type: 3}
-  textoPrimeiraFuga: "Um esquilo acordado a essa hora? Ser\xE1 que consigo pegar?"
+  fugasAteSumir: 4
+  textoPrimeiraFuga: "Um esquilo aqui pela UVV? Para onde ser\xE1 que ele vai?"
+  somSumir: {fileID: 8300000, guid: 14d227838019243d8b2a2e5f063f9a23, type: 3}
   textoSumiu: "O esquilo sumiu, mas ainda tenho a impress\xE3o de que consigo ouvir
     ele..."
-  textoPresente: "O esquilo sumiu, mas ainda tenho a impress\xE3o de que consigo
-    ouvir ele..."
 --- !u!82 &1874031743
 AudioSource:
   m_ObjectHideFlags: 0
