@@ -10,9 +10,15 @@ Você é um calouro que dormiu estudando no InovaLab e acordou com a UVV fechada
 | ![Pátio](Docs/Imagens/nivel2.jpg) | ![Corredor](Docs/Imagens/nivel3.jpg) |
 | ![Biblioteca](Docs/Imagens/nivel4.jpg) | ![Sala 12](Docs/Imagens/nivel5.jpg) |
 
+## Gameplay
+
+[![Gameplay do Escape UVV no YouTube](https://img.youtube.com/vi/5AvyqnO0iDg/hqdefault.jpg)](https://youtu.be/5AvyqnO0iDg)
+
 ## Jogar
 
-Clone o repositório (pelo GitHub Desktop, por exemplo), abra a pasta `Jogo` e execute `Escape UVV.exe`. Roda no Windows e não precisa instalar nada.
+Baixe o zip da [versão mais recente](https://github.com/KrigerThomas/escape-uvv/releases/latest), extraia e abra `Escape UVV.exe`. Roda no Windows e não precisa instalar nada.
+
+A mesma build também fica na pasta `Jogo` do repositório.
 
 ## Controles
 
