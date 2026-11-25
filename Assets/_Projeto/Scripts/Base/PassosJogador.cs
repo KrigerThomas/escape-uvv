@@ -3,8 +3,8 @@ using UnityEngine;
 /// <summary>
 /// Som dos passos do jogador, sincronizado com a animação: acompanha a altura dos dois pés
 /// do personagem e toca um passo no instante em que cada pé encosta no chão.
-/// O som muda conforme o chão embaixo do jogador: piso (dentro dos prédios), pedra/cascalho
-/// (caminhos do pátio) ou grama. No terreno do Nível 2 vale a textura mais forte naquele ponto;
+/// O som muda conforme o chão embaixo do jogador: piso (dentro dos prédios), pedra
+/// (calçamento do labirinto), cascalho (caminhos do pátio) ou grama. No terreno do Nível 2 vale a textura mais forte naquele ponto;
 /// nos outros objetos vale o nome do material.
 /// Cada passo sorteia um som da lista, sem repetir o último, e varia um pouco o tom.
 /// </summary>
@@ -14,14 +14,20 @@ public class PassosJogador : MonoBehaviour
     [Tooltip("Passos em piso liso (dentro dos prédios).")]
     public AudioClip[] passos;
 
-    [Tooltip("Passos em pedra e cascalho (caminhos do pátio).")]
+    [Tooltip("Passos em pedra (calçamento do labirinto).")]
     public AudioClip[] passosPedra;
+
+    [Tooltip("Passos em cascalho e seixos (caminhos do pátio).")]
+    public AudioClip[] passosCascalho;
 
     [Tooltip("Passos na grama e na terra.")]
     public AudioClip[] passosGrama;
 
+    [Tooltip("Pedaços do nome do material ou da textura do terreno que contam como cascalho (conferidos antes da pedra).")]
+    public string[] palavrasCascalho = { "cascalho", "seixo", "gravel" };
+
     [Tooltip("Pedaços do nome do material ou da textura do terreno que contam como pedra.")]
-    public string[] palavrasPedra = { "pedra", "cascalho", "rocha", "seixo", "calcamento", "calcada", "paving", "gravel", "rock" };
+    public string[] palavrasPedra = { "pedra", "rocha", "calcamento", "calcada", "paving", "rock" };
 
     [Tooltip("Pedaços do nome do material ou da textura do terreno que contam como grama.")]
     public string[] palavrasGrama = { "grama", "lama", "terra", "folha", "areia", "gramado", "grass", "ground" };
@@ -185,6 +191,8 @@ public class PassosJogador : MonoBehaviour
         }
         nome = nome.ToLowerInvariant();
 
+        if (Contem(nome, palavrasCascalho) && passosCascalho != null && passosCascalho.Length > 0)
+            return passosCascalho;
         if (Contem(nome, palavrasPedra) && passosPedra != null && passosPedra.Length > 0)
             return passosPedra;
         if (Contem(nome, palavrasGrama) && passosGrama != null && passosGrama.Length > 0)

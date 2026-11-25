@@ -190,21 +190,26 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 169bfb18d42f635438005bcb4caab158, type: 3}
   - {fileID: 8300000, guid: 807d49a016670444b986ea10621e203b, type: 3}
   passosPedra:
+  - {fileID: 8300000, guid: 8f605dc02b8a5a1408d2b6fc724476b2, type: 3}
+  - {fileID: 8300000, guid: 87f80e76f8995b548946afa474717a23, type: 3}
+  - {fileID: 8300000, guid: 38f4d6d66878ed84ab35244b3113ebd2, type: 3}
+  passosCascalho:
   - {fileID: 8300000, guid: 39f6d49a42b230c4eb0aae5d73af1759, type: 3}
   - {fileID: 8300000, guid: f50f0555d34bb5345b064fb36125f671, type: 3}
   - {fileID: 8300000, guid: 8e0c6b406d3f84d4da576ed08766c215, type: 3}
   passosGrama:
   - {fileID: 8300000, guid: 9378d660f9129a3488399067b7a4b409, type: 3}
   - {fileID: 8300000, guid: 48c5aad46bb6e324990d3032d8181206, type: 3}
+  palavrasCascalho:
+  - cascalho
+  - seixo
+  - gravel
   palavrasPedra:
   - pedra
-  - cascalho
   - rocha
-  - seixo
   - calcamento
   - calcada
   - paving
-  - gravel
   - rock
   palavrasGrama:
   - grama
