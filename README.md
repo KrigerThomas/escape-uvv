@@ -12,7 +12,7 @@ Você é um calouro que dormiu estudando no InovaLab e acordou com a UVV fechada
 
 ## Gameplay
 
-[![Gameplay do Escape UVV no YouTube](https://img.youtube.com/vi/5AvyqnO0iDg/hqdefault.jpg)](https://youtu.be/5AvyqnO0iDg)
+Vídeo da gameplay no YouTube: https://youtu.be/5AvyqnO0iDg
 
 ## Jogar
 
