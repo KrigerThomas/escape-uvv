@@ -52372,7 +52372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mensagens:
   - remetente: Daphne
-    texto: o abrantes deixou perguntas no quadro de novo kkkk
+    texto: o abrantes deixou perguntas no quadro kkkk
     esperar: 4
   - remetente: Giovanna
     texto: "t\xE1 chovendo muito a\xED? aqui em casa caiu a luz"
@@ -72109,7 +72109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 236.81
       objectReference: {fileID: 0}
     - target: {fileID: 8659801207878843697, guid: 3b92e5cca68aad949a21ee1e91000ee8, type: 3}
       propertyPath: m_AnchoredPosition.x
